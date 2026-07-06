@@ -1,0 +1,90 @@
+# Archived n8n Workflow WFARCH-152E51D05F
+
+## Workflow ID
+
+WFARCH-152E51D05F
+
+## Name
+
+Indeed Company Data Scraper & Summarization with Airtable, Bright Data and Google Gemini
+
+## Category
+
+Research
+
+## Status
+
+Cataloged from read-only archive
+
+## Source
+
+K:\n8n-workflows-main\n8n-workflows-main\workflows
+
+## Source Workflow
+
+1508_Wait_Manual_Automation_Webhook.json
+
+## Purpose
+
+Reusable automation candidate inferred from the workflow name and node composition.
+
+## Node Analysis
+
+- Nodes: 19
+- Connections: 16
+- Source marked active: False (not activated or imported by Raphael)
+- Standard n8n workflow schema detected: True
+
+- `@n8n/n8n-nodes-langchain.agent`
+- `@n8n/n8n-nodes-langchain.chainLlm`
+- `@n8n/n8n-nodes-langchain.chainSummarization`
+- `@n8n/n8n-nodes-langchain.lmChatGoogleGemini`
+- `@n8n/n8n-nodes-langchain.toolHttpRequest`
+- `n8n-nodes-base.airtable`
+- `n8n-nodes-base.httpRequest`
+- `n8n-nodes-base.if`
+- `n8n-nodes-base.manualTrigger`
+- `n8n-nodes-base.markdown`
+- `n8n-nodes-base.set`
+- `n8n-nodes-base.splitInBatches`
+- `n8n-nodes-base.stickyNote`
+- `n8n-nodes-base.wait`
+
+## API and Service Analysis
+
+- Agent
+- Airtable
+- Chain Llm
+- Chain Summarization
+- Http Request
+- If
+- Lm Chat Google Gemini
+- Manual Trigger
+- Markdown
+- Set
+- Split In Batches
+- Sticky Note
+- Tool Http Request
+- Wait
+
+## Required Credentials
+
+- airtableTokenApi (type only; no credential value stored)
+- googlePalmApi (type only; no credential value stored)
+- httpHeaderAuth (type only; no credential value stored)
+
+## Reuse Assessment
+
+- Reusable trigger/transform pattern: Yes
+- Category relationship: Research
+- The workflow exposes a standard node list for structural analysis.
+- Review node settings, platform terms, privacy, rate limits, and credential requirements before any manual use.
+
+## Safety
+
+- Source modified: no
+- Workflow imported into n8n: no
+- Workflow activated: no
+- Workflow executed: no
+- Credential values stored: no
+- External APIs called: no

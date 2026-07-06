@@ -1,0 +1,221 @@
+{
+  "main": {
+    "id": "0c5b53647d389765",
+    "type": "split",
+    "children": [
+      {
+        "id": "0a24a9d2219d523a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "727ec8ffbf6212a3",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bcc08f65e2bb4639",
+    "type": "split",
+    "children": [
+      {
+        "id": "d71632071b93e357",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a3dc362b53a2a136",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "3f59eb95d6fe8393",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b62e9e2655689e44",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e10ef1acb6cc8b89",
+    "type": "split",
+    "children": [
+      {
+        "id": "412c1c3f2a54641d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d1aa8af40cd5ecf6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Ralphael/Governance/Memory Architecture.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Memory Architecture"
+            }
+          },
+          {
+            "id": "987970da66ada2de",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Ralphael/Governance/Memory Architecture.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Memory Architecture"
+            }
+          },
+          {
+            "id": "19747cb7f90bf360",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "915d348f491db953",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "781e505c153f12ea",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Ralphael/Governance/Memory Architecture.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Memory Architecture"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "727ec8ffbf6212a3",
+  "lastOpenFiles": [
+    "GOVERNANCE/Authority_Model.md",
+    "GOVERNANCE/Amendment_Process.md",
+    "GOVERNANCE/Raphael_Constitution.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "ROADMAP",
+    "GOVERNANCE",
+    "raphael_core/prompts/risk_analysis.md",
+    "raphael_core/prompts/executive_prediction.md",
+    "raphael_core/forecast_engine.py",
+    "raphael_core/world_model_population_old.py",
+    "raphael_core/world_model_population.py",
+    "Ralphael/00_Raphael/Dashboard Chat Tests/Dashboard Chat Test History.md",
+    "Ralphael/00_Raphael/Dashboard Chat Tests/Dashboard Chat Smoke Test Report.md",
+    "Ralphael/00_Raphael/Dashboard Chat Tests",
+    "tests/__pycache__/test_dashboard_chat_smoke.cpython-314.pyc",
+    "tests/test_dashboard_chat_smoke.py",
+    "raphael_core/__pycache__/dashboard_chat_tests.cpython-314.pyc",
+    "Ralphael/05_Business/Commerce/POD Design Studio/Generation Requests/PODGEN-312B919FD3 - PODCON-DB2F4B515B - sdxl.md",
+    "Ralphael/05_Business/Commerce/POD Design Studio/Design Prompts/PODCON-DB2F4B515B - Design Prompts.md",
+    "Ralphael/05_Business/Commerce/POD Design Studio/Concepts/PODCON-DB2F4B515B - perform a local POD Studio test.md",
+    "Ralphael/05_Business/Commerce/POD Design Studio/Generation Requests/PODGEN-40E5EDD3A9 - PODCON-681757F64B - sdxl.md",
+    "Ralphael/05_Business/Commerce/POD Design Studio/Design Prompts/PODCON-681757F64B - Design Prompts.md",
+    "Ralphael/05_Business/Commerce/POD Design Studio/Concepts/PODCON-681757F64B - create me a POD t shirt with an elephant picture on it.md",
+    "Ralphael/00_Raphael/Execution Plans/PLAN-20260618-09E595ED - Should I focus on Agency or Commerce based on current council recommen.md",
+    "Ralphael/00_Raphael/Execution Plans/PLAN-20260618-8B77FBCE - Should I focus on Agency or Commerce based on current council recommen.md",
+    "Ralphael/00_Raphael/Execution Plans/PLAN-20260618-96EA9AB6 - agency.md",
+    "Ralphael/00_Raphael/Execution Plans/PLAN-20260618-99883E1C - agency.md",
+    "Ralphael/00_Raphael/Execution Plans/PLAN-20260618-7C4FCFFB - Should I focus on Agency or Commerce based on current council recommen.md",
+    "Ralphael/00_Raphael/Execution Plans/PLAN-20260618-EA96CFAE - Agency.md",
+    "Ralphael/00_Raphael/Execution Plans/Execution Plan Brief.md",
+    "Ralphael/00_Raphael/Execution Plans/Execution Planning Overview.md",
+    "Ralphael/00_Raphael/Execution Plans/Execution Plan Review.md",
+    "Ralphael/00_Raphael/Execution Plans/Execution Plan History.md",
+    "Ralphael/00_Raphael/Deliberations/DELIB-20260618-3D26F384 - Should I focus on Agency or Commerce based on current council recommen.md"
+  ]
+}

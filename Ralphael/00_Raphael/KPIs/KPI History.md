@@ -1,0 +1,21 @@
+# KPI History
+
+- 2026-06-17 `KPI-20260617-6DD5611D` created: Leads Generated target 0.
+- 2026-06-17 `KPI-20260617-F3C59EC0` created: Proposals Drafted target 0.
+- 2026-06-17 `KPI-20260617-E21A88E0` created: Client Projects Active target 0.
+- 2026-06-17 `KPI-20260617-85AE6799` created: Monthly Agency Revenue target 0.
+- 2026-06-17 `KPI-20260617-D4290907` created: Product Ideas Created target 0.
+- 2026-06-17 `KPI-20260617-4C3E829B` created: Listing Plans Created target 0.
+- 2026-06-17 `KPI-20260617-622DE1F7` created: Digital Product Drafts target 0.
+- 2026-06-17 `KPI-20260617-0F6519DD` created: Monthly Commerce Revenue target 0.
+- 2026-06-17 `KPI-20260617-030F501C` created: Content Ideas Created target 0.
+- 2026-06-17 `KPI-20260617-6F410A10` created: Scripts Drafted target 0.
+- 2026-06-17 `KPI-20260617-300E6ADC` created: Ebook Plans Created target 0.
+- 2026-06-17 `KPI-20260617-136D8215` created: Followers / Audience Size target 0.
+- 2026-06-17 `KPI-20260617-734BD778` created: Open Tasks target 0.
+- 2026-06-17 `KPI-20260617-D30072AF` created: Completed Tasks target 0.
+- 2026-06-17 `KPI-20260617-70A1CCBB` created: Opportunities Detected target 0.
+- 2026-06-17 `KPI-20260617-A0973EAF` created: Build Requests Generated target 0.
+- 2026-06-17 `KPI-20260617-002C66BF` created: System Improvements Proposed target 0.
+- 2026-06-17 `KPI-20260617-AF03AA3B` created: Test KPI target 10.
+- 2026-06-17 `KPI-20260617-AF03AA3B` Test KPI: 0 -> 5. Smoke test update

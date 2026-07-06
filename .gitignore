@@ -1,0 +1,23 @@
+.env
+.env.*
+__pycache__/
+*.pyc
+
+# Caches and runtime memory
+memory/llm_cache/
+world_model/predictions/
+world_model/reasoning_traces/
+logs/
+runtime/
+
+# Databases
+*.db
+*.sqlite
+
+# IDEs
+.idea/
+.vscode/
+
+# Builder outputs
+builder/workspace/
+builder/requests/

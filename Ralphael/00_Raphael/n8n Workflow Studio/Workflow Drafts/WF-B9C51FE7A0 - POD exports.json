@@ -1,0 +1,141 @@
+{
+  "name": "Draft - POD exports",
+  "active": false,
+  "nodes": [
+    {
+      "id": "WF-B9C51FE7A0-NODE-1",
+      "name": "Start",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {},
+      "disabled": true
+    },
+    {
+      "id": "WF-B9C51FE7A0-NODE-2",
+      "name": "Load Input",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        260,
+        0
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": []
+        },
+        "options": {}
+      },
+      "disabled": true
+    },
+    {
+      "id": "WF-B9C51FE7A0-NODE-3",
+      "name": "Transform Export Records",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        520,
+        0
+      ],
+      "parameters": {
+        "jsCode": "// Draft only. Add reviewed transformation logic before manual import.\\nreturn $input.all();"
+      },
+      "disabled": true
+    },
+    {
+      "id": "WF-B9C51FE7A0-NODE-4",
+      "name": "Validate Output",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        780,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {},
+          "conditions": [],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "disabled": true
+    },
+    {
+      "id": "WF-B9C51FE7A0-NODE-5",
+      "name": "Draft Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        0
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": []
+        },
+        "options": {}
+      },
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Load Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Input": {
+      "main": [
+        [
+          {
+            "node": "Transform Export Records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform Export Records": {
+      "main": [
+        [
+          {
+            "node": "Validate Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Output": {
+      "main": [
+        [
+          {
+            "node": "Draft Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "raphaelWorkflowId": "WF-B9C51FE7A0",
+    "draftOnly": true,
+    "credentialsStored": false,
+    "activationAuthorized": false
+  },
+  "pinData": {}
+}

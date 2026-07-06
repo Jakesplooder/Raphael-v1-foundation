@@ -1,0 +1,141 @@
+{
+  "name": "Draft - New Workflow Draft",
+  "active": false,
+  "nodes": [
+    {
+      "id": "WF-6107763302-NODE-1",
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {},
+      "disabled": true
+    },
+    {
+      "id": "WF-6107763302-NODE-2",
+      "name": "Load Input",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        260,
+        0
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": []
+        },
+        "options": {}
+      },
+      "disabled": true
+    },
+    {
+      "id": "WF-6107763302-NODE-3",
+      "name": "Transform Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        520,
+        0
+      ],
+      "parameters": {
+        "jsCode": "// Draft only. Add reviewed transformation logic before manual import.\\nreturn $input.all();"
+      },
+      "disabled": true
+    },
+    {
+      "id": "WF-6107763302-NODE-4",
+      "name": "Validate Output",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        780,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {},
+          "conditions": [],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "disabled": true
+    },
+    {
+      "id": "WF-6107763302-NODE-5",
+      "name": "Draft Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        0
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": []
+        },
+        "options": {}
+      },
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Load Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Input": {
+      "main": [
+        [
+          {
+            "node": "Transform Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform Data": {
+      "main": [
+        [
+          {
+            "node": "Validate Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Output": {
+      "main": [
+        [
+          {
+            "node": "Draft Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "raphaelWorkflowId": "WF-6107763302",
+    "draftOnly": true,
+    "credentialsStored": false,
+    "activationAuthorized": false
+  },
+  "pinData": {}
+}

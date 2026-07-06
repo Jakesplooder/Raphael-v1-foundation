@@ -1,0 +1,41 @@
+# Brief History
+
+- 2026-06-17T06:04:04: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-17T06:04:04: Weekly Executive Brief generated at `Weekly Executive Brief.md`.
+- 2026-06-17T06:04:04: Monthly Business Review generated at `Monthly Business Review.md`.
+- 2026-06-17T06:04:10: Executive Brief generated at `Executive Brief - 2026-06-17.md`.
+- 2026-06-17T06:04:34: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-17T06:04:34: Executive Brief generated at `Executive Brief - 2026-06-17.md`.
+- 2026-06-17T06:04:34: Weekly Executive Brief generated at `Weekly Executive Brief.md`.
+- 2026-06-17T06:04:40: Monthly Business Review generated at `Monthly Business Review.md`.
+- 2026-06-17T06:04:41: Evening Review generated at `Evening Review.md`.
+- 2026-06-17T06:04:42: Executive Brief generated at `Executive Brief - 2026-06-17.md`.
+- 2026-06-17T06:05:34: Executive Brief generated at `Executive Brief - 2026-06-17.md`.
+- 2026-06-17T06:06:44: Executive Brief generated at `Executive Brief - 2026-06-17.md`.
+- 2026-06-17T06:06:45: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-17T06:06:46: Executive Brief generated at `Executive Brief - 2026-06-17.md`.
+- 2026-06-17T06:23:33: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-17T06:23:34: Executive Brief generated at `Executive Brief - 2026-06-17.md`.
+- 2026-06-17T06:38:44: Executive Brief generated at `Executive Brief - 2026-06-17.md`.
+- 2026-06-17T06:40:17: Executive Brief generated at `Executive Brief - 2026-06-17.md`.
+- 2026-06-18T12:04:33: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-18T12:04:34: Evening Review generated at `Evening Review.md`.
+- 2026-06-18T12:04:35: Evening Review generated at `Evening Review.md`.
+- 2026-06-19T03:16:48: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-19T03:19:30: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-19T03:26:46: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-19T03:26:53: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-19T03:28:32: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-19T03:33:03: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-20T21:56:22: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-21T21:12:38: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-21T21:12:38: Executive Brief generated at `Executive Brief - 2026-06-21.md`.
+- 2026-06-26T16:46:19: Morning Brief generated at `Morning Brief.md`.
+- 2026-06-27T19:07:34: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-01T21:42:22: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-02T09:14:00: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-03T10:10:48: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-03T19:18:32: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-03T21:53:54: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-04T21:41:24: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-05T20:18:01: Morning Brief generated at `Morning Brief.md`.

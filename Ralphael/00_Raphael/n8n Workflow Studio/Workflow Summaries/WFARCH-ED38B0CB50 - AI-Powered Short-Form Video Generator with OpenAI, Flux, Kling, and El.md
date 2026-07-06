@@ -1,0 +1,91 @@
+# Archived n8n Workflow WFARCH-ED38B0CB50
+
+## Workflow ID
+
+WFARCH-ED38B0CB50
+
+## Name
+
+AI-Powered Short-Form Video Generator with OpenAI, Flux, Kling, and ElevenLabs and upload to all social networks
+
+## Category
+
+Creator
+
+## Status
+
+Cataloged from read-only archive
+
+## Source
+
+K:\n8n-workflows-main\n8n-workflows-main\workflows
+
+## Source Workflow
+
+1282_Wait_Code_Import_Webhook.json
+
+## Purpose
+
+Reusable automation candidate inferred from the workflow name and node composition.
+
+## Node Analysis
+
+- Nodes: 51
+- Connections: 47
+- Source marked active: False (not activated or imported by Raphael)
+- Standard n8n workflow schema detected: True
+
+- `@n8n/n8n-nodes-langchain.openAi`
+- `n8n-nodes-base.code`
+- `n8n-nodes-base.discord`
+- `n8n-nodes-base.googleDrive`
+- `n8n-nodes-base.googleSheets`
+- `n8n-nodes-base.httpRequest`
+- `n8n-nodes-base.if`
+- `n8n-nodes-base.merge`
+- `n8n-nodes-base.readBinaryFile`
+- `n8n-nodes-base.scheduleTrigger`
+- `n8n-nodes-base.set`
+- `n8n-nodes-base.stickyNote`
+- `n8n-nodes-base.wait`
+- `n8n-nodes-base.writeBinaryFile`
+
+## API and Service Analysis
+
+- Code
+- Discord
+- Google Drive
+- Google Sheets
+- Http Request
+- If
+- Merge
+- Open Ai
+- Read Binary File
+- Schedule Trigger
+- Set
+- Sticky Note
+- Wait
+- Write Binary File
+
+## Required Credentials
+
+- googleDriveOAuth2Api (type only; no credential value stored)
+- googleSheetsOAuth2Api (type only; no credential value stored)
+- httpHeaderAuth (type only; no credential value stored)
+- openAiApi (type only; no credential value stored)
+
+## Reuse Assessment
+
+- Reusable trigger/transform pattern: Yes
+- Category relationship: Creator
+- The workflow exposes a standard node list for structural analysis.
+- Review node settings, platform terms, privacy, rate limits, and credential requirements before any manual use.
+
+## Safety
+
+- Source modified: no
+- Workflow imported into n8n: no
+- Workflow activated: no
+- Workflow executed: no
+- Credential values stored: no
+- External APIs called: no

@@ -1,0 +1,1 @@
+When Aaron is not actively using Raphael, Raphael reviews code, configs, workflows, notes, and infrastructure for improvements.

@@ -1,0 +1,43 @@
+# Initiative History
+
+- 2026-06-17 `INIT-20260617-356519FA` created: Prepare CSC4330 Project Group J for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-D2ECE95B` created: Prepare Economic Development Dashboard for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-995F07C5` created: Prepare Hadoop MapReduce for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-C015ABE1` created: Prepare Juneteenth Campaign for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-9A23ECCD` created: Prepare Lake Charles Gig Marketplace for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-CBC8F607` created: Prepare MentorMap for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-DE71A42C` created: Prepare OCaml Interpreter for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-FB7906BB` created: Prepare Permit Filing Service for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-D82C693E` created: Prepare PintOS for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-45CC1BFD` created: Prepare Raphael OS for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-459E6C6C` created: Prepare SQL Slammer Analysis for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-6FE05EC5` created: Prepare Secure Email Service for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-8BA995B2` created: Prepare Shell Project for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-29CDEB78` created: Prepare Shopify ERP Integration for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-AD20F430` created: Prepare Sports South Integration for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-DA5765FC` created: Prepare WooCommerce Vendor Platform for portfolio readiness [Portfolio Initiative].
+- 2026-06-17 `INIT-20260617-70A39236` created: Stabilize KPI: Leads Generated [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-A5F609F5` created: Stabilize KPI: Proposals Drafted [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-FFCC856E` created: Stabilize KPI: Client Projects Active [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-14BB207C` created: Stabilize KPI: Monthly Agency Revenue [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-6AB2303C` created: Stabilize KPI: Product Ideas Created [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-EBB1C381` created: Stabilize KPI: Listing Plans Created [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-29D2C156` created: Stabilize KPI: Digital Product Drafts [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-8CF76900` created: Stabilize KPI: Monthly Commerce Revenue [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-C235F926` created: Stabilize KPI: Content Ideas Created [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-2BB6AFEA` created: Stabilize KPI: Scripts Drafted [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-9F176891` created: Stabilize KPI: Ebook Plans Created [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-32E9679E` created: Stabilize KPI: Followers / Audience Size [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-D3530896` created: Stabilize KPI: Open Tasks [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-250F806C` created: Stabilize KPI: Completed Tasks [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-EE2531F8` created: Stabilize KPI: Opportunities Detected [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-26A73BB9` created: Stabilize KPI: Build Requests Generated [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-4943E1DF` created: Stabilize KPI: System Improvements Proposed [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-7C3550BC` created: Stabilize KPI: Test KPI [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-6310F3DD` created: Turn simulation winner into next action: Opportunity [Product Initiative].
+- 2026-06-17 `INIT-20260617-8684ABC9` created: Reduce unresolved project and business risks [Risk Reduction Initiative].
+- 2026-06-17 `INIT-20260617-04141E31` created: Review Raphael self-improvement backlog [System Improvement Initiative].
+- 2026-06-17 detection run completed. Candidates=41, new=37.
+- 2026-06-17 `INIT-20260617-356519FA` rescored to 68 (Medium).
+- 2026-06-17 `INIT-20260617-356519FA` delegated to Business Council. Council task: Council Tasks.md.
+- 2026-06-17 detection run completed. Candidates=41, new=0.
