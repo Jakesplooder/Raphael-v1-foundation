@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  raphaelos:
+    build: .
+    container_name: raphaelos
+    ports:
+      - "8787:8787"  # Dashboard port
+    volumes:
+      - ./data:/app/data  # User data (models, metrics, workspaces)
+    environment:
+      - RAPHAEL_DATA_DIR=/app/data
+      - OLLAMA_URL=http://host.docker.internal:11434
+      - QDRANT_URL=http://qdrant:6333
+      - DASHBOARD_HOST=0.0.0.0
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - qdrant
+    stdin_open: true # Support interactive CLI
+    tty: true
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: raphaelos_qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - ./data/qdrant_storage:/qdrant/storage

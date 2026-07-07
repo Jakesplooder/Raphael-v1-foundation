@@ -1,6 +1,6 @@
 # World Model Health
 
-Generated: 2026-06-24T22:03:15
+Generated: 2026-07-06T04:41:12
 
 - Nodes: 779
 - Relationships: 2092
@@ -14,7 +14,7 @@ Generated: 2026-06-24T22:03:15
 
 ## Review Queues
 
-- Stale nodes: 0
+- Stale nodes: 29
 - Stale relationships: 0
 - Review candidates: 0
 - Dormant entities: 0

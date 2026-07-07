@@ -8,7 +8,7 @@ from .reasoning_engine import engine as reasoning_engine
 from . import world_model
 from . import pattern_engine
 
-PREDICTIONS_DIR = r"C:\RaphaelOS\world_model\predictions"
+PREDICTIONS_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\predictions")
 os.makedirs(PREDICTIONS_DIR, exist_ok=True)
 TRACKING_FILE = os.path.join(PREDICTIONS_DIR, "prediction_accuracy.json")
 

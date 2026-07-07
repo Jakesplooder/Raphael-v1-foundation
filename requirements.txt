@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+rich
+pandas
+fastembed
+qdrant-client
+pypdf
+Pillow

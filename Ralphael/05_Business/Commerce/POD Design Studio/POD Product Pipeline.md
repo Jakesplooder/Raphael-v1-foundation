@@ -1,10 +1,10 @@
 # POD Product Pipeline
 
-Generated: 2026-07-06T00:55:00
+Generated: 2026-07-06T05:10:20
 
 | Concept ID | Product Idea | Prompts | Requests | Variants | Reviews | Typography | Compositions | SVG | Print | Listings | Exports | Status |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| PODCON-FA439A660A | I want you to use the internet to look up trends for digital products to sell on etsy so I can come up with designs to use in our POD studio. Use searchxng to look up the best digital products to sell on etsy. | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Concept |
+| PODCON-FA439A660A | I want you to use the internet to look up trends for digital products to sell on etsy so I can come up with designs to use in our POD studio. Use searchxng to look up the best digital products to sell on etsy. | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Pending |
 | PODCON-E891A0D105 | generate POD design using ComfyUI | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Concept |
 | PODCON-DB2F4B515B | perform a local POD Studio test | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Blocked |
 | PODCON-681757F64B | create me a POD t shirt with an elephant picture on it | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Blocked |

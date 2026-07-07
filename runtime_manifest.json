@@ -1,0 +1,21 @@
+{
+  "kernel_version": "2.0.0",
+  "boot_time": 1783388629.4653182,
+  "runtime_mode": "enterprise",
+  "services": [
+    "EventBus",
+    "JobSystem",
+    "ExecutiveCalendar",
+    "HealthMonitor",
+    "SelfHealingRuntime",
+    "KernelDashboard",
+    "WorldModelService"
+  ],
+  "plugins": [],
+  "providers": [],
+  "health": "OK",
+  "constitution_version": "1.0",
+  "world_model_version": "2.0",
+  "trace_seed": "RRK-1783388629.4653494",
+  "startup_duration_ms": 2.21044921875
+}

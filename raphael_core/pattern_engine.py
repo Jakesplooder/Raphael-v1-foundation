@@ -6,7 +6,7 @@ from datetime import datetime
 from collections import defaultdict
 
 # Data Paths
-WM_DIR = r"C:\RaphaelOS\world_model"
+WM_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model")
 REPORTS_DIR = os.path.join(WM_DIR, "reports")
 CAUSAL_GRAPH = os.path.join(REPORTS_DIR, "causal_graph.json")
 LESSONS = os.path.join(REPORTS_DIR, "institutional_lessons.json")
@@ -33,9 +33,9 @@ def load_data():
 
 def _determine_confidence_and_lifecycle(evidence_count, category, contradicting_count=0):
     # Base Confidence
-    base_confidence = min(0.95, 0.4 + (evidence_count * 0.05))
+    base_confidence = min(0.85, 0.4 + (evidence_count * 0.05))
     if category in ["Governance", "Safety"]:
-        base_confidence = min(0.95, base_confidence + 0.1)
+        base_confidence = min(0.85, base_confidence + 0.1)
         
     # Contradiction Penalty
     total_evidence = evidence_count + contradicting_count

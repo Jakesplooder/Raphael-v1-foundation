@@ -1,7 +1,8 @@
 from typing import Optional
 from .provider_health import ProviderHealthMonitor
 from .budget_manager import get_routing_tier
-from .capability_profiles import PROFILES, CapabilityProfile
+from .capability_profiles import CapabilityProfile
+from .calibration import get_calibrated_profiles
 
 class ProviderManager:
     def __init__(self):
@@ -21,7 +22,8 @@ class ProviderManager:
                 continue
                 
             if required_capability:
-                profile = PROFILES.get(provider_name)
+                profiles = get_calibrated_profiles()
+                profile = profiles.get(provider_name)
                 if profile:
                     score = getattr(profile, required_capability, 0)
                     if score > best_score:

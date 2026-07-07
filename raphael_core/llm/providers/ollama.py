@@ -1,5 +1,6 @@
 import json
 import time
+import os
 import urllib.request
 from typing import Any
 from .base_provider import BaseProvider, ReasoningResult
@@ -14,7 +15,7 @@ class OllamaProvider(BaseProvider):
         Calls local Ollama instance on localhost:11434.
         """
         start_time = time.time()
-        url = "http://localhost:11434/api/chat"
+        url = os.environ.get("OLLAMA_URL", "http://localhost:11434") + "/api/chat"
         
         # Merge system, context, and task into a clear prompt array
         messages = [

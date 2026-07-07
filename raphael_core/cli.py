@@ -71,7 +71,7 @@ def _world_model_main(args: list[str]) -> int:
     elif command == "world-model-query":
         if not tail:
             raise SystemExit("world-model-query requires QUESTION")
-        result = world_model.world_model_answer(config, "Executive Agent", "cli query", " ".join(tail))
+        result = world_model.world_model_answer_legacy(config, "Executive Agent", "cli query", " ".join(tail))
     elif command == "world-model-health":
         result = world_model.health(config)
     elif command == "world-model-review":
@@ -184,10 +184,89 @@ def _reasoning_engine_main(args: list[str]) -> int:
     return 0
 
 
+def _daemon_main(args: list[str]) -> int:
+    config_path, rest = _extract_config(args)
+    if not rest or rest[0] != "daemon":
+        return -1
+    
+    if len(rest) < 2:
+        print("Usage: raphael.py daemon <start|stop|status> [--mode <development|production>]")
+        return 1
+
+    action = rest[1]
+    
+    if action == "start":
+        mode = "production"
+        if "--mode" in rest:
+            mode_idx = rest.index("--mode")
+            if mode_idx + 1 < len(rest):
+                mode = rest[mode_idx + 1]
+
+        # Import all kernel components to ensure they are registered
+        from .kernel.registry import registry
+        from .kernel.event_bus import EventBus
+        from .kernel.job_system import JobSystem
+        from .kernel.calendar import ExecutiveCalendar
+        from .kernel.health import HealthMonitor
+        from .kernel.healing import SelfHealingRuntime
+        from .kernel.dashboard import KernelDashboard
+        from .kernel.core import Kernel
+        from .kernel.observability import ObservabilityLayer
+        from .world_model import WorldModelService
+        import asyncio
+
+        # Register Core Services
+        registry.register_service(EventBus())
+        registry.register_service(JobSystem())
+        registry.register_service(ExecutiveCalendar())
+        registry.register_service(HealthMonitor())
+        registry.register_service(SelfHealingRuntime())
+        registry.register_service(KernelDashboard())
+        registry.register_service(WorldModelService())
+
+        kernel = Kernel(mode=mode)
+        
+        async def run_daemon():
+            await kernel.boot()
+            try:
+                # Keep the event loop alive forever until interrupted
+                await asyncio.Event().wait()
+            except asyncio.CancelledError:
+                pass
+        
+        try:
+            asyncio.run(run_daemon())
+        except KeyboardInterrupt:
+            ObservabilityLayer.warning("CLI", "Received KeyboardInterrupt. Shutting down RRK...")
+            asyncio.run(kernel.shutdown())
+        except Exception as e:
+            print(f"Kernel failed: {e}")
+            return 1
+            
+        return 0
+        
+    elif action == "status":
+        import urllib.request
+        try:
+            req = urllib.request.urlopen("http://127.0.0.1:8788/api/health", timeout=2)
+            print("RRK is ONLINE.")
+            print(req.read().decode())
+            return 0
+        except Exception as e:
+            print(f"RRK is OFFLINE or unreachable. ({e})")
+            return 1
+            
+    print(f"Unknown daemon action: {action}")
+    return 1
+
+
 def main(argv: list[str] | None = None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
     if args == ["test"]:
         return run_tests()
+        
+    if args and args[0] == "daemon":
+        return _daemon_main(args)
         
     # Check reasoning commands first
     if args and args[0] in ["reason", "brief", "board", "plan"]:

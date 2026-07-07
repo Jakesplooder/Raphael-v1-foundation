@@ -724,7 +724,46 @@ def path_between(config: legacy.RaphaelConfig, source: str, target: str) -> dict
     return {"source": src, "target": dst, "path": [], "found": False}
 
 
-def world_model_answer(config: legacy.RaphaelConfig, agent_id: str, purpose: str, question: str) -> dict[str, Any]:
+def world_model_answer_legacy(
+    config: legacy.RaphaelConfig,
+    agent_id: str,
+    purpose: str, 
+    question: str,
+) -> dict:
+    """
+    Legacy fallback path for CLI commands not yet migrated to RRK Jobs.
+    
+    This function exists explicitly as a bridge during migration.
+    It should be removed once all callers are RRK-native.
+    
+    TODO: Track removal in migration log.
+    """
+    # Attempt RRK path first if kernel is running via local Dashboard API
+    try:
+        import urllib.request
+        import json
+        req = urllib.request.Request(
+            "http://127.0.0.1:8788/api/world-model/query",
+            data=json.dumps({
+                "agent_id": agent_id,
+                "purpose": purpose,
+                "question": question
+            }).encode("utf-8"),
+            headers={"Content-Type": "application/json"}
+        )
+        with urllib.request.urlopen(req, timeout=2) as response:
+            if response.status == 200:
+                data = json.loads(response.read().decode("utf-8"))
+                if "error" not in data:
+                    return data
+    except Exception:
+        pass
+    
+    # Fall through to legacy path
+    return _world_model_answer_internal(config, agent_id, purpose, question)
+
+
+def _world_model_answer_internal(config: legacy.RaphaelConfig, agent_id: str, purpose: str, question: str, trace_id: str = None) -> dict[str, Any]:
     ensure_world_model(config)
     access = _read_json(runtime_root(config) / "access_policy.json", DEFAULT_ACCESS_POLICY)
     controls = _read_json(runtime_root(config) / "inference_controls.json", DEFAULT_INFERENCE_CONTROLS)
@@ -732,7 +771,7 @@ def world_model_answer(config: legacy.RaphaelConfig, agent_id: str, purpose: str
     rate = check_rate_limit(config, agent_id, actor, access)
     if not rate["allowed"]:
         answer = {"allowed": False, "answer": "Query blocked by World Model rate limiting.", "rate_limit": rate}
-        log_query(config, agent_id, purpose, question, answer, blocked=True)
+        log_query(config, agent_id, purpose, question, answer, blocked=True, trace_id=trace_id)
         return answer
     blocked = blocked_correlation(question, agent_id, controls)
     if blocked:
@@ -742,14 +781,14 @@ def world_model_answer(config: legacy.RaphaelConfig, agent_id: str, purpose: str
             "blocked_correlation": blocked,
             "uncertainty": "No answer was assembled from unauthorized sensitive data.",
         }
-        log_query(config, agent_id, purpose, question, answer, blocked=True)
+        log_query(config, agent_id, purpose, question, answer, blocked=True, trace_id=trace_id)
         return answer
     model = load_model(config)
     result = answer_from_model(model, question)
     result["allowed"] = True
     result["purpose"] = purpose
     result["rate_limit"] = rate
-    log_query(config, agent_id, purpose, question, result)
+    log_query(config, agent_id, purpose, question, result, trace_id=trace_id)
     refresh_query_log_note(config)
     return result
 
@@ -888,7 +927,7 @@ def query_log_rows(config: legacy.RaphaelConfig) -> list[dict[str, Any]]:
     return rows
 
 
-def log_query(config: legacy.RaphaelConfig, agent_id: str, purpose: str, question: str, result: dict[str, Any], *, blocked: bool = False) -> None:
+def log_query(config: legacy.RaphaelConfig, agent_id: str, purpose: str, question: str, result: dict[str, Any], *, blocked: bool = False, trace_id: str = None) -> None:
     entry = {
         "timestamp": _now(),
         "agent_id": agent_id,
@@ -902,6 +941,14 @@ def log_query(config: legacy.RaphaelConfig, agent_id: str, purpose: str, questio
     path = runtime_root(config) / "query_log.jsonl"
     with path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(entry, default=str) + "\n")
+        
+    if trace_id:
+        from .kernel.observability import ObservabilityLayer
+        ObservabilityLayer.info(
+            source="WorldModelService", 
+            message=f"WM query completed: agent={agent_id} purpose='{purpose}'", 
+            trace_id=trace_id
+        )
 
 
 def snapshot(config: legacy.RaphaelConfig, reason: str) -> dict[str, Any]:
@@ -1111,3 +1158,90 @@ def access_review(config: legacy.RaphaelConfig) -> dict[str, Any]:
         "sensitive_correlation_count": len(controls.get("sensitive_correlations", [])),
         "only_aaron_may_add_correlations": controls.get("owners") == ["Aaron"],
     }
+
+
+# --- Phase 80.X: RRK Integration ---
+
+class WorldModelService:
+    """
+    RRK native ServiceModule bridging the legacy World Model functions
+    into the managed kernel environment.
+    """
+    
+    def __init__(self, config: legacy.RaphaelConfig = None):
+        self.config = config or legacy.load_config(legacy.DEFAULT_SETTINGS_PATH)
+        self._running = False
+        self._queries_handled = 0
+        
+    @property
+    def name(self) -> str:
+        return "WorldModelService"
+        
+    @property
+    def depends_on(self) -> list[str]:
+        return ["EventBus", "RuntimeStateStore"]
+
+    def _get_trace_id(self) -> str:
+        import uuid
+        return str(uuid.uuid4())
+        
+    async def initialize(self) -> None:
+        from .kernel.state import store
+        store.set_state(self.name, "status", "initialized")
+        
+    async def start(self) -> None:
+        from .kernel.state import store
+        from .kernel.observability import ObservabilityLayer
+        self._running = True
+        store.set_state(self.name, "status", "running")
+        ObservabilityLayer.info(self.name, "WorldModelService started.")
+        
+    async def heartbeat(self) -> bool:
+        # Check basic file access as a heartbeat mechanism
+        try:
+            p = runtime_root(self.config) / "nodes.json"
+            return self._running and p.exists()
+        except Exception:
+            return False
+            
+    async def stop(self) -> None:
+        from .kernel.state import store
+        self._running = False
+        store.set_state(self.name, "status", "stopped")
+        
+    async def shutdown(self) -> None:
+        from .kernel.state import store
+        from .kernel.observability import ObservabilityLayer
+        store.set_state(self.name, "status", "shutdown")
+        ObservabilityLayer.info(self.name, "WorldModelService shut down.")
+        
+    def health(self):
+        from .kernel.interfaces import ModuleHealth
+        if self._running:
+            return ModuleHealth.OK
+        return ModuleHealth.FAILED
+        
+    def status(self) -> str:
+        return f"Operational. Queries handled: {self._queries_handled}"
+        
+    def metrics(self) -> dict[str, Any]:
+        return {
+            "queries_handled": self._queries_handled
+        }
+
+    def query(self, agent_id: str, purpose: str, question: str) -> dict:
+        """
+        Primary query path — RRK native with trace_id and observability.
+        """
+        from .kernel.observability import ObservabilityLayer
+        trace_id = self._get_trace_id()
+        ObservabilityLayer.info(
+            source=self.name,
+            message=f"WM query received",
+            trace_id=trace_id,
+            agent=agent_id
+        )
+        self._queries_handled += 1
+        
+        # We delegate to the internal function which will stamp the trace_id in the JSON log
+        return _world_model_answer_internal(self.config, agent_id, purpose, question, trace_id=trace_id)
