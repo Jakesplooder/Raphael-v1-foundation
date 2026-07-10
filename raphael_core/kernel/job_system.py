@@ -99,8 +99,7 @@ class JobSystem(ServiceModule):
     async def _process_queue(self) -> None:
         while self._running:
             try:
-                # This loop represents the primary dispatcher.
-                # In a full system, this would dispatch to specific module worker pools.
+                # The primary dispatcher
                 _priority, _time, job = await self._queue.get()
                 
                 if job.state != JobState.QUEUED:
@@ -109,11 +108,26 @@ class JobSystem(ServiceModule):
 
                 self.update_state(job.id, JobState.RUNNING)
                 
-                # Here we would normally yield execution to the specific module.
-                # For the RRK foundation, we just mark it complete to simulate processing.
-                await asyncio.sleep(0.01) # Simulate some dispatch overhead
+                from .registry import registry
+                target_service = registry.get_service(job.module)
                 
-                self.update_state(job.id, JobState.COMPLETED)
+                if target_service and hasattr(target_service, "process_job"):
+                    try:
+                        # Yield execution to the specific module's execute_job wrapper if available,
+                        # else fallback to process_job natively.
+                        if hasattr(target_service, "execute_job"):
+                            result = await target_service.execute_job(job)
+                        else:
+                            result = await target_service.process_job(job)
+                        ObservabilityLayer.info(self.name, f"Job {job.id} completed by {job.module}", trace_id=job.trace_id)
+                        self.update_state(job.id, JobState.COMPLETED)
+                    except Exception as e:
+                        ObservabilityLayer.error(self.name, f"Job {job.id} failed in {job.module}: {e}", trace_id=job.trace_id)
+                        self.update_state(job.id, JobState.FAILED)
+                else:
+                    ObservabilityLayer.error(self.name, f"Job {job.id} failed: target module {job.module} not found or invalid", trace_id=job.trace_id)
+                    self.update_state(job.id, JobState.FAILED)
+                    
                 self._queue.task_done()
                 
             except asyncio.CancelledError:

@@ -1,6 +1,6 @@
 # Bootstrap Health
 
-Generated: 2026-07-05T20:18:08
+Generated: 2026-07-09T15:24:12
 
 ## Overall
 
@@ -42,8 +42,8 @@ Needs Attention
 
 ## Managed Processes
 
-- dashboard: PID 23852 - alive
-- comfyui: PID 13504 - alive
+- dashboard: PID 24132 - alive
+- comfyui: PID 6124 - alive
 
 ## Safety
 

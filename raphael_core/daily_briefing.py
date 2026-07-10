@@ -74,6 +74,15 @@ def _format_item(item: Dict[str, Any]) -> str:
     return "\n".join(lines)
 
 def generate_briefing(world_model: Dict[str, Any] = None) -> Dict[str, Any]:
+    if world_model is None:
+        import urllib.request, json
+        try:
+            req = urllib.request.Request("http://127.0.0.1:8788/api/world-model/graph", headers={'Content-Type': 'application/json'})
+            with urllib.request.urlopen(req, timeout=5) as response:
+                world_model = json.loads(response.read().decode())
+        except Exception as e:
+            world_model = {"nodes": []}
+            
     # 1. Detect
     opps = detect_opportunities(world_model)
     risks = detect_risks(world_model)

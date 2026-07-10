@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-09T23:40:54",
+  "generated": "2026-07-09T23:47:00",
   "overall": "healthy",
   "system_health": {
     "qdrant": {
@@ -308,9 +308,9 @@
           "qwen2.5vl"
         ],
         "missing_models": [
+          "qwen2.5vl",
           "llama3.1:8b",
-          "llama3.1",
-          "qwen2.5vl"
+          "llama3.1"
         ]
       },
       "qdrant": {
@@ -372,7 +372,7 @@
     }
   },
   "service_manager": {
-    "generated": "2026-07-09T23:40:54",
+    "generated": "2026-07-09T23:47:00",
     "registry_path": "C:\\RaphaelOS\\launcher\\service_registry.json",
     "pid_registry_path": "C:\\RaphaelOS\\launcher\\runtime\\service_pids.json",
     "docker": {

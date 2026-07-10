@@ -18,26 +18,32 @@ def detect_opportunities(world_model: Dict[str, Any] = None) -> List[Dict[str, A
     from .agent_workload_balancer import analyze_workloads
     from .llm_cost_optimizer import identify_cost_opportunities
     from .portfolio_optimizer import optimize_portfolio
-    from .workforce_health import scan_workforce_health
-    from .agent_runtime import AgentRuntimeRegistry, AgentLifecycleManager
     
     def get_nodes(label: str) -> List[Dict[str, Any]]:
         try:
-            with open(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\nodes.json"), "r", encoding="utf-8") as f:
-                nodes = json.load(f)
-                return [n for n in nodes if n.get("node_type") == label]
+            if world_model and "nodes" in world_model:
+                return [n for n in world_model["nodes"] if n.get("node_type") == label]
+            else:
+                with open(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), "world_model", "nodes.json"), "r", encoding="utf-8") as f:
+                    nodes = json.load(f)
+                    return [n for n in nodes if n.get("node_type") == label]
         except Exception:
             return []
-    
+            
     opportunities = []
     
     opportunities.extend(analyze_workloads())
     opportunities.extend(identify_cost_opportunities())
     opportunities.extend(optimize_portfolio())
     
-    reg = AgentRuntimeRegistry()
-    lif = AgentLifecycleManager(reg)
-    opportunities.extend(scan_workforce_health(reg, lif))
+    try:
+        from .workforce_health import scan_workforce_health
+        from .agent_runtime import AgentRuntimeRegistry, AgentLifecycleManager
+        reg = AgentRuntimeRegistry()
+        lif = AgentLifecycleManager(reg)
+        opportunities.extend(scan_workforce_health(reg, lif))
+    except ImportError:
+        pass
     
     # Dynamic detection: Stalled Goal
     # Find any 'Goal' nodes in the world model that haven't been updated recently.

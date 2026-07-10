@@ -1,0 +1,13 @@
+{
+  "core_services": [
+    "raphael_core.kernel.event_bus",
+    "raphael_core.kernel.job_system",
+    "raphael_core.kernel.calendar",
+    "raphael_core.kernel.health",
+    "raphael_core.kernel.healing",
+    "raphael_core.kernel.dashboard",
+    "raphael_core.world_model",
+    "raphael_core.agent_runtime",
+    "raphael_core.kernel.infrastructure"
+  ]
+}

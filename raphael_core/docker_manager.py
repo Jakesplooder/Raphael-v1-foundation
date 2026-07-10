@@ -39,13 +39,13 @@ def default_services(config: legacy.RaphaelConfig) -> list[dict[str, Any]]:
             "container_name": "raphael-qdrant",
             "ports": ["127.0.0.1:6333:6333"],
             "volumes": [f"{root / 'qdrant'}:/qdrant/storage"],
-            "health_check": "http://127.0.0.1:6333",
+            "health_check": os.environ.get("QDRANT_URL", "http://127.0.0.1:6333"),
             "notes": "Local vector memory service.",
         },
         {
             "service_id": "n8n",
             "display_name": "n8n",
-            "enabled": False,
+            "enabled": True,
             "image": "n8nio/n8n",
             "container_name": "raphael-n8n",
             "ports": ["127.0.0.1:5678:5678"],
@@ -150,7 +150,16 @@ def _run(args: list[str], *, timeout: int = 30) -> subprocess.CompletedProcess[s
     forbidden = {"exec", "prune", "rm", "rmi", "volume", "system"}
     if len(args) > 1 and args[1] in forbidden:
         raise RuntimeError(f"Docker operation is blocked: {args[1]}")
-    return subprocess.run(args, capture_output=True, text=True, timeout=timeout, shell=False)
+    try:
+        if os.name != "nt":
+            # Force using Host Agent when running inside the Linux container
+            windows_args = ["docker.exe"] + args[1:]
+            from . import legacy
+            return legacy.host_aware_run(windows_args, capture_output=True, text=True, timeout=timeout)
+        else:
+            return subprocess.run(args, capture_output=True, text=True, timeout=timeout, shell=False)
+    except Exception as e:
+        return subprocess.CompletedProcess(args, returncode=1, stdout="", stderr=str(e))
 
 
 def docker_status(config: legacy.RaphaelConfig) -> dict[str, Any]:
@@ -191,7 +200,10 @@ def _inspect_container(name: str) -> dict[str, Any] | None:
     result = _run(["docker", "container", "inspect", name], timeout=15)
     if result.returncode != 0:
         return None
-    values = json.loads(result.stdout)
+    try:
+        values = json.loads(result.stdout)
+    except (json.JSONDecodeError, ValueError):
+        return None
     return values[0] if values else None
 
 

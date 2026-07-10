@@ -91,7 +91,7 @@ def inkscape_path(config: legacy.RaphaelConfig) -> Path:
 
 def run_inkscape(config: legacy.RaphaelConfig, args: list[str], timeout: int = 300) -> subprocess.CompletedProcess[str]:
     executable = inkscape_path(config)
-    completed = subprocess.run(
+    completed = legacy.host_aware_run(
         [str(executable), *args],
         capture_output=True,
         text=True,

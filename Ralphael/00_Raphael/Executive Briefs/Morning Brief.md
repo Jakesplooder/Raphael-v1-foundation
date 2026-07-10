@@ -1,6 +1,6 @@
 # Morning Brief
 
-Generated: 2026-07-05T20:18:01
+Generated: 2026-07-09T15:24:04
 
 ## Current Mode
 
@@ -26,7 +26,7 @@ Developer Mode
 
 ## Top Opportunity
 
-- `OPP-20260617-7A970D5A` Turn repeated build request into reusable template (score 68)
+- `OPP-20260706-EAAD2FCC` Evaluate strategic build: Reverse Mentormap - Complete Concept Tagline Where Senior Le (score 74)
 
 ## KPI Warnings
 

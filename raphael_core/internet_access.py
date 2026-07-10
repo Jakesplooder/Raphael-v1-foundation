@@ -7,6 +7,7 @@ import hashlib
 import html
 import ipaddress
 import json
+import os
 import re
 import socket
 import urllib.parse
@@ -459,7 +460,7 @@ def internet_search(config: legacy.RaphaelConfig, question: str) -> dict[str, An
 
 
 def searxng_status(config: legacy.RaphaelConfig) -> dict[str, Any]:
-    url = config.searxng_url.rstrip("/")
+    url = os.environ.get("SEARXNG_URL", config.searxng_url).rstrip("/")
     try:
         request = urllib.request.Request(
             url + "/search?" + urllib.parse.urlencode({"q": "Raphael health check", "format": "json"}),
@@ -507,7 +508,7 @@ def internet_headless_search(config: legacy.RaphaelConfig, question: str) -> dic
         request_row = internet_request(config, clean)
         data = _load_state(config)
         request_row = _request_by_id(data, request_row["request_id"])
-    url = config.searxng_url.rstrip("/") + "/search?" + urllib.parse.urlencode({
+    url = os.environ.get("SEARXNG_URL", config.searxng_url).rstrip("/") + "/search?" + urllib.parse.urlencode({
         "q": clean,
         "format": "json",
         "language": "en",

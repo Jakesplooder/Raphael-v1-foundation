@@ -39,3 +39,8 @@
 - 2026-07-03T21:53:54: Morning Brief generated at `Morning Brief.md`.
 - 2026-07-04T21:41:24: Morning Brief generated at `Morning Brief.md`.
 - 2026-07-05T20:18:01: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-07T01:23:15: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-07T22:30:59: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-08T14:06:51: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-09T15:24:04: Morning Brief generated at `Morning Brief.md`.
+- 2026-07-09T17:12:24: Executive Brief generated at `Executive Brief - 2026-07-09.md`.

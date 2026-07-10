@@ -18,6 +18,34 @@ import py_compile
 import re
 import shutil
 import subprocess
+import urllib.request
+
+def host_aware_run(args, **kwargs):
+    if str(args[0]).lower().endswith((".exe", ".cmd")) and os.environ.get("HOST_AGENT_URL"):
+        url = os.environ["HOST_AGENT_URL"] + "/process/run_sync"
+        # Convert container paths back to Windows paths for the host execution
+        windows_args = [str(a).replace("/app/C:", "C:").replace("/app/c/", "C:/").replace("/app/c", "C:/") for a in args]
+        payload_dict = {"command": windows_args}
+        if "cwd" in kwargs and kwargs["cwd"]:
+            payload_dict["cwd"] = str(kwargs["cwd"]).replace("/app/C:", "C:").replace("/app/c/", "C:/").replace("/app/c", "C:/")
+        payload = json.dumps(payload_dict)
+        req = urllib.request.Request(url, data=payload.encode("utf-8"), headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=kwargs.get("timeout", 900)) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        class FakeCompletedProcess:
+            def __init__(self, returncode, stdout, stderr):
+                self.returncode = returncode
+                self.stdout = stdout
+                self.stderr = stderr
+            def check_returncode(self):
+                if self.returncode != 0:
+                    raise subprocess.CalledProcessError(self.returncode, args, self.stdout, self.stderr)
+        res = FakeCompletedProcess(data["returncode"], data.get("stdout", ""), data.get("stderr", ""))
+        if kwargs.get("check"):
+            res.check_returncode()
+        return res
+    return subprocess.run(args, **kwargs)
+
 import sys
 import time
 import urllib.error
@@ -42,7 +70,7 @@ DEFAULT_SETTINGS = {
     "allow_ai_file_content_analysis": False,
     "max_ai_context_chars": 12000,
     "qdrant_enabled": True,
-    "qdrant_url": os.environ.get("QDRANT_URL", "http://localhost:6333"),
+    "qdrant_url": os.environ.get("QDRANT_URL", "http://qdrant:6333"),
     "qdrant_collection": "raphael_memory",
     "embedding_model": "BAAI/bge-small-en-v1.5",
     "embedding_dimension": 384,
@@ -1750,8 +1778,8 @@ def load_config(settings_path: Path) -> RaphaelConfig:
     raw = json.loads(settings_path.read_text(encoding="utf-8"))
     settings = DEFAULT_SETTINGS | raw
     safety = DEFAULT_SETTINGS["safety"] | raw.get("safety", {})
-    vault = Path(settings["vault_path"])
-    os_root = Path(settings["runtime_path"])
+    vault = Path(os.environ.get("RAPHAEL_VAULT_DIR", settings["vault_path"]))
+    os_root = Path(os.environ.get("RAPHAEL_RUNTIME_DIR", settings["runtime_path"]))
     approved_read = [Path(path) for path in settings.get("approved_read_folders", [])]
     approved_write = [Path(path) for path in settings.get("approved_write_folders", [])]
     builder_allowed_write = [Path(path) for path in settings.get("builder_allowed_write_folders", DEFAULT_SETTINGS["builder_allowed_write_folders"])]
@@ -1777,7 +1805,7 @@ def load_config(settings_path: Path) -> RaphaelConfig:
         allow_ai_file_content_analysis=bool(settings.get("allow_ai_file_content_analysis", False)),
         max_ai_context_chars=int(settings.get("max_ai_context_chars", 12000)),
         qdrant_enabled=bool(settings.get("qdrant_enabled", True)),
-        qdrant_url=str(settings.get("qdrant_url", os.environ.get("QDRANT_URL", "http://localhost:6333"))),
+        qdrant_url=str(settings.get("qdrant_url", os.environ.get("QDRANT_URL", "http://qdrant:6333"))),
         qdrant_collection=str(settings.get("qdrant_collection", "raphael_memory")),
         embedding_model=str(settings.get("embedding_model", "BAAI/bge-small-en-v1.5")),
         embedding_dimension=int(settings.get("embedding_dimension", 384)),
@@ -9954,7 +9982,7 @@ def pod_remove_background(config: RaphaelConfig, image_path: Path) -> Path:
     if config.pod_requires_confirmation_for_tool_execution:
         pod_confirmation_granted(f"Run rembg locally on {image.name}?")
     output = unique_path(runtime / "working" / f"{image.stem}-no-bg.png")
-    completed = subprocess.run([str(tool), "i", str(image), str(output)], capture_output=True, text=True, timeout=300)
+    completed = host_aware_run([str(tool), "i", str(image), str(output)], capture_output=True, text=True, timeout=300)
     if completed.returncode != 0 or not output.exists():
         raise RuntimeError(f"rembg failed safely: {(completed.stderr or completed.stdout).strip()}")
     append_unique_line(runtime / "logs" / "POD Tool Log.md", f"- {dt.datetime.now().isoformat(timespec='seconds')} | rembg | `{image}` -> `{output}`", config)
@@ -9975,7 +10003,7 @@ def pod_upscale(config: RaphaelConfig, image_path: Path) -> Path:
     if config.pod_requires_confirmation_for_tool_execution:
         pod_confirmation_granted(f"Run configured Upscayl tool on {image.name}?")
     output = unique_path(runtime / "working" / f"{image.stem}-upscaled.png")
-    completed = subprocess.run([str(tool), "-i", str(image), "-o", str(output)], capture_output=True, text=True, timeout=900)
+    completed = host_aware_run([str(tool), "-i", str(image), "-o", str(output)], capture_output=True, text=True, timeout=900)
     if completed.returncode != 0 or not output.exists():
         raise RuntimeError(f"Upscayl failed safely: {(completed.stderr or completed.stdout).strip()}")
     append_unique_line(runtime / "logs" / "POD Tool Log.md", f"- {dt.datetime.now().isoformat(timespec='seconds')} | upscayl | `{image}` -> `{output}`", config)
@@ -11745,7 +11773,7 @@ def call_ollama_model(config: RaphaelConfig, prompt: str, context: str, model: s
         "stream": False,
     }
     request = urllib.request.Request(
-        os.environ.get("OLLAMA_URL", "http://" + os.environ.get("OLLAMA_URL", "http://localhost:11434") + "") + "/api/chat",
+        os.environ.get("OLLAMA_URL", os.environ.get("OLLAMA_URL", "http://host.docker.internal:11434")) + "/api/chat",
         data=json.dumps(payload).encode("utf-8"),
         headers={"Content-Type": "application/json"},
         method="POST",
@@ -11754,7 +11782,7 @@ def call_ollama_model(config: RaphaelConfig, prompt: str, context: str, model: s
         with urllib.request.urlopen(request, timeout=180) as response:
             data = json.loads(response.read().decode("utf-8"))
     except urllib.error.URLError as exc:
-        raise RuntimeError("Ollama request failed. Confirm Ollama is running on " + os.environ.get("OLLAMA_URL", "http://localhost:11434") + ".") from exc
+        raise RuntimeError("Ollama request failed. Confirm Ollama is running on " + os.environ.get("OLLAMA_URL", "http://host.docker.internal:11434") + ".") from exc
     return data.get("message", {}).get("content", "").strip()
 
 
@@ -11779,7 +11807,7 @@ def call_ollama_vision_model(config: RaphaelConfig, model: str, image_path: Path
         "stream": False,
     }
     request = urllib.request.Request(
-        os.environ.get("OLLAMA_URL", "http://" + os.environ.get("OLLAMA_URL", "http://localhost:11434") + "") + "/api/chat",
+        os.environ.get("OLLAMA_URL", os.environ.get("OLLAMA_URL", "http://host.docker.internal:11434")) + "/api/chat",
         data=json.dumps(payload).encode("utf-8"),
         headers={"Content-Type": "application/json"},
         method="POST",
@@ -11788,7 +11816,7 @@ def call_ollama_vision_model(config: RaphaelConfig, model: str, image_path: Path
         with urllib.request.urlopen(request, timeout=240) as response:
             data = json.loads(response.read().decode("utf-8"))
     except urllib.error.URLError as exc:
-        raise RuntimeError("Ollama vision request failed. Confirm Ollama is running on " + os.environ.get("OLLAMA_URL", "http://localhost:11434") + ".") from exc
+        raise RuntimeError("Ollama vision request failed. Confirm Ollama is running on " + os.environ.get("OLLAMA_URL", "http://host.docker.internal:11434") + ".") from exc
     return data.get("message", {}).get("content", "").strip()
 
 
@@ -11802,7 +11830,7 @@ def call_openai_model(config: RaphaelConfig, prompt: str, context: str, model: s
 
 
 def ollama_local_models() -> tuple[list[str], str]:
-    request = urllib.request.Request(os.environ.get("OLLAMA_URL", "http://" + os.environ.get("OLLAMA_URL", "http://localhost:11434") + "") + "/api/tags", method="GET")
+    request = urllib.request.Request(os.environ.get("OLLAMA_URL", os.environ.get("OLLAMA_URL", "http://host.docker.internal:11434")) + "/api/tags", method="GET")
     try:
         with urllib.request.urlopen(request, timeout=10) as response:
             data = json.loads(response.read().decode("utf-8"))
@@ -12964,7 +12992,7 @@ def system_check_data(config: RaphaelConfig, settings_path: Path = DEFAULT_SETTI
     routes = route_check_data(config)
     dashboard = local_service_status(f"http://127.0.0.1:{config.dashboard_port}/api/health")
     qdrant = local_service_status(config.qdrant_url.rstrip("/") + "/collections")
-    ollama = local_service_status(os.environ.get("OLLAMA_URL", "http://" + os.environ.get("OLLAMA_URL", "http://localhost:11434") + "") + "/api/tags")
+    ollama = local_service_status(os.environ.get("OLLAMA_URL", os.environ.get("OLLAMA_URL", "http://host.docker.internal:11434")) + "/api/tags")
     voice_config = config.os_root / "voice" / "voice_config.json"
     voice_ok = voice_config.exists()
     compile_checks = []
@@ -14834,9 +14862,14 @@ def generate_build_files(config: RaphaelConfig, build_id: str) -> Path:
     
     if framework == "react":
         # Scaffold a Vite React app
-        subprocess.run(["npx", "-y", "create-vite@latest", ".", "--template", "react"], cwd=str(workspace), check=True, shell=True)
+        host_aware_run(["npx.cmd", "-y", "create-vite@latest", ".", "--template", "react"], cwd=str(workspace), check=True)
         # Install dependencies
-        subprocess.run(["npm", "install"], cwd=str(workspace), check=True, shell=True)
+        host_aware_run(["npm.cmd", "install"], cwd=str(workspace), check=True)
+    else:
+        # Vanilla HTML/JS scaffolding
+        (workspace / "index.html").write_text("<!DOCTYPE html>\n<html>\n<head>\n<title>App</title>\n</head>\n<body>\n<h1>App</h1>\n</body>\n</html>", encoding="utf-8")
+        (workspace / "style.css").write_text("body { font-family: sans-serif; }", encoding="utf-8")
+        (workspace / "main.js").write_text("console.log('App loaded');", encoding="utf-8")
     
     print("Requesting comprehensive architectural blueprint from LLM...")
     files = engine.request_build_blueprint(description, str(plan["name"]), framework)
@@ -27633,6 +27666,7 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "dashboard":
             from .dashboard_aggregator import aggregate_dashboard_data
             from .dashboard_renderer import render_dashboard
+            import os
             
             # Paths to real/mock data sources
             wm_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\world_model.json")

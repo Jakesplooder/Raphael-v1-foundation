@@ -4,15 +4,20 @@ services:
   raphaelos:
     build: .
     container_name: raphaelos
-    ports:
-      - "8787:8787"  # Dashboard port
+    expose:
+      - "8788"  # Internal RRK port
     volumes:
-      - ./data:/app/data  # User data (models, metrics, workspaces)
+      - C:/RaphaelOS:/app/data  # User data (models, metrics, workspaces)
+      - C:/RaphaelOS:/app/runtime # RaphaelOS runtime config
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - RAPHAEL_DATA_DIR=/app/data
       - OLLAMA_URL=http://host.docker.internal:11434
       - QDRANT_URL=http://qdrant:6333
+      - SEARXNG_URL=http://raphael_searxng:8080
+      - N8N_URL=http://n8n:5678
       - DASHBOARD_HOST=0.0.0.0
+      - HOST_AGENT_URL=http://host.docker.internal:8789
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
@@ -20,10 +25,81 @@ services:
     stdin_open: true # Support interactive CLI
     tty: true
 
+  api-gateway:
+    build: ./api_gateway
+    container_name: api-gateway
+    ports:
+      - "8787:8000"  # Serve legacy UI on 8787
+    environment:
+      - RRK_URL=http://raphaelos:8788
+      - RAPHAEL_RUNTIME_DIR=/app/runtime
+      - RAPHAEL_VAULT_DIR=/app/vault
+      - RAPHAEL_SETTINGS_PATH=/app/config/settings.json
+      - RAPHAEL_CONFIG_PATH=/app/config/settings.json
+      - RAPHAEL_CLI_PATH=/app/repo/raphael.py
+      - OLLAMA_URL=http://host.docker.internal:11434
+      - QDRANT_URL=http://qdrant:6333
+      - SEARXNG_URL=http://raphael_searxng:8080
+      - N8N_URL=http://n8n:5678
+      - HOST_AGENT_URL=http://host.docker.internal:8789
+    volumes:
+      - ./index_html.txt:/app/index_html.txt:ro
+      - C:/RaphaelOS/dashboard/static:/app/static:ro
+      - C:/Users/cyber/Downloads/RalphaelOS/Ralphael:/app/vault
+      - C:/RaphaelOS:/app/runtime
+      - ./api_gateway:/app
+      - C:/Users/cyber/Downloads/RalphaelOS/config:/app/config:ro
+      - C:/Users/cyber/Downloads/RalphaelOS:/app/repo:ro
+      - type: bind
+        source: C:/Program Files/Upscayl
+        target: /app/c/Program Files/Upscayl
+        read_only: true
+      - type: bind
+        source: C:/Program Files/Inkscape
+        target: /app/c/Program Files/Inkscape
+        read_only: true
+      - type: bind
+        source: C:/AI_Tools
+        target: /app/c/AI_Tools
+        read_only: true
+      - type: bind
+        source: C:/ComfyUI
+        target: /app/c/ComfyUI
+        read_only: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - raphaelos
+
   qdrant:
     image: qdrant/qdrant:latest
     container_name: raphaelos_qdrant
     ports:
       - "6333:6333"
     volumes:
-      - ./data/qdrant_storage:/qdrant/storage
+      - C:/RaphaelOS/docker/qdrant:/qdrant/storage
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: raphael-n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=0.0.0.0
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=Europe/Berlin
+    volumes:
+      - C:/RaphaelOS/docker/n8n:/home/node/.n8n
+
+  searxng:
+    image: searxng/searxng:latest
+    container_name: raphael_searxng
+    ports:
+      - "8080:8080"
+    volumes:
+      - C:/RaphaelOS/docker/searxng:/etc/searxng
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8080/

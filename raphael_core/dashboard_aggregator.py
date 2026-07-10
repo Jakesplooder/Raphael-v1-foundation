@@ -42,20 +42,18 @@ def aggregate_dashboard_data(wm_path: str, initiative_path: str, ledger_path: st
         except Exception:
             init_staleness = "error"
             
-    # 2. World Model Stats (Panel 2)
-    wm_file = Path(wm_path)
-    # Using a mock cache file name if world_model.json is the real one
-    wm_staleness = check_staleness(wm_file, STALENESS_THRESHOLDS.get("world_model_cache.json", 48))
+    # 2. World Model Stats (Panel 2) - Migrated to RRK Bridge
+    import urllib.request
     wm_nodes = 0
     wm_rels = 0
-    if wm_staleness in ("current", "stale"):
-        try:
-            with open(wm_file, 'r', encoding='utf-8') as f:
-                wm = json.load(f)
-                wm_nodes = len(wm.get("nodes", []))
-                wm_rels = len(wm.get("edges", []))
-        except Exception:
-            wm_staleness = "error"
+    wm_staleness = "current"
+    try:
+        req = urllib.request.urlopen("http://127.0.0.1:8788/api/world-model/graph", timeout=2)
+        wm = json.loads(req.read().decode('utf-8'))
+        wm_nodes = len(wm.get("nodes", []))
+        wm_rels = len(wm.get("edges", []))
+    except Exception:
+        wm_staleness = "error"
 
     # 3. LLM Spend (Panel 2)
     ledger_file = Path(ledger_path)

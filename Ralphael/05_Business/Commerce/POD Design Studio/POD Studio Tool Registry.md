@@ -1,15 +1,15 @@
 # POD Studio Tool Registry
 
-Generated: 2026-06-24T23:30:00
+Generated: 2026-07-09T23:34:13
 
 | Tool | Status | Configured/Detected Path | Notes |
 |---|---|---|---|
-| ComfyUI | Unavailable | `http://127.0.0.1:8188` | Unavailable: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it> |
+| ComfyUI | Unavailable | `http://host.docker.internal:8188` | Unavailable: <urlopen error timed out> |
 | SDXL Base | Missing | `` |  |
 | Flux Schnell | Missing | `` |  |
-| Local Vision | Available | `qwen2.5vl` | available by base name |
+| Local Vision | Unavailable | `qwen2.5vl` | Ollama unavailable: <urlopen error timed out> |
 | rembg | Configured | `C:\AI_Tools\venv\Scripts\rembg.exe` | Background removal CLI |
-| Upscayl | Detected, not configured | `C:\Program Files\Upscayl\Upscayl.exe` | GUI detected; CLI path remains blank unless explicitly configured |
+| Upscayl | Configured | `C:\Program Files\Upscayl\resources\bin\upscayl-bin.exe` | GUI detected; CLI path remains blank unless explicitly configured |
 | Inkscape | Configured | `C:\Program Files\Inkscape\bin\inkscape.exe` | Configured local typography, SVG composition, and print export engine |
 | Krita | Missing | `` | Raster editing |
 | n8n Workflow Studio | Enabled | `C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\n8n Workflow Studio` | Draft suggestions only; no activation |

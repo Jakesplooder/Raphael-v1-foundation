@@ -245,12 +245,36 @@ def _write_json(path: Path, value: Any) -> None:
 
 
 def ensure_registry(config: legacy.RaphaelConfig) -> Path:
-    bootstrap.ensure_bootstrap(config)
+    if config.bootstrap_enabled:
+        bootstrap.ensure_bootstrap(config)
     path = registry_path(config)
     if not path.exists():
         _write_json(path, {"version": 1, "services": default_services(config)})
     return path
 
+
+def _translate_v2_to_v1(service: dict[str, Any]) -> dict[str, Any]:
+    if "identity" not in service:
+        return service
+    return {
+        "service_id": service["identity"]["service_id"],
+        "display_name": service["identity"]["display_name"],
+        "category": service["identity"]["category"],
+        "enabled": service["policy"]["startup"] in {"auto", "on_demand"},
+        "required": False,
+        "start_command": service["execution"]["start_command"],
+        "working_directory": service["execution"]["working_directory"],
+        "health_check_type": service["health"]["type"],
+        "health_check_target": service["health"]["endpoint"],
+        "stop_method": "graceful" if service["execution"]["backend"] == "docker" else "pid",
+        "auto_start": service["policy"]["startup"] == "auto",
+        "auto_restart": False,
+        "requires_confirmation": service["identity"]["service_id"] in {"comfyui", "qdrant", "n8n", "searxng", "dashboard"},
+        "notes": service["policy"]["notes"],
+        "image": service["execution"].get("image", ""),
+        "container_name": service["execution"].get("container_name", ""),
+        "backend": service["execution"].get("backend", "internal")
+    }
 
 def load_registry(config: legacy.RaphaelConfig) -> dict[str, Any]:
     path = ensure_registry(config)
@@ -261,12 +285,16 @@ def load_registry(config: legacy.RaphaelConfig) -> dict[str, Any]:
     if not isinstance(data, dict) or not isinstance(data.get("services"), list):
         raise RuntimeError("Service registry must contain a services array.")
     seen: set[str] = set()
+    translated_services = []
     for service in data["services"]:
-        validate_service(service)
-        service_id = service["service_id"]
+        v1_service = _translate_v2_to_v1(service)
+        validate_service(v1_service)
+        service_id = v1_service["service_id"]
         if service_id in seen:
             raise RuntimeError(f"Duplicate service_id in registry: {service_id}")
         seen.add(service_id)
+        translated_services.append(v1_service)
+    data["services"] = translated_services
     return data
 
 
@@ -280,9 +308,7 @@ def validate_service(service: dict[str, Any]) -> None:
     missing = sorted(required_fields - set(service))
     if missing:
         raise RuntimeError(f"Service entry is missing fields: {', '.join(missing)}")
-    extra = sorted(set(service) - required_fields)
-    if extra:
-        raise RuntimeError(f"Service entry contains unsupported fields: {', '.join(extra)}")
+    # Allow extra fields (e.g. display_url, image) for forward compatibility
     service_id = str(service["service_id"])
     if not service_id or not all(ch.isalnum() or ch in "_-" for ch in service_id):
         raise RuntimeError(f"Invalid service_id: {service_id!r}")
@@ -392,8 +418,12 @@ def service_health(config: legacy.RaphaelConfig, service_id: str) -> dict[str, A
             "container_id": row["container_id"],
             "ownership_conflict": row["conflict"],
         }
-    managed = _managed_registry(config)["services"].get(service_id)
-    managed_alive = bool(managed and bootstrap._managed_record_alive(managed))
+    if config.bootstrap_enabled:
+        managed = _managed_registry(config)["services"].get(service_id)
+        managed_alive = bool(managed and bootstrap._managed_record_alive(managed))
+    else:
+        managed = None
+        managed_alive = False
     check_type = service["health_check_type"]
     target = str(service["health_check_target"])
     ok = False
@@ -498,13 +528,27 @@ def start_service(config: legacy.RaphaelConfig, service_id: str, *, confirmed: b
                         "cwd": service["working_directory"],
                         "identity": command[1] if len(command) > 1 else command[0],
                     }
-                    spawned = bootstrap._spawn_service(config, sid, spec)
-                    row = {
-                        "service_id": sid,
-                        "result": spawned["result"].lower().replace(" ", "_"),
-                        "pid": spawned.get("pid"),
-                        "error": spawned.get("error", ""),
-                    }
+                    if service.get("backend") == "host_agent":
+                        from .kernel.infrastructure import InfrastructureManager
+                        mgr = InfrastructureManager()
+                        import asyncio
+                        # We must call it synchronously but it might be using requests? Wait, InfrastructureManager.host.start is sync!
+                        # `def start(self, service_id: str, command: str, cwd: str) -> bool:`
+                        success = mgr.host.start(sid, service["start_command"], service["working_directory"])
+                        if success:
+                            row = {"service_id": sid, "result": "started", "pid": None, "error": ""}
+                            spawned = {"result": "Started"}
+                        else:
+                            row = {"service_id": sid, "result": "error", "pid": None, "error": "Host agent failed to start service."}
+                            spawned = {"result": "Error"}
+                    else:
+                        spawned = bootstrap._spawn_service(config, sid, spec)
+                        row = {
+                            "service_id": sid,
+                            "result": spawned["result"].lower().replace(" ", "_"),
+                            "pid": spawned.get("pid"),
+                            "error": spawned.get("error", ""),
+                        }
                     if spawned.get("result") == "Started":
                         deadline = time.monotonic() + 60
                         while time.monotonic() < deadline:
@@ -529,6 +573,14 @@ def stop_service(config: legacy.RaphaelConfig, service_id: str) -> dict[str, Any
         record = registry["services"].get(sid)
         if docker_manager.is_docker_service(config, sid):
             row = docker_manager.docker_stop(config, sid)
+        elif service.get("backend") == "host_agent":
+            from .kernel.infrastructure import InfrastructureManager
+            mgr = InfrastructureManager()
+            success = mgr.host.stop(sid)
+            if success:
+                row = {"service_id": sid, "result": "stopped", "pid": None, "error": ""}
+            else:
+                row = {"service_id": sid, "result": "not_managed", "error": "Host agent failed to stop service; process not found or not managed by host agent."}
         elif service["stop_method"] == "none":
             row = {"service_id": sid, "result": "not_stoppable", "error": "stop_method is none."}
         elif not record:
@@ -568,7 +620,9 @@ def restart_service(config: legacy.RaphaelConfig, service_id: str, *, confirmed:
             stopped_rows.append(row)
             continue
         managed = _managed_registry(config)["services"].get(selected_id)
-        if not managed or not bootstrap._managed_record_alive(managed):
+        service_def = next((s for s in load_registry(config)["services"] if s["service_id"] == selected_id), {})
+        is_host_agent = service_def.get("backend") == "host_agent" or service_def.get("execution", {}).get("backend") == "host_agent"
+        if not is_host_agent and (not managed or not bootstrap._managed_record_alive(managed)):
             row = {
                 "service_id": selected_id,
                 "result": "not_managed",
@@ -751,8 +805,22 @@ Registry: `{data['registry_path']}`
 
 def open_service(config: legacy.RaphaelConfig, service_id: str) -> str:
     service = get_service(config, service_id)
-    if service["health_check_type"] != "url":
-        raise RuntimeError(f"{service_id} does not have a URL health target.")
-    url = str(service["health_check_target"])
-    webbrowser.open(url, new=2)
+    url = str(service.get("display_url") or service.get("health_check_target", ""))
+    if not url:
+        raise RuntimeError(f"{service_id} does not have a URL configured to open.")
+        
+    host_agent_url = os.environ.get("HOST_AGENT_URL")
+    if host_agent_url:
+        import urllib.request
+        import json
+        try:
+            req_url = f"{host_agent_url.rstrip('/')}/browser/open"
+            data = json.dumps({"url": url}).encode("utf-8")
+            req = urllib.request.Request(req_url, data=data, headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=3.0) as _:
+                pass
+        except Exception:
+            pass
+    else:
+        webbrowser.open(url, new=2)
     return url

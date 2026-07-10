@@ -1,0 +1,11 @@
+{
+    "overall_native_percent": 2.3,
+    "legacy_calls_last_hour": 0,
+    "legacy_calls_last_24h": 0,
+    "average_latency_ms": 2.15,
+    "latency_diff_from_legacy_ms": -38.85,
+    "parity_failures": 0,
+    "operational_failures": 0,
+    "subsystems_migrated": ["goals"],
+    "subsystems_remaining": ["tasks", "projects", "commerce", "builder", "maintenance", "others"]
+}

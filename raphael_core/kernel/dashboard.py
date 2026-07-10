@@ -48,6 +48,240 @@ class KernelDashboard(ServiceModule):
                 payload.get("question", "")
             )
             
+        @self.app.get("/api/world-model/graph")
+        def get_world_model_graph():
+            from .registry import registry
+            svc = registry.get_service("WorldModelService")
+            if not svc:
+                return {"error": "WorldModelService not registered in Kernel"}
+            return svc.get_graph()
+
+        @self.app.get("/api/inspector")
+        def get_inspector():
+            return store.get_full_state()
+
+        @self.app.get("/api/goals")
+        def get_goals():
+            from .registry import registry
+            mgr = registry.get_service("GoalsManager")
+            if not mgr:
+                return {"error": "GoalsManager not registered in Kernel"}
+            return {"items": mgr.get_all_goals()}
+
+        # Phase 2: RESTful RRK Infrastructure APIs
+        @self.app.get("/api/infrastructure/runtime")
+        def get_infra_runtime():
+            from .registry import registry
+            infra = registry.get_service("InfrastructureManager")
+            if not infra:
+                return {"error": "InfrastructureManager not registered"}
+            # Return snapshot as a dict. Pydantic's .dict() or .model_dump() handles this.
+            return infra.get_snapshot().dict()
+
+        @self.app.get("/api/infrastructure/services")
+        def get_infra_services():
+            from .registry import registry
+            infra = registry.get_service("InfrastructureManager")
+            if not infra:
+                return {"error": "InfrastructureManager not registered"}
+            snap = infra.get_snapshot()
+            return {sid: svc.dict() for sid, svc in snap.services.items()}
+
+        @self.app.get("/api/infrastructure/service/{service_id}")
+        def get_infra_service(service_id: str):
+            from .registry import registry
+            infra = registry.get_service("InfrastructureManager")
+            if not infra:
+                return {"error": "InfrastructureManager not registered"}
+            snap = infra.get_snapshot()
+            svc = snap.services.get(service_id)
+            if not svc:
+                return {"error": "Service not found"}
+            return svc.dict()
+
+        @self.app.post("/api/infrastructure/service/{service_id}/start")
+        def start_infra_service(service_id: str):
+            from .registry import registry
+            infra = registry.get_service("InfrastructureManager")
+            if not infra:
+                return {"error": "InfrastructureManager not registered"}
+            svc_info = infra.registry.get_service(service_id)
+            if not svc_info:
+                return {"error": "Service not found in registry"}
+            
+            exec_info = svc_info.get("execution", {})
+            backend = exec_info.get("backend", "internal")
+            
+            # Fire lifecycle hook
+            infra.publish_event("SERVICE_BEFORE_START", service_id)
+            
+            if backend == "host_agent":
+                success = infra.host.start(service_id, exec_info.get("start_command", ""), exec_info.get("working_directory", ""))
+            elif backend == "docker":
+                container_name = exec_info.get("container_name", f"raphaelos_{service_id}")
+                success = infra.docker.start_container(container_name)
+            else:
+                success = False
+                
+            if success:
+                infra.publish_event("SERVICE_AFTER_START", service_id)
+                
+            return {"status": "started" if success else "failed", "service_id": service_id}
+
+        @self.app.post("/api/infrastructure/service/{service_id}/stop")
+        def stop_infra_service(service_id: str):
+            from .registry import registry
+            infra = registry.get_service("InfrastructureManager")
+            if not infra:
+                return {"error": "InfrastructureManager not registered"}
+            svc_info = infra.registry.get_service(service_id)
+            if not svc_info:
+                return {"error": "Service not found in registry"}
+            
+            exec_info = svc_info.get("execution", {})
+            backend = exec_info.get("backend", "internal")
+            
+            infra.publish_event("SERVICE_BEFORE_STOP", service_id)
+            
+            if backend == "host_agent":
+                success = infra.host.stop(service_id)
+            elif backend == "docker":
+                container_name = exec_info.get("container_name", f"raphaelos_{service_id}")
+                success = infra.docker.stop_container(container_name)
+            else:
+                success = False
+                
+            if success:
+                infra.publish_event("SERVICE_AFTER_STOP", service_id)
+                
+            return {"status": "stopped" if success else "failed", "service_id": service_id}
+
+        @self.app.post("/api/infrastructure/service/{service_id}/restart")
+        def restart_infra_service(service_id: str):
+            from .registry import registry
+            infra = registry.get_service("InfrastructureManager")
+            if not infra:
+                return {"error": "InfrastructureManager not registered"}
+            svc_info = infra.registry.get_service(service_id)
+            if not svc_info:
+                return {"error": "Service not found in registry"}
+            
+            exec_info = svc_info.get("execution", {})
+            backend = exec_info.get("backend", "internal")
+            
+            infra.publish_event("SERVICE_BEFORE_STOP", service_id)
+            
+            if backend == "host_agent":
+                success = infra.host.restart(service_id, exec_info.get("start_command", ""), exec_info.get("working_directory", ""))
+            elif backend == "docker":
+                container_name = exec_info.get("container_name", f"raphaelos_{service_id}")
+                success = infra.docker.restart_container(container_name)
+            else:
+                success = False
+                
+            if success:
+                infra.publish_event("SERVICE_AFTER_START", service_id)
+                
+            return {"status": "restarted" if success else "failed", "service_id": service_id}
+
+        @self.app.get("/api/infrastructure/docker")
+        def get_infra_docker():
+            from .registry import registry
+            infra = registry.get_service("InfrastructureManager")
+            if not infra:
+                return {"error": "InfrastructureManager not registered"}
+            return infra.docker.health().dict()
+
+        @self.app.get("/api/infrastructure/capabilities")
+        def get_infra_capabilities():
+            from .registry import registry
+            infra = registry.get_service("InfrastructureManager")
+            if not infra:
+                return {"error": "InfrastructureManager not registered"}
+            return {"capabilities": [cap.value for cap in infra.get_snapshot().capabilities]}
+
+        @self.app.get("/api/infrastructure/events")
+        def get_infra_events():
+            from .registry import registry
+            infra = registry.get_service("InfrastructureManager")
+            if not infra:
+                return {"error": "InfrastructureManager not registered"}
+            return {"events": [evt.model_dump() for evt in infra._events]}
+
+        @self.app.get("/api/infrastructure/summary")
+        def get_infra_summary():
+            from .registry import registry
+            infra = registry.get_service("InfrastructureManager")
+            if not infra:
+                return {"error": "InfrastructureManager not registered"}
+            snap = infra.get_snapshot()
+            
+            warnings = 0
+            critical = 0
+            for sid, svc in snap.services.items():
+                if svc.severity.value == "warning": warnings += 1
+                elif svc.severity.value == "critical": critical += 1
+                elif svc.severity.value == "degraded": warnings += 1
+                
+            return {
+                "overall_health": snap.overall_health.value,
+                "service_counts": {
+                    "total": len(snap.services),
+                    "healthy": sum(1 for s in snap.services.values() if s.severity.value == "healthy"),
+                    "offline": sum(1 for s in snap.services.values() if s.severity.value == "offline"),
+                },
+                "active_capabilities": [c.value for c in snap.capabilities],
+                "warnings": warnings,
+                "critical_failures": critical
+            }
+
+        @self.app.get("/api/infrastructure/topology")
+        def get_infra_topology():
+            from .registry import registry
+            infra = registry.get_service("InfrastructureManager")
+            if not infra:
+                return {"error": "InfrastructureManager not registered"}
+            snap = infra.get_snapshot()
+            
+            return {
+                "host": {
+                    "agent_available": infra.host.host_agent_url is not None
+                },
+                "docker": snap.docker.model_dump(),
+                "services": [s.model_dump() for s in snap.services.values()]
+            }
+
+        @self.app.get("/api/inspector")
+        def get_inspector():
+            from .registry import registry
+            services = registry.get_all_services()
+            manifests = {}
+            heartbeats = store.get_module_state("Heartbeats") or {}
+            
+            for svc in services:
+                if hasattr(svc, "manifest"):
+                    m = svc.manifest()
+                    hb = heartbeats.get(svc.name, {})
+                    if hb.get("type") == "agent":
+                        m["inspector"] = {
+                            "generation": hb.get("generation"),
+                            "state": hb.get("state"),
+                            "current_job": hb.get("last_job"),
+                            "queue_position": hb.get("queue_depth"),
+                            "model": hb.get("provider"),
+                            "context_mb": hb.get("memory_mb"),
+                            "tokens": hb.get("tokens"),
+                            "last_latency_sec": hb.get("latency_sec")
+                        }
+                    manifests[svc.name] = m
+                    
+            sys_metrics = {}
+            metrics_mgr = registry.get_service("RuntimeMetricsManager")
+            if metrics_mgr:
+                sys_metrics = metrics_mgr.metrics()
+                
+            return {"manifests": manifests, "system_metrics": sys_metrics}
+            
         @self.app.get("/dashboard", response_class=HTMLResponse)
         def render_html():
             state = store.get_full_state()

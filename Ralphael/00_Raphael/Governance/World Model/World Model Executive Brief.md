@@ -1,6 +1,6 @@
 # World Model Executive Brief
 
-Generated: 2026-06-24T22:03:15
+Generated: 2026-07-06T21:16:38
 
 ## Recommendation
 

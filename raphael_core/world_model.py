@@ -1162,7 +1162,9 @@ def access_review(config: legacy.RaphaelConfig) -> dict[str, Any]:
 
 # --- Phase 80.X: RRK Integration ---
 
-class WorldModelService:
+from .kernel.interfaces import ServiceModule
+
+class WorldModelService(ServiceModule):
     """
     RRK native ServiceModule bridging the legacy World Model functions
     into the managed kernel environment.
@@ -1245,3 +1247,20 @@ class WorldModelService:
         
         # We delegate to the internal function which will stamp the trace_id in the JSON log
         return _world_model_answer_internal(self.config, agent_id, purpose, question, trace_id=trace_id)
+
+    def get_graph(self) -> dict:
+        """
+        Returns the full world model nodes.
+        """
+        from .kernel.observability import ObservabilityLayer
+        trace_id = self._get_trace_id()
+        ObservabilityLayer.info(
+            source=self.name,
+            message=f"WM graph export requested",
+            trace_id=trace_id
+        )
+        self._queries_handled += 1
+        
+        nodes = _read_json(runtime_root(self.config) / "nodes.json", [])
+        return {"nodes": nodes}
+

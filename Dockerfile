@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     nodejs \
     npm \
     git \
+    docker.io \
     && rm -rf /var/lib/apt/lists/*
 
 # Update npm to latest
@@ -27,5 +28,5 @@ ENV OLLAMA_URL=http://host.docker.internal:11434
 ENV QDRANT_URL=http://qdrant:6333
 ENV DASHBOARD_HOST=0.0.0.0
 
-# Command to run RaphaelOS
-CMD ["python", "raphael.py"]
+# Command to run RaphaelOS daemon
+CMD ["python", "raphael.py", "daemon", "start"]

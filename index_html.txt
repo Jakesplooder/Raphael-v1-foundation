@@ -2862,6 +2862,55 @@ load().catch(err => {
   document.body.classList.add("classic-view");
   document.getElementById("content").innerHTML = `<article class="card full error-banner"><h2>Dashboard Error</h2><p>Raphael could not load dashboard data. The CLI remains available.</p><pre>${esc(err)}</pre><button class="copy" onclick="location.reload()">Retry</button><button class="copy" onclick="copyCommand('python raphael.py system-check')">Copy system check</button></article>`;
 });
+
+// --- Phase 3: WebSocket Live Events ---
+let wsConnection = null;
+function initWebSocket() {
+  if (wsConnection) return;
+  const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  const wsUrl = `${wsProtocol}//${window.location.host}/ws/events`;
+  
+  wsConnection = new WebSocket(wsUrl);
+  
+  wsConnection.onopen = () => {
+    console.log("[RRK WebSocket] Connected to EventBus");
+    const wsStatusPill = document.createElement("span");
+    wsStatusPill.id = "ws-status-pill";
+    wsStatusPill.className = "pill";
+    wsStatusPill.textContent = "Live Events: Connected";
+    wsStatusPill.style.color = "var(--cyan)";
+    document.querySelector("header div:last-child")?.appendChild(wsStatusPill);
+  };
+  
+  wsConnection.onmessage = (event) => {
+    console.log("[RRK WebSocket] Event received:", event.data);
+    try {
+      const payload = JSON.parse(event.data);
+      // Example handler: If the event contains a new activity count, update the UI dynamically
+      if (payload.type === "ACTIVITY_UPDATE" && document.getElementById("activity-counter")) {
+         document.getElementById("activity-counter").textContent = `Activity ${payload.count}`;
+         document.getElementById("activity-counter").classList.add("flash");
+         setTimeout(() => document.getElementById("activity-counter").classList.remove("flash"), 500);
+      }
+    } catch (e) {
+      console.warn("Failed to parse WS event:", e);
+    }
+  };
+  
+  wsConnection.onclose = () => {
+    console.log("[RRK WebSocket] Disconnected");
+    const pill = document.getElementById("ws-status-pill");
+    if (pill) {
+      pill.textContent = "Live Events: Disconnected";
+      pill.style.color = "var(--pink)";
+    }
+    wsConnection = null;
+    setTimeout(initWebSocket, 5000); // Reconnect loop
+  };
+}
+// Start WebSocket connection
+initWebSocket();
+
 </script>
 </body>
 </html>

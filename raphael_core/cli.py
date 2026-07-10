@@ -204,25 +204,42 @@ def _daemon_main(args: list[str]) -> int:
 
         # Import all kernel components to ensure they are registered
         from .kernel.registry import registry
-        from .kernel.event_bus import EventBus
-        from .kernel.job_system import JobSystem
-        from .kernel.calendar import ExecutiveCalendar
-        from .kernel.health import HealthMonitor
-        from .kernel.healing import SelfHealingRuntime
-        from .kernel.dashboard import KernelDashboard
         from .kernel.core import Kernel
         from .kernel.observability import ObservabilityLayer
-        from .world_model import WorldModelService
         import asyncio
-
-        # Register Core Services
-        registry.register_service(EventBus())
-        registry.register_service(JobSystem())
-        registry.register_service(ExecutiveCalendar())
-        registry.register_service(HealthMonitor())
-        registry.register_service(SelfHealingRuntime())
-        registry.register_service(KernelDashboard())
-        registry.register_service(WorldModelService())
+        import json
+        import os
+        
+        # Register Core Services dynamically
+        system_manifest_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), "config", "system_manifest.json")
+        try:
+            with open(system_manifest_path, "r", encoding="utf-8") as f:
+                sys_manifest = json.load(f)
+                registry.load_from_manifests(sys_manifest.get("core_services", []))
+        except Exception as e:
+            ObservabilityLayer.warning("CLI", f"Failed to load system_manifest.json: {e}")
+        
+        # Register Digital Workforce Agents dynamically
+        import json
+        import os
+        config_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), "config", "workforce_config.json")
+        try:
+            with open(config_path, "r", encoding="utf-8") as f:
+                workforce_config = json.load(f)
+        except Exception as e:
+            ObservabilityLayer.warning("CLI", f"Failed to load workforce_config.json: {e}")
+            workforce_config = {"auto_boot_agents": [], "disabled_agents": []}
+            
+        import raphael_core.kernel.workforce_agents as wf_agents
+        for agent_name in workforce_config.get("auto_boot_agents", []):
+            if agent_name in workforce_config.get("disabled_agents", []):
+                ObservabilityLayer.info("CLI", f"Skipping disabled agent: {agent_name}")
+                continue
+            agent_cls = getattr(wf_agents, agent_name, None)
+            if agent_cls:
+                registry.register_service(agent_cls())
+            else:
+                ObservabilityLayer.warning("CLI", f"Agent class {agent_name} not found in workforce_agents.py")
 
         kernel = Kernel(mode=mode)
         

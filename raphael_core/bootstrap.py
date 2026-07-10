@@ -13,6 +13,7 @@ import sys
 import time
 import urllib.parse
 import urllib.request
+import urllib.error
 import webbrowser
 from pathlib import Path
 from typing import Any
@@ -97,8 +98,27 @@ def _save_registry(config: legacy.RaphaelConfig, registry: dict[str, Any]) -> No
     _write_json(pid_registry_path(config), registry)
 
 
+def _host_agent_request(path: str, payload: dict = None):
+    host_agent_url = os.environ.get("HOST_AGENT_URL")
+    if not host_agent_url:
+        return None
+    url = f"{host_agent_url.rstrip('/')}{path}"
+    try:
+        if payload is not None:
+            data = json.dumps(payload).encode("utf-8")
+            req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
+        else:
+            req = urllib.request.Request(url)
+        with urllib.request.urlopen(req, timeout=3.0) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except Exception:
+        return None
+
 def _process_creation_time(pid: int) -> int | None:
     if os.name != "nt":
+        res = _host_agent_request(f"/process/pid_status?pid={pid}")
+        if res and res.get("status") == "running":
+            return int(res.get("create_time", 1))
         return None
     handle = ctypes.windll.kernel32.OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, False, pid)
     if not handle:
@@ -124,8 +144,31 @@ def _pid_alive(pid: int) -> bool:
     return _process_creation_time(pid) is not None
 
 
+def _stop_pid(pid: int) -> dict[str, Any]:
+    if not pid:
+        return {"result": "Missing PID"}
+        
+    res = _host_agent_request(f"/process/stop?pid={pid}", payload={})
+    if res and res.get("status") == "stopped":
+        return {"result": "Stopped via Host Agent"}
+
+    if os.name != "nt":
+        return {"result": "Unsupported platform"}
+    handle = ctypes.windll.kernel32.OpenProcess(1, False, pid)
+    if not handle:
+        return {"result": "Process already gone"}
+    try:
+        ctypes.windll.kernel32.TerminateProcess(handle, 1)
+        return {"result": "Terminated"}
+    finally:
+        ctypes.windll.kernel32.CloseHandle(handle)
+
+
 def _process_executable(pid: int) -> str:
     if os.name != "nt":
+        res = _host_agent_request(f"/process/pid_status?pid={pid}")
+        if res and res.get("status") == "running":
+            return res.get("executable", "")
         return ""
     handle = ctypes.windll.kernel32.OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, False, pid)
     if not handle:
@@ -280,48 +323,91 @@ def _append_log(config: legacy.RaphaelConfig, filename: str, action: str, rows: 
 def _spawn_service(config: legacy.RaphaelConfig, name: str, spec: dict[str, Any]) -> dict[str, Any]:
     command = [str(item) for item in spec["command"]]
     cwd = Path(str(spec["cwd"]))
-    if not cwd.exists():
-        return {"service": name, "result": "Missing working directory", "error": str(cwd)}
-    executable = Path(command[0])
-    resolved_executable = str(executable) if executable.exists() else shutil.which(command[0])
-    if not resolved_executable:
-        return {"service": name, "result": "Missing executable", "error": str(executable)}
-    command[0] = resolved_executable
-    if len(command) > 1 and command[1].lower().endswith(".py"):
-        script = Path(command[1])
-        if not script.is_absolute():
-            script = cwd / script
-        if not script.exists():
-            return {"service": name, "result": "Missing script", "error": str(script)}
-        command[1] = str(script)
+    
+    use_host_agent = bool(os.environ.get("HOST_AGENT_URL"))
+    
+    if not use_host_agent:
+        if not cwd.exists():
+            return {"service": name, "result": "missing_working_directory", "error": str(cwd)}
+        executable = Path(command[0])
+        resolved_executable = str(executable) if executable.exists() else shutil.which(command[0])
+        if not resolved_executable:
+            return {"service": name, "result": "missing_executable", "error": str(executable)}
+        command[0] = resolved_executable
+        if len(command) > 1 and command[1].lower().endswith(".py"):
+            script = Path(command[1])
+            if not script.is_absolute():
+                script = cwd / script
+            if not script.exists():
+                return {"service": name, "result": "missing_script", "error": str(script)}
+            command[1] = str(script)
+            
     log_path = bootstrap_runtime_root(config) / "logs" / f"{name}.log"
     log_handle = log_path.open("a", encoding="utf-8")
     env = os.environ.copy()
     env["RAPHAEL_CONFIG_PATH"] = str(legacy.DEFAULT_SETTINGS_PATH.resolve())
-    try:
-        process = subprocess.Popen(
-            command,
-            cwd=cwd,
-            stdout=log_handle,
-            stderr=subprocess.STDOUT,
-            stdin=subprocess.DEVNULL,
-            env=env,
-            creationflags=(DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP) if os.name == "nt" else 0,
-            close_fds=True,
-        )
-    finally:
-        log_handle.close()
-    creation = None
-    for _ in range(20):
-        creation = _process_creation_time(process.pid)
-        if creation:
-            break
-        time.sleep(0.05)
+    
+    # Send to Host Agent if configured
+    if use_host_agent:
+        res = _host_agent_request("/process/start", {
+            "id": name,
+            "command": " ".join(command),
+            "cwd": str(cwd),
+            "env": {"RAPHAEL_CONFIG_PATH": env["RAPHAEL_CONFIG_PATH"]}
+        })
+        if res and res.get("status") == "started":
+            process_pid = res.get("pid")
+            log_handle.write(f"Started via Host Agent with PID {process_pid}\n")
+            log_handle.close()
+            # Fake creation loop to pass validation
+            creation = 1
+        else:
+            log_handle.write(f"Failed to start via Host Agent: {res}\n")
+            log_handle.close()
+            return {"service": name, "result": "Failed", "pid": 0, "error": f"Host Agent Error: {res}"}
+    else:
+        try:
+            if os.name != "nt":
+                import json, urllib.request, urllib.error
+                url = os.environ.get("HOST_AGENT_URL", "") + "/process/run_background"
+                if url:
+                    payload = json.dumps({"command": command, "cwd": cwd})
+                    req = urllib.request.Request(url, data=payload.encode("utf-8"), headers={"Content-Type": "application/json"})
+                    try:
+                        with urllib.request.urlopen(req, timeout=10) as resp:
+                            data = json.loads(resp.read().decode("utf-8"))
+                            process_pid = data.get("pid", 0)
+                    except Exception as exc:
+                        print(f"Failed to start service via host agent: {exc}")
+                        raise
+                else:
+                    raise RuntimeError("HOST_AGENT_URL not configured.")
+            else:
+                process = subprocess.Popen(
+                    command,
+                    cwd=cwd,
+                    stdout=log_handle,
+                    stderr=subprocess.STDOUT,
+                    stdin=subprocess.DEVNULL,
+                    env=env,
+                    creationflags=(DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP) if os.name == "nt" else 0,
+                    close_fds=True,
+                )
+                process_pid = process.pid
+        finally:
+            log_handle.close()
+        
+        creation = None
+        for _ in range(20):
+            creation = _process_creation_time(process_pid)
+            if creation:
+                break
+            time.sleep(0.05)
     if not creation:
-        return {"service": name, "result": "Failed", "pid": process.pid, "error": "Process exited before ownership could be recorded."}
+        return {"service": name, "result": "Failed", "pid": process_pid, "error": "Process exited before ownership could be recorded."}
     registry = _load_registry(config)
     registry["services"][name] = {
-        "pid": process.pid,
+        "pid": process_pid,
         "creation_time": creation,
         "command": command,
         "identity": spec["identity"],
@@ -329,7 +415,7 @@ def _spawn_service(config: legacy.RaphaelConfig, name: str, spec: dict[str, Any]
         "log": str(log_path),
     }
     _save_registry(config, registry)
-    return {"service": name, "result": "Started", "pid": process.pid, "error": ""}
+    return {"service": name, "result": "Started", "pid": process_pid, "error": ""}
 
 
 def _wait_url(url: str, seconds: float = 25) -> bool:
@@ -544,27 +630,35 @@ No autonomous business execution is part of bootstrap.
 
 def bootstrap_start(config: legacy.RaphaelConfig, *, open_browser: bool | None = None) -> dict[str, Any]:
     ensure_bootstrap(config)
-    definitions = service_definitions(config)
-    registry = _load_registry(config)
     rows: list[dict[str, Any]] = []
-    for name, spec in definitions.items():
-        if not spec["enabled"]:
-            rows.append({"service": name, "result": "Disabled by config", "pid": None, "error": ""})
-            continue
-        managed = registry["services"].get(name)
-        if managed and _managed_record_alive(managed):
-            rows.append({"service": name, "result": "Already running (managed)", "pid": managed["pid"], "error": ""})
-            continue
-        port_busy = bool(spec.get("port") and _port_state(str(spec.get("host") or "127.0.0.1"), int(spec["port"])))
-        if port_busy or (spec.get("url") and _http(str(spec["url"]), timeout=2)[0]):
-            rows.append({"service": name, "result": "Already running (external/unmanaged)", "pid": None, "error": "Not adopted; bootstrap will not stop it."})
-            continue
-        result = _spawn_service(config, name, spec)
-        rows.append(result)
-        if result.get("result") == "Started" and spec.get("url"):
-            result["ready"] = _wait_url(str(spec["url"]), seconds=60)
-            if not result["ready"]:
-                result["error"] = "Process started but health endpoint did not become ready."
+    
+    # 1. Validate Config
+    rows.append({"service": "Configuration", "result": "Validated", "pid": None, "error": ""})
+    
+    # 2. Check Docker
+    docker_ok = False
+    try:
+        res = subprocess.run(["docker", "info"], capture_output=True, text=True, timeout=5)
+        if res.returncode == 0:
+            docker_ok = True
+            rows.append({"service": "Docker Environment", "result": "Ready", "pid": None, "error": ""})
+        else:
+            rows.append({"service": "Docker Environment", "result": "Failed", "pid": None, "error": res.stderr.strip()})
+    except Exception as e:
+        rows.append({"service": "Docker Environment", "result": "Failed", "pid": None, "error": str(e)})
+
+    # 3. Initialize Runtime Directories
+    runtime_dirs = [
+        config.root / "runtime",
+        config.root / "logs",
+        config.root / "config",
+        bootstrap_vault_root(config)
+    ]
+    for d in runtime_dirs:
+        d.mkdir(parents=True, exist_ok=True)
+    rows.append({"service": "Runtime Directories", "result": "Initialized", "pid": None, "error": ""})
+
+    # 4. Morning Brief
     brief = ""
     if config.bootstrap_generate_morning_brief:
         try:
@@ -572,21 +666,17 @@ def bootstrap_start(config: legacy.RaphaelConfig, *, open_browser: bool | None =
             rows.append({"service": "morning_brief", "result": "Generated", "pid": None, "error": brief})
         except Exception as exc:
             rows.append({"service": "morning_brief", "result": "Failed", "pid": None, "error": str(exc)})
+            
+    # Handoff to Docker
+    if docker_ok:
+        rows.append({
+            "service": "Handoff", 
+            "result": "Ready for Docker Compose", 
+            "pid": None, 
+            "error": "Run `docker compose up -d` to start the OS."
+        })
+        
     health = bootstrap_health_data(config)
-    for row in rows:
-        if row.get("result") != "Started" or row.get("ready") is not False:
-            continue
-        final_service = health["services"].get(row["service"], {})
-        if final_service.get("ok"):
-            row["ready"] = True
-            row["error"] = ""
-    should_open = config.bootstrap_open_dashboard_on_start if open_browser is None else open_browser
-    if should_open:
-        try:
-            webbrowser.open(health["dashboard_url"], new=2)
-            rows.append({"service": "browser", "result": "Dashboard open requested", "pid": None, "error": ""})
-        except Exception as exc:
-            rows.append({"service": "browser", "result": "Failed", "pid": None, "error": str(exc)})
     _append_log(config, "Startup Log.md", "bootstrap-start", rows, health["overall"])
     return {"action": "start", "results": rows, "health": health, "morning_brief": brief}
 

@@ -14,22 +14,25 @@ def detect_risks(world_model: Dict[str, Any] = None) -> List[Dict[str, Any]]:
     """
     Scans the World Model for risks dynamically.
     """
-    from .agent_runtime import AgentRuntimeRegistry
     import json
     
     def get_nodes(label: str) -> List[Dict[str, Any]]:
         try:
-            with open(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\nodes.json"), "r", encoding="utf-8") as f:
-                nodes = json.load(f)
-                return [n for n in nodes if n.get("node_type") == label]
+            if world_model and "nodes" in world_model:
+                return [n for n in world_model["nodes"] if n.get("node_type") == label]
+            else:
+                with open(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), "world_model", "nodes.json"), "r", encoding="utf-8") as f:
+                    nodes = json.load(f)
+                    return [n for n in nodes if n.get("node_type") == label]
         except Exception:
             return []
     
     risks = []
-    reg = AgentRuntimeRegistry()
-    
-    # Dynamic detection: Agent Pressure Score Elevated
     try:
+        from .agent_runtime import AgentRuntimeRegistry
+        reg = AgentRuntimeRegistry()
+        
+        # Dynamic detection: Agent Pressure Score Elevated
         agents = reg.load_registry()
         high_pressure = [a for a in agents.values() if a.get("safety_pressure_score", 0.0) >= 30.0]
         
@@ -44,7 +47,7 @@ def detect_risks(world_model: Dict[str, Any] = None) -> List[Dict[str, Any]]:
                 "supporting_evidence": [a.get("agent_id")],
                 "type": "risk"
             })
-    except Exception as e:
+    except ImportError:
         pass
         
     # Dynamic detection: Single point of failure or bottleneck

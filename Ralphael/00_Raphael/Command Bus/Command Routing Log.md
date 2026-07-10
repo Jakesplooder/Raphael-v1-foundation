@@ -52503,3 +52503,4074 @@ Awaiting approval before builder generation.
 - Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
 - Spoken response: Ready to stop only registry services with Raphael-managed PIDs. Confirm to continue.
 
+## 2026-07-07T01:24:49
+
+- Source: dashboard
+- Input: what pid is this running on
+- Normalized: what pid is this running on
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I'm a local AI assistant and do not have direct access to system information. However, I can guide you through the process of obtaining that information. To find out the PID (Process ID) of this running instance, you will need to execute a command or query within Aaron's environment. If you'd like, I can suggest running a specific command in the terminal or console for you, such as `ps aux` or `pgrep python`, which may reveal the process ID. Would you like me to guide you through that?
+
+## 2026-07-07T01:25:21
+
+- Source: dashboard
+- Input: Give me the command
+- Normalized: give me the command
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I'm a local AI assistant, I don't have the capability to execute commands or modify files. To create a new database collection called "raphael_memory", you'll need to run the command `python raphael.py memory-index` as instructed. However, I can guide you through the process: 1. Open a terminal or command prompt. 2. Navigate to the directory where your project is located. 3. Run the command: `python raphael.py memory-index` This will create the "raphael_memory" collection for you. If you have any questions or need further assistance, feel free to ask!
+
+## 2026-07-07T01:39:50
+
+- Source: dashboard_service_manager
+- Input: service status qdrant
+- Normalized: service status qdrant
+- Intent: service_health
+- Command type: maintenance
+- Matched command: python raphael.py service-health qdrant
+- CLI args: ["service-health", "qdrant"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: {
+  "service_id": "qdrant",
+  "display_name": "Qdrant",
+  "healthy": false,
+  "health": "unhealthy",
+  "status": "stopped",
+  "detail": "Docker Desktop is not ready: failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.. Start Docker Desktop and retry.",
+  "managed": false,
+  "pid": null,
+  "category": "ai",
+  "backend": "docker",
+  "container_name": ""
+}
+
+## 2026-07-07T01:40:16
+
+- Source: dashboard_service_manager
+- Input: open service qdrant
+- Normalized: open service qdrant
+- Intent: service_open
+- Command type: maintenance
+- Matched command: python raphael.py service-open qdrant
+- CLI args: ["service-open", "qdrant"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Opened service: http://127.0.0.1:6333
+
+## 2026-07-07T19:07:11
+
+- Source: dashboard_service_manager
+- Input: start service qdrant
+- Normalized: start service qdrant
+- Intent: docker_start
+- Command type: maintenance
+- Matched command: python raphael.py docker-start qdrant
+- CLI args: ["docker-start", "qdrant"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-4ED01921EC
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start allowlisted Docker service qdrant. Confirm to continue.
+
+## 2026-07-07T19:07:20
+
+- Source: command_bus_confirm
+- Input: start service qdrant
+- Normalized: start service qdrant
+- Intent: docker_start
+- Command type: maintenance
+- Matched command: python raphael.py docker-start qdrant
+- CLI args: ["docker-start", "qdrant"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: {
+  "service_id": "qdrant",
+  "result": "created_and_started",
+  "container_id": "259c2e0a2d63",
+  "image_pulled": false,
+  "error": "",
+  "healthy": true
+}
+
+## 2026-07-07T19:07:41
+
+- Source: dashboard_service_manager
+- Input: start service searxng
+- Normalized: start service searxng
+- Intent: service_start
+- Command type: maintenance
+- Matched command: python raphael.py service-start searxng
+- CLI args: ["service-start", "searxng"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-FAFF702402
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start allowlisted service searxng. Confirm to continue.
+
+## 2026-07-07T19:07:49
+
+- Source: command_bus_confirm
+- Input: start service searxng
+- Normalized: start service searxng
+- Intent: service_start
+- Command type: maintenance
+- Matched command: python raphael.py service-start searxng
+- CLI args: ["service-start", "searxng"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: {
+  "action": "start",
+  "selector": "searxng",
+  "results": [
+    {
+      "service_id": "searxng",
+      "result": "created_and_started",
+      "container_id": "0a9bd2b3937c",
+      "image_pulled": false,
+      "error": "",
+      "healthy": true
+    }
+  ]
+}
+
+## 2026-07-07T19:08:04
+
+- Source: dashboard_service_manager
+- Input: start service n8n
+- Normalized: start service n8n
+- Intent: docker_start
+- Command type: maintenance
+- Matched command: python raphael.py docker-start n8n
+- CLI args: ["docker-start", "n8n"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-DE0C54B77D
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start allowlisted Docker service n8n. Confirm to continue.
+
+## 2026-07-07T19:08:09
+
+- Source: command_bus_confirm
+- Input: start service n8n
+- Normalized: start service n8n
+- Intent: docker_start
+- Command type: maintenance
+- Matched command: python raphael.py docker-start n8n
+- CLI args: ["docker-start", "n8n"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: {
+  "service_id": "n8n",
+  "result": "disabled",
+  "error": "Docker service is disabled."
+}
+
+## 2026-07-07T19:26:52
+
+- Source: dashboard_service_manager
+- Input: start service qdrant
+- Normalized: start service qdrant
+- Intent: docker_start
+- Command type: maintenance
+- Matched command: python raphael.py docker-start qdrant
+- CLI args: ["docker-start", "qdrant"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-440B731FBF
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start allowlisted Docker service qdrant. Confirm to continue.
+
+## 2026-07-07T19:27:03
+
+- Source: command_bus_confirm
+- Input: start service qdrant
+- Normalized: start service qdrant
+- Intent: docker_start
+- Command type: maintenance
+- Matched command: python raphael.py docker-start qdrant
+- CLI args: ["docker-start", "qdrant"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: {
+  "service_id": "qdrant",
+  "result": "started",
+  "container_id": "259c2e0a2d63",
+  "error": "",
+  "healthy": true
+}
+
+## 2026-07-09T23:27:29
+
+- Source: dashboard_test
+- Input: create a POD shirt using ComfyUI
+- Normalized: create a pod shirt using comfyui
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow", "create a POD shirt using ComfyUI"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-0D532DE441
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 5/13 complete. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:27:29
+
+- Source: command_bus_confirm
+- Input: Continue PODFLOW-SMOKE-0001 with stage 6/13: generate images?
+- Normalized: continue podflow-smoke-0001 with stage 6/13: generate images?
+- Intent: pod_workflow_continue
+- Command type: pod_design_studio
+- Matched command: python raphael.py service-start "comfyui"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-C77594B84E
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: ComfyUI is offline or unavailable. POD workflow PODFLOW-SMOKE-0001 remains retryable.
+Say confirm to start ComfyUI:
+python raphael.py service-start "comfyui"
+
+## 2026-07-09T23:27:29
+
+- Source: dashboard_test
+- Input: create me a POD t shirt with an elephant picture on it
+- Normalized: create me a pod t shirt with an elephant picture on it
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow", "create me a POD t shirt with an elephant picture on it"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-CA4E009254
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:27:29
+
+- Source: command_bus_confirm
+- Input: Continue PODFLOW-SMOKE-0001 with stage 3/13: create concept?
+- Normalized: continue podflow-smoke-0001 with stage 3/13: create concept?
+- Intent: pod_workflow_continue
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-8243958379
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow stage 2/13 complete.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:27:29
+
+- Source: dashboard_test
+- Input: confirm
+- Normalized: confirm
+- Intent: confirmation_debounced
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-8243958379
+- Status: needs_confirmation
+- Safety reason: Duplicate confirmation ignored during the dashboard confirmation cooldown.
+- Spoken response: The previous confirmation is still current. No additional workflow stage was advanced.
+
+## 2026-07-09T23:27:29
+
+- Source: dashboard_test
+- Input: confirm
+- Normalized: confirm
+- Intent: confirmation_debounced
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-8243958379
+- Status: needs_confirmation
+- Safety reason: Duplicate confirmation ignored during the dashboard confirmation cooldown.
+- Spoken response: The previous confirmation is still current. No additional workflow stage was advanced.
+
+## 2026-07-09T23:27:29
+
+- Source: dashboard_test
+- Input: confirm
+- Normalized: confirm
+- Intent: confirmation_debounced
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-8243958379
+- Status: needs_confirmation
+- Safety reason: Duplicate confirmation ignored during the dashboard confirmation cooldown.
+- Spoken response: The previous confirmation is still current. No additional workflow stage was advanced.
+
+## 2026-07-09T23:27:30
+
+- Source: dashboard_test
+- Input: create me a POD t shirt with an elephant picture on it
+- Normalized: create me a pod t shirt with an elephant picture on it
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow", "create me a POD t shirt with an elephant picture on it"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-03DDA079EF
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:28:02
+
+- Source: cli
+- Input: execute arbitrary shell command
+- Normalized: execute arbitrary shell command
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Refused: voice command contains blocked action phrase `shell`.
+- Spoken response: Refused: voice command contains blocked action phrase `shell`.
+
+## 2026-07-09T23:28:03
+
+- Source: test
+- Input: restart bootstrap services
+- Normalized: restart bootstrap services
+- Intent: bootstrap_restart
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-restart
+- CLI args: ["bootstrap-restart"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-8581A9EFB1
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart bootstrap-managed support services. Confirm to continue.
+
+## 2026-07-09T23:28:03
+
+- Source: test
+- Input: stop bootstrap services
+- Normalized: stop bootstrap services
+- Intent: bootstrap_stop
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-stop
+- CLI args: ["bootstrap-stop"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-27C47BE8B7
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to stop bootstrap-managed support services. Confirm to continue.
+
+## 2026-07-09T23:28:03
+
+- Source: test
+- Input: install Raphael startup
+- Normalized: install raphael startup
+- Intent: bootstrap_install_startup
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-install-startup
+- CLI args: ["bootstrap-install-startup"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-38CE798E1D
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to install the visible Raphael user-logon startup task. Confirm to continue.
+
+## 2026-07-09T23:28:03
+
+- Source: test
+- Input: remove Raphael startup
+- Normalized: remove raphael startup
+- Intent: bootstrap_remove_startup
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-remove-startup
+- CLI args: ["bootstrap-remove-startup"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-D3FFABDD2F
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to remove the Raphael user-logon startup task. Confirm to continue.
+
+## 2026-07-09T23:28:05
+
+- Source: cli
+- Input: build me a simple calculator
+- Normalized: build me a simple calculator
+- Intent: build_with_council
+- Command type: builder
+- Matched command: python raphael.py build-with-council "build me a simple calculator"
+- CLI args: ["build-with-council", "build me a simple calculator"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-A7F1FC12A7
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: I can classify this build first, then create the tracked task and apply the required council route. Low and medium builds can generate safely after confirmation; high-complexity builds stop for plan approval. Say confirm to continue.
+
+## 2026-07-09T23:28:06
+
+- Source: command_bus_confirm
+- Input: confirm
+- Normalized: confirm
+- Intent: pod_workflow_continue
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue PODFLOW-20260621-ABCDEF12
+- CLI args: ["pod-workflow-continue", "PODFLOW-20260621-ABCDEF12"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: POD workflow complete.
+
+## 2026-07-09T23:28:07
+
+- Source: test
+- Input: start Qdrant
+- Normalized: start qdrant
+- Intent: docker_start
+- Command type: maintenance
+- Matched command: python raphael.py docker-start qdrant
+- CLI args: ["docker-start", "qdrant"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-76A3083C23
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start allowlisted Docker service qdrant. Confirm to continue.
+
+## 2026-07-09T23:28:07
+
+- Source: test
+- Input: restart Qdrant
+- Normalized: restart qdrant
+- Intent: docker_restart
+- Command type: maintenance
+- Matched command: python raphael.py docker-restart qdrant
+- CLI args: ["docker-restart", "qdrant"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-7242AF86E5
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart allowlisted Docker service qdrant. Confirm to continue.
+
+## 2026-07-09T23:28:07
+
+- Source: test
+- Input: stop Qdrant
+- Normalized: stop qdrant
+- Intent: docker_stop
+- Command type: maintenance
+- Matched command: python raphael.py docker-stop qdrant
+- CLI args: ["docker-stop", "qdrant"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-549A3CA5B9
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to stop allowlisted Docker service qdrant. Confirm to continue.
+
+## 2026-07-09T23:28:07
+
+- Source: test
+- Input: docker health
+- Normalized: docker health
+- Intent: docker_health
+- Command type: maintenance
+- Matched command: python raphael.py docker-health
+- CLI args: ["docker-health"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: {
+  "docker": {
+    "enabled": true,
+    "available": true,
+    "healthy": true,
+    "version": "29.6.1",
+    "platform": "Docker Desktop 4.81.0 (232925)",
+    "context": "desktop-linux",
+    "error": ""
+  },
+  "healthy": false,
+  "services": [
+    {
+      "service_id": "qdrant",
+      "display_name": "Qdrant",
+      "enabled": true,
+      "image": "qdrant/qdrant",
+      "container_name": "raphael-qdrant",
+      "ports": [
+        "127.0.0.1:6333:6333"
+      ],
+      "volumes": [
+        "C:\\RaphaelOS\\docker\\qdrant:/qdrant/storage"
+      ],
+      "health_check": "http://127.0.0.1:6333",
+      "notes": "Local vector memory service.",
+      "exists": false,
+      "running": false,
+      "managed": false,
+      "conflict": false,
+      "container_id": "",
+      "actual_image": "",
+      "state": "missing",
+      "healthy": false,
+      "health": "unhealthy",
+      "detail": "Container is not running."
+    },
+    {
+      "service_id": "n8n",
+      "display_name": "n8n",
+      "enabled": true,
+      "image": "n8nio/n8n",
+      "container_name": "raphael-n8n",
+      "ports": [
+        "127.0.0.1:5678:5678"
+      ],
+      "volumes": [
+        "C:\\RaphaelOS\\docker\\n8n:/home/node/....
+
+## 2026-07-09T23:28:08
+
+- Source: cli
+- Input: publish to Etsy
+- Normalized: publish to etsy
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Etsy publishing is blocked.
+- Spoken response: Refused: Etsy publishing is blocked.
+
+## 2026-07-09T23:28:09
+
+- Source: cli
+- Input: upload to Printify
+- Normalized: upload to printify
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Printify uploads are blocked.
+- Spoken response: Refused: Printify uploads are blocked.
+
+## 2026-07-09T23:28:09
+
+- Source: cli
+- Input: buy samples
+- Normalized: buy samples
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Purchasing is blocked.
+- Spoken response: Refused: Purchasing is blocked.
+
+## 2026-07-09T23:28:09
+
+- Source: cli
+- Input: spend $20 on ads
+- Normalized: spend $20 on ads
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Spending or moving money is blocked.
+- Spoken response: Refused: Spending or moving money is blocked.
+
+## 2026-07-09T23:28:10
+
+- Source: cli
+- Input: Create a POD shirt design and publish to Etsy
+- Normalized: create a pod shirt design and publish to etsy
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Etsy publishing is blocked.
+- Spoken response: Refused: Etsy publishing is blocked.
+
+## 2026-07-09T23:28:10
+
+- Source: cli
+- Input: Generate POD artwork and upload to Printify
+- Normalized: generate pod artwork and upload to printify
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Printify uploads are blocked.
+- Spoken response: Refused: Printify uploads are blocked.
+
+## 2026-07-09T23:28:11
+
+- Source: dashboard
+- Input: Perform a local POD Studio test with typography and SVG export
+- Normalized: perform a local pod studio test with typography and svg export
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+- CLI args: ["pod-workflow", "Perform a local POD Studio test with typography and SVG export"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-68069935EA
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+
+## 2026-07-09T23:28:11
+
+- Source: dashboard
+- Input: Start a POD Studio workflow for a camping shirt
+- Normalized: start a pod studio workflow for a camping shirt
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+- CLI args: ["pod-workflow", "Start a POD Studio workflow for a camping shirt"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-16B6B20850
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+
+## 2026-07-09T23:28:11
+
+- Source: dashboard
+- Input: Research current trends and create a POD shirt using Flux, ComfyUI, and Inkscape
+- Normalized: research current trends and create a pod shirt using flux, comfyui, and inkscape
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+- CLI args: ["pod-workflow", "Research current trends and create a POD shirt using Flux, ComfyUI, and Inkscape"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-9516F4FE04
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+
+## 2026-07-09T23:28:12
+
+- Source: test
+- Input: show snippets
+- Normalized: show snippets
+- Intent: internet_latest_snippets
+- Command type: search
+- Matched command: python raphael.py internet-latest-snippets
+- CLI args: ["internet-latest-snippets"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 26962, in main
+    print(internet_access.format_snippets(internet_access.internet_latest_snippets(config)))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u279c' in position 2931: character maps to <undefined>
+
+## 2026-07-09T23:28:12
+
+- Source: test
+- Input: show sources
+- Normalized: show sources
+- Intent: internet_latest_snippets
+- Command type: search
+- Matched command: python raphael.py internet-latest-snippets
+- CLI args: ["internet-latest-snippets"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 26962, in main
+    print(internet_access.format_snippets(internet_access.internet_latest_snippets(config)))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u279c' in position 2931: character maps to <undefined>
+
+## 2026-07-09T23:28:13
+
+- Source: test
+- Input: raw JSON
+- Normalized: raw json
+- Intent: internet_raw_json
+- Command type: search
+- Matched command: python raphael.py internet-raw-json LATEST
+- CLI args: ["internet-raw-json", "LATEST"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: {
+  "request_id": "INET-20260624-6004D664",
+  "question": "POD research for: I want you to use the internet to look up trends for digital products to sell on etsy so I can come up with designs to use in our POD studio. Use searchxng to look up the best digital products to sell on etsy.",
+  "summary": "Headless SearXNG search saved 10 result(s).",
+  "sources": [
+    "https://www.printondemandbusiness.com/blog/5-best-etsy-research-tools-to-find-pod-winners/",
+    "https://loveeattravelrepeat.com/etsy-trending-searches-this-year/",
+    "https://loveeattravelrepeat.com/etsy-trends-for-2026/",
+    "https://michielschuer.medium.com/top-10-etsy-amazon-trend-research-tools-c61e9acad51c",
+    "https://insightfactory.app/etsy-spy-tool/",
+    "https://www.youtube.com/watch?v=fU2Xx_U_59c",
+    "https://insightfactory.app/etsy-trends/",
+    "https://www.podcs.com/",
+    "https://www.reddit.com/r/printondemand/comments/1cdi3pz/how_do_you_approach_researching_the_market/",
+    "https://litcommerce.com/blog/digital-products-to-sell-on-etsy/"
+  ],
+  "source_count": 10,
+  "uncertainty": "Low \u2014 multiple sources were supplied, subject to source-quality review.",
+  "recorded": "2026-06-24T23:31...
+
+## 2026-07-09T23:28:13
+
+- Source: test
+- Input: what did it find
+- Normalized: what did it find
+- Intent: internet_latest_overview
+- Command type: search
+- Matched command: python raphael.py internet-latest-overview
+- CLI args: ["internet-latest-overview"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Answer:
+Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing. This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+
+Key points:
+- Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing.
+- This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+- This guide compares the best Etsy research tools for POD sellers and links to full tool profiles so you can decide quickly.
+
+Sources:
+1. Best Etsy Research Tools for POD Sellers: eRank, EverBee, Marmalead and More - Medium; Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realisti...
+
+## 2026-07-09T23:28:13
+
+- Source: test
+- Input: summarize that
+- Normalized: summarize that
+- Intent: internet_latest_overview
+- Command type: search
+- Matched command: python raphael.py internet-latest-overview
+- CLI args: ["internet-latest-overview"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Answer:
+Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing. This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+
+Key points:
+- Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing.
+- This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+- This guide compares the best Etsy research tools for POD sellers and links to full tool profiles so you can decide quickly.
+
+Sources:
+1. Best Etsy Research Tools for POD Sellers: eRank, EverBee, Marmalead and More - Medium; Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realisti...
+
+## 2026-07-09T23:28:13
+
+- Source: test
+- Input: save to knowledge
+- Normalized: save to knowledge
+- Intent: internet_save_to_knowledge
+- Command type: search
+- Matched command: python raphael.py internet-save-to-knowledge LATEST
+- CLI args: ["internet-save-to-knowledge", "LATEST"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-BFD3779812
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Saving the latest internet overview to local knowledge notes.
+
+## 2026-07-09T23:28:14
+
+- Source: cli
+- Input: log in to Etsy and upload a listing
+- Normalized: log in to etsy and upload a listing
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Account login is blocked through Internet Access.
+- Spoken response: Refused: Account login is blocked through Internet Access.
+
+## 2026-07-09T23:28:15
+
+- Source: test
+- Input: search the web for FastAPI release notes
+- Normalized: search the web for fastapi release notes
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "fastapi release notes"
+- CLI args: ["internet-headless-search", "fastapi release notes"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-A0D48B1D5D
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:28:15
+
+- Source: test
+- Input: look up current Etsy trends
+- Normalized: look up current etsy trends
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "look up current etsy trends"
+- CLI args: ["internet-headless-search", "look up current etsy trends"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-7AEE293B21
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:28:15
+
+- Source: test
+- Input: latest POD niches
+- Normalized: latest pod niches
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "latest pod niches"
+- CLI args: ["internet-headless-search", "latest pod niches"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-193C10D8FF
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:28:15
+
+- Source: test
+- Input: software docs for Python packaging
+- Normalized: software docs for python packaging
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "software docs for python packaging"
+- CLI args: ["internet-headless-search", "software docs for python packaging"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-0BFDF1A0B2
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:28:31
+
+- Source: dashboard
+- Input: perform a local POD Studio test
+- Normalized: perform a local pod studio test
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260709-E5727C0C"
+- CLI args: ["pod-workflow", "perform a local POD Studio test"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-8B7A22EBFB
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260709-E5727C0C"
+
+## 2026-07-09T23:28:45
+
+- Source: dashboard
+- Input: generate POD design using ComfyUI
+- Normalized: generate pod design using comfyui
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260709-41D69540"
+- CLI args: ["pod-workflow", "generate POD design using ComfyUI"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-38310ABC35
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260709-41D69540"
+
+## 2026-07-09T23:28:45
+
+- Source: dashboard
+- Input: create Etsy listing draft
+- Normalized: create etsy listing draft
+- Intent: pod_listing_draft
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-listing-draft LATEST
+- CLI args: ["pod-listing-draft", "LATEST"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-052F371D00
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to create a local Etsy-style listing draft. Nothing will be published or uploaded.
+
+## 2026-07-09T23:28:46
+
+- Source: command_bus_confirm
+- Input: create concept
+- Normalized: create concept
+- Intent: pod_concept
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-prompt "PODCON-ABC123"
+- CLI args: ["pod-concept", "4th of July shirts"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-14DB3BCCF7
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: Created POD Concept: PODCON-ABC123.
+
+Next step: Generate prompts for PODCON-ABC123?
+Say confirm to run:
+python raphael.py pod-prompt "PODCON-ABC123"
+
+## 2026-07-09T23:28:46
+
+- Source: command_bus_confirm
+- Input: Generate prompts for PODCON-ABC123?
+- Normalized: generate prompts for podcon-abc123?
+- Intent: pod_prompt
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-generation-request "PODCON-ABC123" "sdxl"
+- CLI args: ["pod-prompt", "PODCON-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-724F4E01DD
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: Generated prompts for PODCON-ABC123.
+
+Next step: Create an SDXL generation request?
+Say confirm to run:
+python raphael.py pod-generation-request "PODCON-ABC123" "sdxl"
+
+## 2026-07-09T23:28:46
+
+- Source: command_bus_confirm
+- Input: Create an SDXL generation request?
+- Normalized: create an sdxl generation request?
+- Intent: pod_generation_request
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-generate "PODGEN-REQ123"
+- CLI args: ["pod-generation-request", "PODCON-ABC123", "sdxl"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-E5A0CE0363
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: Created generation request: PODGEN-REQ123.
+
+Next step: Generate designs now with local ComfyUI?
+Say confirm to run:
+python raphael.py pod-generate "PODGEN-REQ123"
+
+## 2026-07-09T23:28:47
+
+- Source: test
+- Input: start SearXNG
+- Normalized: start searxng
+- Intent: searxng_start
+- Command type: maintenance
+- Matched command: python raphael.py searxng-start
+- CLI args: ["searxng-start"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-31C91AC9D0
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start the allowlisted localhost SearXNG container. Confirm to continue.
+
+## 2026-07-09T23:28:47
+
+- Source: test
+- Input: start research stack
+- Normalized: start research stack
+- Intent: service_start
+- Command type: maintenance
+- Matched command: python raphael.py service-start research
+- CLI args: ["service-start", "research"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-475A4FD462
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start the allowlisted local research stack. Confirm to continue.
+
+## 2026-07-09T23:28:48
+
+- Source: test
+- Input: repair issue ISSUE-20260624-ABCDEF12
+- Normalized: repair issue issue-20260624-abcdef12
+- Intent: repair_plan
+- Command type: maintenance
+- Matched command: python raphael.py repair-plan ISSUE-20260624-ABCDEF12
+- CLI args: ["repair-plan", "ISSUE-20260624-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-F2B010EB04
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to create an approval-gated repair plan for ISSUE-20260624-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:28:48
+
+- Source: test
+- Input: approve repair REPAIR-20260624-ABCDEF12
+- Normalized: approve repair repair-20260624-abcdef12
+- Intent: repair_approve
+- Command type: maintenance
+- Matched command: python raphael.py repair-approve REPAIR-20260624-ABCDEF12
+- CLI args: ["repair-approve", "REPAIR-20260624-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-6D956A578C
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to approve repair plan REPAIR-20260624-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:28:48
+
+- Source: test
+- Input: repair approved issue REPAIR-20260624-ABCDEF12
+- Normalized: repair approved issue repair-20260624-abcdef12
+- Intent: repair_run
+- Command type: maintenance
+- Matched command: python raphael.py repair-run REPAIR-20260624-ABCDEF12
+- CLI args: ["repair-run", "REPAIR-20260624-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-7C2D43A4E5
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to run approved allowlisted repair REPAIR-20260624-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:28:49
+
+- Source: test
+- Input: start ComfyUI
+- Normalized: start comfyui
+- Intent: service_start
+- Command type: maintenance
+- Matched command: python raphael.py service-start comfyui
+- CLI args: ["service-start", "comfyui"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-93BE2435B2
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start the allowlisted local ComfyUI service. Confirm to continue.
+
+## 2026-07-09T23:28:49
+
+- Source: test
+- Input: start creative stack
+- Normalized: start creative stack
+- Intent: service_start
+- Command type: maintenance
+- Matched command: python raphael.py service-start creative
+- CLI args: ["service-start", "creative"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-AAEAEEE3B9
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start enabled allowlisted creative services. Confirm to continue.
+
+## 2026-07-09T23:28:49
+
+- Source: test
+- Input: restart failed services
+- Normalized: restart failed services
+- Intent: service_restart_failed
+- Command type: maintenance
+- Matched command: python raphael.py service-restart-failed
+- CLI args: ["service-restart-failed"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-E93EA93273
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart failed services that explicitly allow auto-restart. Confirm to continue.
+
+## 2026-07-09T23:28:49
+
+- Source: test
+- Input: restart Raphael services
+- Normalized: restart raphael services
+- Intent: service_restart
+- Command type: maintenance
+- Matched command: python raphael.py service-restart managed
+- CLI args: ["service-restart", "managed"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-D00AEBDDB3
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart only registry services with Raphael-managed PIDs. Confirm to continue.
+
+## 2026-07-09T23:28:50
+
+- Source: test
+- Input: Show details for BUILD-20260621-ABC123
+- Normalized: show details for build-20260621-abc123
+- Intent: build_status
+- Command type: builder
+- Matched command: python raphael.py build-status BUILD-20260621-ABC123
+- CLI args: ["build-status", "BUILD-20260621-ABC123"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 27613, in main
+    print(build_status_text(config, args.build_id))
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 14933, in build_status_text
+    path, text = build_request_text(config, build_id)
+                 ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 14600, in build_request_text
+    path = find_build_request(config, build_id)
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 14596, in find_build_request
+    raise FileNotFoundError(f"Build Request ID not found: {build_id}")
+FileNotFoundError: Build Reques...
+
+## 2026-07-09T23:28:50
+
+- Source: test
+- Input: Review DELIB-20260621-ABC123
+- Normalized: review delib-20260621-abc123
+- Intent: deliberation_show
+- Command type: deliberation
+- Matched command: python raphael.py deliberation-show DELIB-20260621-ABC123
+- CLI args: ["deliberation-show", "DELIB-20260621-ABC123"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 27276, in main
+    print(deliberation_show(config, args.deliberation_ref))
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 6982, in deliberation_show
+    path = find_deliberation(config, deliberation_ref)
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 6978, in find_deliberation
+    raise FileNotFoundError(f"Deliberation not found: {deliberation_ref}")
+FileNotFoundError: Deliberation not found: DELIB-20260621-ABC123
+
+## 2026-07-09T23:28:51
+
+- Source: test
+- Input: Review PLAN-20260621-ABC123
+- Normalized: review plan-20260621-abc123
+- Intent: execution_plan_show
+- Command type: execution_planning
+- Matched command: python raphael.py execution-plan-show PLAN-20260621-ABC123
+- CLI args: ["execution-plan-show", "PLAN-20260621-ABC123"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 27288, in main
+    print(execution_plan_show(config, args.plan_ref))
+          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 7445, in execution_plan_show
+    return read_text_if_exists(find_execution_plan(config, plan_ref), config)
+                               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 7441, in find_execution_plan
+    raise FileNotFoundError(f"Execution plan not found: {plan_ref}")
+FileNotFoundError: Execution plan not found: PLAN-20260621-ABC123
+
+## 2026-07-09T23:28:51
+
+- Source: test
+- Input: Generate PODTYPE-ABC123
+- Normalized: generate podtype-abc123
+- Intent: pod_typography_next_step_clarification
+- Command type: builder
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: PODTYPE-ABC123 is a typography asset. The next valid command is: python raphael.py pod-compose-design "IMAGE-PATH" "PODTYPE-ABC123"
+
+## 2026-07-09T23:28:51
+
+- Source: test
+- Input: create typography LAND OF THE FREE
+- Normalized: create typography land of the free
+- Intent: pod_typography_create
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-typography-create "land of the free"
+- CLI args: ["pod-typography-create", "land of the free"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-2E650234F1
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to create editable local SVG typography for land of the free.
+
+## 2026-07-09T23:28:51
+
+- Source: test
+- Input: compose pod design C:\RaphaelOS\PODStudio\input\art.png PODTYPE-ABC123
+- Normalized: compose pod design c:\raphaelos\podstudio\input\art.png podtype-abc123
+- Intent: pod_compose_design
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-compose-design c:\raphaelos\podstudio\input\art.png PODTYPE-ABC123
+- CLI args: ["pod-compose-design", "c:\\raphaelos\\podstudio\\input\\art.png", "PODTYPE-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-A3274E1503
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to compose the local artwork and editable typography with configured Inkscape.
+
+## 2026-07-09T23:28:51
+
+- Source: test
+- Input: export SVG PODCOMP-ABC123
+- Normalized: export svg podcomp-abc123
+- Intent: pod_svg_export
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-svg-export PODCOMP-ABC123
+- CLI args: ["pod-svg-export", "PODCOMP-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-A4E519FB0A
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to export an editable SVG with configured local Inkscape.
+
+## 2026-07-09T23:28:51
+
+- Source: test
+- Input: export print-ready design PODCOMP-ABC123
+- Normalized: export print-ready design podcomp-abc123
+- Intent: pod_print_export
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-print-export PODCOMP-ABC123
+- CLI args: ["pod-print-export", "PODCOMP-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-F18503B744
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to export a transparent 300 DPI POD PNG with configured local Inkscape.
+
+## 2026-07-09T23:28:53
+
+- Source: test
+- Input: run workflow daily-executive-brief
+- Normalized: run workflow daily-executive-brief
+- Intent: workflow_execute
+- Command type: workflow
+- Matched command: python raphael.py workflow-execute daily-executive-brief
+- CLI args: ["workflow-execute", "daily-executive-brief"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-83C07C86D0
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to execute registered workflow daily-executive-brief. Confirm to continue.
+
+## 2026-07-09T23:28:53
+
+- Source: test
+- Input: cancel workflow WFEXEC-20260621-ABCDEF12
+- Normalized: cancel workflow wfexec-20260621-abcdef12
+- Intent: workflow_cancel
+- Command type: workflow
+- Matched command: python raphael.py workflow-cancel WFEXEC-20260621-ABCDEF12
+- CLI args: ["workflow-cancel", "WFEXEC-20260621-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-2C394CC044
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to cancel workflow execution WFEXEC-20260621-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:29:29
+
+- Source: dashboard_test
+- Input: create a POD shirt using ComfyUI
+- Normalized: create a pod shirt using comfyui
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow", "create a POD shirt using ComfyUI"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-748C8615D5
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 5/13 complete. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:29:29
+
+- Source: command_bus_confirm
+- Input: Continue PODFLOW-SMOKE-0001 with stage 6/13: generate images?
+- Normalized: continue podflow-smoke-0001 with stage 6/13: generate images?
+- Intent: pod_workflow_continue
+- Command type: pod_design_studio
+- Matched command: python raphael.py service-start "comfyui"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-1A8273C8B7
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: ComfyUI is offline or unavailable. POD workflow PODFLOW-SMOKE-0001 remains retryable.
+Say confirm to start ComfyUI:
+python raphael.py service-start "comfyui"
+
+## 2026-07-09T23:29:29
+
+- Source: dashboard_test
+- Input: create me a POD t shirt with an elephant picture on it
+- Normalized: create me a pod t shirt with an elephant picture on it
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow", "create me a POD t shirt with an elephant picture on it"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-A2DBBF8E63
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:29:29
+
+- Source: command_bus_confirm
+- Input: Continue PODFLOW-SMOKE-0001 with stage 3/13: create concept?
+- Normalized: continue podflow-smoke-0001 with stage 3/13: create concept?
+- Intent: pod_workflow_continue
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-E113C8BC8D
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow stage 2/13 complete.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:29:29
+
+- Source: dashboard_test
+- Input: confirm
+- Normalized: confirm
+- Intent: confirmation_debounced
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-E113C8BC8D
+- Status: needs_confirmation
+- Safety reason: Duplicate confirmation ignored during the dashboard confirmation cooldown.
+- Spoken response: The previous confirmation is still current. No additional workflow stage was advanced.
+
+## 2026-07-09T23:29:29
+
+- Source: dashboard_test
+- Input: confirm
+- Normalized: confirm
+- Intent: confirmation_debounced
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-E113C8BC8D
+- Status: needs_confirmation
+- Safety reason: Duplicate confirmation ignored during the dashboard confirmation cooldown.
+- Spoken response: The previous confirmation is still current. No additional workflow stage was advanced.
+
+## 2026-07-09T23:29:29
+
+- Source: dashboard_test
+- Input: confirm
+- Normalized: confirm
+- Intent: confirmation_debounced
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-E113C8BC8D
+- Status: needs_confirmation
+- Safety reason: Duplicate confirmation ignored during the dashboard confirmation cooldown.
+- Spoken response: The previous confirmation is still current. No additional workflow stage was advanced.
+
+## 2026-07-09T23:29:30
+
+- Source: dashboard_test
+- Input: create me a POD t shirt with an elephant picture on it
+- Normalized: create me a pod t shirt with an elephant picture on it
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow", "create me a POD t shirt with an elephant picture on it"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-02E0CD75A0
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:30:15
+
+- Source: cli
+- Input: execute arbitrary shell command
+- Normalized: execute arbitrary shell command
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Refused: voice command contains blocked action phrase `shell`.
+- Spoken response: Refused: voice command contains blocked action phrase `shell`.
+
+## 2026-07-09T23:30:16
+
+- Source: test
+- Input: restart bootstrap services
+- Normalized: restart bootstrap services
+- Intent: bootstrap_restart
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-restart
+- CLI args: ["bootstrap-restart"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-A5FA3C261E
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart bootstrap-managed support services. Confirm to continue.
+
+## 2026-07-09T23:30:16
+
+- Source: test
+- Input: stop bootstrap services
+- Normalized: stop bootstrap services
+- Intent: bootstrap_stop
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-stop
+- CLI args: ["bootstrap-stop"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-F0C6EFABB0
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to stop bootstrap-managed support services. Confirm to continue.
+
+## 2026-07-09T23:30:16
+
+- Source: test
+- Input: install Raphael startup
+- Normalized: install raphael startup
+- Intent: bootstrap_install_startup
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-install-startup
+- CLI args: ["bootstrap-install-startup"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-DCFD48C11B
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to install the visible Raphael user-logon startup task. Confirm to continue.
+
+## 2026-07-09T23:30:16
+
+- Source: test
+- Input: remove Raphael startup
+- Normalized: remove raphael startup
+- Intent: bootstrap_remove_startup
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-remove-startup
+- CLI args: ["bootstrap-remove-startup"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-416AABAAA6
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to remove the Raphael user-logon startup task. Confirm to continue.
+
+## 2026-07-09T23:30:18
+
+- Source: cli
+- Input: build me a simple calculator
+- Normalized: build me a simple calculator
+- Intent: build_with_council
+- Command type: builder
+- Matched command: python raphael.py build-with-council "build me a simple calculator"
+- CLI args: ["build-with-council", "build me a simple calculator"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-B9340AD0C7
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: I can classify this build first, then create the tracked task and apply the required council route. Low and medium builds can generate safely after confirmation; high-complexity builds stop for plan approval. Say confirm to continue.
+
+## 2026-07-09T23:30:19
+
+- Source: command_bus_confirm
+- Input: confirm
+- Normalized: confirm
+- Intent: pod_workflow_continue
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue PODFLOW-20260621-ABCDEF12
+- CLI args: ["pod-workflow-continue", "PODFLOW-20260621-ABCDEF12"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: POD workflow complete.
+
+## 2026-07-09T23:30:20
+
+- Source: test
+- Input: start Qdrant
+- Normalized: start qdrant
+- Intent: docker_start
+- Command type: maintenance
+- Matched command: python raphael.py docker-start qdrant
+- CLI args: ["docker-start", "qdrant"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-269CF65EDF
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start allowlisted Docker service qdrant. Confirm to continue.
+
+## 2026-07-09T23:30:20
+
+- Source: test
+- Input: restart Qdrant
+- Normalized: restart qdrant
+- Intent: docker_restart
+- Command type: maintenance
+- Matched command: python raphael.py docker-restart qdrant
+- CLI args: ["docker-restart", "qdrant"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-41D5395779
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart allowlisted Docker service qdrant. Confirm to continue.
+
+## 2026-07-09T23:30:20
+
+- Source: test
+- Input: stop Qdrant
+- Normalized: stop qdrant
+- Intent: docker_stop
+- Command type: maintenance
+- Matched command: python raphael.py docker-stop qdrant
+- CLI args: ["docker-stop", "qdrant"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-05248BAEAD
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to stop allowlisted Docker service qdrant. Confirm to continue.
+
+## 2026-07-09T23:30:20
+
+- Source: test
+- Input: docker health
+- Normalized: docker health
+- Intent: docker_health
+- Command type: maintenance
+- Matched command: python raphael.py docker-health
+- CLI args: ["docker-health"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: {
+  "docker": {
+    "enabled": true,
+    "available": true,
+    "healthy": true,
+    "version": "29.6.1",
+    "platform": "Docker Desktop 4.81.0 (232925)",
+    "context": "desktop-linux",
+    "error": ""
+  },
+  "healthy": false,
+  "services": [
+    {
+      "service_id": "qdrant",
+      "display_name": "Qdrant",
+      "enabled": true,
+      "image": "qdrant/qdrant",
+      "container_name": "raphael-qdrant",
+      "ports": [
+        "127.0.0.1:6333:6333"
+      ],
+      "volumes": [
+        "C:\\RaphaelOS\\docker\\qdrant:/qdrant/storage"
+      ],
+      "health_check": "http://127.0.0.1:6333",
+      "notes": "Local vector memory service.",
+      "exists": false,
+      "running": false,
+      "managed": false,
+      "conflict": false,
+      "container_id": "",
+      "actual_image": "",
+      "state": "missing",
+      "healthy": false,
+      "health": "unhealthy",
+      "detail": "Container is not running."
+    },
+    {
+      "service_id": "n8n",
+      "display_name": "n8n",
+      "enabled": true,
+      "image": "n8nio/n8n",
+      "container_name": "raphael-n8n",
+      "ports": [
+        "127.0.0.1:5678:5678"
+      ],
+      "volumes": [
+        "C:\\RaphaelOS\\docker\\n8n:/home/node/....
+
+## 2026-07-09T23:30:22
+
+- Source: cli
+- Input: publish to Etsy
+- Normalized: publish to etsy
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Etsy publishing is blocked.
+- Spoken response: Refused: Etsy publishing is blocked.
+
+## 2026-07-09T23:30:22
+
+- Source: cli
+- Input: upload to Printify
+- Normalized: upload to printify
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Printify uploads are blocked.
+- Spoken response: Refused: Printify uploads are blocked.
+
+## 2026-07-09T23:30:22
+
+- Source: cli
+- Input: buy samples
+- Normalized: buy samples
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Purchasing is blocked.
+- Spoken response: Refused: Purchasing is blocked.
+
+## 2026-07-09T23:30:22
+
+- Source: cli
+- Input: spend $20 on ads
+- Normalized: spend $20 on ads
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Spending or moving money is blocked.
+- Spoken response: Refused: Spending or moving money is blocked.
+
+## 2026-07-09T23:30:23
+
+- Source: cli
+- Input: Create a POD shirt design and publish to Etsy
+- Normalized: create a pod shirt design and publish to etsy
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Etsy publishing is blocked.
+- Spoken response: Refused: Etsy publishing is blocked.
+
+## 2026-07-09T23:30:23
+
+- Source: cli
+- Input: Generate POD artwork and upload to Printify
+- Normalized: generate pod artwork and upload to printify
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Printify uploads are blocked.
+- Spoken response: Refused: Printify uploads are blocked.
+
+## 2026-07-09T23:30:24
+
+- Source: dashboard
+- Input: Perform a local POD Studio test with typography and SVG export
+- Normalized: perform a local pod studio test with typography and svg export
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+- CLI args: ["pod-workflow", "Perform a local POD Studio test with typography and SVG export"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-AD0399CEC9
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+
+## 2026-07-09T23:30:24
+
+- Source: dashboard
+- Input: Start a POD Studio workflow for a camping shirt
+- Normalized: start a pod studio workflow for a camping shirt
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+- CLI args: ["pod-workflow", "Start a POD Studio workflow for a camping shirt"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-C79D556C2D
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+
+## 2026-07-09T23:30:24
+
+- Source: dashboard
+- Input: Research current trends and create a POD shirt using Flux, ComfyUI, and Inkscape
+- Normalized: research current trends and create a pod shirt using flux, comfyui, and inkscape
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+- CLI args: ["pod-workflow", "Research current trends and create a POD shirt using Flux, ComfyUI, and Inkscape"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-C9292AC5D8
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+
+## 2026-07-09T23:30:25
+
+- Source: test
+- Input: show snippets
+- Normalized: show snippets
+- Intent: internet_latest_snippets
+- Command type: search
+- Matched command: python raphael.py internet-latest-snippets
+- CLI args: ["internet-latest-snippets"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 26962, in main
+    print(internet_access.format_snippets(internet_access.internet_latest_snippets(config)))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u279c' in position 2931: character maps to <undefined>
+
+## 2026-07-09T23:30:25
+
+- Source: test
+- Input: show sources
+- Normalized: show sources
+- Intent: internet_latest_snippets
+- Command type: search
+- Matched command: python raphael.py internet-latest-snippets
+- CLI args: ["internet-latest-snippets"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 26962, in main
+    print(internet_access.format_snippets(internet_access.internet_latest_snippets(config)))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u279c' in position 2931: character maps to <undefined>
+
+## 2026-07-09T23:30:26
+
+- Source: test
+- Input: raw JSON
+- Normalized: raw json
+- Intent: internet_raw_json
+- Command type: search
+- Matched command: python raphael.py internet-raw-json LATEST
+- CLI args: ["internet-raw-json", "LATEST"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: {
+  "request_id": "INET-20260624-6004D664",
+  "question": "POD research for: I want you to use the internet to look up trends for digital products to sell on etsy so I can come up with designs to use in our POD studio. Use searchxng to look up the best digital products to sell on etsy.",
+  "summary": "Headless SearXNG search saved 10 result(s).",
+  "sources": [
+    "https://www.printondemandbusiness.com/blog/5-best-etsy-research-tools-to-find-pod-winners/",
+    "https://loveeattravelrepeat.com/etsy-trending-searches-this-year/",
+    "https://loveeattravelrepeat.com/etsy-trends-for-2026/",
+    "https://michielschuer.medium.com/top-10-etsy-amazon-trend-research-tools-c61e9acad51c",
+    "https://insightfactory.app/etsy-spy-tool/",
+    "https://www.youtube.com/watch?v=fU2Xx_U_59c",
+    "https://insightfactory.app/etsy-trends/",
+    "https://www.podcs.com/",
+    "https://www.reddit.com/r/printondemand/comments/1cdi3pz/how_do_you_approach_researching_the_market/",
+    "https://litcommerce.com/blog/digital-products-to-sell-on-etsy/"
+  ],
+  "source_count": 10,
+  "uncertainty": "Low \u2014 multiple sources were supplied, subject to source-quality review.",
+  "recorded": "2026-06-24T23:31...
+
+## 2026-07-09T23:30:26
+
+- Source: test
+- Input: what did it find
+- Normalized: what did it find
+- Intent: internet_latest_overview
+- Command type: search
+- Matched command: python raphael.py internet-latest-overview
+- CLI args: ["internet-latest-overview"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Answer:
+Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing. This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+
+Key points:
+- Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing.
+- This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+- This guide compares the best Etsy research tools for POD sellers and links to full tool profiles so you can decide quickly.
+
+Sources:
+1. Best Etsy Research Tools for POD Sellers: eRank, EverBee, Marmalead and More - Medium; Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realisti...
+
+## 2026-07-09T23:30:26
+
+- Source: test
+- Input: summarize that
+- Normalized: summarize that
+- Intent: internet_latest_overview
+- Command type: search
+- Matched command: python raphael.py internet-latest-overview
+- CLI args: ["internet-latest-overview"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Answer:
+Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing. This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+
+Key points:
+- Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing.
+- This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+- This guide compares the best Etsy research tools for POD sellers and links to full tool profiles so you can decide quickly.
+
+Sources:
+1. Best Etsy Research Tools for POD Sellers: eRank, EverBee, Marmalead and More - Medium; Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realisti...
+
+## 2026-07-09T23:30:26
+
+- Source: test
+- Input: save to knowledge
+- Normalized: save to knowledge
+- Intent: internet_save_to_knowledge
+- Command type: search
+- Matched command: python raphael.py internet-save-to-knowledge LATEST
+- CLI args: ["internet-save-to-knowledge", "LATEST"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-0763FAC078
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Saving the latest internet overview to local knowledge notes.
+
+## 2026-07-09T23:30:27
+
+- Source: cli
+- Input: log in to Etsy and upload a listing
+- Normalized: log in to etsy and upload a listing
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Account login is blocked through Internet Access.
+- Spoken response: Refused: Account login is blocked through Internet Access.
+
+## 2026-07-09T23:30:28
+
+- Source: test
+- Input: search the web for FastAPI release notes
+- Normalized: search the web for fastapi release notes
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "fastapi release notes"
+- CLI args: ["internet-headless-search", "fastapi release notes"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-84C0CFE300
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:30:28
+
+- Source: test
+- Input: look up current Etsy trends
+- Normalized: look up current etsy trends
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "look up current etsy trends"
+- CLI args: ["internet-headless-search", "look up current etsy trends"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-FD030266B0
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:30:28
+
+- Source: test
+- Input: latest POD niches
+- Normalized: latest pod niches
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "latest pod niches"
+- CLI args: ["internet-headless-search", "latest pod niches"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-7E36BFAF90
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:30:28
+
+- Source: test
+- Input: software docs for Python packaging
+- Normalized: software docs for python packaging
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "software docs for python packaging"
+- CLI args: ["internet-headless-search", "software docs for python packaging"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-ADD8C8D791
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:30:43
+
+- Source: dashboard
+- Input: perform a local POD Studio test
+- Normalized: perform a local pod studio test
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260709-3C1A89BA"
+- CLI args: ["pod-workflow", "perform a local POD Studio test"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-73E8887B56
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260709-3C1A89BA"
+
+## 2026-07-09T23:30:58
+
+- Source: dashboard
+- Input: generate POD design using ComfyUI
+- Normalized: generate pod design using comfyui
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260709-2D8F08A3"
+- CLI args: ["pod-workflow", "generate POD design using ComfyUI"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-C32BA210B2
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260709-2D8F08A3"
+
+## 2026-07-09T23:30:58
+
+- Source: dashboard
+- Input: create Etsy listing draft
+- Normalized: create etsy listing draft
+- Intent: pod_listing_draft
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-listing-draft LATEST
+- CLI args: ["pod-listing-draft", "LATEST"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-491E15D470
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to create a local Etsy-style listing draft. Nothing will be published or uploaded.
+
+## 2026-07-09T23:30:59
+
+- Source: command_bus_confirm
+- Input: create concept
+- Normalized: create concept
+- Intent: pod_concept
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-prompt "PODCON-ABC123"
+- CLI args: ["pod-concept", "4th of July shirts"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-326E4B1158
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: Created POD Concept: PODCON-ABC123.
+
+Next step: Generate prompts for PODCON-ABC123?
+Say confirm to run:
+python raphael.py pod-prompt "PODCON-ABC123"
+
+## 2026-07-09T23:30:59
+
+- Source: command_bus_confirm
+- Input: Generate prompts for PODCON-ABC123?
+- Normalized: generate prompts for podcon-abc123?
+- Intent: pod_prompt
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-generation-request "PODCON-ABC123" "sdxl"
+- CLI args: ["pod-prompt", "PODCON-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-370AF6EF04
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: Generated prompts for PODCON-ABC123.
+
+Next step: Create an SDXL generation request?
+Say confirm to run:
+python raphael.py pod-generation-request "PODCON-ABC123" "sdxl"
+
+## 2026-07-09T23:30:59
+
+- Source: command_bus_confirm
+- Input: Create an SDXL generation request?
+- Normalized: create an sdxl generation request?
+- Intent: pod_generation_request
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-generate "PODGEN-REQ123"
+- CLI args: ["pod-generation-request", "PODCON-ABC123", "sdxl"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-CEFC0BEDDB
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: Created generation request: PODGEN-REQ123.
+
+Next step: Generate designs now with local ComfyUI?
+Say confirm to run:
+python raphael.py pod-generate "PODGEN-REQ123"
+
+## 2026-07-09T23:31:00
+
+- Source: test
+- Input: start SearXNG
+- Normalized: start searxng
+- Intent: searxng_start
+- Command type: maintenance
+- Matched command: python raphael.py searxng-start
+- CLI args: ["searxng-start"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-6483E4A14B
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start the allowlisted localhost SearXNG container. Confirm to continue.
+
+## 2026-07-09T23:31:00
+
+- Source: test
+- Input: start research stack
+- Normalized: start research stack
+- Intent: service_start
+- Command type: maintenance
+- Matched command: python raphael.py service-start research
+- CLI args: ["service-start", "research"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-2020728AAD
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start the allowlisted local research stack. Confirm to continue.
+
+## 2026-07-09T23:31:01
+
+- Source: test
+- Input: repair issue ISSUE-20260624-ABCDEF12
+- Normalized: repair issue issue-20260624-abcdef12
+- Intent: repair_plan
+- Command type: maintenance
+- Matched command: python raphael.py repair-plan ISSUE-20260624-ABCDEF12
+- CLI args: ["repair-plan", "ISSUE-20260624-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-92F5B39A17
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to create an approval-gated repair plan for ISSUE-20260624-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:31:01
+
+- Source: test
+- Input: approve repair REPAIR-20260624-ABCDEF12
+- Normalized: approve repair repair-20260624-abcdef12
+- Intent: repair_approve
+- Command type: maintenance
+- Matched command: python raphael.py repair-approve REPAIR-20260624-ABCDEF12
+- CLI args: ["repair-approve", "REPAIR-20260624-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-3E63CD64B6
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to approve repair plan REPAIR-20260624-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:31:01
+
+- Source: test
+- Input: repair approved issue REPAIR-20260624-ABCDEF12
+- Normalized: repair approved issue repair-20260624-abcdef12
+- Intent: repair_run
+- Command type: maintenance
+- Matched command: python raphael.py repair-run REPAIR-20260624-ABCDEF12
+- CLI args: ["repair-run", "REPAIR-20260624-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-6E0E1CF6A9
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to run approved allowlisted repair REPAIR-20260624-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:31:02
+
+- Source: test
+- Input: start ComfyUI
+- Normalized: start comfyui
+- Intent: service_start
+- Command type: maintenance
+- Matched command: python raphael.py service-start comfyui
+- CLI args: ["service-start", "comfyui"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-8375E087F3
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start the allowlisted local ComfyUI service. Confirm to continue.
+
+## 2026-07-09T23:31:02
+
+- Source: test
+- Input: start creative stack
+- Normalized: start creative stack
+- Intent: service_start
+- Command type: maintenance
+- Matched command: python raphael.py service-start creative
+- CLI args: ["service-start", "creative"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-B00BFF3573
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start enabled allowlisted creative services. Confirm to continue.
+
+## 2026-07-09T23:31:02
+
+- Source: test
+- Input: restart failed services
+- Normalized: restart failed services
+- Intent: service_restart_failed
+- Command type: maintenance
+- Matched command: python raphael.py service-restart-failed
+- CLI args: ["service-restart-failed"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-3BD80750EA
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart failed services that explicitly allow auto-restart. Confirm to continue.
+
+## 2026-07-09T23:31:02
+
+- Source: test
+- Input: restart Raphael services
+- Normalized: restart raphael services
+- Intent: service_restart
+- Command type: maintenance
+- Matched command: python raphael.py service-restart managed
+- CLI args: ["service-restart", "managed"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-F6770A3033
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart only registry services with Raphael-managed PIDs. Confirm to continue.
+
+## 2026-07-09T23:31:03
+
+- Source: test
+- Input: Show details for BUILD-20260621-ABC123
+- Normalized: show details for build-20260621-abc123
+- Intent: build_status
+- Command type: builder
+- Matched command: python raphael.py build-status BUILD-20260621-ABC123
+- CLI args: ["build-status", "BUILD-20260621-ABC123"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 27613, in main
+    print(build_status_text(config, args.build_id))
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 14933, in build_status_text
+    path, text = build_request_text(config, build_id)
+                 ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 14600, in build_request_text
+    path = find_build_request(config, build_id)
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 14596, in find_build_request
+    raise FileNotFoundError(f"Build Request ID not found: {build_id}")
+FileNotFoundError: Build Reques...
+
+## 2026-07-09T23:31:03
+
+- Source: test
+- Input: Review DELIB-20260621-ABC123
+- Normalized: review delib-20260621-abc123
+- Intent: deliberation_show
+- Command type: deliberation
+- Matched command: python raphael.py deliberation-show DELIB-20260621-ABC123
+- CLI args: ["deliberation-show", "DELIB-20260621-ABC123"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 27276, in main
+    print(deliberation_show(config, args.deliberation_ref))
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 6982, in deliberation_show
+    path = find_deliberation(config, deliberation_ref)
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 6978, in find_deliberation
+    raise FileNotFoundError(f"Deliberation not found: {deliberation_ref}")
+FileNotFoundError: Deliberation not found: DELIB-20260621-ABC123
+
+## 2026-07-09T23:31:03
+
+- Source: test
+- Input: Review PLAN-20260621-ABC123
+- Normalized: review plan-20260621-abc123
+- Intent: execution_plan_show
+- Command type: execution_planning
+- Matched command: python raphael.py execution-plan-show PLAN-20260621-ABC123
+- CLI args: ["execution-plan-show", "PLAN-20260621-ABC123"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 27288, in main
+    print(execution_plan_show(config, args.plan_ref))
+          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 7445, in execution_plan_show
+    return read_text_if_exists(find_execution_plan(config, plan_ref), config)
+                               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 7441, in find_execution_plan
+    raise FileNotFoundError(f"Execution plan not found: {plan_ref}")
+FileNotFoundError: Execution plan not found: PLAN-20260621-ABC123
+
+## 2026-07-09T23:31:03
+
+- Source: test
+- Input: Generate PODTYPE-ABC123
+- Normalized: generate podtype-abc123
+- Intent: pod_typography_next_step_clarification
+- Command type: builder
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: PODTYPE-ABC123 is a typography asset. The next valid command is: python raphael.py pod-compose-design "IMAGE-PATH" "PODTYPE-ABC123"
+
+## 2026-07-09T23:31:04
+
+- Source: test
+- Input: create typography LAND OF THE FREE
+- Normalized: create typography land of the free
+- Intent: pod_typography_create
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-typography-create "land of the free"
+- CLI args: ["pod-typography-create", "land of the free"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-95D6EF6630
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to create editable local SVG typography for land of the free.
+
+## 2026-07-09T23:31:04
+
+- Source: test
+- Input: compose pod design C:\RaphaelOS\PODStudio\input\art.png PODTYPE-ABC123
+- Normalized: compose pod design c:\raphaelos\podstudio\input\art.png podtype-abc123
+- Intent: pod_compose_design
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-compose-design c:\raphaelos\podstudio\input\art.png PODTYPE-ABC123
+- CLI args: ["pod-compose-design", "c:\\raphaelos\\podstudio\\input\\art.png", "PODTYPE-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-CD2FA58C23
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to compose the local artwork and editable typography with configured Inkscape.
+
+## 2026-07-09T23:31:04
+
+- Source: test
+- Input: export SVG PODCOMP-ABC123
+- Normalized: export svg podcomp-abc123
+- Intent: pod_svg_export
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-svg-export PODCOMP-ABC123
+- CLI args: ["pod-svg-export", "PODCOMP-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-AB32A13907
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to export an editable SVG with configured local Inkscape.
+
+## 2026-07-09T23:31:04
+
+- Source: test
+- Input: export print-ready design PODCOMP-ABC123
+- Normalized: export print-ready design podcomp-abc123
+- Intent: pod_print_export
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-print-export PODCOMP-ABC123
+- CLI args: ["pod-print-export", "PODCOMP-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-C8ABB94A95
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to export a transparent 300 DPI POD PNG with configured local Inkscape.
+
+## 2026-07-09T23:31:06
+
+- Source: test
+- Input: run workflow daily-executive-brief
+- Normalized: run workflow daily-executive-brief
+- Intent: workflow_execute
+- Command type: workflow
+- Matched command: python raphael.py workflow-execute daily-executive-brief
+- CLI args: ["workflow-execute", "daily-executive-brief"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-688E512CA2
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to execute registered workflow daily-executive-brief. Confirm to continue.
+
+## 2026-07-09T23:31:06
+
+- Source: test
+- Input: cancel workflow WFEXEC-20260621-ABCDEF12
+- Normalized: cancel workflow wfexec-20260621-abcdef12
+- Intent: workflow_cancel
+- Command type: workflow
+- Matched command: python raphael.py workflow-cancel WFEXEC-20260621-ABCDEF12
+- CLI args: ["workflow-cancel", "WFEXEC-20260621-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-582BCFC7BC
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to cancel workflow execution WFEXEC-20260621-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:32:58
+
+- Source: dashboard_test
+- Input: create a POD shirt using ComfyUI
+- Normalized: create a pod shirt using comfyui
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow", "create a POD shirt using ComfyUI"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-EFD35F009A
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 5/13 complete. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:32:58
+
+- Source: command_bus_confirm
+- Input: Continue PODFLOW-SMOKE-0001 with stage 6/13: generate images?
+- Normalized: continue podflow-smoke-0001 with stage 6/13: generate images?
+- Intent: pod_workflow_continue
+- Command type: pod_design_studio
+- Matched command: python raphael.py service-start "comfyui"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-2D9EE32868
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: ComfyUI is offline or unavailable. POD workflow PODFLOW-SMOKE-0001 remains retryable.
+Say confirm to start ComfyUI:
+python raphael.py service-start "comfyui"
+
+## 2026-07-09T23:32:58
+
+- Source: dashboard_test
+- Input: create me a POD t shirt with an elephant picture on it
+- Normalized: create me a pod t shirt with an elephant picture on it
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow", "create me a POD t shirt with an elephant picture on it"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-1CB894EE55
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:32:58
+
+- Source: command_bus_confirm
+- Input: Continue PODFLOW-SMOKE-0001 with stage 3/13: create concept?
+- Normalized: continue podflow-smoke-0001 with stage 3/13: create concept?
+- Intent: pod_workflow_continue
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-BA52EE5FBC
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow stage 2/13 complete.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:32:58
+
+- Source: dashboard_test
+- Input: confirm
+- Normalized: confirm
+- Intent: confirmation_debounced
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-BA52EE5FBC
+- Status: needs_confirmation
+- Safety reason: Duplicate confirmation ignored during the dashboard confirmation cooldown.
+- Spoken response: The previous confirmation is still current. No additional workflow stage was advanced.
+
+## 2026-07-09T23:32:58
+
+- Source: dashboard_test
+- Input: confirm
+- Normalized: confirm
+- Intent: confirmation_debounced
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-BA52EE5FBC
+- Status: needs_confirmation
+- Safety reason: Duplicate confirmation ignored during the dashboard confirmation cooldown.
+- Spoken response: The previous confirmation is still current. No additional workflow stage was advanced.
+
+## 2026-07-09T23:32:58
+
+- Source: dashboard_test
+- Input: confirm
+- Normalized: confirm
+- Intent: confirmation_debounced
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow-continue", "PODFLOW-SMOKE-0001"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-BA52EE5FBC
+- Status: needs_confirmation
+- Safety reason: Duplicate confirmation ignored during the dashboard confirmation cooldown.
+- Spoken response: The previous confirmation is still current. No additional workflow stage was advanced.
+
+## 2026-07-09T23:32:59
+
+- Source: dashboard_test
+- Input: create me a POD t shirt with an elephant picture on it
+- Normalized: create me a pod t shirt with an elephant picture on it
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+- CLI args: ["pod-workflow", "create me a POD t shirt with an elephant picture on it"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-04AA9811FF
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-SMOKE-0001"
+
+## 2026-07-09T23:33:30
+
+- Source: cli
+- Input: execute arbitrary shell command
+- Normalized: execute arbitrary shell command
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Refused: voice command contains blocked action phrase `shell`.
+- Spoken response: Refused: voice command contains blocked action phrase `shell`.
+
+## 2026-07-09T23:33:31
+
+- Source: test
+- Input: restart bootstrap services
+- Normalized: restart bootstrap services
+- Intent: bootstrap_restart
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-restart
+- CLI args: ["bootstrap-restart"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-58EDE4B427
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart bootstrap-managed support services. Confirm to continue.
+
+## 2026-07-09T23:33:31
+
+- Source: test
+- Input: stop bootstrap services
+- Normalized: stop bootstrap services
+- Intent: bootstrap_stop
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-stop
+- CLI args: ["bootstrap-stop"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-3251FE52B9
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to stop bootstrap-managed support services. Confirm to continue.
+
+## 2026-07-09T23:33:31
+
+- Source: test
+- Input: install Raphael startup
+- Normalized: install raphael startup
+- Intent: bootstrap_install_startup
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-install-startup
+- CLI args: ["bootstrap-install-startup"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-29A01407AC
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to install the visible Raphael user-logon startup task. Confirm to continue.
+
+## 2026-07-09T23:33:31
+
+- Source: test
+- Input: remove Raphael startup
+- Normalized: remove raphael startup
+- Intent: bootstrap_remove_startup
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-remove-startup
+- CLI args: ["bootstrap-remove-startup"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-646853C301
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to remove the Raphael user-logon startup task. Confirm to continue.
+
+## 2026-07-09T23:33:33
+
+- Source: cli
+- Input: build me a simple calculator
+- Normalized: build me a simple calculator
+- Intent: build_with_council
+- Command type: builder
+- Matched command: python raphael.py build-with-council "build me a simple calculator"
+- CLI args: ["build-with-council", "build me a simple calculator"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-554332AA29
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: I can classify this build first, then create the tracked task and apply the required council route. Low and medium builds can generate safely after confirmation; high-complexity builds stop for plan approval. Say confirm to continue.
+
+## 2026-07-09T23:33:34
+
+- Source: command_bus_confirm
+- Input: confirm
+- Normalized: confirm
+- Intent: pod_workflow_continue
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue PODFLOW-20260621-ABCDEF12
+- CLI args: ["pod-workflow-continue", "PODFLOW-20260621-ABCDEF12"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: POD workflow complete.
+
+## 2026-07-09T23:33:35
+
+- Source: test
+- Input: start Qdrant
+- Normalized: start qdrant
+- Intent: docker_start
+- Command type: maintenance
+- Matched command: python raphael.py docker-start qdrant
+- CLI args: ["docker-start", "qdrant"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-C0276A1B31
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start allowlisted Docker service qdrant. Confirm to continue.
+
+## 2026-07-09T23:33:35
+
+- Source: test
+- Input: restart Qdrant
+- Normalized: restart qdrant
+- Intent: docker_restart
+- Command type: maintenance
+- Matched command: python raphael.py docker-restart qdrant
+- CLI args: ["docker-restart", "qdrant"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-B8327065E9
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart allowlisted Docker service qdrant. Confirm to continue.
+
+## 2026-07-09T23:33:35
+
+- Source: test
+- Input: stop Qdrant
+- Normalized: stop qdrant
+- Intent: docker_stop
+- Command type: maintenance
+- Matched command: python raphael.py docker-stop qdrant
+- CLI args: ["docker-stop", "qdrant"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-72B068C3A3
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to stop allowlisted Docker service qdrant. Confirm to continue.
+
+## 2026-07-09T23:33:35
+
+- Source: test
+- Input: docker health
+- Normalized: docker health
+- Intent: docker_health
+- Command type: maintenance
+- Matched command: python raphael.py docker-health
+- CLI args: ["docker-health"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: {
+  "docker": {
+    "enabled": true,
+    "available": true,
+    "healthy": true,
+    "version": "29.6.1",
+    "platform": "Docker Desktop 4.81.0 (232925)",
+    "context": "desktop-linux",
+    "error": ""
+  },
+  "healthy": false,
+  "services": [
+    {
+      "service_id": "qdrant",
+      "display_name": "Qdrant",
+      "enabled": true,
+      "image": "qdrant/qdrant",
+      "container_name": "raphael-qdrant",
+      "ports": [
+        "127.0.0.1:6333:6333"
+      ],
+      "volumes": [
+        "C:\\RaphaelOS\\docker\\qdrant:/qdrant/storage"
+      ],
+      "health_check": "http://127.0.0.1:6333",
+      "notes": "Local vector memory service.",
+      "exists": false,
+      "running": false,
+      "managed": false,
+      "conflict": false,
+      "container_id": "",
+      "actual_image": "",
+      "state": "missing",
+      "healthy": false,
+      "health": "unhealthy",
+      "detail": "Container is not running."
+    },
+    {
+      "service_id": "n8n",
+      "display_name": "n8n",
+      "enabled": true,
+      "image": "n8nio/n8n",
+      "container_name": "raphael-n8n",
+      "ports": [
+        "127.0.0.1:5678:5678"
+      ],
+      "volumes": [
+        "C:\\RaphaelOS\\docker\\n8n:/home/node/....
+
+## 2026-07-09T23:33:36
+
+- Source: cli
+- Input: publish to Etsy
+- Normalized: publish to etsy
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Etsy publishing is blocked.
+- Spoken response: Refused: Etsy publishing is blocked.
+
+## 2026-07-09T23:33:37
+
+- Source: cli
+- Input: upload to Printify
+- Normalized: upload to printify
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Printify uploads are blocked.
+- Spoken response: Refused: Printify uploads are blocked.
+
+## 2026-07-09T23:33:37
+
+- Source: cli
+- Input: buy samples
+- Normalized: buy samples
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Purchasing is blocked.
+- Spoken response: Refused: Purchasing is blocked.
+
+## 2026-07-09T23:33:37
+
+- Source: cli
+- Input: spend $20 on ads
+- Normalized: spend $20 on ads
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Spending or moving money is blocked.
+- Spoken response: Refused: Spending or moving money is blocked.
+
+## 2026-07-09T23:33:37
+
+- Source: cli
+- Input: Create a POD shirt design and publish to Etsy
+- Normalized: create a pod shirt design and publish to etsy
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Etsy publishing is blocked.
+- Spoken response: Refused: Etsy publishing is blocked.
+
+## 2026-07-09T23:33:38
+
+- Source: cli
+- Input: Generate POD artwork and upload to Printify
+- Normalized: generate pod artwork and upload to printify
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Printify uploads are blocked.
+- Spoken response: Refused: Printify uploads are blocked.
+
+## 2026-07-09T23:33:39
+
+- Source: dashboard
+- Input: Perform a local POD Studio test with typography and SVG export
+- Normalized: perform a local pod studio test with typography and svg export
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+- CLI args: ["pod-workflow", "Perform a local POD Studio test with typography and SVG export"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-EABCDB1299
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+
+## 2026-07-09T23:33:39
+
+- Source: dashboard
+- Input: Start a POD Studio workflow for a camping shirt
+- Normalized: start a pod studio workflow for a camping shirt
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+- CLI args: ["pod-workflow", "Start a POD Studio workflow for a camping shirt"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-8461F57284
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+
+## 2026-07-09T23:33:39
+
+- Source: dashboard
+- Input: Research current trends and create a POD shirt using Flux, ComfyUI, and Inkscape
+- Normalized: research current trends and create a pod shirt using flux, comfyui, and inkscape
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+- CLI args: ["pod-workflow", "Research current trends and create a POD shirt using Flux, ComfyUI, and Inkscape"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-B965BE0EF4
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260621-ABCDEF12"
+
+## 2026-07-09T23:33:40
+
+- Source: test
+- Input: show snippets
+- Normalized: show snippets
+- Intent: internet_latest_snippets
+- Command type: search
+- Matched command: python raphael.py internet-latest-snippets
+- CLI args: ["internet-latest-snippets"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 26962, in main
+    print(internet_access.format_snippets(internet_access.internet_latest_snippets(config)))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u279c' in position 2931: character maps to <undefined>
+
+## 2026-07-09T23:33:40
+
+- Source: test
+- Input: show sources
+- Normalized: show sources
+- Intent: internet_latest_snippets
+- Command type: search
+- Matched command: python raphael.py internet-latest-snippets
+- CLI args: ["internet-latest-snippets"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 26962, in main
+    print(internet_access.format_snippets(internet_access.internet_latest_snippets(config)))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u279c' in position 2931: character maps to <undefined>
+
+## 2026-07-09T23:33:40
+
+- Source: test
+- Input: raw JSON
+- Normalized: raw json
+- Intent: internet_raw_json
+- Command type: search
+- Matched command: python raphael.py internet-raw-json LATEST
+- CLI args: ["internet-raw-json", "LATEST"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: {
+  "request_id": "INET-20260624-6004D664",
+  "question": "POD research for: I want you to use the internet to look up trends for digital products to sell on etsy so I can come up with designs to use in our POD studio. Use searchxng to look up the best digital products to sell on etsy.",
+  "summary": "Headless SearXNG search saved 10 result(s).",
+  "sources": [
+    "https://www.printondemandbusiness.com/blog/5-best-etsy-research-tools-to-find-pod-winners/",
+    "https://loveeattravelrepeat.com/etsy-trending-searches-this-year/",
+    "https://loveeattravelrepeat.com/etsy-trends-for-2026/",
+    "https://michielschuer.medium.com/top-10-etsy-amazon-trend-research-tools-c61e9acad51c",
+    "https://insightfactory.app/etsy-spy-tool/",
+    "https://www.youtube.com/watch?v=fU2Xx_U_59c",
+    "https://insightfactory.app/etsy-trends/",
+    "https://www.podcs.com/",
+    "https://www.reddit.com/r/printondemand/comments/1cdi3pz/how_do_you_approach_researching_the_market/",
+    "https://litcommerce.com/blog/digital-products-to-sell-on-etsy/"
+  ],
+  "source_count": 10,
+  "uncertainty": "Low \u2014 multiple sources were supplied, subject to source-quality review.",
+  "recorded": "2026-06-24T23:31...
+
+## 2026-07-09T23:33:41
+
+- Source: test
+- Input: what did it find
+- Normalized: what did it find
+- Intent: internet_latest_overview
+- Command type: search
+- Matched command: python raphael.py internet-latest-overview
+- CLI args: ["internet-latest-overview"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Answer:
+Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing. This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+
+Key points:
+- Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing.
+- This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+- This guide compares the best Etsy research tools for POD sellers and links to full tool profiles so you can decide quickly.
+
+Sources:
+1. Best Etsy Research Tools for POD Sellers: eRank, EverBee, Marmalead and More - Medium; Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realisti...
+
+## 2026-07-09T23:33:41
+
+- Source: test
+- Input: summarize that
+- Normalized: summarize that
+- Intent: internet_latest_overview
+- Command type: search
+- Matched command: python raphael.py internet-latest-overview
+- CLI args: ["internet-latest-overview"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Answer:
+Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing. This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+
+Key points:
+- Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realistically compete with—before you spend hours designing.
+- This guide now works as a routing page for Etsy tool decisions: use EverBee or Alura for product validation, eRank or Marmalead for Etsy SEO and keyword research, and Sale Samurai or EtsyHunt when you want another Etsy research workflow to compare.
+- This guide compares the best Etsy research tools for POD sellers and links to full tool profiles so you can decide quickly.
+
+Sources:
+1. Best Etsy Research Tools for POD Sellers: eRank, EverBee, Marmalead and More - Medium; Etsy research tools help you spot what buyers are searching for, what’s already selling, and what you can realisti...
+
+## 2026-07-09T23:33:41
+
+- Source: test
+- Input: save to knowledge
+- Normalized: save to knowledge
+- Intent: internet_save_to_knowledge
+- Command type: search
+- Matched command: python raphael.py internet-save-to-knowledge LATEST
+- CLI args: ["internet-save-to-knowledge", "LATEST"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-61D839EFCD
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Saving the latest internet overview to local knowledge notes.
+
+## 2026-07-09T23:33:42
+
+- Source: cli
+- Input: log in to Etsy and upload a listing
+- Normalized: log in to etsy and upload a listing
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Account login is blocked through Internet Access.
+- Spoken response: Refused: Account login is blocked through Internet Access.
+
+## 2026-07-09T23:33:43
+
+- Source: test
+- Input: search the web for FastAPI release notes
+- Normalized: search the web for fastapi release notes
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "fastapi release notes"
+- CLI args: ["internet-headless-search", "fastapi release notes"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-1CF82285AD
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:33:43
+
+- Source: test
+- Input: look up current Etsy trends
+- Normalized: look up current etsy trends
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "look up current etsy trends"
+- CLI args: ["internet-headless-search", "look up current etsy trends"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-AACEA124F3
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:33:43
+
+- Source: test
+- Input: latest POD niches
+- Normalized: latest pod niches
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "latest pod niches"
+- CLI args: ["internet-headless-search", "latest pod niches"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-F12C67A4E8
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:33:43
+
+- Source: test
+- Input: software docs for Python packaging
+- Normalized: software docs for python packaging
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search "software docs for python packaging"
+- CLI args: ["internet-headless-search", "software docs for python packaging"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-81EDB2184B
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:33:58
+
+- Source: dashboard
+- Input: perform a local POD Studio test
+- Normalized: perform a local pod studio test
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260709-5F0464D8"
+- CLI args: ["pod-workflow", "perform a local POD Studio test"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-C9B22C7B03
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260709-5F0464D8"
+
+## 2026-07-09T23:34:13
+
+- Source: dashboard
+- Input: generate POD design using ComfyUI
+- Normalized: generate pod design using comfyui
+- Intent: pod_workflow
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue "PODFLOW-20260709-EF2E72E5"
+- CLI args: ["pod-workflow", "generate POD design using ComfyUI"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-8F1F3A45A2
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: POD workflow started. Stage 1/13 complete. Next: create concept. Say confirm to continue.
+python raphael.py pod-workflow-continue "PODFLOW-20260709-EF2E72E5"
+
+## 2026-07-09T23:34:13
+
+- Source: dashboard
+- Input: create Etsy listing draft
+- Normalized: create etsy listing draft
+- Intent: pod_listing_draft
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-listing-draft LATEST
+- CLI args: ["pod-listing-draft", "LATEST"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-C65774A861
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to create a local Etsy-style listing draft. Nothing will be published or uploaded.
+
+## 2026-07-09T23:34:13
+
+- Source: command_bus_confirm
+- Input: create concept
+- Normalized: create concept
+- Intent: pod_concept
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-prompt "PODCON-ABC123"
+- CLI args: ["pod-concept", "4th of July shirts"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-85248163C9
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: Created POD Concept: PODCON-ABC123.
+
+Next step: Generate prompts for PODCON-ABC123?
+Say confirm to run:
+python raphael.py pod-prompt "PODCON-ABC123"
+
+## 2026-07-09T23:34:13
+
+- Source: command_bus_confirm
+- Input: Generate prompts for PODCON-ABC123?
+- Normalized: generate prompts for podcon-abc123?
+- Intent: pod_prompt
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-generation-request "PODCON-ABC123" "sdxl"
+- CLI args: ["pod-prompt", "PODCON-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-9D2415331C
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: Generated prompts for PODCON-ABC123.
+
+Next step: Create an SDXL generation request?
+Say confirm to run:
+python raphael.py pod-generation-request "PODCON-ABC123" "sdxl"
+
+## 2026-07-09T23:34:13
+
+- Source: command_bus_confirm
+- Input: Create an SDXL generation request?
+- Normalized: create an sdxl generation request?
+- Intent: pod_generation_request
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-generate "PODGEN-REQ123"
+- CLI args: ["pod-generation-request", "PODCON-ABC123", "sdxl"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-2DE3AF277C
+- Status: needs_confirmation
+- Safety reason: None
+- Spoken response: Created generation request: PODGEN-REQ123.
+
+Next step: Generate designs now with local ComfyUI?
+Say confirm to run:
+python raphael.py pod-generate "PODGEN-REQ123"
+
+## 2026-07-09T23:34:14
+
+- Source: test
+- Input: start SearXNG
+- Normalized: start searxng
+- Intent: searxng_start
+- Command type: maintenance
+- Matched command: python raphael.py searxng-start
+- CLI args: ["searxng-start"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-50468C1CA7
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start the allowlisted localhost SearXNG container. Confirm to continue.
+
+## 2026-07-09T23:34:14
+
+- Source: test
+- Input: start research stack
+- Normalized: start research stack
+- Intent: service_start
+- Command type: maintenance
+- Matched command: python raphael.py service-start research
+- CLI args: ["service-start", "research"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-26E22B6004
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start the allowlisted local research stack. Confirm to continue.
+
+## 2026-07-09T23:34:15
+
+- Source: test
+- Input: repair issue ISSUE-20260624-ABCDEF12
+- Normalized: repair issue issue-20260624-abcdef12
+- Intent: repair_plan
+- Command type: maintenance
+- Matched command: python raphael.py repair-plan ISSUE-20260624-ABCDEF12
+- CLI args: ["repair-plan", "ISSUE-20260624-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-0B743DC0A5
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to create an approval-gated repair plan for ISSUE-20260624-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:34:15
+
+- Source: test
+- Input: approve repair REPAIR-20260624-ABCDEF12
+- Normalized: approve repair repair-20260624-abcdef12
+- Intent: repair_approve
+- Command type: maintenance
+- Matched command: python raphael.py repair-approve REPAIR-20260624-ABCDEF12
+- CLI args: ["repair-approve", "REPAIR-20260624-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-F1E72DAB7A
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to approve repair plan REPAIR-20260624-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:34:15
+
+- Source: test
+- Input: repair approved issue REPAIR-20260624-ABCDEF12
+- Normalized: repair approved issue repair-20260624-abcdef12
+- Intent: repair_run
+- Command type: maintenance
+- Matched command: python raphael.py repair-run REPAIR-20260624-ABCDEF12
+- CLI args: ["repair-run", "REPAIR-20260624-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-76F1769DD8
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to run approved allowlisted repair REPAIR-20260624-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:34:16
+
+- Source: test
+- Input: start ComfyUI
+- Normalized: start comfyui
+- Intent: service_start
+- Command type: maintenance
+- Matched command: python raphael.py service-start comfyui
+- CLI args: ["service-start", "comfyui"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-1EB5ADDA27
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start the allowlisted local ComfyUI service. Confirm to continue.
+
+## 2026-07-09T23:34:16
+
+- Source: test
+- Input: start creative stack
+- Normalized: start creative stack
+- Intent: service_start
+- Command type: maintenance
+- Matched command: python raphael.py service-start creative
+- CLI args: ["service-start", "creative"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-5BB4451947
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to start enabled allowlisted creative services. Confirm to continue.
+
+## 2026-07-09T23:34:16
+
+- Source: test
+- Input: restart failed services
+- Normalized: restart failed services
+- Intent: service_restart_failed
+- Command type: maintenance
+- Matched command: python raphael.py service-restart-failed
+- CLI args: ["service-restart-failed"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-95F574CCC1
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart failed services that explicitly allow auto-restart. Confirm to continue.
+
+## 2026-07-09T23:34:16
+
+- Source: test
+- Input: restart Raphael services
+- Normalized: restart raphael services
+- Intent: service_restart
+- Command type: maintenance
+- Matched command: python raphael.py service-restart managed
+- CLI args: ["service-restart", "managed"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-50101F2392
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart only registry services with Raphael-managed PIDs. Confirm to continue.
+
+## 2026-07-09T23:34:18
+
+- Source: test
+- Input: Show details for BUILD-20260621-ABC123
+- Normalized: show details for build-20260621-abc123
+- Intent: build_status
+- Command type: builder
+- Matched command: python raphael.py build-status BUILD-20260621-ABC123
+- CLI args: ["build-status", "BUILD-20260621-ABC123"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 27613, in main
+    print(build_status_text(config, args.build_id))
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 14933, in build_status_text
+    path, text = build_request_text(config, build_id)
+                 ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 14600, in build_request_text
+    path = find_build_request(config, build_id)
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 14596, in find_build_request
+    raise FileNotFoundError(f"Build Request ID not found: {build_id}")
+FileNotFoundError: Build Reques...
+
+## 2026-07-09T23:34:18
+
+- Source: test
+- Input: Review DELIB-20260621-ABC123
+- Normalized: review delib-20260621-abc123
+- Intent: deliberation_show
+- Command type: deliberation
+- Matched command: python raphael.py deliberation-show DELIB-20260621-ABC123
+- CLI args: ["deliberation-show", "DELIB-20260621-ABC123"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 27276, in main
+    print(deliberation_show(config, args.deliberation_ref))
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 6982, in deliberation_show
+    path = find_deliberation(config, deliberation_ref)
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 6978, in find_deliberation
+    raise FileNotFoundError(f"Deliberation not found: {deliberation_ref}")
+FileNotFoundError: Deliberation not found: DELIB-20260621-ABC123
+
+## 2026-07-09T23:34:18
+
+- Source: test
+- Input: Review PLAN-20260621-ABC123
+- Normalized: review plan-20260621-abc123
+- Intent: execution_plan_show
+- Command type: execution_planning
+- Matched command: python raphael.py execution-plan-show PLAN-20260621-ABC123
+- CLI args: ["execution-plan-show", "PLAN-20260621-ABC123"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: error
+- Safety reason: Raphael CLI returned a non-zero status.
+- Spoken response: Raphael command failed. Traceback (most recent call last):
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael.py", line 23, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\cli.py", line 303, in main
+    return legacy.main(args)
+           ~~~~~~~~~~~^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 28412, in main
+    raise exc
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 27288, in main
+    print(execution_plan_show(config, args.plan_ref))
+          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 7445, in execution_plan_show
+    return read_text_if_exists(find_execution_plan(config, plan_ref), config)
+                               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py", line 7441, in find_execution_plan
+    raise FileNotFoundError(f"Execution plan not found: {plan_ref}")
+FileNotFoundError: Execution plan not found: PLAN-20260621-ABC123
+
+## 2026-07-09T23:34:18
+
+- Source: test
+- Input: Generate PODTYPE-ABC123
+- Normalized: generate podtype-abc123
+- Intent: pod_typography_next_step_clarification
+- Command type: builder
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: PODTYPE-ABC123 is a typography asset. The next valid command is: python raphael.py pod-compose-design "IMAGE-PATH" "PODTYPE-ABC123"
+
+## 2026-07-09T23:34:19
+
+- Source: test
+- Input: create typography LAND OF THE FREE
+- Normalized: create typography land of the free
+- Intent: pod_typography_create
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-typography-create "land of the free"
+- CLI args: ["pod-typography-create", "land of the free"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-D3846CA169
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to create editable local SVG typography for land of the free.
+
+## 2026-07-09T23:34:19
+
+- Source: test
+- Input: compose pod design C:\RaphaelOS\PODStudio\input\art.png PODTYPE-ABC123
+- Normalized: compose pod design c:\raphaelos\podstudio\input\art.png podtype-abc123
+- Intent: pod_compose_design
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-compose-design c:\raphaelos\podstudio\input\art.png PODTYPE-ABC123
+- CLI args: ["pod-compose-design", "c:\\raphaelos\\podstudio\\input\\art.png", "PODTYPE-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-584CF4788B
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to compose the local artwork and editable typography with configured Inkscape.
+
+## 2026-07-09T23:34:19
+
+- Source: test
+- Input: export SVG PODCOMP-ABC123
+- Normalized: export svg podcomp-abc123
+- Intent: pod_svg_export
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-svg-export PODCOMP-ABC123
+- CLI args: ["pod-svg-export", "PODCOMP-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-88E06E0A33
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to export an editable SVG with configured local Inkscape.
+
+## 2026-07-09T23:34:19
+
+- Source: test
+- Input: export print-ready design PODCOMP-ABC123
+- Normalized: export print-ready design podcomp-abc123
+- Intent: pod_print_export
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-print-export PODCOMP-ABC123
+- CLI args: ["pod-print-export", "PODCOMP-ABC123"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-47A1A3E2D2
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to export a transparent 300 DPI POD PNG with configured local Inkscape.
+
+## 2026-07-09T23:34:21
+
+- Source: test
+- Input: run workflow daily-executive-brief
+- Normalized: run workflow daily-executive-brief
+- Intent: workflow_execute
+- Command type: workflow
+- Matched command: python raphael.py workflow-execute daily-executive-brief
+- CLI args: ["workflow-execute", "daily-executive-brief"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-C7163DBD5C
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to execute registered workflow daily-executive-brief. Confirm to continue.
+
+## 2026-07-09T23:34:21
+
+- Source: test
+- Input: cancel workflow WFEXEC-20260621-ABCDEF12
+- Normalized: cancel workflow wfexec-20260621-abcdef12
+- Intent: workflow_cancel
+- Command type: workflow
+- Matched command: python raphael.py workflow-cancel WFEXEC-20260621-ABCDEF12
+- CLI args: ["workflow-cancel", "WFEXEC-20260621-ABCDEF12"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-5ADEF39550
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to cancel workflow execution WFEXEC-20260621-ABCDEF12. Confirm to continue.
+
+## 2026-07-09T23:36:26
+
+- Source: dashboard_test
+- Input: build landing page
+- Normalized: build landing page
+- Intent: build_with_council
+- Command type: builder
+- Matched command: python raphael.py build-with-council "build landing page"
+- CLI args: ["build-with-council", "build landing page"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-C9023955E9
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: I can classify this build first, then create the tracked task and apply the required council route. Low and medium builds can generate safely after confirmation; high-complexity builds stop for plan approval. Say confirm to continue.
+
+## 2026-07-09T23:36:26
+
+- Source: dashboard_test
+- Input: search the internet for news
+- Normalized: search the internet for news
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search news
+- CLI args: ["internet-headless-search", "news"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-E40978C196
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:36:47
+
+- Source: dashboard_test
+- Input: open pod studio
+- Normalized: open pod studio
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I couldn't reach the local general model: Ollama request failed. Confirm Ollama is running on http://host.docker.internal:11434.
+
+## 2026-07-09T23:37:08
+
+- Source: dashboard_test
+- Input: create a new project
+- Normalized: create a new project
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I couldn't reach the local general model: Ollama request failed. Confirm Ollama is running on http://host.docker.internal:11434.
+
+## 2026-07-09T23:37:42
+
+- Source: dashboard_test
+- Input: build landing page
+- Normalized: build landing page
+- Intent: build_with_council
+- Command type: builder
+- Matched command: python raphael.py build-with-council "build landing page"
+- CLI args: ["build-with-council", "build landing page"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-B76CB81627
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: I can classify this build first, then create the tracked task and apply the required council route. Low and medium builds can generate safely after confirmation; high-complexity builds stop for plan approval. Say confirm to continue.
+
+## 2026-07-09T23:37:42
+
+- Source: dashboard_test
+- Input: search the internet for news
+- Normalized: search the internet for news
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search news
+- CLI args: ["internet-headless-search", "news"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-790CD2ED0E
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:38:03
+
+- Source: dashboard_test
+- Input: open pod studio
+- Normalized: open pod studio
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I couldn't reach the local general model: Ollama request failed. Confirm Ollama is running on http://host.docker.internal:11434.
+
+## 2026-07-09T23:38:24
+
+- Source: dashboard_test
+- Input: create a new project
+- Normalized: create a new project
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I couldn't reach the local general model: Ollama request failed. Confirm Ollama is running on http://host.docker.internal:11434.
+
+## 2026-07-09T23:39:10
+
+- Source: dashboard_test
+- Input: build landing page
+- Normalized: build landing page
+- Intent: build_with_council
+- Command type: builder
+- Matched command: python raphael.py build-with-council "build landing page"
+- CLI args: ["build-with-council", "build landing page"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-DE7BF492B5
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: I can classify this build first, then create the tracked task and apply the required council route. Low and medium builds can generate safely after confirmation; high-complexity builds stop for plan approval. Say confirm to continue.
+
+## 2026-07-09T23:39:10
+
+- Source: dashboard_test
+- Input: search the internet for news
+- Normalized: search the internet for news
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search news
+- CLI args: ["internet-headless-search", "news"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-08BB71850C
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:39:31
+
+- Source: dashboard_test
+- Input: open pod studio
+- Normalized: open pod studio
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I couldn't reach the local general model: Ollama request failed. Confirm Ollama is running on http://host.docker.internal:11434.
+
+## 2026-07-09T23:39:52
+
+- Source: dashboard_test
+- Input: create a new project
+- Normalized: create a new project
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I couldn't reach the local general model: Ollama request failed. Confirm Ollama is running on http://host.docker.internal:11434.
+
+## 2026-07-09T23:40:54
+
+- Source: dashboard_test
+- Input: build landing page
+- Normalized: build landing page
+- Intent: build_with_council
+- Command type: builder
+- Matched command: python raphael.py build-with-council "build landing page"
+- CLI args: ["build-with-council", "build landing page"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-4F2CA54EF1
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: I can classify this build first, then create the tracked task and apply the required council route. Low and medium builds can generate safely after confirmation; high-complexity builds stop for plan approval. Say confirm to continue.
+
+## 2026-07-09T23:40:54
+
+- Source: dashboard_test
+- Input: search the internet for news
+- Normalized: search the internet for news
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search news
+- CLI args: ["internet-headless-search", "news"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-8C0072BE20
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:41:15
+
+- Source: dashboard_test
+- Input: open pod studio
+- Normalized: open pod studio
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I couldn't reach the local general model: Ollama request failed. Confirm Ollama is running on http://host.docker.internal:11434.
+
+## 2026-07-09T23:41:36
+
+- Source: dashboard_test
+- Input: create a new project
+- Normalized: create a new project
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I couldn't reach the local general model: Ollama request failed. Confirm Ollama is running on http://host.docker.internal:11434.
+
+## 2026-07-09T23:47:00
+
+- Source: dashboard_test
+- Input: build landing page
+- Normalized: build landing page
+- Intent: build_with_council
+- Command type: builder
+- Matched command: python raphael.py build-with-council "build landing page"
+- CLI args: ["build-with-council", "build landing page"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-DCFC39E0DF
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: I can classify this build first, then create the tracked task and apply the required council route. Low and medium builds can generate safely after confirmation; high-complexity builds stop for plan approval. Say confirm to continue.
+
+## 2026-07-09T23:47:00
+
+- Source: dashboard_test
+- Input: search the internet for news
+- Normalized: search the internet for news
+- Intent: internet_search
+- Command type: search
+- Matched command: python raphael.py internet-headless-search news
+- CLI args: ["internet-headless-search", "news"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-1E355355C6
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.
+
+## 2026-07-09T23:47:21
+
+- Source: dashboard_test
+- Input: open pod studio
+- Normalized: open pod studio
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I couldn't reach the local general model: Ollama request failed. Confirm Ollama is running on http://host.docker.internal:11434.
+
+## 2026-07-09T23:47:42
+
+- Source: dashboard_test
+- Input: create a new project
+- Normalized: create a new project
+- Intent: general_conversation
+- Command type: general_conversation
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: general_answer
+- Safety reason: None
+- Spoken response: I couldn't reach the local general model: Ollama request failed. Confirm Ollama is running on http://host.docker.internal:11434.
+
+## 2026-07-09T23:52:38
+
+- Source: cli
+- Input: execute arbitrary shell command
+- Normalized: execute arbitrary shell command
+- Intent: blocked
+- Command type: blocked
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: blocked
+- Safety reason: Refused: voice command contains blocked action phrase `shell`.
+- Spoken response: Refused: voice command contains blocked action phrase `shell`.
+
+## 2026-07-09T23:52:39
+
+- Source: test
+- Input: restart bootstrap services
+- Normalized: restart bootstrap services
+- Intent: bootstrap_restart
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-restart
+- CLI args: ["bootstrap-restart"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-D6A3E9BDD2
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to restart bootstrap-managed support services. Confirm to continue.
+
+## 2026-07-09T23:52:39
+
+- Source: test
+- Input: stop bootstrap services
+- Normalized: stop bootstrap services
+- Intent: bootstrap_stop
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-stop
+- CLI args: ["bootstrap-stop"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-5088B7ADF7
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to stop bootstrap-managed support services. Confirm to continue.
+
+## 2026-07-09T23:52:39
+
+- Source: test
+- Input: install Raphael startup
+- Normalized: install raphael startup
+- Intent: bootstrap_install_startup
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-install-startup
+- CLI args: ["bootstrap-install-startup"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-149A607431
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to install the visible Raphael user-logon startup task. Confirm to continue.
+
+## 2026-07-09T23:52:39
+
+- Source: test
+- Input: remove Raphael startup
+- Normalized: remove raphael startup
+- Intent: bootstrap_remove_startup
+- Command type: maintenance
+- Matched command: python raphael.py bootstrap-remove-startup
+- CLI args: ["bootstrap-remove-startup"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-6D4EC8AE8E
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: Ready to remove the Raphael user-logon startup task. Confirm to continue.
+
+## 2026-07-09T23:52:41
+
+- Source: cli
+- Input: build me a simple calculator
+- Normalized: build me a simple calculator
+- Intent: build_with_council
+- Command type: builder
+- Matched command: python raphael.py build-with-council "build me a simple calculator"
+- CLI args: ["build-with-council", "build me a simple calculator"]
+- Requires confirmation: Yes
+- Confirmation key: CONFIRM-76DD5AAEB0
+- Status: needs_confirmation
+- Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
+- Spoken response: I can classify this build first, then create the tracked task and apply the required council route. Low and medium builds can generate safely after confirmation; high-complexity builds stop for plan approval. Say confirm to continue.
+
+## 2026-07-09T23:52:42
+
+- Source: command_bus_confirm
+- Input: confirm
+- Normalized: confirm
+- Intent: pod_workflow_continue
+- Command type: pod_design_studio
+- Matched command: python raphael.py pod-workflow-continue PODFLOW-20260621-ABCDEF12
+- CLI args: ["pod-workflow-continue", "PODFLOW-20260621-ABCDEF12"]
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: POD workflow complete.
+

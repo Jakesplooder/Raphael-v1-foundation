@@ -64,4 +64,26 @@ class RuntimeRegistry:
             else:
                 ObservabilityLayer.error("RuntimeRegistry", f"Failed to inject dependency '{dep}' into '{target.__class__.__name__}'")
 
+    def load_from_manifests(self, manifest_paths: List[str]) -> None:
+        """
+        Dynamically loads ServiceModules by importing the specified module paths,
+        finding ServiceModule subclasses, and registering them.
+        manifest_paths example: ["raphael_core.kernel.event_bus", "raphael_core.kernel.job_system"]
+        """
+        import importlib
+        import inspect
+        
+        for path in manifest_paths:
+            try:
+                mod = importlib.import_module(path)
+                for name, obj in inspect.getmembers(mod, inspect.isclass):
+                    # Check if it's a subclass of ServiceModule, but not the abstract base classes themselves
+                    if issubclass(obj, ServiceModule) and obj.__name__ not in ("ServiceModule", "AgentService"):
+                        # Ensure we don't instantiate abstract classes
+                        if not inspect.isabstract(obj):
+                            service_instance = obj()
+                            self.register_service(service_instance)
+            except Exception as e:
+                ObservabilityLayer.error("RuntimeRegistry", f"Failed to load services from {path}: {e}")
+
 registry = RuntimeRegistry()
