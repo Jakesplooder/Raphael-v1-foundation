@@ -32,15 +32,18 @@ class BuilderEngine:
         result = self.provider.reason("llama3.1", SYSTEM_PROMPT, context, task)
         response_text = result.response.strip()
         
-        # Strip markdown block if present
-        if response_text.startswith("```json"):
-            response_text = response_text[7:]
-        elif response_text.startswith("```"):
-            response_text = response_text[3:]
-            
-        if response_text.endswith("```"):
-            response_text = response_text[:-3]
-            
+        # Robust JSON extraction: find the largest block from `{` to the last `}` that parses as JSON
+        end_idx = response_text.rfind('}')
+        if end_idx != -1:
+            for i in range(len(response_text)):
+                if response_text[i] == '{':
+                    try:
+                        json.loads(response_text[i:end_idx+1])
+                        response_text = response_text[i:end_idx+1]
+                        break
+                    except json.JSONDecodeError:
+                        continue
+                        
         response_text = response_text.strip()
         
         try:

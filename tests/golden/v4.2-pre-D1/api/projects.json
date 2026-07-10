@@ -1,0 +1,146 @@
+[
+  {
+    "name": "CSC4330 Project Group J",
+    "path": "\\app\\vault\\02_Projects\\CSC4330 Project Group J",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": true,
+    "has_health": false,
+    "overview": "# CSC4330 Project Group J\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]\n\n<!-- raphael-import-project..."
+  },
+  {
+    "name": "Economic Development Dashboard",
+    "path": "\\app\\vault\\02_Projects\\Economic Development Dashboard",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# Economic Development Dashboard\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "Hadoop MapReduce",
+    "path": "\\app\\vault\\02_Projects\\Hadoop MapReduce",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# Hadoop MapReduce\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "Juneteenth Campaign",
+    "path": "\\app\\vault\\02_Projects\\Juneteenth Campaign",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# Juneteenth Campaign\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "Lake Charles Gig Marketplace",
+    "path": "\\app\\vault\\02_Projects\\Lake Charles Gig Marketplace",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# Lake Charles Gig Marketplace\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "MentorMap",
+    "path": "\\app\\vault\\02_Projects\\MentorMap",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": true,
+    "has_health": false,
+    "overview": "# MentorMap\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]\n\n<!-- raphael-import-project -->\n## Importe..."
+  },
+  {
+    "name": "OCaml Interpreter",
+    "path": "\\app\\vault\\02_Projects\\OCaml Interpreter",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# OCaml Interpreter\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "Permit Filing Service",
+    "path": "\\app\\vault\\02_Projects\\Permit Filing Service",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# Permit Filing Service\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "PintOS",
+    "path": "\\app\\vault\\02_Projects\\PintOS",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# PintOS\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "Raphael OS",
+    "path": "\\app\\vault\\02_Projects\\Raphael OS",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# Raphael OS\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "Secure Email Service",
+    "path": "\\app\\vault\\02_Projects\\Secure Email Service",
+    "status": "- Status: Needs Attention\n- Health score: 95/100\n- Open task count: 3\n- Next action count: 3",
+    "score": 95,
+    "has_summary": true,
+    "has_health": true,
+    "overview": "# Secure Email Service\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]\n\n<!-- raphael-import-project -->..."
+  },
+  {
+    "name": "Shell Project",
+    "path": "\\app\\vault\\02_Projects\\Shell Project",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# Shell Project\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "Shopify ERP Integration",
+    "path": "\\app\\vault\\02_Projects\\Shopify ERP Integration",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# Shopify ERP Integration\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "Sports South Integration",
+    "path": "\\app\\vault\\02_Projects\\Sports South Integration",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# Sports South Integration\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "SQL Slammer Analysis",
+    "path": "\\app\\vault\\02_Projects\\SQL Slammer Analysis",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# SQL Slammer Analysis\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  },
+  {
+    "name": "WooCommerce Vendor Platform",
+    "path": "\\app\\vault\\02_Projects\\WooCommerce Vendor Platform",
+    "status": "Unknown",
+    "score": null,
+    "has_summary": false,
+    "has_health": false,
+    "overview": "# WooCommerce Vendor Platform\n\n## Purpose\n\nDefine what this project is intended to accomplish and why it matters.\n\n## Current Status\n\nStatus: Active\n\n## Desired Outcome\n\n- Clear deliverables\n- Tracked tasks\n- Recorded decisions\n- Lessons preserved\n\n## Related Memory\n\n- [[Project Registry]]\n- [[Lessons Learned Database]]"
+  }
+]

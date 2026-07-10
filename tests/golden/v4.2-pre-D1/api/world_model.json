@@ -1,0 +1,112 @@
+{
+  "enabled": true,
+  "requires_confirmation": true,
+  "records": {
+    "business": [
+      {
+        "id": "BUSINESS-20260617-6B5F19CF",
+        "name": "Etsy Store",
+        "type": "Commerce",
+        "status": "Active",
+        "description": "Commerce channel for digital products, print-on-demand items, and lightweight offers.",
+        "business": "",
+        "projects": "Unlinked",
+        "goals": "Unlinked",
+        "council": "Business Council, Product Council",
+        "agents": "Business Strategy Agent, Marketing Agent, Finance Agent",
+        "created": "2026-06-17T02:10:59"
+      }
+    ],
+    "product": [
+      {
+        "id": "PRODUCT-20260617-7C83CDF1",
+        "name": "AI Prompt Ebook",
+        "type": "Product",
+        "status": "Active",
+        "description": "Digital ebook product for AI prompt workflows and practical templates.",
+        "business": "Etsy Store",
+        "projects": "Unlinked",
+        "goals": "Unlinked",
+        "council": "Business Council, Product Council",
+        "agents": "Business Strategy Agent, Marketing Agent, Finance Agent",
+        "created": "2026-06-17T02:10:59"
+      }
+    ],
+    "revenue_stream": [
+      {
+        "id": "REVENUE-20260617-06CDB190",
+        "name": "Digital Product Sales",
+        "type": "Revenue Stream",
+        "status": "Active",
+        "description": "Revenue from ebooks, templates, and downloadable digital products.",
+        "business": "Etsy Store",
+        "projects": "Unlinked",
+        "goals": "Unlinked",
+        "council": "Business Council, Product Council",
+        "agents": "Business Strategy Agent, Marketing Agent, Finance Agent",
+        "created": "2026-06-17T02:11:00"
+      }
+    ],
+    "customer": [],
+    "platform": [
+      {
+        "id": "PLATFORM-20260617-856AE42F",
+        "name": "Etsy",
+        "type": "Platform",
+        "status": "Active",
+        "description": "Commerce storefront and customer discovery platform.",
+        "business": "",
+        "projects": "Unlinked",
+        "goals": "Unlinked",
+        "council": "Business Council, Product Council",
+        "agents": "Business Strategy Agent, Marketing Agent, Finance Agent",
+        "created": "2026-06-17T02:11:00"
+      }
+    ],
+    "asset": [
+      {
+        "id": "ASSET-20260617-EA8819DB",
+        "name": "Portfolio Project Library",
+        "type": "Career/Portfolio",
+        "status": "Active",
+        "description": "Reusable collection of projects, summaries, bullets, and interview stories.",
+        "business": "",
+        "projects": "Unlinked",
+        "goals": "Unlinked",
+        "council": "Career Council",
+        "agents": "Career Agent",
+        "created": "2026-06-17T02:11:00"
+      }
+    ],
+    "relationship": [
+      {
+        "id": "RELATION-20260617-6877B43A",
+        "name": "Potential Clients",
+        "type": "Customer Segment",
+        "status": "Active",
+        "description": "People and businesses who may need websites, integrations, automation, or AI support.",
+        "business": "",
+        "projects": "Unlinked",
+        "goals": "Unlinked",
+        "council": "Business Council, Product Council",
+        "agents": "Business Strategy Agent, Marketing Agent, Finance Agent",
+        "created": "2026-06-17T02:11:00"
+      }
+    ],
+    "business_idea": []
+  },
+  "review": {
+    "label": "World Model Review",
+    "path": "\\app\\vault\\00_Raphael\\World Model\\World Model Review.md",
+    "exists": true,
+    "updated": "2026-06-17T02:12:51",
+    "content": "# World Model Review\n\nGenerated: 2026-06-17T02:12:51\n\n## Businesses With No Products\n\n- None detected.\n## Products With No Revenue Stream\n\n- None detected.\n## Revenue Streams With No Platform\n\n- None detected.\n## Projects Not Linked To A Business\n\n- CSC4330 Project Group J\n- Economic Development Dashboard\n- Hadoop MapReduce\n- Juneteenth Campaign\n- Lake Charles Gig Marketplace\n- MentorMap\n- OCaml Interpreter\n- Permit Filing Service\n- PintOS\n- Raphael OS\n- SQL Slammer Analysis\n- Secure Email Service\n- Shell Project\n- Shopify ERP Integration\n- Sports South Integration\n- WooCommerce Vendor Platform\n## Goals Not Linked To Business Or Project\n\n- GOAL-68257934 Prepare Secure Email Service for portfolio review\n## Missing KPIs\n\n- Etsy Store\n- AI Prompt Ebook\n## Missing Owners / Councils\n\n- None detected.\n\n## Opportunities For Structure Improvement\n\n- Link priority projects to businesses, products, or career assets.\n- Add KPIs to active businesses and products.\n- Add revenue streams for products intended to become leverage.\n- Assign councils/agents as advisory owners for every active busine..."
+  },
+  "brief": {
+    "label": "World Model Brief",
+    "path": "\\app\\vault\\00_Raphael\\World Model\\World Model Brief.md",
+    "exists": true,
+    "updated": "2026-06-17T02:12:51",
+    "content": "# World Model Brief\n\nGenerated: 2026-06-17T02:12:51\n\n## Executive Snapshot\n\n- Businesses: 1\n- Products: 1\n- Revenue streams: 1\n- Platforms: 1\n- Assets: 1\n- Relationships: 1\n\n## Businesses\n\n- `BUSINESS-20260617-6B5F19CF` Etsy Store [Commerce] - Active\n\n## Products\n\n- `PRODUCT-20260617-7C83CDF1` AI Prompt Ebook -> Etsy Store\n\n## Revenue Streams\n\n- `REVENUE-20260617-06CDB190` Digital Product Sales -> Etsy Store\n\n## Platforms\n\n- `PLATFORM-20260617-856AE42F` Etsy - Commerce storefront and customer discovery platform.\n\n## Current Review Highlights\n\n# World Model Review Generated: 2026-06-17T02:12:51 ## Businesses With No Products - None detected. ## Products With No Revenue Stream - None detected. ## Revenue Streams With No Platform - None detected. ## Projects Not Linked To A Business - CSC4330 Project Group J - Economic Development Dashboard - Hadoop MapReduce - Juneteenth Campaign - Lake Charles Gig Marketplace - MentorMap - OCaml Interpreter - Permit Filing Service - PintOS - Raphael OS - SQL Slammer Analysis - Secure Email Service - Shell Project - Shopify ERP Integration - Sports..."
+  }
+}

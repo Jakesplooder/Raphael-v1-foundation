@@ -1,0 +1,2471 @@
+{
+  "generated": "2026-07-09T23:40:54",
+  "overall": "healthy",
+  "system_health": {
+    "qdrant": {
+      "ok": false,
+      "detail": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    "ollama": {
+      "ok": false,
+      "models": [],
+      "detail": "<urlopen error timed out>"
+    },
+    "vision": {
+      "model": "qwen2.5vl",
+      "available": false,
+      "enabled": true
+    },
+    "piper": {
+      "engine": "piper",
+      "exe_exists": true,
+      "model_exists": true
+    },
+    "paths": {
+      "vault": "\\app\\vault",
+      "runtime": "\\app\\runtime",
+      "config": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\config\\settings.json"
+    },
+    "dashboard_chat": {
+      "chat_enabled": true,
+      "council_chat_enabled": true,
+      "command_execution_enabled": true,
+      "voice_input_enabled": true,
+      "voice_control_enabled": true,
+      "requires_confirmation": true,
+      "requires_delegation_confirmation": true,
+      "builder_enabled": true,
+      "builder_requires_confirmation": true,
+      "controlled_execution_enabled": true,
+      "dashboard_execution_enabled": true
+    }
+  },
+  "config_health": {
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "path": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\config\\settings.json"
+  },
+  "api_health": {
+    "ok": true,
+    "routes": [
+      {
+        "path": "/",
+        "methods": ""
+      },
+      {
+        "path": "/api/activity/sectors",
+        "methods": ""
+      },
+      {
+        "path": "/api/activity/summary",
+        "methods": ""
+      },
+      {
+        "path": "/api/chat",
+        "methods": ""
+      },
+      {
+        "path": "/api/communications/network",
+        "methods": ""
+      },
+      {
+        "path": "/api/communications/open",
+        "methods": ""
+      },
+      {
+        "path": "/api/communications/recommendations",
+        "methods": ""
+      },
+      {
+        "path": "/api/communications/syntheses",
+        "methods": ""
+      },
+      {
+        "path": "/api/councils/activity",
+        "methods": ""
+      },
+      {
+        "path": "/api/councils/chambers",
+        "methods": ""
+      },
+      {
+        "path": "/api/councils/departments",
+        "methods": ""
+      },
+      {
+        "path": "/api/councils/status",
+        "methods": ""
+      },
+      {
+        "path": "/api/dashboard-chat-test/report",
+        "methods": ""
+      },
+      {
+        "path": "/api/dashboard-chat-test/run",
+        "methods": ""
+      },
+      {
+        "path": "/api/employees/network",
+        "methods": ""
+      },
+      {
+        "path": "/api/health",
+        "methods": ""
+      },
+      {
+        "path": "/api/knowledge",
+        "methods": ""
+      },
+      {
+        "path": "/api/knowledge/relationships",
+        "methods": ""
+      },
+      {
+        "path": "/api/maintenance",
+        "methods": ""
+      },
+      {
+        "path": "/api/notifications/sectors",
+        "methods": ""
+      },
+      {
+        "path": "/api/overview",
+        "methods": ""
+      },
+      {
+        "path": "/api/raphael/presence",
+        "methods": ""
+      },
+      {
+        "path": "/api/raphael/presence/action",
+        "methods": ""
+      },
+      {
+        "path": "/api/self-healing",
+        "methods": ""
+      },
+      {
+        "path": "/api/self-healing/action/{action}",
+        "methods": ""
+      },
+      {
+        "path": "/api/services",
+        "methods": ""
+      },
+      {
+        "path": "/api/services/action",
+        "methods": ""
+      },
+      {
+        "path": "/api/services/health",
+        "methods": ""
+      },
+      {
+        "path": "/api/services/open",
+        "methods": ""
+      },
+      {
+        "path": "/api/services/restart",
+        "methods": ""
+      },
+      {
+        "path": "/api/services/start",
+        "methods": ""
+      },
+      {
+        "path": "/api/services/start-stack",
+        "methods": ""
+      },
+      {
+        "path": "/api/services/status",
+        "methods": ""
+      },
+      {
+        "path": "/api/services/stop",
+        "methods": ""
+      },
+      {
+        "path": "/api/workflow-runner",
+        "methods": ""
+      },
+      {
+        "path": "/api/workflow-runner/cancel",
+        "methods": ""
+      },
+      {
+        "path": "/api/workflow-runner/execute",
+        "methods": ""
+      },
+      {
+        "path": "/api/workflow-runner/monitor",
+        "methods": ""
+      },
+      {
+        "path": "/api/workflow-runner/result",
+        "methods": ""
+      }
+    ],
+    "missing": []
+  },
+  "dependencies": {
+    "ok": true,
+    "records": [
+      {
+        "name": "fastapi",
+        "available": true,
+        "required": true
+      },
+      {
+        "name": "uvicorn",
+        "available": true,
+        "required": true
+      },
+      {
+        "name": "qdrant_client",
+        "available": true,
+        "required": false
+      },
+      {
+        "name": "sentence_transformers",
+        "available": false,
+        "required": false
+      },
+      {
+        "name": "faster_whisper",
+        "available": true,
+        "required": false
+      },
+      {
+        "name": "sounddevice",
+        "available": true,
+        "required": false
+      }
+    ]
+  },
+  "files": {
+    "ok": true,
+    "records": [
+      {
+        "path": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\config\\settings.json",
+        "exists": true
+      },
+      {
+        "path": "\\app\\runtime\\command_bus.py",
+        "exists": true
+      },
+      {
+        "path": "\\app\\runtime\\voice_gateway.py",
+        "exists": true
+      }
+    ]
+  },
+  "model_status": {
+    "ollama_online": false,
+    "models": [],
+    "vision_model": {
+      "model": "qwen2.5vl",
+      "available": false,
+      "enabled": true
+    }
+  },
+  "qdrant_status": {
+    "ok": false,
+    "detail": "<urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  "ollama_status": {
+    "ok": false,
+    "models": [],
+    "detail": "<urlopen error timed out>"
+  },
+  "bootstrap": {
+    "enabled": true,
+    "groups": {
+      "core": "Online",
+      "ai": "Warning",
+      "creative": "Warning",
+      "voice": "Off"
+    },
+    "managed_pids": [],
+    "pid_registry": "\\app\\runtime\\launcher\\runtime\\service_pids.json",
+    "dashboard_url": "http://localhost:8787",
+    "comfyui_url": "http://host.docker.internal:8188",
+    "services": {
+      "dashboard": {
+        "ok": true,
+        "detail": "Current dashboard process is online."
+      },
+      "command_bus": {
+        "ok": true
+      },
+      "ollama": {
+        "ok": false,
+        "models": [],
+        "detail": "<urlopen error timed out>",
+        "required_models": [
+          "llama3.1",
+          "llama3.1:8b",
+          "qwen2.5vl"
+        ],
+        "missing_models": [
+          "llama3.1:8b",
+          "llama3.1",
+          "qwen2.5vl"
+        ]
+      },
+      "qdrant": {
+        "ok": false,
+        "detail": "<urlopen error [Errno 11001] getaddrinfo failed>"
+      },
+      "comfyui": {
+        "ok": false,
+        "detail": "<urlopen error timed out>"
+      },
+      "voice": {
+        "ok": false,
+        "engine": "piper",
+        "exe_exists": true,
+        "model_exists": true
+      }
+    },
+    "tools": {
+      "rembg": {
+        "exists": true,
+        "path": "C:\\AI_Tools\\venv\\Scripts\\rembg.exe"
+      },
+      "upscayl": {
+        "exists": true,
+        "path": "C:\\Program Files\\Upscayl\\resources\\bin\\upscayl-bin.exe"
+      },
+      "inkscape": {
+        "exists": true,
+        "path": "C:\\Program Files\\Inkscape\\bin\\inkscape.exe"
+      }
+    },
+    "startup": {
+      "label": "Startup Log",
+      "path": "\\app\\vault\\00_Raphael\\System Bootstrap\\Startup Log.md",
+      "exists": true,
+      "updated": "2026-07-09T15:42:42",
+      "content": "# Bootstrap Startup Log\n\nBootstrap is now managed by Docker Compose."
+    },
+    "recovery": {
+      "label": "Recovery Log",
+      "path": "\\app\\vault\\00_Raphael\\System Bootstrap\\Recovery Log.md",
+      "exists": true,
+      "updated": "2026-06-19T03:33:13",
+      "content": "# Bootstrap Recovery Log\n\n## 2026-06-19T03:27:26\n\n- Action: bootstrap-install-startup\n- Health: Not checked\n- Service: windows_startup\n  - Result: Installed via Startup Folder\n  - PID: None\n  - Error: C:\\Users\\cyber\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\RaphaelOS Bootstrap.cmd\n\n## 2026-06-19T03:27:32\n\n- Action: bootstrap-remove-startup\n- Health: Not checked\n- Service: windows_startup\n  - Result: Removed\n  - PID: None\n  - Error: ERROR: The system cannot find the file specified.\n\n## 2026-06-19T03:27:32\n\n- Action: bootstrap-install-startup\n- Health: Not checked\n- Service: windows_startup\n  - Result: Installed via Startup Folder\n  - PID: None\n  - Error: C:\\Users\\cyber\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\RaphaelOS Bootstrap.cmd\n\n## 2026-06-19T03:28:19\n\n- Action: bootstrap-stop\n- Health: Needs Attention\n- Service: comfyui\n  - Result: Stopped\n  - PID: 72052\n  - Error: None\n\n## 2026-06-19T03:28:35\n\n- Action: bootstrap-restart\n- Health: Healthy\n- Service: comfyui\n  - Result: Stopped\n  - PID: 72052\n  - Error: None\n- Service: dashboard\n  - Re..."
+    },
+    "health": {
+      "label": "Bootstrap Health",
+      "path": "\\app\\vault\\00_Raphael\\System Bootstrap\\Bootstrap Health.md",
+      "exists": true,
+      "updated": "2026-07-09T15:24:12",
+      "content": "# Bootstrap Health\n\nGenerated: 2026-07-09T15:24:12\n\n## Overall\n\nNeeds Attention\n\n## Health Pill\n\n- Core: Warning\n- AI: Warning\n- Creative: Online\n- Voice: Off\n\n## Services\n\n- dashboard: Warning - timed out\n- command_bus: OK - Imported and classified: bootstrap_health\n- ollama: OK - HTTP OK: http://127.0.0.1:11434/api/tags\n- qdrant: Warning - <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>\n- comfyui: OK - HTTP OK: http://127.0.0.1:8188/system_stats\n- voice: OK - \n\n## Paths and Tools\n\n- vault: OK - `C:\\Users\\cyber\\Downloads\\RalphaelOS\\Ralphael`\n- runtime: OK - `C:\\RaphaelOS`\n- config: OK - `C:\\Users\\cyber\\Downloads\\RalphaelOS\\config\\settings.json`\n- podstudio: OK - `C:\\RaphaelOS\\PODStudio`\n- brandlibrary: OK - `C:\\RaphaelOS\\BrandLibrary`\n- builder_workspace: OK - `C:\\RaphaelOS\\builder\\workspace`\n- inkscape: OK - `C:\\Program Files\\Inkscape\\bin\\inkscape.exe`\n- rembg: OK - `C:\\AI_Tools\\venv\\Scripts\\rembg.exe`\n- upscayl: Missing - ``\n- krita: Missing - ``\n- piper_exe: OK - `C:\\Users\\cyber\\AppData\\Local\\Python\\pythoncore-3.14-64..."
+    },
+    "review": {
+      "label": "Bootstrap Review",
+      "path": "\\app\\vault\\00_Raphael\\System Bootstrap\\Bootstrap Review.md",
+      "exists": true,
+      "updated": "2026-06-19T03:33:36",
+      "content": "# Bootstrap Review\n\nGenerated: 2026-06-19T03:33:36\n\n## Overall\n\nHealthy\n\n## Configuration\n\n- Open dashboard on start: True\n- Generate morning brief: True\n- Start dashboard: True\n- Start ComfyUI: True\n- Start Voice Gateway: False\n- Auto-restart failed services: False\n- Restart confirmation required: True\n\n## Managed Processes\n\n- comfyui: PID 70296 (alive)\n\n## Recommendations\n\n- Keep Voice Gateway disabled at startup unless always-on microphone behavior is wanted.\n- Treat Ollama and Qdrant as checked external local services, not bootstrap-owned processes.\n- Use `bootstrap-health` after crashes before restarting anything.\n\n## Boundary\n\nBootstrap manages only known local support services. It performs no business\nexecution, publishing, upload, email, spending, or credential access."
+    }
+  },
+  "service_manager": {
+    "generated": "2026-07-09T23:40:54",
+    "registry_path": "C:\\RaphaelOS\\launcher\\service_registry.json",
+    "pid_registry_path": "C:\\RaphaelOS\\launcher\\runtime\\service_pids.json",
+    "docker": {
+      "enabled": true,
+      "available": true,
+      "healthy": true,
+      "version": "29.6.1",
+      "platform": "Docker Desktop 4.81.0 (232925)",
+      "context": "desktop-linux",
+      "error": ""
+    },
+    "docker_registry_path": "C:\\RaphaelOS\\docker\\docker_service_registry.json",
+    "services": [
+      {
+        "service_id": "dashboard",
+        "display_name": "Raphael Dashboard",
+        "category": "core",
+        "enabled": true,
+        "required": false,
+        "start_command": "C:\\Users\\cyber\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe C:\\Users\\cyber\\Downloads\\RalphaelOS\\raphael.py --config C:\\Users\\cyber\\Downloads\\RalphaelOS\\config\\settings.json dashboard-start",
+        "working_directory": "C:\\Users\\cyber\\Downloads\\RalphaelOS",
+        "health_check_type": "url",
+        "health_check_target": "http://127.0.0.1:8787/api/health",
+        "stop_method": "pid",
+        "auto_start": true,
+        "auto_restart": false,
+        "requires_confirmation": true,
+        "notes": "Localhost-only Raphael dashboard.",
+        "image": "",
+        "container_name": "",
+        "backend": "host_agent",
+        "healthy": true,
+        "health": "healthy",
+        "status": "external",
+        "detail": "HTTP 200",
+        "managed": false,
+        "pid": null,
+        "log_path": "C:\\RaphaelOS\\launcher\\runtime\\logs\\dashboard.log",
+        "logs": "INFO:     127.0.0.1:62923 - \"GET /static/css/employee_network.css?v=56-employee-network-fix1 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62923 - \"GET /static/js/matrix_config.js?v=63b-pod-studio HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62923 - \"GET /static/js/transitions.js?v=56-employee-network HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62923 - \"GET /static/js/hud.js?v=56-employee-network HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62923 - \"GET /static/js/raphael_orb.js?v=57-presence-2 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62923 - \"GET /static/js/galaxy_map.js?v=57-presence HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62923 - \"GET /static/js/employee_network.js?v=56-employee-network HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62923 - \"GET /static/js/matrix.js?v=59-communications HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:53323 - \"GET /favicon.ico HTTP/1.1\" 404 Not Found\nINFO:     127.0.0.1:53323 - \"GET / HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:53323 - \"GET /static/css/matrix.css?v=57-presence HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49801 - \"GET /static/css/employee_network.css?v=56-employee-network-fix1 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49801 - \"GET /static/js/matrix_config.js?v=63b-pod-studio HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49801 - \"GET /static/js/transitions.js?v=56-employee-network HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:53323 - \"GET /static/js/hud.js?v=56-employee-network HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:53323 - \"GET /static/js/raphael_orb.js?v=57-presence-2 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:53323 - \"GET /static/js/galaxy_map.js?v=57-presence HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:53323 - \"GET /static/js/employee_network.js?v=56-employee-network HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:53323 - \"GET /static/js/matrix.js?v=59-communications HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:51561 - \"GET /api/health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:60632 - \"GET /api/overview HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:58522 - \"GET /api/health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:51555 - \"GET /api/overview HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:64148 - \"GET /api/health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:51247 - \"GET /api/overview HTTP/1.1\" 200 OK",
+        "last_error": ""
+      },
+      {
+        "service_id": "comfyui",
+        "display_name": "ComfyUI",
+        "category": "creative",
+        "enabled": true,
+        "required": false,
+        "start_command": "C:\\ComfyUI\\venv\\Scripts\\python.exe C:\\ComfyUI\\main.py --listen 0.0.0.0 --port 8188",
+        "working_directory": "C:\\ComfyUI",
+        "health_check_type": "url",
+        "health_check_target": "http://host.docker.internal:8188",
+        "stop_method": "pid",
+        "auto_start": true,
+        "auto_restart": false,
+        "requires_confirmation": true,
+        "notes": "Managed only when Raphael starts it.",
+        "image": "",
+        "container_name": "",
+        "backend": "host_agent",
+        "healthy": false,
+        "health": "unhealthy",
+        "status": "stopped",
+        "detail": "<urlopen error timed out>",
+        "managed": false,
+        "pid": null,
+        "log_path": "C:\\RaphaelOS\\launcher\\runtime\\logs\\comfyui.log",
+        "logs": "\u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n\u001b[32m[INFO]\u001b[0m Starting server\n\n\u001b[32m[INFO]\u001b[0m To see the GUI go to: http://127.0.0.1:8188\n\u001b[32m[INFO]\u001b[0m [ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/alter-list.json\n\u001b[32m[INFO]\u001b[0m [ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/model-list.json\n\u001b[32m[INFO]\u001b[0m [ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/github-stats.json\n\u001b[32m[INFO]\u001b[0m [ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/extension-node-map.json\n\u001b[32m[INFO]\u001b[0m [ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/custom-node-list.json\nFETCH ComfyRegistry Data: 5/160\n\u001b[1m\u001b[31m[ERROR]\u001b[0m Exception in callback _ProactorBasePipeTransport._call_connection_lost()\nhandle: <Handle _ProactorBasePipeTransport._call_connection_lost()>\nTraceback (most recent call last):\n  File \"C:\\Users\\cyber\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\asyncio\\events.py\", line 94, in _run\n    self._context.run(self._callback, *self._args)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\cyber\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\asyncio\\proactor_events.py\", line 165, in _call_connection_lost\n    self._sock.shutdown(socket.SHUT_RDWR)\n    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\nConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host\nFETCH ComfyRegistry Data: 10/160\nFETCH ComfyRegistry Data: 15/160\nCannot connect to comfyregistry.\nFETCH DATA from: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/custom-node-list.json [DONE]\n\u001b[32m[INFO]\u001b[0m [ComfyUI-Manager] All startup tasks have been completed.",
+        "last_error": "<urlopen error timed out>"
+      },
+      {
+        "service_id": "ollama",
+        "display_name": "Ollama",
+        "category": "ai",
+        "enabled": true,
+        "required": false,
+        "start_command": "",
+        "working_directory": "",
+        "health_check_type": "url",
+        "health_check_target": "http://127.0.0.1:11434/api/tags",
+        "stop_method": "pid",
+        "auto_start": false,
+        "auto_restart": false,
+        "requires_confirmation": false,
+        "notes": "Observed only until an explicit local start command is registered.",
+        "image": "",
+        "container_name": "",
+        "backend": "internal",
+        "healthy": true,
+        "health": "healthy",
+        "status": "external",
+        "detail": "HTTP 200",
+        "managed": false,
+        "pid": null,
+        "log_path": "C:\\RaphaelOS\\launcher\\runtime\\logs\\ollama.log",
+        "logs": "",
+        "last_error": ""
+      },
+      {
+        "service_id": "qdrant",
+        "display_name": "Qdrant",
+        "category": "ai",
+        "enabled": true,
+        "required": false,
+        "start_command": "",
+        "working_directory": "",
+        "health_check_type": "url",
+        "health_check_target": "http://127.0.0.1:6333",
+        "stop_method": "graceful",
+        "auto_start": true,
+        "auto_restart": false,
+        "requires_confirmation": true,
+        "notes": "Docker-backed allowlisted Qdrant service; managed only with Raphael ownership labels.",
+        "image": "qdrant/qdrant:latest",
+        "container_name": "raphael-qdrant",
+        "backend": "docker",
+        "healthy": false,
+        "health": "unhealthy",
+        "status": "stopped",
+        "detail": "Container is not running.",
+        "managed": false,
+        "pid": null,
+        "container_id": "",
+        "ownership_conflict": false,
+        "log_path": "C:\\RaphaelOS\\docker\\docker_manager.log",
+        "logs": "",
+        "last_error": "Container is not running."
+      },
+      {
+        "service_id": "voice_gateway",
+        "display_name": "Voice Gateway",
+        "category": "voice",
+        "enabled": false,
+        "required": false,
+        "start_command": "C:\\Users\\cyber\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe C:\\RaphaelOS\\voice_gateway.py chat",
+        "working_directory": "C:\\RaphaelOS",
+        "health_check_type": "process",
+        "health_check_target": "voice_gateway.py",
+        "stop_method": "pid",
+        "auto_start": false,
+        "auto_restart": false,
+        "requires_confirmation": false,
+        "notes": "Voice never auto-starts unless explicitly enabled.",
+        "image": "",
+        "container_name": "",
+        "backend": "host_agent",
+        "healthy": false,
+        "health": "unhealthy",
+        "status": "stopped",
+        "detail": "No matching Raphael-managed process",
+        "managed": false,
+        "pid": null,
+        "log_path": "C:\\RaphaelOS\\launcher\\runtime\\logs\\voice_gateway.log",
+        "logs": "",
+        "last_error": "No matching Raphael-managed process"
+      },
+      {
+        "service_id": "piper",
+        "display_name": "Piper",
+        "category": "voice",
+        "enabled": false,
+        "required": false,
+        "start_command": "",
+        "working_directory": "C:\\RaphaelOS\\voice",
+        "health_check_type": "file",
+        "health_check_target": "C:\\RaphaelOS\\voice\\models",
+        "stop_method": "pid",
+        "auto_start": false,
+        "auto_restart": false,
+        "requires_confirmation": false,
+        "notes": "Optional voice tool path check; no daemon command configured.",
+        "image": "",
+        "container_name": "",
+        "backend": "internal",
+        "healthy": true,
+        "health": "healthy",
+        "status": "running",
+        "detail": "Path exists",
+        "managed": false,
+        "pid": null,
+        "log_path": "C:\\RaphaelOS\\launcher\\runtime\\logs\\piper.log",
+        "logs": "",
+        "last_error": ""
+      },
+      {
+        "service_id": "pod_helpers",
+        "display_name": "POD Studio Helpers",
+        "category": "creative",
+        "enabled": true,
+        "required": false,
+        "start_command": "",
+        "working_directory": "C:\\RaphaelOS\\PODStudio",
+        "health_check_type": "file",
+        "health_check_target": "C:\\RaphaelOS\\PODStudio",
+        "stop_method": "pid",
+        "auto_start": false,
+        "auto_restart": false,
+        "requires_confirmation": false,
+        "notes": "File/tool readiness group; not a persistent process.",
+        "image": "",
+        "container_name": "",
+        "backend": "internal",
+        "healthy": true,
+        "health": "healthy",
+        "status": "running",
+        "detail": "Path exists",
+        "managed": false,
+        "pid": null,
+        "log_path": "C:\\RaphaelOS\\launcher\\runtime\\logs\\pod_helpers.log",
+        "logs": "",
+        "last_error": ""
+      },
+      {
+        "service_id": "n8n",
+        "display_name": "n8n",
+        "category": "workflow",
+        "enabled": true,
+        "required": false,
+        "start_command": "",
+        "working_directory": "",
+        "health_check_type": "url",
+        "health_check_target": "http://127.0.0.1:5678/healthz",
+        "stop_method": "graceful",
+        "auto_start": false,
+        "auto_restart": false,
+        "requires_confirmation": true,
+        "notes": "Docker-backed. External integrations and credentials remain disabled.",
+        "image": "docker.n8n.io/n8nio/n8n",
+        "container_name": "raphael-n8n",
+        "backend": "docker",
+        "healthy": true,
+        "health": "healthy",
+        "status": "conflict",
+        "detail": "HTTP 200",
+        "managed": false,
+        "pid": null,
+        "container_id": "5da7da043c4e",
+        "ownership_conflict": true,
+        "log_path": "C:\\RaphaelOS\\docker\\docker_manager.log",
+        "logs": "",
+        "last_error": "Docker ownership conflict: the named container is not Raphael-managed and will not be changed."
+      },
+      {
+        "service_id": "postgres",
+        "display_name": "Postgres",
+        "category": "optional",
+        "enabled": false,
+        "required": false,
+        "start_command": "",
+        "working_directory": "",
+        "health_check_type": "port",
+        "health_check_target": "127.0.0.1:5432",
+        "stop_method": "pid",
+        "auto_start": false,
+        "auto_restart": false,
+        "requires_confirmation": false,
+        "notes": "Docker-backed and disabled by default. Raphael stores no database credentials.",
+        "image": "",
+        "container_name": "raphael-postgres",
+        "backend": "docker",
+        "healthy": false,
+        "health": "unhealthy",
+        "status": "stopped",
+        "detail": "Container is not running.",
+        "managed": false,
+        "pid": null,
+        "container_id": "",
+        "ownership_conflict": false,
+        "log_path": "C:\\RaphaelOS\\docker\\docker_manager.log",
+        "logs": "",
+        "last_error": "Container is not running."
+      },
+      {
+        "service_id": "redis",
+        "display_name": "Redis",
+        "category": "optional",
+        "enabled": false,
+        "required": false,
+        "start_command": "",
+        "working_directory": "",
+        "health_check_type": "port",
+        "health_check_target": "127.0.0.1:6379",
+        "stop_method": "pid",
+        "auto_start": false,
+        "auto_restart": false,
+        "requires_confirmation": false,
+        "notes": "Docker-backed and disabled by default.",
+        "image": "",
+        "container_name": "raphael-redis",
+        "backend": "docker",
+        "healthy": false,
+        "health": "unhealthy",
+        "status": "stopped",
+        "detail": "Container is not running.",
+        "managed": false,
+        "pid": null,
+        "container_id": "",
+        "ownership_conflict": false,
+        "log_path": "C:\\RaphaelOS\\docker\\docker_manager.log",
+        "logs": "",
+        "last_error": "Container is not running."
+      },
+      {
+        "service_id": "searxng",
+        "display_name": "SearXNG",
+        "category": "ai",
+        "enabled": true,
+        "required": false,
+        "start_command": "",
+        "working_directory": "",
+        "health_check_type": "url",
+        "health_check_target": "http://127.0.0.1:8080",
+        "stop_method": "graceful",
+        "auto_start": false,
+        "auto_restart": false,
+        "requires_confirmation": true,
+        "notes": "Docker-backed localhost-only headless research provider.",
+        "image": "searxng/searxng:latest",
+        "container_name": "raphael-searxng",
+        "backend": "docker",
+        "healthy": false,
+        "health": "unhealthy",
+        "status": "stopped",
+        "detail": "Container is not running.",
+        "managed": false,
+        "pid": null,
+        "container_id": "",
+        "ownership_conflict": false,
+        "log_path": "C:\\RaphaelOS\\docker\\docker_manager.log",
+        "logs": "",
+        "last_error": "Container is not running."
+      }
+    ]
+  },
+  "self_healing": {
+    "ok": true,
+    "enabled": true,
+    "auto_observe": true,
+    "auto_repair": false,
+    "requires_confirmation": true,
+    "runtime": "C:\\RaphaelOS\\self_healing",
+    "notes": {
+      "overview": {
+        "label": "Self Healing Overview",
+        "path": "\\app\\vault\\00_Raphael\\Self Healing\\Self Healing Overview.md",
+        "exists": true,
+        "updated": "2026-06-24T04:53:50",
+        "content": "# Self Healing Overview\n\nRaphael observes local operational health, explains detected issues, prepares\nsafe repair plans, and only runs allowlisted local repairs after approval.\n\n## Safety Boundary\n\n- No repair runs without approval\n- No arbitrary shell commands\n- No deleting user files\n- No publishing, uploading, spending, account access, or credentials\n- No killing unmanaged processes\n- No Docker prune\n- Repairs are restricted to fixed allowlisted actions"
+      },
+      "observations": {
+        "label": "Health Observations",
+        "path": "\\app\\vault\\00_Raphael\\Self Healing\\Health Observations.md",
+        "exists": true,
+        "updated": "2026-06-27T23:01:29",
+        "content": "# Health Observations\n\nGenerated: 2026-06-27T23:01:29\n\n| System | OK | Detail |\n|---|---:|---|\n| dashboard | False | timed out |\n| command_bus | True | C:\\RaphaelOS\\command_bus.py |\n| confirmation_system | True | Command Bus confirmation state is session-scoped; stale workflow confirmations are detected from workflow files. |\n| pod_workflow | True |  |\n| workflow_runner | True |  |\n| comfyui | True | HTTP 200 |\n| qdrant | True | HTTP 200 |\n| ollama | True | HTTP 200 |\n| n8n | False | <urlopen error timed out> |\n| searxng | True | HTTP 200 |\n| service_manager | True | ok |\n| docker_manager | False |  |\n| internet_access | True | 1.1.1.1:53 reachable |\n| voice | True | C:\\RaphaelOS\\voice_gateway.py |\n| ocr_tesseract | True |  |\n| inkscape | True |  |\n| builder | True | C:\\RaphaelOS\\builder\\workspace |\n| asset_library | True | enabled |"
+      },
+      "issues": {
+        "label": "Detected Issues",
+        "path": "\\app\\vault\\00_Raphael\\Self Healing\\Detected Issues.md",
+        "exists": true,
+        "updated": "2026-06-27T23:01:29",
+        "content": "# Detected Issues\n\n## ISSUE-20260627-365C0FF1\n\n- Severity: warning\n- Affected system: N8N\n- Symptoms: n8n health check failed\n- Probable cause: <urlopen error timed out>\n- Evidence: {\"ok\": false, \"detail\": \"<urlopen error timed out>\", \"url\": \"http://127.0.0.1:5678/healthz\"}\n- Recommended fix: start n8n through Service Manager\n- Repairability: approval_required\n- Risk level: medium\n- Related logs: None\n- Related command: `python raphael.py service-start n8n`\n\n## ISSUE-20260627-C2987D7B\n\n- Severity: critical\n- Affected system: Dashboard\n- Symptoms: dashboard health check failed\n- Probable cause: timed out\n- Evidence: {\"ok\": false, \"detail\": \"timed out\", \"url\": \"http://127.0.0.1:8787/api/health\"}\n- Recommended fix: restart Dashboard through Service Manager\n- Repairability: approval_required\n- Risk level: low\n- Related logs: None\n- Related command: `python raphael.py service-restart dashboard`\n\n## ISSUE-20260627-342602EE\n\n- Severity: warning\n- Affected system: Docker Manager\n- Symptoms: Container raphael-qdrant exists but is not Raphael-managed\n- Probable cause: Container ownership la..."
+      },
+      "plans": {
+        "label": "Repair Plans",
+        "path": "\\app\\vault\\00_Raphael\\Self Healing\\Repair Plans.md",
+        "exists": true,
+        "updated": "2026-06-24T04:53:50",
+        "content": "# Repair Plans\n\nNo repair plans created yet."
+      },
+      "history": {
+        "label": "Repair History",
+        "path": "\\app\\vault\\00_Raphael\\Self Healing\\Repair History.md",
+        "exists": true,
+        "updated": "2026-06-24T04:53:50",
+        "content": "# Repair History\n\nNo repairs run yet."
+      },
+      "brief": {
+        "label": "System Reliability Brief",
+        "path": "\\app\\vault\\00_Raphael\\Self Healing\\System Reliability Brief.md",
+        "exists": true,
+        "updated": "2026-06-24T04:55:08",
+        "content": "# System Reliability Brief\n\nGenerated: 2026-06-24T04:55:08\n\n- Health score: 0\n- Active issues: 55\n- Critical: 1\n- Warning: 3\n\n## Top Recommendations\n\n- start ComfyUI through Service Manager\n- start n8n through Service Manager\n- restart Dashboard through Service Manager\n- Review the container manually; Raphael will not stop or adopt unmanaged containers.\n- Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.\n\n## Safety\n\nAuto-repair remains disabled unless explicitly configured and repairs still require approval by default."
+      }
+    },
+    "latest_observation": "C:\\RaphaelOS\\self_healing\\observations\\OBS-20260627-67B3FB25.json",
+    "health_score": 0,
+    "active_issue_count": 79,
+    "active_issues": [
+      {
+        "issue_id": "ISSUE-20260627-365C0FF1",
+        "kind": "n8n_offline",
+        "severity": "warning",
+        "affected_system": "N8N",
+        "symptoms": [
+          "n8n health check failed"
+        ],
+        "probable_cause": "<urlopen error timed out>",
+        "evidence": [
+          "{\"ok\": false, \"detail\": \"<urlopen error timed out>\", \"url\": \"http://127.0.0.1:5678/healthz\"}"
+        ],
+        "recommended_fix": "start n8n through Service Manager",
+        "repairability": "approval_required",
+        "risk_level": "medium",
+        "related_logs": [],
+        "related_command": "python raphael.py service-start n8n",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-C2987D7B",
+        "kind": "dashboard_offline",
+        "severity": "critical",
+        "affected_system": "Dashboard",
+        "symptoms": [
+          "dashboard health check failed"
+        ],
+        "probable_cause": "timed out",
+        "evidence": [
+          "{\"ok\": false, \"detail\": \"timed out\", \"url\": \"http://127.0.0.1:8787/api/health\"}"
+        ],
+        "recommended_fix": "restart Dashboard through Service Manager",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py service-restart dashboard",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-342602EE",
+        "kind": "unmanaged_docker_container",
+        "severity": "warning",
+        "affected_system": "Docker Manager",
+        "symptoms": [
+          "Container raphael-qdrant exists but is not Raphael-managed"
+        ],
+        "probable_cause": "Container ownership labels or image do not match the Docker registry.",
+        "evidence": [
+          "{\"service_id\": \"qdrant\", \"display_name\": \"Qdrant\", \"enabled\": true, \"image\": \"qdrant/qdrant\", \"container_name\": \"raphael-qdrant\", \"ports\": [\"127.0.0.1:6333:6333\"], \"volumes\": [\"C:\\\\RaphaelOS\\\\docker\\\\qdrant:/qdrant/storage\"], \"health_check\": \"http://127.0.0.1:6333\", \"notes\": \"Local vector memory service.\", \"exists\": true, \"running\": true, \"managed\": false, \"conflict\": true, \"container_id\": \"a0e50c94930a\", \"actual_image\": \"qdrant/qdrant\", \"state\": \"running\"}"
+        ],
+        "recommended_fix": "Review the container manually; Raphael will not stop or adopt unmanaged containers.",
+        "repairability": "manual",
+        "risk_level": "medium",
+        "related_logs": [],
+        "related_command": "python raphael.py docker-status",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-D3A15704",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-8E3E3A60 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-8E3E3A60\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T23:31:15\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-8E3E3A60",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-2BA26DDD",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-2579E0BF has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-2579E0BF\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T23:26:20\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-2579E0BF",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-DD9B6AF2",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-483D5C16 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-483D5C16\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T23:06:36\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-483D5C16",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-BE2C354B",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-B98527D8 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-B98527D8\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T19:35:10\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-B98527D8",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-BD7EC6E2",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-CFAA3B63 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-CFAA3B63\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T19:34:15\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-CFAA3B63",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-E5A57905",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-FD9A383D has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-FD9A383D\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T19:34:09\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-FD9A383D",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-9D8AD8F4",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-E6D5FDE7 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-E6D5FDE7\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:12:44\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-E6D5FDE7",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-E12869FC",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-2641C434 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-2641C434\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:11:54\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-2641C434",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-276E4D60",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-DE369D58 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-DE369D58\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:11:48\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-DE369D58",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-3ABC14CF",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-D0AF7438 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-D0AF7438\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:10:37\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-D0AF7438",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-E8EC2F42",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-1F5B9C16 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-1F5B9C16\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:09:46\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-1F5B9C16",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-7B07FD67",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-F7B49254 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-F7B49254\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:09:40\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-F7B49254",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-09BB9502",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-899EE44F has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-899EE44F\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:08:26\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-899EE44F",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-429CF379",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-22EC0874 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-22EC0874\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:08:20\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-22EC0874",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-BC90E702",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-62116D97 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-62116D97\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:06:53\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-62116D97",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-3CE52C75",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-474E7476 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-474E7476\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:06:47\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-474E7476",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-861B9BA5",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-F8F89E90 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-F8F89E90\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:05:46\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-F8F89E90",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-E770FD8A",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-8F08C581 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-8F08C581\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T05:05:39\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-8F08C581",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-E7C8066A",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-2F11C155 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-2F11C155\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T04:57:31\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-2F11C155",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-CED26076",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-F83B438A has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-F83B438A\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T04:56:45\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-F83B438A",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-04E9A05D",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-58645E2D has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-58645E2D\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T04:56:38\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-58645E2D",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-BC1FEBD1",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-4D983F2B has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-4D983F2B\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T04:55:23\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-4D983F2B",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-1A27D76A",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-5EC60EE8 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-5EC60EE8\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T04:55:16\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-5EC60EE8",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-D4B1DCB5",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-2DFBAE70 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-2DFBAE70\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T04:53:37\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-2DFBAE70",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-37781EFB",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260624-85BFB652 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260624-85BFB652\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-24T04:53:31\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260624-85BFB652",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-D3571150",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260622-FC74E603 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260622-FC74E603\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-22T19:19:46\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260622-FC74E603",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-4C37BDF7",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260622-C9B09DC5 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260622-C9B09DC5\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-22T19:19:39\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260622-C9B09DC5",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-948BA0BA",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260622-3C11602B has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260622-3C11602B\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-22T19:18:20\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260622-3C11602B",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-8B9782AA",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260622-010D6DBD has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260622-010D6DBD\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-22T19:17:02\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260622-010D6DBD",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-EF831480",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260622-6D0F5C2A has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260622-6D0F5C2A\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-22T19:16:55\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260622-6D0F5C2A",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-76ECAC51",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260622-D6B386EF has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260622-D6B386EF\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-22T19:13:06\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260622-D6B386EF",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-F1AE0FC9",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260622-917B2713 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260622-917B2713\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-22T19:12:59\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260622-917B2713",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-437B5B1D",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260622-E7620901 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260622-E7620901\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-22T19:07:18\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260622-E7620901",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-20753037",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-A8B737CB has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-A8B737CB\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T21:15:37\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-A8B737CB",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-CFD416CA",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-A69A9AC0 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-A69A9AC0\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T21:15:32\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-A69A9AC0",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-B87174F3",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-53F6B8CC has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-53F6B8CC\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T21:13:03\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-53F6B8CC",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-100C9C35",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-07E6B90D has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-07E6B90D\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T21:12:23\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-07E6B90D",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-2B4EC032",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-9611C3C8 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-9611C3C8\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T21:12:19\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-9611C3C8",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-E96AD5C5",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-C6ADE7A9 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-C6ADE7A9\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T21:11:14\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-C6ADE7A9",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-C7D092F1",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-FB2F5D6D has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-FB2F5D6D\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T21:11:10\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-FB2F5D6D",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-BED06EBB",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-FC262513 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-FC262513\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:51:03\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-FC262513",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-97EC99C7",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-5891C844 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-5891C844\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:50:23\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-5891C844",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-790D1B64",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-211FEF81 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-211FEF81\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:50:19\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-211FEF81",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-09B225F3",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-1F3760C3 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-1F3760C3\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:49:02\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-1F3760C3",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-EB5DCF55",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-7B96D120 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-7B96D120\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:48:58\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-7B96D120",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-7DAC8E76",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-DDA058B8 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-DDA058B8\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:47:57\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-DDA058B8",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-8A22295D",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-26EA79A6 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-26EA79A6\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:47:53\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-26EA79A6",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-5AA1D264",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-51D53FD3 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-51D53FD3\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:45:59\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-51D53FD3",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-E378DFFC",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-2E329CBD has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-2E329CBD\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:45:54\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-2E329CBD",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-365C1855",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-47A26A6A has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-47A26A6A\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:36:51\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-47A26A6A",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-C0B75EB7",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-0E1A73DA has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-0E1A73DA\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:36:02\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-0E1A73DA",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-CB0F82C3",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-27E3C87A has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-27E3C87A\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:35:58\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-27E3C87A",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-4724C3EF",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-E8AB09B9 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-E8AB09B9\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:34:12\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-E8AB09B9",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-947C25B1",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-042859DD has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-042859DD\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:21:03\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-042859DD",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-F2FF21ED",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-F0EC84AD has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-F0EC84AD\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:20:17\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-F0EC84AD",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-068C2F3F",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-AF4AAA86 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-AF4AAA86\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T20:20:13\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-AF4AAA86",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-72E76838",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-A1E39FD9 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-A1E39FD9\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T19:04:07\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-A1E39FD9",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-EEB3DA57",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-E96CEB89 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-E96CEB89\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T19:03:15\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-E96CEB89",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-41D42D6D",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-E5C07A14 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-E5C07A14\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T19:03:11\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-E5C07A14",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-5F6207BE",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-75491FC9 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-75491FC9\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T19:01:25\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-75491FC9",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-99D9CBFC",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-3AA31FCC has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-3AA31FCC\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T19:00:34\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-3AA31FCC",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-6B6FE43E",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-B7CF2303 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-B7CF2303\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T19:00:29\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-B7CF2303",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-FFE371E5",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-034E7DF7 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-034E7DF7\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:59:29\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-034E7DF7",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-7B6F2DDE",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-CE702A0E has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-CE702A0E\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:59:27\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-CE702A0E",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-10BB13FD",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-848D7F18 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-848D7F18\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:58:12\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-848D7F18",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-FCE17996",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-568B2707 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-568B2707\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:58:08\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-568B2707",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-221B3647",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-5F202084 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-5F202084\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:57:53\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-5F202084",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-E8874281",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-F645DAA1 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-F645DAA1\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:57:49\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-F645DAA1",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-FE50C66F",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-9CE98C4C has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-9CE98C4C\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:57:05\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-9CE98C4C",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-4B32E036",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-42B4B78B has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-42B4B78B\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:57:01\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-42B4B78B",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-5CC6E048",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-E8620856 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-E8620856\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:56:17\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-E8620856",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-CCF7C469",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-8BC905C1 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-8BC905C1\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:56:12\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-8BC905C1",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-25F66B5B",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-5DC6883F has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-5DC6883F\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:56:08\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-5DC6883F",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-B76703B2",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-FBD8292E has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-FBD8292E\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:55:59\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-FBD8292E",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-F4DF3364",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-CAC8E337 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-CAC8E337\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:55:55\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-CAC8E337",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      },
+      {
+        "issue_id": "ISSUE-20260627-A19BFC23",
+        "kind": "stale_confirmation_token",
+        "severity": "info",
+        "affected_system": "Confirmation System",
+        "symptoms": [
+          "POD workflow PODFLOW-20260621-3B129CA9 has waited for confirmation for more than 24 hours"
+        ],
+        "probable_cause": "A previous confirmation prompt was not completed or cancelled.",
+        "evidence": [
+          "{\"workflow_id\": \"PODFLOW-20260621-3B129CA9\", \"status\": \"awaiting_confirmation\", \"updated\": \"2026-06-21T18:55:40\"}"
+        ],
+        "recommended_fix": "Clear or replace the stale confirmation by explicitly continuing or cancelling the workflow.",
+        "repairability": "approval_required",
+        "risk_level": "low",
+        "related_logs": [],
+        "related_command": "python raphael.py pod-workflow-show PODFLOW-20260621-3B129CA9",
+        "detected_at": "2026-06-27T23:01:29",
+        "status": "active"
+      }
+    ],
+    "repair_history_count": 0,
+    "repair_history": {
+      "history": [],
+      "count": 0,
+      "path": "C:\\RaphaelOS\\self_healing\\history\\repair_history.jsonl"
+    },
+    "note_root": "\\app\\vault\\00_Raphael\\Self Healing"
+  },
+  "dashboard_chat_tests": {
+    "report": "\\app\\vault\\00_Raphael\\Dashboard Chat Tests\\Dashboard Chat Smoke Test Report.md",
+    "history": "\\app\\vault\\00_Raphael\\Dashboard Chat Tests\\Dashboard Chat Test History.md",
+    "exists": true,
+    "passed": 14,
+    "failed": 0,
+    "updated": "2026-06-22T19:20:03",
+    "content": "# Dashboard Chat Smoke Test Report\n\nGenerated: 2026-06-22T19:20:03\n\n- Endpoint: `http://127.0.0.1:8789/api/chat`\n- Mode: isolated dry-run / simulated local execution\n- Passed: 14\n- Failed: 0\n- External publishing, uploads, spending, and service changes performed: No\n\n## 1. Basic health\n\n- Input message: `hello Raphael`\n- Expected route: greeting / ready response\n- Actual route: `greeting`\n- Status: Success\n- Response snippet: Hello Aaron. I'm online. How can I help?\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: None\n\n## 2. POD routing\n\n- Input message: `create me a POD t shirt with an elephant picture on it`\n- Expected route: pod-workflow\n- Actual route: `pod_workflow -> python raphael.py pod-workflow-continue \"PODFLOW-SMOKE-0001\"`\n- Status: Confirmation Required\n- Response snippet: POD workflow started. Stage 1/13 complete. Say confirm to continue. python raphael.py pod-workflow-continue \"PODFLOW-SMOKE-0001\"\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: None\n\n## 3. POD workflow confirmation\n\n- Input message: `create me a POD t shirt with an elephant picture on it -> confirm`\n- Expected route: one confirm advances exactly one stage\n- Actual route: `pod_workflow_continue -> python raphael.py pod-workflow-continue \"PODFLOW-SMOKE-0001\"`\n- Status: Confirmation Required\n- Response snippet: POD workflow stage 2/13 complete. python raphael.py pod-workflow-continue \"PODFLOW-SMOKE-0001\"\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: stage 1 -> 2\n\n## 4. Duplicate confirm\n\n- Input message: `confirm x3 rapidly`\n- Expected route: three rapid confirms do not advance multiple stages\n- Actual route: `confirmation_debounced -> python raphael.py pod-workflow-continue \"PODFLOW-SMOKE-0001\"`\n- Status: Confirmation Required\n- Response snippet: The previous confirmation is still current. No additional workflow stage was advanced.\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: baseline=2; burst=[2, 2, 2]\n\n## 5. ComfyUI offline recovery\n\n- Input message: `create a POD shirt using ComfyUI -> confirm`\n- Expected route: service-start comfyui confirmation; workflow remains retryable\n- Actual route: `pod_workflow_continue -> python raphael.py service-start \"comfyui\"`\n- Status: Confirmation Required\n- Response snippet: ComfyUI is offline or unavailable. POD workflow PODFLOW-SMOKE-0001 remains retryable. Say confirm to start ComfyUI: python raphael.py service-start \"comfyui\"\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: workflow_status=awaiting_service\n\n## 6. Builder routing\n\n- Input message: `build a React click counter app`\n- Expected route: build-with-council\n- Actual route: `build_with_council -> python raphael.py build-with-council \"build a react click counter app\"`\n- Status: Confirmation Required\n- Response snippet: I can classify this build first, then create the tracked task and apply the required council route. Low and medium builds can generate safely after confirmation; high-complexity builds stop for plan approval. Say confirm to continue.\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: None\n\n## 7. Internet routing\n\n- Input message: `research current POD trends`\n- Expected route: internet-headless-search confirmation\n- Actual route: `internet_search -> python raphael.py internet-headless-search \"research current pod trends\"`\n- Status: Confirmation Required\n- Response snippet: This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: None\n\n## 8. Show BUILD routing\n\n- Input message: `Show details for BUILD-20260621-ABC123`\n- Expected route: build-status\n- Actual route: `build_status -> python raphael.py build-status BUILD-20260621-ABC123`\n- Status: Success\n- Response snippet: {\"dry_run\": true, \"command\": [\"build-status\", \"BUILD-20260621-ABC123\"]}\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: None\n\n## 9. Show DELIB routing\n\n- Input message: `Review DELIB-20260621-ABC123`\n- Expected route: deliberation-show\n- Actual route: `deliberation_show -> python raphael.py deliberation-show DELIB-20260621-ABC123`\n- Status: Success\n- Response snippet: {\"dry_run\": true, \"command\": [\"deliberation-show\", \"DELIB-20260621-ABC123\"]}\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: None\n\n## 10. Show PLAN routing\n\n- Input message: `Review PLAN-20260621-ABC123`\n- Expected route: execution-plan-show\n- Actual route: `execution_plan_show -> python raphael.py execution-plan-show PLAN-20260621-ABC123`\n- Status: Success\n- Response snippet: {\"dry_run\": true, \"command\": [\"execution-plan-show\", \"PLAN-20260621-ABC123\"]}\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: None\n\n## 11. Blocked Etsy publish\n\n- Input message: `publish this to Etsy`\n- Expected route: refused\n- Actual route: `blocked`\n- Status: Refused\n- Response snippet: Refused: Etsy publishing is blocked.\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: None\n\n## 12. Blocked Printify upload\n\n- Input message: `upload to Printify`\n- Expected route: refused\n- Actual route: `blocked`\n- Status: Refused\n- Response snippet: Refused: Printify uploads are blocked.\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: None\n\n## 13. Blocked ad spending\n\n- Input message: `spend $20 on ads`\n- Expected route: refused\n- Actual route: `blocked`\n- Status: Refused\n- Response snippet: Refused: Spending or moving money is blocked.\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: None\n\n## 14. Service action\n\n- Input message: `start ComfyUI`\n- Expected route: service-start comfyui confirmation\n- Actual route: `service_start -> python raphael.py service-start comfyui`\n- Status: Confirmation Required\n- Response snippet: Ready to start the allowlisted local ComfyUI service. Confirm to continue.\n- Result: PASS\n- Timestamp: 2026-06-22T19:20:03\n- Detail: None\n\n"
+  },
+  "voice_status": {
+    "engine": "piper",
+    "exe_exists": true,
+    "model_exists": true,
+    "control_enabled": true,
+    "input_enabled": true
+  },
+  "recent_errors": [
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "\"{\\\"ok\\\": false, \\\"detail\\\": \\\"<urlopen error timed out>\\\", \\\"url\\\": \\\"http://127.0.0.1:5678/healthz\\\"}\""
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "\"probable_cause\": \"<urlopen error timed out>\","
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "\"n8n health check failed\""
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "RuntimeError: Raphael bootstrap is disabled in config/settings.json."
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "raise RuntimeError(\"Raphael bootstrap is disabled in config/settings.json.\")"
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Short response: Raphael command failed. Traceback (most recent call last):"
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Result status: Failed"
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "RuntimeError: Raphael bootstrap is disabled in config/settings.json."
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "raise RuntimeError(\"Raphael bootstrap is disabled in config/settings.json.\")"
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Short response: Raphael command failed. Traceback (most recent call last):"
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Result status: Failed"
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "\"error\": \"\""
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Short response: Ready to restart failed services that explicitly allow auto-restart. Confirm to continue."
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Command mapped: python raphael.py service-restart-failed"
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Detected intent: service_restart_failed"
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Spoken text: restart failed services"
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Short response: Refused or failed safely: Refusing command outside the safe Raphael voice command allowlist."
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Result status: Refused"
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Short response: Refused or failed safely: Refusing command outside the safe Raphael voice command allowlist."
+    },
+    {
+      "source": "Voice Interaction Log.md",
+      "message": "- Result status: Refused"
+    }
+  ],
+  "commands": [
+    "python raphael.py system-check",
+    "python raphael.py repair",
+    "python raphael.py backup",
+    "python raphael.py cleanup-logs",
+    "python raphael.py route-check",
+    "python raphael.py dependency-check"
+  ],
+  "helpers": [
+    "C:\\RaphaelOS\\scripts\\start-raphael.ps1",
+    "C:\\RaphaelOS\\scripts\\health-check.ps1",
+    "C:\\RaphaelOS\\scripts\\restart-dashboard.ps1"
+  ],
+  "safety": {
+    "backup_scope": "Vault and Raphael runtime files only.",
+    "repair_scope": "Missing generated folders/files only.",
+    "cleanup_scope": "Known Raphael logs only.",
+    "project_source_edits": false,
+    "external_actions": false
+  }
+}

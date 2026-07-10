@@ -1,0 +1,109 @@
+{
+  "enabled": true,
+  "requires_confirmation": true,
+  "no_platform_actions": true,
+  "platforms": [
+    "Etsy",
+    "Shopify",
+    "Amazon KDP",
+    "Gumroad",
+    "Payhip"
+  ],
+  "overview": {
+    "label": "Commerce Council Overview",
+    "path": "\\app\\vault\\05_Business\\Commerce\\Commerce Council Overview.md",
+    "exists": true,
+    "updated": "2026-06-18T05:41:43",
+    "content": "# Commerce Council Overview\n\nThe Commerce Council plans product-based businesses such as Etsy, print-on-demand, Shopify stores, ebooks, KDP, Gumroad, Payhip, and digital products.\n\n## Boundary\n\nThis council plans and prepares commerce operations only. Raphael does not create stores, upload products, spend money, log in to platforms, publish listings, or perform external platform actions.\n\n## Specialist Agents\n\n- Store Manager Agent\n- Product Researcher Agent\n- Trend Analyst Agent\n- Listing Writer Agent\n- SEO Specialist Agent\n- Customer Support Agent\n- Digital Product Agent\n- POD Designer Agent\n\n## Linked Studio\n\n- [[POD Design Studio/POD Design Studio Overview|POD Design Studio]] \u2014 local concepts, design prompts, generation requests, reviews, listing drafts, and export-package preparation.\n- [[../Asset & Brand Library/Asset Library Overview|Asset & Brand Library]] \u2014 reusable POD styles, listing structures, mockup systems, prompts, and approved asset references."
+  },
+  "strategy": {
+    "label": "Commerce Strategy",
+    "path": "\\app\\vault\\05_Business\\Commerce\\Commerce Strategy.md",
+    "exists": true,
+    "updated": "2026-06-17T03:15:42",
+    "content": "# Commerce Strategy\n\n## Strategy\n\n- Validate niches before creating products.\n- Create product and listing plans before platform work.\n- Keep IP, trademark, copyright, and platform-policy risks visible.\n- Use search requests for current platform rules, trend data, or pricing facts.\n- Convert promising ideas into blueprints, simulations, and resource plans before execution."
+  },
+  "brief": {
+    "label": "Commerce Brief",
+    "path": "\\app\\vault\\05_Business\\Commerce\\Commerce Brief.md",
+    "exists": true,
+    "updated": "2026-06-17T03:16:12",
+    "content": "# Commerce Brief\n\nGenerated: 2026-06-17T03:16:12\n\n## Operating Boundary\n\nCommerce Council plans and prepares only. No store creation, product upload, platform login, publishing, spending, outreach, or external platform action is authorized.\n\n## Current Focus\n\n- Product research\n- Listing plans\n- Store plans\n- Digital product outlines\n- KPI drafting\n- IP/compliance risk visibility\n\n## Current Pipeline Snapshot\n\n# Commerce Product Pipeline\n\nGenerated: 2026-06-17T03:15:55\n\n| Product / Idea | Type | Listing Plan | Stage | Next Action |\n|---|---|---|---|---|\n| Bible verse shirt | POD/Product Idea | Yes | Draft/Validation | Create listing plan, verify IP/platform rules |\n| AI prompt ebook | Digital Product | No | Draft/Validation | Create listing plan, verify IP/platform rules |\n\n## Store Plans\n\n- 2026-06-17 - Store Plan - Print On Demand Etsy Store\n\n## Boundary\n\nPipeline is planning-only. No store, upload, listing, spend, login, or external platform action was performed.\n\n## Current Review Snapshot\n\n# Commerce Opportunity Review\n\nGenerated: 2026-06-17T03:15:55\n\n## Summary\n\n- Commerce o..."
+  },
+  "pipeline": {
+    "label": "Commerce Product Pipeline",
+    "path": "\\app\\vault\\05_Business\\Commerce\\Commerce Product Pipeline.md",
+    "exists": true,
+    "updated": "2026-06-17T03:15:55",
+    "content": "# Commerce Product Pipeline\n\nGenerated: 2026-06-17T03:15:55\n\n| Product / Idea | Type | Listing Plan | Stage | Next Action |\n|---|---|---|---|---|\n| Bible verse shirt | POD/Product Idea | Yes | Draft/Validation | Create listing plan, verify IP/platform rules |\n| AI prompt ebook | Digital Product | No | Draft/Validation | Create listing plan, verify IP/platform rules |\n\n## Store Plans\n\n- 2026-06-17 - Store Plan - Print On Demand Etsy Store\n\n## Boundary\n\nPipeline is planning-only. No store, upload, listing, spend, login, or external platform action was performed."
+  },
+  "review": {
+    "label": "Commerce Opportunity Review",
+    "path": "\\app\\vault\\05_Business\\Commerce\\Commerce Opportunity Review.md",
+    "exists": true,
+    "updated": "2026-06-17T03:15:55",
+    "content": "# Commerce Opportunity Review\n\nGenerated: 2026-06-17T03:15:55\n\n## Summary\n\n- Commerce opportunities detected: 2\n- Commerce blueprints detected: 2\n- Commerce simulations detected: 4\n- Commerce world-model products detected: 1\n- Product/POD ideas: 1\n- Digital product notes: 1\n- Listing plans: 1\n- Store plans: 1\n\n## Findings\n\n- No major commerce documentation gaps detected yet.\n\n## Relevant Opportunities\n\n- `OPP-20260617-16D5ED27` Print on demand Bible verse shirts [54]\n- `OPP-20260617-655947E0` Create content plan for AI Prompt Ebook [64]\n\n## Relevant Blueprints\n\n- `BLUEPRINT-20260617-76347AE8` Print On Demand Etsy Store (Print-on-demand Etsy store)\n- `BLUEPRINT-20260617-776A0FBE` Print On Demand Etsy Store For Bible Verse Shirts (Print-on-demand Etsy store)\n\n## Relevant Simulations\n\n-  -> Recommended winner: Shopify Agency\n-  -> Recommended winner: Shopify Agency\n-  -> Recommended winner: Shopify Agency\n-  -> Recommended winner: Shopify Agency\n\n## Recommended Next Actions\n\n- Create listing plans for the strongest product ideas.\n- Create search requests for current platform rules, k..."
+  },
+  "task_board": {
+    "label": "Commerce Task Board",
+    "path": "\\app\\vault\\05_Business\\Commerce\\Commerce Task Board.md",
+    "exists": true,
+    "updated": "2026-06-17T03:16:12",
+    "content": "# Commerce Task Board\n\n| Date | Task ID | Task | Agent | Status | Boundary |\n|---|---|---|---|---|---|\n| 2026-06-17 | TASK-PR-53BB2B4E | research Etsy niches | Product Researcher Agent | Open | Planning only; no platform action |"
+  },
+  "kpis": {
+    "label": "Commerce KPI Draft",
+    "path": "\\app\\vault\\05_Business\\Commerce\\Commerce KPI Draft.md",
+    "exists": true,
+    "updated": "2026-06-17T03:15:42",
+    "content": "# Commerce KPI Draft\n\n## Draft KPIs\n\n- Product ideas validated\n- Listing plans drafted\n- Digital product outlines drafted\n- Store plans drafted\n- Search requests created for current platform rules\n- IP/compliance risks resolved before launch\n- Zero unauthorized platform actions"
+  },
+  "pod_ideas": [
+    {
+      "name": "2026-06-17 - Product Idea - Bible Verse Shirt 2",
+      "idea": "bible verse shirt",
+      "target": "Define the specific buyer, use case, identity, belief, hobby, gift moment, or pain point this product serves.",
+      "next": "- Create a listing plan.\n- Create a search request for current platform rules, trend data, or pricing if needed.\n- Add this to the commerce pipeline.\n- Decide whether a store pl...",
+      "updated": "2026-06-17T05:29:23",
+      "path": "\\app\\vault\\05_Business\\Commerce\\POD Ideas\\2026-06-17 - Product Idea - Bible Verse Shirt 2.md"
+    },
+    {
+      "name": "2026-06-17 - Product Idea - Bible Verse Shirt",
+      "idea": "Bible verse shirt",
+      "target": "Define the specific buyer, use case, identity, belief, hobby, gift moment, or pain point this product serves.",
+      "next": "- Create a listing plan.\n- Create a search request for current platform rules, trend data, or pricing if needed.\n- Add this to the commerce pipeline.\n- Decide whether a store pl...",
+      "updated": "2026-06-17T03:15:43",
+      "path": "\\app\\vault\\05_Business\\Commerce\\POD Ideas\\2026-06-17 - Product Idea - Bible Verse Shirt.md"
+    }
+  ],
+  "listing_plans": [
+    {
+      "name": "2026-06-17 - Listing Plan - Bible Verse Shirt",
+      "idea": "Bible verse shirt",
+      "target": "",
+      "next": "- Validate keywords and current platform rules via search request.\n- Create or link the product idea note.\n- Add to commerce pipeline.\n- Resolve IP/compliance uncertainty before...",
+      "updated": "2026-06-17T03:15:43",
+      "path": "\\app\\vault\\05_Business\\Commerce\\Listing Plans\\2026-06-17 - Listing Plan - Bible Verse Shirt.md"
+    }
+  ],
+  "store_plans": [
+    {
+      "name": "2026-06-17 - Store Plan - Print On Demand Etsy Store",
+      "idea": "print on demand Etsy store",
+      "target": "Define the specific audience, belief, hobby, problem, occasion, or product category.",
+      "next": "",
+      "updated": "2026-06-17T03:15:55",
+      "path": "\\app\\vault\\05_Business\\Commerce\\Store Plans\\2026-06-17 - Store Plan - Print On Demand Etsy Store.md"
+    }
+  ],
+  "digital_products": [
+    {
+      "name": "2026-06-17 - Digital Product - Ai Prompt Ebook",
+      "idea": "AI prompt ebook",
+      "target": "Define the specific problem, desired shortcut, transformation, or reusable asset the buyer wants.",
+      "next": "- [ ] Validate buyer problem.\n- [ ] Draft product outline.\n- [ ] Create original content.\n- [ ] Run IP/compliance review.\n- [ ] Create listing plan.\n- [ ] Verify current platfor...",
+      "updated": "2026-06-17T03:15:55",
+      "path": "\\app\\vault\\05_Business\\Commerce\\Digital Products\\2026-06-17 - Digital Product - Ai Prompt Ebook.md"
+    }
+  ]
+}

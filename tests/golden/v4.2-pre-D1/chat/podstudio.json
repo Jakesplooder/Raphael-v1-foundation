@@ -1,0 +1,21 @@
+{
+  "response": "I couldn't reach the local general model: Ollama request failed. Confirm Ollama is running on http://host.docker.internal:11434.",
+  "intent": "general_conversation",
+  "command": "",
+  "status": "Success",
+  "confirmation_required": false,
+  "awaiting_confirmation": false,
+  "raw_status": "general_answer",
+  "command_type": "general_conversation",
+  "cli_args": [],
+  "confirmation_key": "",
+  "test_mode": true,
+  "test_state": {
+    "session_id": "gm_pod",
+    "workflow_stage": 0,
+    "workflow_status": "",
+    "comfyui_online": false,
+    "pending_command": "",
+    "pending_confirmation": false
+  }
+}

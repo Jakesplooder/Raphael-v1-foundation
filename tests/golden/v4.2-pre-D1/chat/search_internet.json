@@ -1,0 +1,24 @@
+{
+  "response": "This needs current public information. I can query localhost SearXNG headlessly and save sources for analysis. Confirm to search. No browser tab, login, or external action will occur.",
+  "intent": "internet_search",
+  "command": "python raphael.py internet-headless-search news",
+  "status": "Confirmation Required",
+  "confirmation_required": true,
+  "awaiting_confirmation": true,
+  "raw_status": "needs_confirmation",
+  "command_type": "search",
+  "cli_args": [
+    "internet-headless-search",
+    "news"
+  ],
+  "confirmation_key": "CONFIRM-8C0072BE20",
+  "test_mode": true,
+  "test_state": {
+    "session_id": "gm_search",
+    "workflow_stage": 0,
+    "workflow_status": "",
+    "comfyui_online": false,
+    "pending_command": "python raphael.py internet-headless-search news",
+    "pending_confirmation": true
+  }
+}

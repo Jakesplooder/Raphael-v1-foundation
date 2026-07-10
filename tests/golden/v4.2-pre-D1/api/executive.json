@@ -1,0 +1,59 @@
+{
+  "enabled": true,
+  "latest": {
+    "label": "Executive Brief - 2026-07-09",
+    "path": "\\app\\vault\\00_Raphael\\Executive Briefs\\Executive Brief - 2026-07-09.md",
+    "exists": true,
+    "updated": "2026-07-09T17:12:24",
+    "content": "# Executive Brief\n\nGenerated: 2026-07-09T17:12:24\n\n## Current Situation\n\n- Mode: Developer Mode\n- Open tasks: 30\n- Blocked/waiting tasks: 0\n- Active notifications: 12\n- Revenue USD 500.00, expenses USD 25.00, net USD 475.00.\n\n## Critical Alerts\n\n- `NOTIF-20260617-B944E339` [High] KPI Test KPI is Behind\n\n## Top Opportunities\n\n- `OPP-20260706-EAAD2FCC` Evaluate strategic build: Reverse Mentormap - Complete Concept Tagline Where Senior Le (score 74)\n\n## Recommended Focus\n\n- Agency (80/100): Protect and systematize Agency; document repeatable process and KPI targets.\n\n## Decisions Needed From Aaron\n\n- Decide whether any critical/high notification needs escalation.\n- Confirm the primary business focus.\n- Decide whether the top opportunity should become a blueprint, task, or parked item.\n\n## Suggested Next Commands\n\n- `python raphael.py notification-brief`\n- `python raphael.py portfolio-prioritize`\n- `python raphael.py morning-brief`\n- `python raphael.py allocation-plan`\n\n## Boundary\n\nExecutive brief recommends only. Raphael did not execute actions."
+  },
+  "overview": {
+    "label": "Executive Brief System Overview",
+    "path": "\\app\\vault\\00_Raphael\\Executive Briefs\\Executive Brief System Overview.md",
+    "exists": true,
+    "updated": "2026-06-17T06:03:55",
+    "content": "# Executive Brief System Overview\n\nRaphael's Executive Brief Engine summarizes the most important information into morning, evening, weekly, monthly, and on-demand executive briefs.\n\n## Boundary\n\nBriefs recommend only. Raphael does not execute actions automatically."
+  },
+  "morning": {
+    "label": "Morning Brief",
+    "path": "\\app\\vault\\00_Raphael\\Executive Briefs\\Morning Brief.md",
+    "exists": true,
+    "updated": "2026-07-09T15:24:04",
+    "content": "# Morning Brief\n\nGenerated: 2026-07-09T15:24:04\n\n## Current Mode\n\nDeveloper Mode\n\n## Top Priority\n\n- Agency (80/100): Protect and systematize Agency; document repeatable process and KPI targets.\n\n## Top 3 Tasks\n\n- `TASK-BS-C47CC92A` [Medium] Evaluate business blueprint `BLUEPRINT-20260617-776A0FBE`: Print On Demand Etsy Store For Bible Verse Shirts. Expected output: validation plan, risks, first 7-day recommendation, and Aaron decision points. Do not execute business actions. (Business Strategy Agent)\n- `TASK-BS-D2302A71` [Normal] Initiative delegation: Prepare CSC4330 Project Group J for portfolio readiness. Recommended action: Generate missing docs for CSC4330 Project Group J, add portfolio summary, and identify screenshots/setup/test evidence. Evidence: Missing: Project Health.md, screenshots or visual proof Produce a planning recommendation only. Do not execute business actions. (Business Strategy Agent)\n- `TASK-COS-0131A120` [Medium] Bounded implementation and milestone planning for BUILD-20260621-DFC03B1E: research a trending pod niche using permissioned internet access find..."
+  },
+  "evening": {
+    "label": "Evening Review",
+    "path": "\\app\\vault\\00_Raphael\\Executive Briefs\\Evening Review.md",
+    "exists": true,
+    "updated": "2026-06-18T12:04:35",
+    "content": "# Evening Review\n\nGenerated: 2026-06-18T12:04:35\n\n## What Changed Today\n\n- Notifications active: 12\n- Open tasks: 14\n- Blocked/waiting tasks: 0\n- Initiatives tracked: 37\n- Opportunities tracked: 10\n\n## Completed Items If Available\n\n- None.\n\n## New / Active Notifications\n\n- `NOTIF-20260617-B944E339` [High] KPI Test KPI is Behind\n- `NOTIF-20260617-B3B353BB` [Medium] Builder request needs review: BUILD-20260616-73E55DB4\n- `NOTIF-20260617-CD3FF9D9` [Medium] Builder request needs review: BUILD-20260616-B3A2A68F\n- `NOTIF-20260617-612BAF91` [Medium] Financial review found expenses without revenue\n- `NOTIF-20260617-3E107329` [Low] Pending search request: SEARCH-9D1EA2B8\n- `NOTIF-20260617-6990195F` [Low] Pending search request: SEARCH-54FBB8DA\n- `NOTIF-20260617-BA0E1761` [Low] Pending search request: SEARCH-9C05CA52\n- `NOTIF-20260617-12626E5B` [High] Critical/high alerts included in Weekly Executive Brief\n\n## New / Active Initiatives\n\n- `INIT-20260617-356519FA` Prepare CSC4330 Project Group J for portfolio readiness (Medium, score 68)\n\n## New / Active Opportunities\n\n- `OPP-20260617-7A970D5..."
+  },
+  "weekly": {
+    "label": "Weekly Executive Brief",
+    "path": "\\app\\vault\\00_Raphael\\Executive Briefs\\Weekly Executive Brief.md",
+    "exists": true,
+    "updated": "2026-06-17T06:04:34",
+    "content": "# Weekly Executive Brief\n\nGenerated: 2026-06-17T06:04:34\n\n## Weekly Priorities\n\n- Agency (80/100): Protect and systematize Agency; document repeatable process and KPI targets.\n\n## Portfolio Focus\n\n- Agency (80/100): Protect and systematize Agency; document repeatable process and KPI targets.\n\n## KPI Performance\n\n- `KPI-20260617-6DD5611D` Leads Generated: Unknown (0/0)\n- `KPI-20260617-F3C59EC0` Proposals Drafted: Unknown (0/0)\n- `KPI-20260617-E21A88E0` Client Projects Active: Unknown (0/0)\n- `KPI-20260617-85AE6799` Monthly Agency Revenue: Unknown (0/0)\n- `KPI-20260617-D4290907` Product Ideas Created: Unknown (0/0)\n- `KPI-20260617-4C3E829B` Listing Plans Created: Unknown (0/0)\n- `KPI-20260617-622DE1F7` Digital Product Drafts: Unknown (0/0)\n- `KPI-20260617-0F6519DD` Monthly Commerce Revenue: Unknown (0/0)\n- `KPI-20260617-030F501C` Content Ideas Created: Unknown (0/0)\n- `KPI-20260617-6F410A10` Scripts Drafted: Unknown (0/0)\n\n## Financial Summary\n\nRevenue USD 500.00, expenses USD 25.00, net USD 475.00.\n\n## Initiative Review\n\n- `INIT-20260617-356519FA` Prepare CSC4330 Project Group J fo..."
+  },
+  "monthly": {
+    "label": "Monthly Business Review",
+    "path": "\\app\\vault\\00_Raphael\\Executive Briefs\\Monthly Business Review.md",
+    "exists": true,
+    "updated": "2026-06-17T06:04:40",
+    "content": "# Monthly Business Review\n\nGenerated: 2026-06-17T06:04:40\n\n## Business Portfolio Health\n\n- Agency (80/100): Protect and systematize Agency; document repeatable process and KPI targets.\n\n## Revenue / Expense Summary\n\nRevenue USD 500.00, expenses USD 25.00, net USD 475.00.\n\n## KPI Trends\n\n- `KPI-20260617-6DD5611D` Leads Generated: Unknown (0/0)\n- `KPI-20260617-F3C59EC0` Proposals Drafted: Unknown (0/0)\n- `KPI-20260617-E21A88E0` Client Projects Active: Unknown (0/0)\n- `KPI-20260617-85AE6799` Monthly Agency Revenue: Unknown (0/0)\n- `KPI-20260617-D4290907` Product Ideas Created: Unknown (0/0)\n- `KPI-20260617-4C3E829B` Listing Plans Created: Unknown (0/0)\n- `KPI-20260617-622DE1F7` Digital Product Drafts: Unknown (0/0)\n- `KPI-20260617-0F6519DD` Monthly Commerce Revenue: Unknown (0/0)\n- `KPI-20260617-030F501C` Content Ideas Created: Unknown (0/0)\n- `KPI-20260617-6F410A10` Scripts Drafted: Unknown (0/0)\n\n## Major Wins\n\n- Completed/archived task count: 0\n- Active portfolio focus identified: - Agency (80/100): Protect and systematize Agency; document repeatable process and KPI targets.\n\n## M..."
+  },
+  "history": {
+    "label": "Brief History",
+    "path": "\\app\\vault\\00_Raphael\\Executive Briefs\\Brief History.md",
+    "exists": true,
+    "updated": "2026-07-09T17:12:24",
+    "content": "# Brief History\n\n- 2026-06-17T06:04:04: Morning Brief generated at `Morning Brief.md`.\n- 2026-06-17T06:04:04: Weekly Executive Brief generated at `Weekly Executive Brief.md`.\n- 2026-06-17T06:04:04: Monthly Business Review generated at `Monthly Business Review.md`.\n- 2026-06-17T06:04:10: Executive Brief generated at `Executive Brief - 2026-06-17.md`.\n- 2026-06-17T06:04:34: Morning Brief generated at `Morning Brief.md`.\n- 2026-06-17T06:04:34: Executive Brief generated at `Executive Brief - 2026-06-17.md`.\n- 2026-06-17T06:04:34: Weekly Executive Brief generated at `Weekly Executive Brief.md`.\n- 2026-06-17T06:04:40: Monthly Business Review generated at `Monthly Business Review.md`.\n- 2026-06-17T06:04:41: Evening Review generated at `Evening Review.md`.\n- 2026-06-17T06:04:42: Executive Brief generated at `Executive Brief - 2026-06-17.md`.\n- 2026-06-17T06:05:34: Executive Brief generated at `Executive Brief - 2026-06-17.md`.\n- 2026-06-17T06:06:44: Executive Brief generated at `Executive Brief - 2026-06-17.md`.\n- 2026-06-17T06:06:45: Morning Brief generated at `Morning Brief.md`.\n- 2026-..."
+  },
+  "preferences": {
+    "label": "Brief Preferences",
+    "path": "\\app\\vault\\00_Raphael\\Executive Briefs\\Brief Preferences.md",
+    "exists": true,
+    "updated": "2026-06-17T06:03:55",
+    "content": "# Brief Preferences\n\n## Include Sections\n\n- Finance: true\n- KPIs: true\n- Notifications: true\n- Portfolio: true\n- Initiatives: true\n- Tasks: true\n- Opportunities: true\n- Resource allocation: true\n\n## Style\n\n- Concise\n- Executive direct\n- Action-oriented\n- Advisory only"
+  }
+}
