@@ -1,0 +1,15 @@
+{
+  "name": "DeveloperAgent",
+  "purpose": "Software creation and maintenance",
+  "capabilities": ["coding", "debugging", "architecture"],
+  "allowed_workflows": ["create_react_app", "create_api", "docker_stack"],
+  "permissions": {
+    "workflow_creation": true,
+    "provider_access": false,
+    "external_actions": false,
+    "financial_actions": false,
+    "publishing": false
+  },
+  "memory": {"enabled": true},
+  "requires_council": true
+}

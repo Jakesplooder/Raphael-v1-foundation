@@ -6,18 +6,8 @@ from pathlib import Path
 from .kernel.interfaces import ServiceModule, ModuleHealth
 from .kernel.observability import ObservabilityLayer
 from .kernel.state import store
-
-def _read_text(path: Path) -> str:
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return f.read()
-    except FileNotFoundError:
-        return ""
-
-def _subsection_value(text: str, heading: str) -> str:
-    pattern = rf"^### {re.escape(heading)}[ \t]*\r?\n+(.*?)(?=^### |\Z)"
-    match = re.search(pattern, text, flags=re.M | re.S)
-    return match.group(1).strip() if match else ""
+from .repositories.goals import MarkdownGoalRepository
+from .services.goals import GoalService
 
 class GoalsManager(ServiceModule):
     """
@@ -26,7 +16,11 @@ class GoalsManager(ServiceModule):
     """
     def __init__(self):
         self._running = False
-        self.vault_path = Path(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS")) / "vault"
+        self.vault_path = Path(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"))
+        
+        # In a real DI system, this would be injected.
+        self.repository = MarkdownGoalRepository(self.vault_path)
+        self.service = GoalService(self.repository)
 
     @property
     def name(self) -> str:
@@ -69,21 +63,6 @@ class GoalsManager(ServiceModule):
     # --- Goals Domain Logic ---
     
     def get_all_goals(self) -> List[Dict[str, str]]:
-        goals_file = self.vault_path / "00_Raphael" / "Goals.md"
-        text = _read_text(goals_file)
-        
-        items: List[Dict[str, str]] = []
-        for match in re.finditer(r"^## (GOAL-[A-Z0-9-]+)\s+(.+?)(?=^## GOAL-|\Z)", text, flags=re.M | re.S):
-            body = match.group(2)
-            items.append(
-                {
-                    "id": match.group(1),
-                    "title": _subsection_value(body, "Title"),
-                    "status": _subsection_value(body, "Status"),
-                    "priority": _subsection_value(body, "Priority"),
-                    "milestone": _subsection_value(body, "Next Milestone"),
-                }
-            )
-        return items
+        return self.service.get_all_goals()
 
 

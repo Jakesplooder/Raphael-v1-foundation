@@ -1,0 +1,42 @@
+{
+  "decision_id": "DEC-9870",
+  "original_action": "Launch SaaS product",
+  "conflicts": [
+    "Identified from arguments"
+  ],
+  "options": [
+    {
+      "option_id": "OPT-F148",
+      "description": "Create safer lower-cost launch plan",
+      "score": 50.0,
+      "simulated_outcome": {}
+    },
+    {
+      "option_id": "OPT-0B55",
+      "description": "Launch SaaS product",
+      "score": 0.0,
+      "simulated_outcome": {}
+    },
+    {
+      "option_id": "OPT-CFBC",
+      "description": "Abandon action",
+      "score": 0.0,
+      "simulated_outcome": {}
+    },
+    {
+      "option_id": "OPT-15A7",
+      "description": "Revised plan: Customer acquisition cost unknown",
+      "score": 0.0,
+      "simulated_outcome": {}
+    }
+  ],
+  "final_resolution": "Create safer lower-cost launch plan",
+  "confidence": 0.88,
+  "uncertainty": [
+    "Simulated outcomes are probabilistic"
+  ],
+  "information_needed": [
+    "Run deeper market simulation"
+  ],
+  "reasoning_chain": []
+}

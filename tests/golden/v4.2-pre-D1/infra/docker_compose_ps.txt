@@ -1,6 +1,6 @@
 NAME               IMAGE                     COMMAND                  SERVICE       CREATED       STATUS       PORTS
-api-gateway        ralphaelos-api-gateway    "uvicorn gateway:app…"   api-gateway   5 hours ago   Up 2 hours   0.0.0.0:8787->8000/tcp, [::]:8787->8000/tcp
-raphael-n8n        docker.n8n.io/n8nio/n8n   "tini -- /docker-ent…"   n8n           3 hours ago   Up 2 hours   0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp
-raphael_searxng    searxng/searxng:latest    "/usr/local/searxng/…"   searxng       2 days ago    Up 2 hours   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
-raphaelos          ralphaelos-raphaelos      "python raphael.py d…"   raphaelos     2 days ago    Up 2 hours   8788/tcp
-raphaelos_qdrant   qdrant/qdrant:latest      "./entrypoint.sh"        qdrant        7 hours ago   Up 2 hours   0.0.0.0:6333->6333/tcp, [::]:6333->6333/tcp
+api-gateway        ralphaelos-api-gateway    "uvicorn gateway:app…"   api-gateway   5 hours ago   Up 3 hours   0.0.0.0:8787->8000/tcp, [::]:8787->8000/tcp
+raphael-n8n        docker.n8n.io/n8nio/n8n   "tini -- /docker-ent…"   n8n           3 hours ago   Up 3 hours   0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp
+raphael_searxng    searxng/searxng:latest    "/usr/local/searxng/…"   searxng       2 days ago    Up 3 hours   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+raphaelos          ralphaelos-raphaelos      "python raphael.py d…"   raphaelos     2 days ago    Up 3 hours   8788/tcp
+raphaelos_qdrant   qdrant/qdrant:latest      "./entrypoint.sh"        qdrant        7 hours ago   Up 3 hours   0.0.0.0:6333->6333/tcp, [::]:6333->6333/tcp

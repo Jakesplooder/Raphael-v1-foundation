@@ -241,6 +241,52 @@ def _daemon_main(args: list[str]) -> int:
             else:
                 ObservabilityLayer.warning("CLI", f"Agent class {agent_name} not found in workforce_agents.py")
 
+        # Register Builder Subsystem
+        from .kernel.managers.builder_manager import BuilderManager
+        builder_root = os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS")
+        registry.register_service(BuilderManager(os.path.join(builder_root, "builder")))
+
+        # Register Project Subsystem
+        from .kernel.managers.project_manager import ProjectManager
+        from . import legacy
+        import pathlib
+        config_path = pathlib.Path(os.environ.get("RAPHAEL_SETTINGS", legacy.DEFAULT_SETTINGS_PATH))
+        config = legacy.load_config(config_path)
+        registry.register_service(ProjectManager(config))
+        
+        # Register Workflow Plans Subsystem
+        from .kernel.managers.workflow_plan_manager import WorkflowPlanManager
+        registry.register_service(WorkflowPlanManager(config))
+        
+        # Register Memory Subsystem
+        from .kernel.managers.memory_manager import MemoryManager
+        registry.register_service(MemoryManager(registry.get_service("EventBus")))
+
+        # Register Knowledge Subsystem
+        from .kernel.managers.knowledge_manager import KnowledgeManager
+        registry.register_service(KnowledgeManager(registry.get_service("EventBus"), config))
+
+        # Register WorkflowRunner Subsystem
+        from .kernel.managers.workflow_manager import WorkflowManager
+        registry.register_service(WorkflowManager(registry.get_service("EventBus"), config))
+
+        # Register Agents Subsystem
+        from .kernel.managers.agent_manager import AgentManager
+        registry.register_service(AgentManager(registry.get_service("EventBus"), config))
+
+        # Register Goals Subsystem
+        from .kernel.managers.goal_manager import GoalManager
+        registry.register_service(GoalManager(registry.get_service("EventBus"), config))
+
+        # Register World Subsystem
+        from .kernel.managers.world_manager import WorldManager
+        registry.register_service(WorldManager(registry.get_service("EventBus"), config))
+
+        # Register Commerce Subsystem
+        from .kernel.managers.commerce_manager import CommerceManager
+        registry.register_service(CommerceManager(registry.get_service("EventBus"), config))
+
+
         kernel = Kernel(mode=mode)
         
         async def run_daemon():
@@ -277,6 +323,74 @@ def _daemon_main(args: list[str]) -> int:
     return 1
 
 
+def _comfyui_health_main(args: list[str]) -> int:
+    config_path, rest = _extract_config(args)
+    if not rest or rest[0] != "comfyui-health":
+        return -1
+    
+    config = legacy.load_config(config_path)
+    url = getattr(config, "pod_comfyui_url", "http://127.0.0.1:8188")
+    # In settings, we have bootstrap_comfyui_root, default C:/ComfyUI
+    output_dir = Path("C:/ComfyUI/output") 
+    
+    from . import comfy_health
+    return comfy_health.run_health_check(url, output_dir)
+
+
+def _host_agent_main(args: list[str]) -> int:
+    import urllib.request
+    import json
+    import time
+    import subprocess
+    import os
+    
+    config_path, rest = _extract_config(args)
+    url = "http://127.0.0.1:8789/health"
+    
+    # Check if already running
+    try:
+        req = urllib.request.urlopen(url, timeout=2)
+        data = json.loads(req.read().decode())
+        print("Host Manager ........ Healthy")
+        print("URL ................. http://127.0.0.1:8789")
+        print("Capabilities ........ docker gpu processes services")
+        return 0
+    except Exception:
+        pass
+        
+    print("Host Manager not running. Launching...")
+    # Launch natively in background
+    cwd = Path(__file__).resolve().parent.parent
+    script_path = cwd / "host_agent.py"
+    
+    creationflags = 0x00000008 | 0x00000200 if os.name == "nt" else 0
+    subprocess.Popen(
+        [sys.executable, str(script_path)],
+        cwd=str(cwd),
+        creationflags=creationflags,
+        close_fds=True,
+        stdin=subprocess.DEVNULL,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL
+    )
+    
+    # Wait for health check
+    for _ in range(10):
+        try:
+            time.sleep(1)
+            req = urllib.request.urlopen(url, timeout=2)
+            data = json.loads(req.read().decode())
+            print("Host Manager ........ Healthy")
+            print("URL ................. http://127.0.0.1:8789")
+            print("Capabilities ........ docker gpu processes services")
+            return 0
+        except Exception:
+            pass
+            
+    print("Failed to start Host Manager.")
+    return 1
+
+
 def main(argv: list[str] | None = None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
     if args == ["test"]:
@@ -284,6 +398,12 @@ def main(argv: list[str] | None = None) -> int:
         
     if args and args[0] == "daemon":
         return _daemon_main(args)
+        
+    if args and args[0] == "host-agent":
+        return _host_agent_main(args)
+        
+    if args and args[0] == "comfyui-health":
+        return _comfyui_health_main(args)
         
     # Check reasoning commands first
     if args and args[0] in ["reason", "brief", "board", "plan"]:
@@ -300,4 +420,111 @@ def main(argv: list[str] | None = None) -> int:
     world_model_code = _world_model_main(args)
     if world_model_code >= 0:
         return world_model_code
+        
+    if args and args[0].startswith("build"):
+        # Intercept builder commands and route to Gateway
+        import urllib.request
+        import json
+        config_path, rest = _extract_config(args)
+        command = rest[0]
+        tail = rest[1:]
+        
+        if command == "build":
+            # Support: raphael build "Create a React dashboard" --serve --provider ollama
+            description = ""
+            provider = "ollama"
+            serve = False
+            
+            # Parse simple flags
+            if "--serve" in tail:
+                serve = True
+                tail.remove("--serve")
+            if "--provider" in tail:
+                idx = tail.index("--provider")
+                provider = tail[idx+1]
+                tail.pop(idx)
+                tail.pop(idx)
+                
+            if not tail:
+                raise SystemExit("build requires DESCRIPTION")
+                
+            description = " ".join(tail)
+            payload = {"description": description, "metadata": {"serve": serve, "provider": provider}}
+            data = json.dumps(payload).encode("utf-8")
+            req = urllib.request.Request(
+                "http://127.0.0.1:8787/api/builder/request",
+                data=data,
+                headers={"Content-Type": "application/json"},
+                method="POST"
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=5) as response:
+                    print(json.loads(response.read().decode()))
+                return 0
+            except Exception as e:
+                print(f"Failed to reach Builder service via Gateway: {e}")
+                return 1
+
+        elif command == "build-request":
+            if not tail:
+                raise SystemExit("build-request requires DESCRIPTION")
+            
+            payload = {"description": " ".join(tail)}
+            data = json.dumps(payload).encode("utf-8")
+            req = urllib.request.Request(
+                "http://127.0.0.1:8787/api/builder/request",
+                data=data,
+                headers={"Content-Type": "application/json"},
+                method="POST"
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=5) as response:
+                    print(json.loads(response.read().decode()))
+                return 0
+            except Exception as e:
+                print(f"Failed to reach Builder service via Gateway: {e}")
+                return 1
+
+    if args and args[0].startswith("project-"):
+        import urllib.request
+        import json
+        config_path, rest = _extract_config(args)
+        command = rest[0]
+        tail = rest[1:]
+        
+        if command == "project-list":
+            req = urllib.request.Request(
+                "http://127.0.0.1:8787/api/projects/list",
+                headers={"Content-Type": "application/json"},
+                method="POST",
+                data=json.dumps({"action": "list"}).encode("utf-8")
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=5) as response:
+                    print(json.loads(response.read().decode()))
+                return 0
+            except Exception as e:
+                print(f"Failed to reach Project service via Gateway: {e}")
+                return 1
+                
+        if command == "project-create":
+            if not tail:
+                raise SystemExit("project-create requires NAME")
+            payload = {"action": "create", "name": " ".join(tail)}
+            req = urllib.request.Request(
+                "http://127.0.0.1:8787/api/projects/create",
+                headers={"Content-Type": "application/json"},
+                method="POST",
+                data=json.dumps(payload).encode("utf-8")
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=5) as response:
+                    print(json.loads(response.read().decode()))
+                return 0
+            except Exception as e:
+                print(f"Failed to reach Project service via Gateway: {e}")
+                return 1
+                
+        # Other commands can be similarly intercepted or passed through
+        
     return legacy.main(args)

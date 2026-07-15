@@ -1,0 +1,10 @@
+[
+  {
+    "task": "firewall_config",
+    "error": "missed port 443"
+  },
+  {
+    "task": "vuln_scan",
+    "error": "false positive overload"
+  }
+]

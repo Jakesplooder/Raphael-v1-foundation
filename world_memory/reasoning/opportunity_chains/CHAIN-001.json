@@ -1,0 +1,16 @@
+{
+  "chain": [
+    {
+      "step": "Market Signal",
+      "content": "SMBs need compliance"
+    },
+    {
+      "step": "Opportunity",
+      "content": "Cybersecurity SaaS"
+    },
+    {
+      "step": "Decision",
+      "content": "Launch CybersecurityCEO"
+    }
+  ]
+}

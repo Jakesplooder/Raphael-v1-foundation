@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoicing Application</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="number"] {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+#total {
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Invoicing Application</h2>
+<form id="invoice-form">
+<label>Item Name:</label>
+<input type="text" id="item-name" name="item_name"><br><br>
+<label>Quantity:</label>
+<input type="number" id="quantity" name="quantity"><br><br>
+<button id="add-item">Add Item</button>
+</form>
+<div id="items">
+</div>
+<form id="calculate-form">
+<button id="calculate-total">Calculate Total</button>
+</form>
+<p id="total"></p>
+<script>
+const form = document.getElementById('invoice-form');
+const itemsDiv = document.getElementById('items');
+const calculateForm = document.getElementById('calculate-form');
+let total = 0;
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+});
+
+document.getElementById('add-item').addEventListener('click', () => {
+  const itemName = document.getElementById('item-name').value;
+  const quantity = parseInt(document.getElementById('quantity').value);
+  
+  if (!itemName || isNaN(quantity)) return;
+  
+  const itemHTML = `
+    <div>
+      <p>${itemName} x ${quantity}</p>
+      <button class="remove-item">Remove</button>
+    </div>
+  `;
+  
+  itemsDiv.insertAdjacentHTML('beforeend', itemHTML);
+  
+  document.getElementById('item-name').value = '';
+  document.getElementById('quantity').value = '';
+});
+
+itemsDiv.addEventListener('click', (e) => {
+  if (e.target.classList.contains('remove-item')) {
+    e.target.parentNode.remove();
+    
+    const removedItems = itemsDiv.children;
+    
+    Array.from(removedItems).forEach((item, index) => {
+      item.querySelector('.remove-item').addEventListener('click', () => {
+        removedItems[index].remove();
+        
+        const newTotal = total - parseInt(item.querySelector('p').textContent.split('x ')[1]);
+        
+        total = newTotal;
+        
+        document.getElementById('total').innerText = `Total: $${newTotal}`;
+      });
+    });
+  }
+});
+
+document.getElementById('calculate-total').addEventListener('click', () => {
+  const items = itemsDiv.children;
+  
+  Array.from(items).forEach((item) => {
+    const price = parseFloat(item.querySelector('p').textContent.split('x ')[1]);
+    
+    total += price * parseInt(item.querySelector('input[type="number"]').value);
+  });
+  
+  document.getElementById('total').innerText = `Total: $${total}`;
+});
+</script>
+</div>
+</body>
+</html>

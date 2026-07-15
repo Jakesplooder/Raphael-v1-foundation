@@ -1,0 +1,62 @@
+{
+  "greeting": [
+    "hello",
+    "hey raphael",
+    "good morning",
+    "good afternoon",
+    "good evening",
+    "what's up",
+    "whats up"
+  ],
+  "farewell": [
+    "bye",
+    "goodbye",
+    "see you",
+    "stop chat"
+  ],
+  "thanks": [
+    "thanks",
+    "thank you",
+    "appreciate it"
+  ],
+  "status_check": [
+    "are you online",
+    "are you there",
+    "status"
+  ],
+  "command_request": [
+    "current mode",
+    "command center",
+    "prioritize",
+    "list goals",
+    "review tasks",
+    "list projects"
+  ],
+  "project_question": [
+    "summarize",
+    "analyze",
+    "project health",
+    "ask project"
+  ],
+  "memory_question": [
+    "memory search",
+    "search memory",
+    "ask raphael",
+    "question"
+  ],
+  "unknown": [],
+  "confirmation": [
+    "confirm",
+    "yes",
+    "yes confirm",
+    "go ahead",
+    "continue"
+  ],
+  "rejection": [
+    "cancel",
+    "no",
+    "stop",
+    "never mind",
+    "reject"
+  ]
+}

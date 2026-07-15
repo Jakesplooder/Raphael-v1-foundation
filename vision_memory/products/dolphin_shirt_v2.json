@@ -1,0 +1,20 @@
+{
+  "id": "OBS-002",
+  "source_image_id": "mock_dolphin_shirt_v2.png",
+  "confidence": {
+    "score": 0.95,
+    "reasoning": "Clear resolution"
+  },
+  "lineage": {
+    "venture_id": "VENTURE-001",
+    "product_id": "PROD-001",
+    "design_id": null,
+    "vision_review_id": null,
+    "council_decision_id": null
+  },
+  "findings": {
+    "brand_alignment": 0.95,
+    "brand_violations": []
+  },
+  "recommendations": []
+}

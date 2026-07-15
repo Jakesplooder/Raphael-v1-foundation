@@ -1,0 +1,9 @@
+{
+  "simulation_id": "SIM-999-TEST",
+  "venture_type": "AI Compliance SaaS",
+  "outcome": {
+    "revenue": 50000,
+    "customers": 250,
+    "success": true
+  }
+}

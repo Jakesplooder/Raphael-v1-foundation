@@ -1,0 +1,40 @@
+Created At: 2026-07-10T04:48:45Z
+Completed At: 2026-07-10T04:48:45Z
+File Path: `file:///C:/Users/cyber/Downloads/RalphaelOS/api_gateway/legacy_adapter.py`
+Total Lines: 6979
+Total Bytes: 413347
+Showing lines 3400 to 3430
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+3400:         "syntheses": syntheses,
+3401:         "network": note_card("Communication Network", "00_Raphael/Inter-Council Communications/Communication Network Overview.md"),
+3402:         "review": note_card("Communication Review", "00_Raphael/Inter-Council Communications/Communication Review.md"),
+3403:         "brief": note_card("Communication Brief", "00_Raphael/Inter-Council Communications/Communication Brief.md"),
+3404:         "history": note_card("Communication History", "00_Raphael/Inter-Council Communications/Communication History.md"),
+3405:         "safety": {
+3406:             "execution": "disabled",
+3407:             "external_messages": "disabled",
+3408:             "autonomous_decisions": "disabled",
+3409:             "approval_bypass": "disabled",
+3410:         },
+3411:     }
+3412: 
+3413: 
+3414: def overview() -> dict[str, Any]:
+3415:     task_items = tasks()
+3416:     project_items = projects()
+3417:     goal_items = goals()
+3418:     vision_items = vision_requests()
+3419:     search_items = search_requests()
+3420:     internet_access = internet_access_data()
+3421:     workflow_items = workflow_requests()
+3422:     world = world_model_data()
+3423:     simulation = simulation_data()
+3424:     opportunity = opportunity_data()
+3425:     allocation = resource_allocation_data()
+3426:     blueprints = blueprint_data()
+3427:     commerce = commerce_data()
+3428:     pod_studio = pod_design_studio_data()
+3429:     asset_library = asset_brand_library_data()
+3430:     agency = agency_data()
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.
+

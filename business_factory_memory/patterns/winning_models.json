@@ -1,0 +1,14 @@
+{
+  "SaaS": {
+    "avg_roi": 88,
+    "success_rate": 0.82
+  },
+  "Cybersecurity": {
+    "avg_roi": 85,
+    "success_rate": 0.78
+  },
+  "POD": {
+    "avg_roi": 52,
+    "success_rate": 0.45
+  }
+}

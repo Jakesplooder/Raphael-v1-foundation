@@ -1,0 +1,5 @@
+{
+  "lessons": [
+    "Always add react-router-dom to package.json"
+  ]
+}

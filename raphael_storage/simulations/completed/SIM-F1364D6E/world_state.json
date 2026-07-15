@@ -1,0 +1,124 @@
+{
+  "simulation_id": "SIM-F1364D6E",
+  "venture_type": "AI Compliance SaaS",
+  "initial_conditions": {
+    "market": "AI Compliance SaaS",
+    "competition_level": "normal",
+    "customer_demand": "normal",
+    "capital": 500000,
+    "team": [
+      {
+        "role": "CEO",
+        "performance": 75,
+        "monthly_cost": 5000
+      },
+      {
+        "role": "Dev",
+        "performance": 75,
+        "monthly_cost": 5000
+      },
+      {
+        "role": "Marketing",
+        "performance": 75,
+        "monthly_cost": 5000
+      },
+      {
+        "role": "Sales",
+        "performance": 75,
+        "monthly_cost": 5000
+      },
+      {
+        "role": "Support",
+        "performance": 75,
+        "monthly_cost": 5000
+      }
+    ],
+    "current_month": 0,
+    "customers_acquired": 0,
+    "revenue": 0.0,
+    "is_active": true
+  },
+  "decisions": [
+    {
+      "month": 1,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 473000
+    },
+    {
+      "month": 2,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 446000
+    },
+    {
+      "month": 3,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 419000
+    },
+    {
+      "month": 4,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 392000
+    },
+    {
+      "month": 5,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 365000
+    },
+    {
+      "month": 6,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 338000
+    },
+    {
+      "month": 7,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 311000
+    },
+    {
+      "month": 8,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 284000
+    },
+    {
+      "month": 9,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 257000
+    },
+    {
+      "month": 10,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 230000
+    },
+    {
+      "month": 11,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 203000
+    },
+    {
+      "month": 12,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 176000
+    }
+  ],
+  "outcome": {
+    "success": true,
+    "success_probability": 0.4,
+    "confidence": 0.85,
+    "roi": 0.7,
+    "customers": 2700,
+    "risk_factors": [],
+    "recommendation": "ABORT"
+  }
+}

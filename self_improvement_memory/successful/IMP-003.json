@@ -1,0 +1,23 @@
+{
+  "proposal": {
+    "id": "IMP-003",
+    "improvement_type": "PROMPT_OPTIMIZATION",
+    "target": "Opportunity Ranking",
+    "problem": "Opportunity Ranking underperforming by 12.0 points (MEDIUM)",
+    "proposed_change": "Optimize Opportunity Ranking targeting +12% improvement",
+    "expected_gain": "+12% Opportunity Ranking score",
+    "risk_level": "MEDIUM",
+    "authority_required": 2,
+    "lineage": {
+      "improvement_id": "IMP-003",
+      "target_component": "Opportunity Ranking",
+      "proposal_id": "IMP-003",
+      "simulation_id": null,
+      "council_decision_id": null,
+      "deployment_id": null,
+      "result_id": null
+    }
+  },
+  "gain": 12.41,
+  "component": "Opportunity Ranking"
+}

@@ -1,0 +1,9 @@
+{
+  "assistant_name": "Raphael",
+  "user_name": "Aaron",
+  "enable_small_talk": true,
+  "ask_clarifying_question_on_unknown": true,
+  "suggest_commands_on_second_failure": true,
+  "short_spoken_responses": true,
+  "max_spoken_summary_chars": 600
+}

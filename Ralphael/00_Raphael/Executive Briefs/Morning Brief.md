@@ -1,6 +1,6 @@
 # Morning Brief
 
-Generated: 2026-07-09T15:24:04
+Generated: 2026-07-14T04:38:16
 
 ## Current Mode
 

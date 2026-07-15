@@ -1,0 +1,38 @@
+[
+  {
+    "intent": "create_social_post",
+    "status": "SUCCESS",
+    "provider": "n8n",
+    "metrics": {
+      "cost": 0,
+      "message": "n8n executed create_social_post"
+    }
+  },
+  {
+    "intent": "create_social_post",
+    "status": "SUCCESS",
+    "provider": "n8n",
+    "metrics": {
+      "cost": 0,
+      "message": "n8n executed create_social_post"
+    }
+  },
+  {
+    "intent": "spend_large_capital",
+    "status": "SUCCESS",
+    "provider": "finance_api",
+    "metrics": {
+      "cost": 0,
+      "message": "Finance API executed spend_large_capital"
+    }
+  },
+  {
+    "intent": "create_shopify_product",
+    "status": "SUCCESS",
+    "provider": "n8n",
+    "metrics": {
+      "cost": 0,
+      "message": "n8n executed create_shopify_product"
+    }
+  }
+]

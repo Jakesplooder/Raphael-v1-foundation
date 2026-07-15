@@ -1,0 +1,16 @@
+{
+  "top_improvements": [
+    {
+      "method": "Memory retrieval optimization",
+      "avg_gain": 18.5
+    },
+    {
+      "method": "Opportunity ranking tuning",
+      "avg_gain": 15.2
+    },
+    {
+      "method": "Employee skill matching",
+      "avg_gain": 12.8
+    }
+  ]
+}

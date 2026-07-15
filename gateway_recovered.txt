@@ -1,0 +1,274 @@
+Created At: 2026-07-10T04:48:23Z
+Completed At: 2026-07-10T04:48:23Z
+File Path: `file:///C:/Users/cyber/Downloads/RalphaelOS/api_gateway/gateway.py`
+Total Lines: 265
+Total Bytes: 9973
+Showing lines 1 to 265
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: import os
+2: import asyncio
+3: import httpx
+4: from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
+5: from fastapi.responses import JSONResponse, StreamingResponse, HTMLResponse
+6: from fastapi.middleware.cors import CORSMiddleware
+7: from fastapi.staticfiles import StaticFiles
+8: from contextlib import asynccontextmanager
+9: import time
+10: import json
+11: import logging
+12: import time
+13: 
+14: logging.basicConfig(level=logging.INFO)
+15: logger = logging.getLogger("gateway")
+16: RRK_URL = os.getenv("RRK_URL", "http://localhost:8788")
+17: 
+18: # We use httpx.AsyncClient for reverse proxying with a 5-minute timeout for builder/comfy workloads
+19: client = httpx.AsyncClient(base_url=RRK_URL, timeout=300.0)
+20: 
+21: @asynccontextmanager
+22: async def lifespan(app: FastAPI):
+23:     yield
+24:     await client.aclose()
+25: 
+26: app = FastAPI(title="Raphael API Gateway", lifespan=lifespan)
+27: 
+28: app.add_middleware(
+29:     CORSMiddleware,
+30:     allow_origins=["*"],
+31:     allow_credentials=True,
+32:     allow_methods=["*"],
+33:     allow_headers=["*"],
+34: )
+35: 
+36: import os
+37: if os.path.exists("static"):
+38:     app.mount("/static", StaticFiles(directory="static"), name="static")
+39: 
+40: @app.get("/")
+41: async def serve_dashboard():
+42:     try:
+43:         with open("index_html.txt", "r", encoding="utf-8") as f:
+44:             html = f.read()
+45:         return HTMLResponse(content=html)
+46:     except Exception as e:
+47:         return HTMLResponse(content=f"<h1>Error loading dashboard</h1><p>{e}</p>", status_code=500)
+48: 
+49: import legacy_adapter
+50: 
+51: @app.get("/api/health")
+52: async def health_check():
+53:     # Merge RRK health with Legacy Health for Classic View parity
+54:     health_data = legacy_adapter.system_health()
+55:     health_data["gateway_status"] = "online"
+56:     health_data["rrk_url"] = RRK_URL
+57:     return health_data
+58: 
+59: @app.get("/api/overview")
+60: async def get_overview():
+61:     """
+62:     Feature Resolver (Epic C)
+63:     Acts as the single source of truth, routing features to either RRK or Legacy Adapter
+64:     based on feature_registry.json. Ensures the Classic View schema remains identical.
+65:     """
+66:     start_time = time.time()
+67:     
+68:     # 1. Load the registry
+69:     registry_path = os.path.join(os.path.dirname(__file__), "feature_registry.json")
+70:     try:
+71:         with open(registry_path, "r", encoding="utf-8") as f:
+72:             registry = json.load(f)
+73:     except Exception as e:
+74:         logger.error(f"Failed to load feature registry: {e}")
+75:         registry = {}
+76: 
+77:     # 2. Get baseline from legacy
+78:     legacy_data = legacy_adapter.overview()
+79:     final_data = dict(legacy_data) # Start with legacy as the base map
+80:     
+81:     # 3. Route specific features based on registry
+82:     # This is a translation mapping table (RRK endpoints -> Legacy Keys)
+83:     # The Legacy UI expects very specific keys in the overview payload (e.g., 'tasks', 'goals_active')
+84:     
+85:     # Example Translator for Goals (RRK -> Classic JSON)
+86:     if registry.get("goals") == "rrk":
+87:         try:
+88:             r_start = time.time()
+89:             resp = await client.get(f"{RRK_URL}/api/goals")
+90:             if resp.status_code == 200:
+91:                 rrk_goals = resp.json()
+92:                 # Translation Adapter
+93:                 final_data["goals"] = rrk_goals.get("items", [])
+94:                 # Update counts which the legacy UI expects
+95:                 final_data["counts"]["goals_active"] = sum(1 for g in final_data["goals"] if g.get("status") == "Active")
+96:                 logger.info(f"FeatureResolver: goals -> RRK (Latency: {(time.time() - r_start)*1000:.2f}ms)")
+97:             else:
+98:                 logger.error(f"FeatureResolver: goals -> RRK failed ({resp.status_code})")
+99:         except Exception as e:
+100:             logger.error(f"FeatureResolver: goals -> RRK exception: {e}")
+101:             
+102:     # Example Translator for Tasks (RRK -> Classic JSON)
+103:     if registry.get("tasks") == "rrk":
+104:         try:
+105:             r_start = time.time()
+106:             resp = await client.get(f"{RRK_URL}/api/tasks")
+107:             if resp.status_code == 200:
+108:                 rrk_tasks = resp.json()
+109:                 # Translation Adapter
+110:                 final_data["tasks"] = rrk_tasks.get("items", [])
+111:                 final_data["counts"]["tasks_open"] = sum(1 for t in final_data["tasks"] if t.get("status") not in {"Done", "Archived"})
+112:                 final_data["counts"]["tasks_blocked"] = sum(1 for t in final_data["tasks"] if t.get("status") == "Blocked")
+113:                 logger.info(f"FeatureResolver: tasks -> RRK (Latency: {(time.time() - r_start)*1000:.2f}ms)")
+114:             else:
+115:                 logger.error(f"FeatureResolver: tasks -> RRK failed ({resp.status_code})")
+116:         except Exception as e:
+117:             logger.error(f"FeatureResolver: tasks -> RRK exception: {e}")
+118: 
+119:     # For everything else, log that it routed to legacy
+120:     # We don't need to actually 'route' it since we copied legacy_data into final_data
+121:     for feature, backend in registry.items():
+122:         if backend == "legacy" and feature not in ["goals", "tasks"]:
+123:             # logger.info(f"FeatureResolver: {feature} -> Legacy")
+124:             pass
+125:             
+126:     logger.info(f"FeatureResolver: /api/overview total latency: {(time.time() - start_time)*1000:.2f}ms")
+127:     return final_data
+128: 
+129: @app.get("/api/migration/report")
+130: async def get_migration_report():
+131:     try:
+132:         path = os.path.join(os.path.dirname(__file__), "migration_report.json")
+133:         if os.path.exists(path):
+134:             with open(path, "r", encoding="utf-8") as f:
+135:                 return json.load(f)
+136:         return {"message": "Migration report not generated yet. Run parity harness."}
+137:     except Exception as e:
+138:         return {"error": str(e)}
+139: 
+140: @app.get("/api/migration/parity")
+141: async def get_migration_parity():
+142:     try:
+143:         path = os.path.join(os.path.dirname(__file__), "migration_parity.json")
+144:         if os.path.exists(path):
+145:             with open(path, "r", encoding="utf-8") as f:
+146:                 return json.load(f)
+147:         return {"message": "Parity mapping not generated yet."}
+148:     except Exception as e:
+149:         return {"error": str(e)}
+150: 
+151: @app.get("/api/maintenance")
+152: async def get_maintenance():
+153:     try:
+154:         from translators import maintenance_v1
+155:         return maintenance_v1.build_maintenance_payload()
+156:     except Exception as e:
+157:         logger.error(f"Maintenance Translator Error: {e}")
+158:         # Fallback to pure legacy on catastrophic translator failure
+159:         return legacy_adapter.maintenance_data(legacy_adapter.system_health())
+160: 
+161: # Redirect service actions directly to RRK endpoints
+162: @app.post("/api/services/action")
+163: async def api_services_action(payload: dict = {}):
+164:     action = str(payload.get("action", "")).replace("-", "_")
+165:     service_id = str(payload.get("service_id", ""))
+166:     
+167:     if action in ["start", "stop", "restart"] and service_id:
+168:         try:
+169:             resp = await client.post(f"{RRK_URL}/api/infrastructure/service/{service_id}/{action}")
+170:             if resp.status_code == 200:
+171:                 # Return standard legacy action payload
+172:                 return {"status": resp.json().get("status"), "service_id": service_id}
+173:         except Exception as e:
+174:             logger.error(f"Failed to route service action to RRK: {e}")
+175:     
+176:     # Fallback to legacy action adapter
+177:     result, status = legacy_adapter.service_bus_action(action, payload)
+178:     from fastapi.responses import JSONResponse
+179:     return JSONResponse(result, status_code=status)
+180: 
+181: from pydantic import BaseModel
+182: from typing import Any
+183: 
+184: class ChatPayload(BaseModel):
+185:     message: str = ""
+186:     test_mode: bool = False
+187:     test_session_id: str = ""
+188:     reset_test_session: bool = False
+189:     test_scenario: str = ""
+190: 
+191: @app.post("/api/chat")
+192: async def api_chat(payload: ChatPayload):
+193:     phrase = payload.message.strip()
+194:     if not phrase:
+195:         return {
+196:             "response": "Type a message for Raphael first.",
+197:             "intent": "empty",
+198:             "command": "",
+199:             "status": "Empty",
+200:             "confirmation_required": False,
+201:             "awaiting_confirmation": False,
+202:         }
+203:     return legacy_adapter.dashboard_chat_response(
+204:         phrase,
+205:         test_mode=payload.test_mode,
+206:         test_session_id=payload.test_session_id,
+207:         reset_test_session=payload.reset_test_session,
+208:         test_scenario=payload.test_scenario
+209:     )
+210: 
+211: @app.get("/api/raphael/presence")
+212: async def get_presence():
+213:     return legacy_adapter.raphael_presence_data()
+214: 
+215: @app.post("/api/raphael/presence/action")
+216: async def post_presence_action(payload: dict = {}):
+217:     return legacy_adapter.raphael_presence_action(payload)
+218: 
+219: @app.api_route("/{path:path}", methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"])
+220: async def proxy_to_rrk(request: Request, path: str):
+221:     """
+222:     Reverse proxy all standard API calls directly to RRK.
+223:     """
+224:     url = f"{RRK_URL}/{path}"
+225:     
+226:     # Exclude internal headers that httpx should manage
+227:     headers = dict(request.headers)
+228:     headers.pop("host", None)
+229:     
+230:     try:
+231:         req_body = await request.body()
+232:         response = await client.request(
+233:             method=request.method,
+234:             url=url,
+235:             headers=headers,
+236:             content=req_body,
+237:             params=request.query_params
+238:         )
+239:         return StreamingResponse(
+240:             response.aiter_bytes(),
+241:             status_code=response.status_code,
+242:             headers=dict(response.headers)
+243:         )
+244:     except httpx.RequestError as exc:
+245:         return JSONResponse({"error": f"Failed to route request to RRK: {exc}"}, status_code=502)
+246: 
+247: # Global list of active websocket connections
+248: active_connections = []
+249: 
+250: @app.websocket("/ws/events")
+251: async def websocket_endpoint(websocket: WebSocket):
+252:     await websocket.accept()
+253:     active_connections.append(websocket)
+254:     try:
+255:         while True:
+256:             # For now, we just keep the connection alive
+257:             # Later this will receive events from RRK EventBus via Redis or ZeroMQ, or direct bridge
+258:             data = await websocket.receive_text()
+259:     except WebSocketDisconnect:
+260:         active_connections.remove(websocket)
+261: 
+262: if __name__ == "__main__":
+263:     import uvicorn
+264:     uvicorn.run(app, host="0.0.0.0", port=8000)
+265: 
+The above content shows the entire, complete file contents of the requested file.
+

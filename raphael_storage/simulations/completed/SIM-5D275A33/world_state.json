@@ -1,0 +1,72 @@
+{
+  "simulation_id": "SIM-5D275A33",
+  "venture_type": "AI SaaS",
+  "initial_conditions": {
+    "market": "AI SaaS",
+    "competition_level": "normal",
+    "customer_demand": "normal",
+    "capital": 100000,
+    "team": [
+      {
+        "role": "CEO",
+        "performance": 95,
+        "monthly_cost": 10000
+      },
+      {
+        "role": "Dev",
+        "performance": 95,
+        "monthly_cost": 10000
+      },
+      {
+        "role": "Marketing",
+        "performance": 95,
+        "monthly_cost": 10000
+      }
+    ],
+    "current_month": 0,
+    "customers_acquired": 0,
+    "revenue": 0.0,
+    "is_active": true
+  },
+  "decisions": [
+    {
+      "month": 1,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 68000
+    },
+    {
+      "month": 2,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 36000
+    },
+    {
+      "month": 3,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 4000
+    },
+    {
+      "month": 4,
+      "strategy": "balanced",
+      "marketing_spend": -26000,
+      "capital_remaining": 0
+    },
+    {
+      "month": 5,
+      "strategy": "balanced",
+      "marketing_spend": -30000,
+      "capital_remaining": 0
+    }
+  ],
+  "outcome": {
+    "success": false,
+    "success_probability": 0.1,
+    "confidence": 0.85,
+    "roi": 0.0,
+    "customers": -1968,
+    "risk_factors": [],
+    "recommendation": "ABORT"
+  }
+}

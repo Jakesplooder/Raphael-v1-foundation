@@ -64,9 +64,22 @@ DEFAULT_SETTINGS_PATH = BASE_DIR / "config" / "settings.json"
 DEFAULT_SETTINGS = {
     "vault_path": str(BASE_DIR / "Ralphael"),
     "runtime_path": "C:/RaphaelOS",
-    "ai_provider": "none",
+    "ai_provider": "ollama",
     "openai_model": "gpt-4.1-mini",
     "ollama_model": "llama3.1",
+    "claude_model": "claude-3-haiku-20240307",
+    "gemini_model": "gemini-1.5-flash",
+    "local_reasoner_model": "deepseek-r1",
+    "vision_model": "llava:13b",
+    
+    # Provider keys
+    "provider_keys": {
+        "openai": "",
+        "anthropic": "",
+        "google": ""
+    },
+
+    "default_ai_provider": "ollama",
     "allow_ai_file_content_analysis": False,
     "max_ai_context_chars": 12000,
     "qdrant_enabled": True,
@@ -265,7 +278,7 @@ DEFAULT_SETTINGS = {
     "pod_requires_confirmation_for_generation": True,
     "pod_requires_confirmation_for_tool_execution": True,
     "pod_comfyui_enabled": True,
-    "pod_comfyui_url": "http://127.0.0.1:8188",
+    "pod_comfyui_url": "http://raphael-comfyui:18188",
     "pod_default_generation_model": "sdxl",
     "pod_flux_enabled": True,
     "pod_sdxl_enabled": True,
@@ -1547,7 +1560,9 @@ class RaphaelConfig:
     model_routing_enabled: bool
     default_ai_provider: str
     default_model: str
-    agent_models: dict
+    default_capability: str
+    capability_registry: dict
+    agent_default_capabilities: dict
     internet_search_enabled: bool
     search_requires_confirmation: bool
     search_provider: str
@@ -1819,7 +1834,9 @@ def load_config(settings_path: Path) -> RaphaelConfig:
         model_routing_enabled=bool(settings.get("model_routing_enabled", True)),
         default_ai_provider=str(settings.get("default_ai_provider", "ollama")).lower(),
         default_model=str(settings.get("default_model", "llama3.1:8b")),
-        agent_models=dict(settings.get("agent_models", {})),
+        default_capability=str(settings.get("default_capability", "conversation")),
+        capability_registry=dict(settings.get("capability_registry", {})),
+        agent_default_capabilities=dict(settings.get("agent_default_capabilities", {})),
         internet_search_enabled=bool(settings.get("internet_search_enabled", False)),
         search_requires_confirmation=bool(settings.get("search_requires_confirmation", True)),
         search_provider=str(settings.get("search_provider", "manual")).lower(),
@@ -11829,15 +11846,21 @@ def call_openai_model(config: RaphaelConfig, prompt: str, context: str, model: s
         config.openai_model = original_model
 
 
+_ollama_cache = None
 def ollama_local_models() -> tuple[list[str], str]:
-    request = urllib.request.Request(os.environ.get("OLLAMA_URL", os.environ.get("OLLAMA_URL", "http://host.docker.internal:11434")) + "/api/tags", method="GET")
+    global _ollama_cache
+    if _ollama_cache is not None:
+        return _ollama_cache
+    request = urllib.request.Request(os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434") + "/api/tags", method="GET")
     try:
-        with urllib.request.urlopen(request, timeout=10) as response:
+        with urllib.request.urlopen(request, timeout=1) as response:
             data = json.loads(response.read().decode("utf-8"))
     except urllib.error.URLError as exc:
-        return [], f"Ollama unavailable: {exc}"
+        _ollama_cache = ([], f"Ollama unavailable: {exc}")
+        return _ollama_cache
     models = sorted({item.get("name", "") for item in data.get("models", []) if item.get("name")})
-    return models, "ok"
+    _ollama_cache = (models, "ok")
+    return _ollama_cache
 
 
 def model_available(provider: str, model: str) -> tuple[bool, str]:
@@ -11859,25 +11882,93 @@ def model_available(provider: str, model: str) -> tuple[bool, str]:
     return False, f"Unsupported provider `{provider}`"
 
 
-def configured_agent_model(config: RaphaelConfig, agent_name: str) -> str:
-    normalized = normalize_agent_name(agent_name)
-    normalized_models = {normalize_agent_name(agent): model for agent, model in config.agent_models.items()}
-    return str(normalized_models.get(normalized, config.default_model))
+import re
 
+class BaseCapabilityClassifier:
+    def classify_task_capability(self, task_description: str) -> tuple[str, float, str]:
+        raise NotImplementedError()
 
-def route_model_for_agent(config: RaphaelConfig, agent_name: str) -> tuple[str, str, str]:
-    provider = config.default_ai_provider if config.model_routing_enabled else config.ai_provider
-    model = configured_agent_model(config, agent_name) if config.model_routing_enabled else (
-        config.ollama_model if provider == "ollama" else config.openai_model
-    )
-    available, status = model_available(provider, model)
-    if available:
-        return provider, model, status
-    fallback = config.default_model
-    fallback_available, fallback_status = model_available(provider, fallback)
-    if fallback_available:
-        return provider, fallback, f"{model} unavailable ({status}); fell back to {fallback}"
-    return provider, fallback, f"{model} unavailable ({status}); fallback {fallback} unavailable ({fallback_status})"
+class RegexCapabilityClassifier(BaseCapabilityClassifier):
+    def __init__(self):
+        self.heuristics = {
+            "debugging": [r"\bdebug\b", r"\btraceback\b", r"\broot cause\b", r"\brace condition\b", r"\berror\b"],
+            "coding": [r"\bcode\b", r"\bimplement\b", r"\bmicroservice\b", r"\bscript\b", r"\brefactor\b", r"\bapi\b", r"\bfunction\b", r"\bclass\b"],
+            "planning": [r"\bplan\b", r"\barchitecture\b", r"\bstrategy\b", r"\broadmap\b", r"\bmilestone\b", r"\bepic\b"],
+            "reasoning": [r"\bmath\b", r"\blogic\b", r"\banalysis\b", r"\bdecisions\b", r"\bthink\b", r"\barchitect\b", r"\bdesign\b", r"\binvestigate\b"],
+            "research": [r"\binternet\b", r"\bpapers\b", r"\bcomparison\b", r"\bsources\b", r"\banalyze\b"],
+            "conversation": [r"\bhello\b", r"\bwhat is\b", r"\bsummarize\b", r"\bchat\b", r"\bsupport\b"],
+            "image_generation": [r"\bdraw\b", r"\bgenerate image\b", r"\bpicture\b", r"\bpod\b", r"\bmidjourney\b", r"\bflux\b"],
+            "vision": [r"\bocr\b", r"\bscreenshot\b", r"\bdiagram\b", r"\bui\b", r"\bpdf\b"],
+            "creative": [r"\bwrite\b", r"\bpoem\b", r"\bscript\b", r"\bstory\b", r"\bnewsletter\b"],
+            "automation": [r"\bautomate\b", r"\bworkflow\b", r"\bn8n\b", r"\bpipeline\b"]
+        }
+
+    def classify_task_capability(self, task_description: str) -> tuple[str, float, str]:
+        if not task_description:
+            return "", 0.0, "No task description provided."
+        task_lower = task_description.lower()
+        scores = {}
+        for cap, patterns in self.heuristics.items():
+            score = sum(1 for p in patterns if re.search(p, task_lower))
+            if score > 0:
+                scores[cap] = score
+        if not scores:
+            return "", 0.0, "No strong heuristic keywords detected."
+        best_cap = max(scores, key=scores.get)
+        confidence = min(0.5 + (scores[best_cap] * 0.2), 0.95)
+        return best_cap, confidence, f"Detected keywords matching '{best_cap}' capability."
+
+class CapabilityResolver:
+    def __init__(self, config: RaphaelConfig):
+        self.config = config
+        
+    def resolve_capability(self, agent_name: str, capability: str, confidence: float, reason: str) -> tuple[str, float, str, str]:
+        normalized = normalize_agent_name(agent_name)
+        if not capability or confidence < 0.50:
+            agent_defaults = {normalize_agent_name(k): v for k, v in self.config.agent_default_capabilities.items()}
+            default_cap = agent_defaults.get(normalized)
+            if default_cap:
+                return default_cap, 1.0, f"Confidence too low ({confidence:.2f}); fell back to agent default '{default_cap}'", "fallback_agent"
+            return self.config.default_capability, 1.0, f"Confidence too low; fell back to system default '{self.config.default_capability}'", "fallback_system"
+        return capability, confidence, reason, "classified"
+        
+    def resolve_model(self, capability: str) -> tuple[str, str, dict, str]:
+        provider = self.config.default_ai_provider if self.config.model_routing_enabled else self.config.ai_provider
+        cap_meta = self.config.capability_registry.get(capability, {})
+        
+        if not cap_meta:
+            fallback_cap = self.config.default_capability
+            cap_meta = self.config.capability_registry.get(fallback_cap, {})
+            model = cap_meta.get("model", self.config.default_model)
+            available, status = model_available(provider, model)
+            return provider, model, cap_meta, f"Capability '{capability}' missing, fallback to '{fallback_cap}'. Model status: {status}"
+            
+        model = cap_meta.get("model", self.config.default_model)
+        available, status = model_available(provider, model)
+        if available:
+            return provider, model, cap_meta, status
+            
+        fallback_cap = self.config.default_capability
+        fallback_meta = self.config.capability_registry.get(fallback_cap, {})
+        fallback_model = fallback_meta.get("model", self.config.default_model)
+        fallback_available, fallback_status = model_available(provider, fallback_model)
+        return provider, fallback_model, fallback_meta, f"{model} unavailable ({status}); fell back to {fallback_model} ({fallback_status})"
+
+def route_model_for_task(config: RaphaelConfig, agent_name: str, task_description: str = "") -> tuple[str, str, str, str, str, float]:
+    if not config.model_routing_enabled:
+        provider = config.ai_provider
+        model = config.ollama_model if provider == "ollama" else config.openai_model
+        available, status = model_available(provider, model)
+        return provider, model, status, "static", "Model routing disabled", 1.0
+        
+    classifier = RegexCapabilityClassifier()
+    cap, conf, reason = classifier.classify_task_capability(task_description)
+    
+    resolver = CapabilityResolver(config)
+    final_cap, final_conf, final_reason, route_type = resolver.resolve_capability(agent_name, cap, conf, reason)
+    provider, model, meta, status = resolver.resolve_model(final_cap)
+    
+    return provider, model, status, final_cap, final_reason, final_conf
 
 
 def call_ai_with_route(config: RaphaelConfig, provider: str, model: str, prompt: str, context: str) -> str:
@@ -12155,7 +12246,7 @@ def model_status_text(config: RaphaelConfig) -> str:
         lines.append(f"- Provider `{provider}` is not configured for route checks.")
     lines.extend(["", "## Agent Model Routes"])
     for agent in AGENTS:
-        model = configured_agent_model(config, agent)
+        model = getattr(config, f"{agent.lower().replace(' ', '_')}_model", config.default_model)
         available, status = model_available(provider, model)
         lines.append(f"- {agent}: `{model}` - {'available' if available else 'unavailable'} ({status})")
     lines.extend(
@@ -12182,7 +12273,7 @@ def model_status(config: RaphaelConfig) -> Path:
 
 def model_route_text(config: RaphaelConfig, task_description: str) -> str:
     agent, ranked = route_task_choice(task_description)
-    provider, model, status = route_model_for_agent(config, agent)
+    provider, model, status, capability, reason, confidence = route_model_for_task(config, agent, task_description)
     related_project = detect_related_project(config, task_description)
     ranked_lines = "\n".join(f"- {name}: {score}" for name, score in ranked if score > 0)
     if not ranked_lines:
@@ -12198,6 +12289,10 @@ Generated: {today()}
 ## Recommended Route
 
 - Agent: {agent}
+- Capability: {capability}
+- Confidence: {confidence:.0%}
+- Selected Model: {model}
+- Reason: {reason}
 - Related project: {related_project}
 - Provider: {provider}
 - Model: {model}
@@ -21348,19 +21443,19 @@ def notification_escalate(config: RaphaelConfig, notification_id: str) -> tuple[
 
 def notification_sector_counts(config: RaphaelConfig) -> dict[str, int]:
     rows = [row for row in read_notifications(config) if row.get("Status") == "New"]
-    sectors = {"Apex Citadel": 0, "Quantum Labs": 0, "Engine Room": 0, "Neon Forge": 0, "Ledger Grid": 0}
+    sectors = {"Executive Control Plane": 0, "Agent Runtime": 0, "Execution Layer": 0, "Deliberation Engine": 0, "Council Governance": 0}
     for row in rows:
         ntype = row.get("Type", "")
         if ntype in {"Initiative Alert", "Portfolio Alert", "Council Alert"}:
-            sectors["Apex Citadel"] += 1
+            sectors["Executive Control Plane"] += 1
         elif ntype in {"Search/Vision Alert", "System Alert", "Self-Improvement Alert"}:
-            sectors["Quantum Labs"] += 1
+            sectors["Agent Runtime"] += 1
         elif ntype in {"Task Alert", "Execution Alert", "Builder Alert"}:
-            sectors["Engine Room"] += 1
+            sectors["Execution Layer"] += 1
         elif ntype in {"Opportunity Alert", "Portfolio Alert"}:
-            sectors["Neon Forge"] += 1
+            sectors["Deliberation Engine"] += 1
         elif ntype in {"KPI Alert", "Financial Alert"}:
-            sectors["Ledger Grid"] += 1
+            sectors["Council Governance"] += 1
     return sectors
 
 
@@ -22466,19 +22561,19 @@ def activity_summary_api(config: RaphaelConfig) -> dict[str, object]:
 
 def activity_sector_counts(config: RaphaelConfig) -> dict[str, int]:
     events = activity_events_current(config)
-    sectors = {"Apex Citadel": 0, "Quantum Labs": 0, "Engine Room": 0, "Neon Forge": 0, "Ledger Grid": 0}
+    sectors = {"Executive Control Plane": 0, "Agent Runtime": 0, "Execution Layer": 0, "Deliberation Engine": 0, "Council Governance": 0}
     for event in events:
         event_type = event.get("Event Type", "")
         if event_type in {"Initiative Event", "Portfolio Event", "Council Event", "Brief Event"}:
-            sectors["Apex Citadel"] += 1
+            sectors["Executive Control Plane"] += 1
         elif event_type in {"Search Event", "Vision Event", "System Event"}:
-            sectors["Quantum Labs"] += 1
+            sectors["Agent Runtime"] += 1
         elif event_type in {"Task Event", "Execution Event", "Builder Event", "Workflow Event", "Employee Event"}:
-            sectors["Engine Room"] += 1
+            sectors["Execution Layer"] += 1
         elif event_type in {"Opportunity Event", "Finance Event"}:
-            sectors["Neon Forge"] += 1
+            sectors["Deliberation Engine"] += 1
         elif event_type in {"KPI Event", "Notification Event"}:
-            sectors["Ledger Grid"] += 1
+            sectors["Council Governance"] += 1
     return sectors
 
 
@@ -24121,7 +24216,7 @@ def append_agent_ai_answer(config: RaphaelConfig, agent_name: str, question: str
 
 def agent_ask(config: RaphaelConfig, agent_name: str, question: str) -> Path:
     normalized = normalize_agent_name(agent_name)
-    provider, model, model_status = route_model_for_agent(config, normalized)
+    provider, model, model_status, capability, reason, confidence = route_model_for_task(config, normalized, question)
     fallback_context = agent_context(config, normalized)
     memory_context, memory_sources, memory_status = rag_memory_context(config, agent_memory_query(normalized, question))
     context = combine_ai_context(
@@ -24152,7 +24247,7 @@ def agent_ask(config: RaphaelConfig, agent_name: str, question: str) -> Path:
 
 def agent_rag_brief(config: RaphaelConfig, agent_name: str) -> Path:
     normalized = normalize_agent_name(agent_name)
-    provider, model, model_status = route_model_for_agent(config, normalized)
+    provider, model, model_status, capability, reason, confidence = route_model_for_task(config, normalized, "planning and reasoning")
     fallback_context = agent_context(config, normalized)
     memory_context, memory_sources, memory_status = rag_memory_context(config, agent_memory_query(normalized, "brief recommended focus relevant projects risks"))
     context = combine_ai_context(
@@ -24658,25 +24753,11 @@ Define next milestone.
 
 def parse_goals(config: RaphaelConfig) -> list[dict[str, str]]:
     ensure_goal_files(config)
-    text = read_text_if_exists(config.vault / "00_Raphael" / "Goals.md", config)
-    goals: list[dict[str, str]] = []
-    for row in meaningful_table_rows(text):
-        cells = table_cells(row)
-        if len(cells) >= 9 and cells[0].startswith("GOAL-"):
-            goals.append(
-                {
-                    "id": cells[0],
-                    "title": cells[1],
-                    "description": cells[2],
-                    "status": cells[3],
-                    "priority": cells[4],
-                    "projects": cells[5],
-                    "agents": cells[6],
-                    "created": cells[7],
-                    "milestone": cells[8],
-                }
-            )
-    return goals
+    from raphael_core.repositories.goals import MarkdownGoalRepository
+    from raphael_core.services.goals import GoalService
+    repo = MarkdownGoalRepository(config.vault.parent)
+    service = GoalService(repo)
+    return service.get_all_goals()
 
 
 def rewrite_goal_row(config: RaphaelConfig, goal_id: str, updates: dict[str, str]) -> None:
@@ -26310,15 +26391,7 @@ def build_parser() -> argparse.ArgumentParser:
     pod_svg_export_parser.add_argument("composition_ref")
     pod_print_export_parser = sub.add_parser("pod-print-export", help="Export a transparent print-ready PNG with Inkscape")
     pod_print_export_parser.add_argument("composition_ref")
-    pod_workflow_parser = sub.add_parser("pod-workflow", help="Start a persistent 13-stage local POD workflow")
-    pod_workflow_parser.add_argument("workflow_request")
-    sub.add_parser("pod-workflow-status", help="Show persistent POD workflow status")
-    pod_workflow_continue_parser = sub.add_parser("pod-workflow-continue", help="Run the next confirmed POD workflow stage")
-    pod_workflow_continue_parser.add_argument("workflow_id")
-    pod_workflow_show_parser = sub.add_parser("pod-workflow-show", help="Show one POD workflow and its generated IDs")
-    pod_workflow_show_parser.add_argument("workflow_id")
-    pod_workflow_cancel_parser = sub.add_parser("pod-workflow-cancel", help="Cancel a persistent POD workflow")
-    pod_workflow_cancel_parser.add_argument("workflow_id")
+    # Legacy pod-workflow parsers removed for RRK Commerce Migration
     sub.add_parser("pod-typography-review", help="Generate the POD Typography Engine review")
     sub.add_parser("pod-typography-status", help="Show POD Typography Engine and Inkscape status")
     sub.add_parser("asset-status", help="Show Asset & Brand Library status")
@@ -26478,6 +26551,10 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("build-review", help="Show pending and generated Builder Mode requests")
     build_status_parser = sub.add_parser("build-status", help="Show status for a build request")
     build_status_parser.add_argument("build_id")
+    
+    audit_parser = sub.add_parser("audit", help="Run full system audit")
+    audit_parser.add_argument("--full", action="store_true", help="Run all in-depth checks")
+    
     build_task_link_parser = sub.add_parser("build-task-link", help="Create or repair the tracked task link for a build")
     build_task_link_parser.add_argument("build_id")
     sub.add_parser("build-task-review", help="Review Builder request-to-task lifecycle links")
@@ -27361,19 +27438,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Generated POD Studio review: {pod_review(config)}")
         elif args.command == "pod-brief":
             print(f"Generated POD Studio brief: {pod_brief(config)}")
-        elif args.command.startswith("pod-workflow"):
-            from . import pod_workflow
-
-            if args.command == "pod-workflow":
-                print(json.dumps(pod_workflow.pod_workflow(config, args.workflow_request), indent=2))
-            elif args.command == "pod-workflow-status":
-                print(json.dumps(pod_workflow.pod_workflow_status(config), indent=2))
-            elif args.command == "pod-workflow-continue":
-                print(json.dumps(pod_workflow.pod_workflow_continue(config, args.workflow_id), indent=2))
-            elif args.command == "pod-workflow-show":
-                print(json.dumps(pod_workflow.pod_workflow_show(config, args.workflow_id), indent=2))
-            elif args.command == "pod-workflow-cancel":
-                print(json.dumps(pod_workflow.pod_workflow_cancel(config, args.workflow_id), indent=2))
+        # Legacy pod-workflow routing removed for RRK Commerce Migration
         elif args.command.startswith("pod-typography") or args.command in {"pod-compose-design", "pod-svg-export", "pod-print-export"}:
             from . import typography
 
@@ -27611,6 +27676,9 @@ def main(argv: list[str] | None = None) -> int:
             print(build_review_text(config))
         elif args.command == "build-status":
             print(build_status_text(config, args.build_id))
+        elif args.command == "audit":
+            from .audit import run_system_audit
+            print(run_system_audit(config, args.full))
         elif args.command == "build-task-link":
             output = build_task_link(config, args.build_id)
             text = read_text_if_exists(output, config)

@@ -1,0 +1,36 @@
+{
+  "decision_id": "DEC-2E6A",
+  "original_action": "Spend money now for growth",
+  "conflicts": [
+    "Identified from arguments"
+  ],
+  "options": [
+    {
+      "option_id": "OPT-9CB9",
+      "description": "Risk-adjusted recommendation",
+      "score": 50.0,
+      "simulated_outcome": {}
+    },
+    {
+      "option_id": "OPT-7083",
+      "description": "Spend money now for growth",
+      "score": 0.0,
+      "simulated_outcome": {}
+    },
+    {
+      "option_id": "OPT-B2B6",
+      "description": "Revised plan: Too expensive + High cost is acceptable only if ROI timeline is < 6 months.",
+      "score": 0.0,
+      "simulated_outcome": {}
+    }
+  ],
+  "final_resolution": "Risk-adjusted recommendation",
+  "confidence": 0.88,
+  "uncertainty": [
+    "Simulated outcomes are probabilistic"
+  ],
+  "information_needed": [
+    "Run deeper market simulation"
+  ],
+  "reasoning_chain": []
+}

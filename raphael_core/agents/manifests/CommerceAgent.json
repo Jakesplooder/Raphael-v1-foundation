@@ -1,0 +1,15 @@
+{
+  "name": "CommerceAgent",
+  "purpose": "Business product creation",
+  "capabilities": ["design", "copywriting", "seo", "branding"],
+  "allowed_workflows": ["create_pod_product", "create_digital_product", "launch_brand"],
+  "permissions": {
+    "workflow_creation": true,
+    "provider_access": false,
+    "external_actions": false,
+    "financial_actions": false,
+    "publishing": false
+  },
+  "memory": {"enabled": true},
+  "requires_council": true
+}

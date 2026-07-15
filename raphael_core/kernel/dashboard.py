@@ -68,6 +68,67 @@ class KernelDashboard(ServiceModule):
                 return {"error": "GoalsManager not registered in Kernel"}
             return {"items": mgr.get_all_goals()}
 
+        @self.app.get("/api/tasks")
+        def get_tasks():
+            from .registry import registry
+            mgr = registry.get_service("TasksManager")
+            if not mgr:
+                return {"error": "TasksManager not registered in Kernel"}
+            return {"items": mgr.get_tasks(scope="agent")}
+
+        @self.app.get("/api/council_tasks")
+        def get_council_tasks():
+            from .registry import registry
+            mgr = registry.get_service("TasksManager")
+            if not mgr:
+                return {"error": "TasksManager not registered in Kernel"}
+            return {"items": mgr.get_tasks(scope="council")}
+
+        @self.app.get("/api/tasks_overview")
+        def get_tasks_overview():
+            from .registry import registry
+            mgr = registry.get_service("TasksManager")
+            if not mgr:
+                return {"error": "TasksManager not registered in Kernel"}
+            return {"items": mgr.get_tasks(scope="all")}
+
+        @self.app.get("/api/system/modules")
+        def get_system_modules():
+            from .registry import registry
+            import inspect
+            
+            modules = {}
+            for name, service in registry._services.items():
+                try:
+                    mod_name = name.replace("Manager", "").lower()
+                    metadata = service.manifest().get("metadata", {})
+                    
+                    # Check composition dynamically
+                    has_repo = hasattr(service, "repository")
+                    has_service = hasattr(service, "service")
+                    has_provider = hasattr(service, "providers") or hasattr(service, "provider")
+                    
+                    try:
+                        health_val = service.health().value
+                    except AttributeError:
+                        health_val = str(service.health())
+                    
+                    modules[mod_name] = {
+                        "repository": has_repo,
+                        "service": has_service,
+                        "manager": True,
+                        "provider": has_provider,
+                        "version": metadata.get("version", "1.0.0"),
+                        "health": health_val,
+                        "schema": metadata.get("schema", 1),
+                        "migration": metadata.get("migration", "Unknown")
+                    }
+                except Exception as e:
+                    import traceback
+                    traceback.print_exc()
+                    print(f"Error processing service {name}: {e}")
+            return modules
+
         # Phase 2: RESTful RRK Infrastructure APIs
         @self.app.get("/api/infrastructure/runtime")
         def get_infra_runtime():

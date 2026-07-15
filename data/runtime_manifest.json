@@ -1,0 +1,13 @@
+{
+  "kernel_version": "2.0.0",
+  "boot_time": 1783407432.4902537,
+  "runtime_mode": "production",
+  "services": [],
+  "plugins": [],
+  "providers": [],
+  "health": "OK",
+  "constitution_version": "1.0",
+  "world_model_version": "2.0",
+  "trace_seed": "RRK-1783407432.4903026",
+  "startup_duration_ms": 0.107421875
+}

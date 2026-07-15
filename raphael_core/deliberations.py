@@ -1,5 +1,20 @@
-"""Council deliberation domain."""
+from typing import List, Dict
+from .kernel.storage import KernelStorage
+from .kernel.event_bus import emit
 
-from ._domain import get as __getattr__, names as _names
+storage = KernelStorage()
 
-__all__ = [name for name in _names() if "deliberat" in name.lower()]
+class DeliberationEngine:
+    def __init__(self):
+        self.domain = "deliberations"
+
+    def start_deliberation(self, topic: str, participants: List[str]):
+        d_id = f"DELIB-{hash(topic)}"
+        record = {
+            "topic": topic,
+            "participants": participants,
+            "status": "active"
+        }
+        storage.save(self.domain, f"{d_id}.json", record)
+        emit("DELIBERATION_STARTED", "DeliberationEngine", {"deliberation_id": d_id, "topic": topic})
+        return d_id

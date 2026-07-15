@@ -1,0 +1,12 @@
+{
+  "agent_base.py": {
+    "status": "deprecated",
+    "replacement": "agents/core/base_agent.py",
+    "removal_target": "D16"
+  },
+  "workforce_agents.py": {
+    "status": "deprecated",
+    "replacement": "agents/implementations/core_agents.py",
+    "removal_target": "D16"
+  }
+}

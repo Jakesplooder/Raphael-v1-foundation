@@ -1,7 +1,7 @@
 {
   "kernel_version": "2.0.0",
-  "boot_time": 1783404572.9632616,
-  "runtime_mode": "production",
+  "boot_time": 1784068888.5795934,
+  "runtime_mode": "enterprise",
   "services": [
     "EventBus",
     "JobSystem",
@@ -11,10 +11,10 @@
     "KernelDashboard",
     "WorldModelService",
     "WorkforceManager",
+    "InfrastructureManager",
     "RuntimeMetricsManager",
-    "AgentLifecycleManager",
-    "CheckpointManager",
-    "RecoveryManager",
+    "GoalsManager",
+    "TasksManager",
     "CooAgent",
     "ChiefOfStaffAgent",
     "ProjectManagerAgent",
@@ -22,13 +22,22 @@
     "ResourceManagerAgent",
     "CommerceAgent",
     "DeveloperAgent",
-    "ResearchAgent"
+    "ResearchAgent",
+    "BuilderManager",
+    "ProjectManager",
+    "WorkflowPlans",
+    "Memory",
+    "Knowledge",
+    "Workflowrunner",
+    "Agents",
+    "Goals",
+    "CommerceManager"
   ],
   "plugins": [],
   "providers": [],
   "health": "OK",
   "constitution_version": "1.0",
   "world_model_version": "2.0",
-  "trace_seed": "RRK-1783404572.963323",
-  "startup_duration_ms": 52.424560546875
+  "trace_seed": "RRK-1784068888.5796852",
+  "startup_duration_ms": 117.52001953125
 }

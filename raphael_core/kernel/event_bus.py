@@ -121,6 +121,9 @@ class EventBus(ServiceModule):
         await self._volatile_queue.put(event)
 
     def _persist_durable_event(self, event: Event) -> None:
+        if not self._conn:
+            ObservabilityLayer.error(self.name, "Failed to persist durable event: EventBus DB connection is None", trace_id=event.trace_id)
+            return
         try:
             self._conn.execute(
                 "INSERT INTO durable_events (id, timestamp, trace_id, source, target, type, priority, payload) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
@@ -150,8 +153,13 @@ class EventBus(ServiceModule):
                     self._conn.commit()
                     
                 self._volatile_queue.task_done()
-            except asyncio.CancelledError:
-                break
             except Exception as e:
                 ObservabilityLayer.error(self.name, f"Event loop error: {e}")
                 await asyncio.sleep(1)
+
+global_event_bus = EventBus()
+
+def emit(type_str: str, source: str, payload: dict):
+    print(f"EVENT: {type_str} from {source}: {payload}")
+
+

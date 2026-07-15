@@ -1,0 +1,15 @@
+{
+  "name": "ChiefOfStaffAgent",
+  "purpose": "The orchestrator. Breaks down goals and delegates to other agents.",
+  "capabilities": ["planning", "delegation", "business_strategy"],
+  "allowed_workflows": ["company_launch", "research_sprint"],
+  "permissions": {
+    "workflow_creation": true,
+    "provider_access": false,
+    "external_actions": false,
+    "financial_actions": false,
+    "publishing": false
+  },
+  "memory": {"enabled": true},
+  "requires_council": true
+}

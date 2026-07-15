@@ -1,0 +1,85 @@
+from pydantic import BaseModel, Field
+from typing import List, Dict, Any, Optional, Union
+from enum import Enum
+import time
+
+class ProductType(str, Enum):
+    POD = "pod"
+    DIGITAL_DOWNLOAD = "digital"
+    COURSE = "course"
+    BOOK = "book"
+    SOFTWARE = "software"
+    BUNDLE = "bundle"
+    TEMPLATE = "template"
+
+class ProductStatus(str, Enum):
+    DRAFT = "draft"
+    RESEARCHING = "researching"
+    GENERATING = "generating"
+    REVIEW = "review"
+    PUBLISHING = "publishing"
+    MONITORING = "monitoring"
+    OPTIMIZING = "optimizing"
+    ARCHIVED = "archived"
+
+class AssetType(str, Enum):
+    PNG = "png"
+    SVG = "svg"
+    PSD = "psd"
+    AI = "ai"
+    MOCKUP = "mockup"
+    VIDEO = "video"
+    PROMPT = "prompt"
+
+class PlatformType(str, Enum):
+    ETSY = "etsy"
+    SHOPIFY = "shopify"
+    PRINTIFY = "printify"
+    AMAZON = "amazon"
+    GUMROAD = "gumroad"
+
+class Asset(BaseModel):
+    """A digital asset associated with a Commerce Product."""
+    asset_id: str
+    product_id: str
+    asset_type: AssetType
+    file_path: str
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+    variants: List[str] = Field(default_factory=list)
+    created_at: Union[float, str] = Field(default_factory=time.time)
+
+class Listing(BaseModel):
+    """A marketplace listing for a Commerce Product."""
+    listing_id: str
+    product_id: str
+    platform: PlatformType
+    title: str
+    description: str
+    tags: List[str] = Field(default_factory=list)
+    price: float = 0.0
+    external_url: Optional[str] = None
+    status: str = "draft"
+    created_at: Union[float, str] = Field(default_factory=time.time)
+
+class CommerceArtifact(BaseModel):
+    """A logical component of a Commerce Product (e.g. Brand Identity, Artwork, Mockups)."""
+    artifact_id: str
+    product_id: str
+    name: str
+    assets: List[str] = Field(default_factory=list) # Asset IDs
+    listings: List[str] = Field(default_factory=list) # Listing IDs
+    created_at: Union[float, str] = Field(default_factory=time.time)
+
+class Product(BaseModel):
+    """A universal Commerce Product."""
+    product_id: str
+    product_type: ProductType = ProductType.POD
+    name: str
+    concept: str = ""
+    status: ProductStatus = ProductStatus.DRAFT
+    workflow_id: Optional[str] = None
+    artifacts: List[str] = Field(default_factory=list) # Artifact IDs
+    assets: List[str] = Field(default_factory=list) # Raw Asset IDs
+    listings: List[str] = Field(default_factory=list) # Raw Listing IDs
+    created_at: Union[float, str] = Field(default_factory=time.time)
+    updated_at: Union[float, str] = Field(default_factory=time.time)

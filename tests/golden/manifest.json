@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-07-09T22:12:24.807388Z",
+  "raphael_version": "1.0.0",
+  "gateway_commit": "HEAD",
+  "rrk_commit": "HEAD",
+  "legacy_adapter_commit": "HEAD",
+  "endpoints_captured": [
+    "goals.json",
+    "tasks.json",
+    "projects.json",
+    "executive.json",
+    "commerce.json",
+    "maintenance.json"
+  ],
+  "notes": "Baseline before Epic D legacy migration."
+}

@@ -1,0 +1,8 @@
+{
+  "response": "Command Bus failed safely. No fallback route was used: [Errno 2] No such file or directory: 'C:\\\\app\\\\runtime\\\\command_bus.py'",
+  "intent": "command_bus_error",
+  "command": "",
+  "status": "Failed",
+  "confirmation_required": false,
+  "awaiting_confirmation": false
+}

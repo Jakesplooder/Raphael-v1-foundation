@@ -1,0 +1,23 @@
+{
+  "proposal": {
+    "id": "IMP-002",
+    "improvement_type": "SKILL_IMPROVEMENT",
+    "target": "Sales Employee Training",
+    "problem": "Sales Employee Training underperforming by 22.0 points (HIGH)",
+    "proposed_change": "Optimize Sales Employee Training targeting +22% improvement",
+    "expected_gain": "+22% Sales Employee Training score",
+    "risk_level": "MEDIUM",
+    "authority_required": 2,
+    "lineage": {
+      "improvement_id": "IMP-002",
+      "target_component": "Sales Employee Training",
+      "proposal_id": "IMP-002",
+      "simulation_id": null,
+      "council_decision_id": null,
+      "deployment_id": null,
+      "result_id": null
+    }
+  },
+  "gain": 27.5,
+  "component": "Sales Employee Training"
+}

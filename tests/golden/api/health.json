@@ -1,0 +1,39 @@
+{
+  "qdrant": {
+    "ok": false,
+    "detail": "<urlopen error timed out>"
+  },
+  "ollama": {
+    "ok": false,
+    "models": [],
+    "detail": "<urlopen error timed out>"
+  },
+  "vision": {
+    "model": "qwen2.5vl",
+    "available": false,
+    "enabled": true
+  },
+  "piper": {
+    "engine": "unknown",
+    "exe_exists": false,
+    "model_exists": false
+  },
+  "paths": {
+    "vault": "\\app\\vault",
+    "runtime": "\\app\\runtime",
+    "config": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\config\\settings.json"
+  },
+  "dashboard_chat": {
+    "chat_enabled": true,
+    "council_chat_enabled": true,
+    "command_execution_enabled": true,
+    "voice_input_enabled": true,
+    "voice_control_enabled": true,
+    "requires_confirmation": true,
+    "requires_delegation_confirmation": true,
+    "builder_enabled": true,
+    "builder_requires_confirmation": true,
+    "controlled_execution_enabled": true,
+    "dashboard_execution_enabled": true
+  }
+}

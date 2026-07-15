@@ -1,0 +1,303 @@
+{
+  "goals": {
+    "domain": "goals",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "tasks": {
+    "domain": "tasks",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "projects": {
+    "domain": "projects",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "workforceresource": {
+    "domain": "workforceresource",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "commerce": {
+    "domain": "commerce",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "builder": {
+    "domain": "builder",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "agency": {
+    "domain": "agency",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "agents": {
+    "domain": "agents",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "knowledge": {
+    "domain": "knowledge",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "n8nstudio": {
+    "domain": "n8nstudio",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "workflowrunner": {
+    "domain": "workflowrunner",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "workflowplans": {
+    "domain": "workflowplans",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "communications": {
+    "domain": "communications",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "commandbus": {
+    "domain": "commandbus",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "notifications": {
+    "domain": "notifications",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "activity": {
+    "domain": "activity",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "briefs": {
+    "domain": "briefs",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "identity": {
+    "domain": "identity",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "world": {
+    "domain": "world",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "simulations": {
+    "domain": "simulations",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "opportunities": {
+    "domain": "opportunities",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "allocation": {
+    "domain": "allocation",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "blueprints": {
+    "domain": "blueprints",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "assetlibrary": {
+    "domain": "assetlibrary",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "creator": {
+    "domain": "creator",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "kpis": {
+    "domain": "kpis",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "finance": {
+    "domain": "finance",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "portfolio": {
+    "domain": "portfolio",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "initiatives": {
+    "domain": "initiatives",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "employees": {
+    "domain": "employees",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "executionplans": {
+    "domain": "executionplans",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "execution": {
+    "domain": "execution",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "goalpropagation": {
+    "domain": "goalpropagation",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "deliberations": {
+    "domain": "deliberations",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "councils": {
+    "domain": "councils",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "workflows": {
+    "domain": "workflows",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "memory": {
+    "domain": "memory",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "voice": {
+    "domain": "voice",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "vision": {
+    "domain": "vision",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "search": {
+    "domain": "search",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "health": {
+    "domain": "health",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "selfhealing": {
+    "domain": "selfhealing",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  },
+  "maintenance": {
+    "domain": "maintenance",
+    "status": "native",
+    "legacy_dependency": false,
+    "storage_migrated": true,
+    "event_bus_connected": true
+  }
+}

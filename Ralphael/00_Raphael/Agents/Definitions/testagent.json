@@ -1,0 +1,13 @@
+{
+  "name": "TestAgent",
+  "role": "Tester",
+  "description": "A test agent",
+  "capabilities": [
+    "echo",
+    "python"
+  ],
+  "permissions": [
+    "testing"
+  ],
+  "default_model": "default"
+}

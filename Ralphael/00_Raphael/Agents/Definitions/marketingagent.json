@@ -1,0 +1,13 @@
+{
+  "name": "MarketingAgent",
+  "role": "Marketing Strategist",
+  "description": "Marketing campaigns",
+  "capabilities": [
+    "market_research",
+    "campaign_design"
+  ],
+  "permissions": [
+    "marketing"
+  ],
+  "default_model": "default"
+}

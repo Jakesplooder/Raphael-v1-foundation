@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-09T23:47:00",
+  "generated": "2026-07-10T00:12:12",
   "overall": "healthy",
   "system_health": {
     "qdrant": {
@@ -372,7 +372,7 @@
     }
   },
   "service_manager": {
-    "generated": "2026-07-09T23:47:00",
+    "generated": "2026-07-10T00:12:12",
     "registry_path": "C:\\RaphaelOS\\launcher\\service_registry.json",
     "pid_registry_path": "C:\\RaphaelOS\\launcher\\runtime\\service_pids.json",
     "docker": {

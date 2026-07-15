@@ -1,10 +1,15 @@
 # POD Product Pipeline
 
-Generated: 2026-07-10T04:11:56
+Generated: 2026-07-14T05:42:09
 
 | Concept ID | Product Idea | Prompts | Requests | Variants | Reviews | Typography | Compositions | SVG | Print | Listings | Exports | Status |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| PODCON-767BA814EF | generate a pod concept for a scary squid t-shirt | 1 | 1 | 4 | 4 | 1 | 1 | 1 | 1 | 1 | 1 | Rejected |
+| PODCON-1CA3AC7157 | create a pod concept for a dolphin t-shirt | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Pending |
+| PODCON-5EF08BBAE0 | start a POD concept for a flying pig shirt | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Blocked |
+| PODCON-B150E1CD94 | Generate a POD concept for a dolphin t-shirt | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Concept |
+| PODCON-FE7D77C007 | generate a POD concept for a shark t-shirt | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Concept |
+| PODCON-106DCD1535 | generate POD design using ComfyUI | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Blocked |
+| PODCON-767BA814EF | generate a pod concept for a scary squid t-shirt | 1 | 1 | 8 | 4 | 1 | 1 | 1 | 1 | 1 | 1 | Rejected |
 | PODCON-AF973B589C | Generate a POD concept for a shark t-shirt | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Failed |
 | PODCON-0774F8045C | generate a POD concept for a shark t-shirt | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Concept |
 | PODCON-FF2FABCFED | continue the earliest POD workflow | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Concept |

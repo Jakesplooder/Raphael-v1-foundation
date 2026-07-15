@@ -405,3 +405,85 @@ Medium
 - Run `memory-search` with a narrower query if the sources look too broad.
 - Capture a decision, risk, or lesson if this answer changes project direction.
 
+## 2026-07-11T23:07:13
+
+### Question
+
+Why is the dashboard not working currently
+
+### Answer
+
+AI is disabled because `ai_provider` is set to `none` in config/settings.json.
+
+## Requested Reasoning
+
+Answer this question across Raphael OS memory: Why is the dashboard not working currently
+
+## Memory Retrieval Status
+
+Collection `raphael_memory` does not exist yet. Run `python raphael.py memory-index` first.
+
+## Relevant Memory Results
+
+- No relevant Qdrant memory chunks were available.
+
+
+## Fallback Vault Context Preview
+
+## Global Brief.md # Global Brief Generated: 2026-06-14 ## Executive Summary - Active projects tracked: 16 - Projects needing attention: 16 - Open captured risks: 1 - Portfolio-ready project notes: 3 ## Active Projects - [[CSC4330 Project Group J/Overview|CSC4330 Project Group J]] - [[Economic Development Dashboard/Overview|Economic Development Dashboard]] - [[Hadoop MapReduce/Overview|Hadoop MapReduce]] - [[Juneteenth Campaign/Overview|Juneteenth Campaign]] - [[Lake Charles Gig Marketplace/Overview|Lake Charles Gig Marketplace]] - [[MentorMap/Overview|MentorMap]] - [[OCaml Interpreter/Overview|OCaml Interpreter]] - [[Permit Filing Service/Overview|Permit Filing Service]] - [[PintOS/Overview|PintOS]] - [[Raphael OS/Overview|Raphael OS]] - [[SQL Slammer Analysis/Overview|SQL Slammer Analysis]] - [[Secure Email Service/Overview|Secure Email Service]] - [[Shell Project/Overview|Shell Project]] - [[Shopify ERP Integration/Overview|Shopify ERP Integration]] - [[Sports South Integration/Overview|Sports South Integration]] - [[WooCommerce Vendor Platform/Overview|WooCommerce Vendor Platform]] ## Missing Documentation - [[CSC4330 Project Group J/Overview|CSC4330 Project Group J]]: Risks.md - [[Economic Development Dashboard/Overview|Economic Development Dashboard]]: Next Actions.md, Technical Debt.md - [[Hadoop MapReduce/Overview|Hadoop MapReduce]]: Next Actions.md, Technical Debt.md - [[Juneteenth Campaign/Overview|Juneteenth Campaign]]: Next Actions.md, Technical Debt.md - [[Lake Charles Gig Marketplace/Overview|Lake Charles Gig Marketplace]]: Next Actions.md, Technical Debt.m...
+
+### Memory Sources Used
+
+- No Qdrant memory sources used.
+
+### Confidence
+
+Low
+
+### Follow-up Recommendations
+
+- Review cited notes before acting on the answer.
+- Run `memory-search` with a narrower query if the sources look too broad.
+- Capture a decision, risk, or lesson if this answer changes project direction.
+
+## 2026-07-12T00:02:00
+
+### Question
+
+What tools can you use
+
+### Answer
+
+AI is disabled because `ai_provider` is set to `none` in config/settings.json.
+
+## Requested Reasoning
+
+Answer this question across Raphael OS memory: What tools can you use
+
+## Memory Retrieval Status
+
+Collection `raphael_memory` does not exist yet. Run `python raphael.py memory-index` first.
+
+## Relevant Memory Results
+
+- No relevant Qdrant memory chunks were available.
+
+
+## Fallback Vault Context Preview
+
+## Global Brief.md # Global Brief Generated: 2026-06-14 ## Executive Summary - Active projects tracked: 16 - Projects needing attention: 16 - Open captured risks: 1 - Portfolio-ready project notes: 3 ## Active Projects - [[CSC4330 Project Group J/Overview|CSC4330 Project Group J]] - [[Economic Development Dashboard/Overview|Economic Development Dashboard]] - [[Hadoop MapReduce/Overview|Hadoop MapReduce]] - [[Juneteenth Campaign/Overview|Juneteenth Campaign]] - [[Lake Charles Gig Marketplace/Overview|Lake Charles Gig Marketplace]] - [[MentorMap/Overview|MentorMap]] - [[OCaml Interpreter/Overview|OCaml Interpreter]] - [[Permit Filing Service/Overview|Permit Filing Service]] - [[PintOS/Overview|PintOS]] - [[Raphael OS/Overview|Raphael OS]] - [[SQL Slammer Analysis/Overview|SQL Slammer Analysis]] - [[Secure Email Service/Overview|Secure Email Service]] - [[Shell Project/Overview|Shell Project]] - [[Shopify ERP Integration/Overview|Shopify ERP Integration]] - [[Sports South Integration/Overview|Sports South Integration]] - [[WooCommerce Vendor Platform/Overview|WooCommerce Vendor Platform]] ## Missing Documentation - [[CSC4330 Project Group J/Overview|CSC4330 Project Group J]]: Risks.md - [[Economic Development Dashboard/Overview|Economic Development Dashboard]]: Next Actions.md, Technical Debt.md - [[Hadoop MapReduce/Overview|Hadoop MapReduce]]: Next Actions.md, Technical Debt.md - [[Juneteenth Campaign/Overview|Juneteenth Campaign]]: Next Actions.md, Technical Debt.md - [[Lake Charles Gig Marketplace/Overview|Lake Charles Gig Marketplace]]: Next Actions.md, Technical Debt.m...
+
+### Memory Sources Used
+
+- No Qdrant memory sources used.
+
+### Confidence
+
+Low
+
+### Follow-up Recommendations
+
+- Review cited notes before acting on the answer.
+- Run `memory-search` with a narrower query if the sources look too broad.
+- Capture a decision, risk, or lesson if this answer changes project direction.
+

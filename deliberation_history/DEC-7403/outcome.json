@@ -1,0 +1,30 @@
+{
+  "decision_id": "DEC-7403",
+  "original_action": "Migrate to microservices vs monolith",
+  "conflicts": [
+    "Identified from arguments"
+  ],
+  "options": [
+    {
+      "option_id": "OPT-CB5D",
+      "description": "Decision based on scale requirements",
+      "score": 100.0,
+      "simulated_outcome": {}
+    },
+    {
+      "option_id": "OPT-1F00",
+      "description": "Migrate to microservices vs monolith",
+      "score": 0.0,
+      "simulated_outcome": {}
+    }
+  ],
+  "final_resolution": "Decision based on scale requirements",
+  "confidence": 0.88,
+  "uncertainty": [
+    "Simulated outcomes are probabilistic"
+  ],
+  "information_needed": [
+    "Run deeper market simulation"
+  ],
+  "reasoning_chain": []
+}

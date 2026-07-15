@@ -1,0 +1,67 @@
+{
+  "simulation_id": "SIM-CC37CEE8",
+  "venture_type": "AI Compliance SaaS",
+  "initial_conditions": {
+    "market": "AI Compliance SaaS",
+    "competition_level": "normal",
+    "customer_demand": "normal",
+    "capital": 50000,
+    "team": [
+      {
+        "role": "CEO",
+        "performance": 75,
+        "monthly_cost": 5000
+      },
+      {
+        "role": "Dev",
+        "performance": 75,
+        "monthly_cost": 5000
+      },
+      {
+        "role": "Marketing",
+        "performance": 75,
+        "monthly_cost": 5000
+      },
+      {
+        "role": "Sales",
+        "performance": 75,
+        "monthly_cost": 5000
+      },
+      {
+        "role": "Support",
+        "performance": 75,
+        "monthly_cost": 5000
+      }
+    ],
+    "current_month": 0,
+    "customers_acquired": 0,
+    "revenue": 0.0,
+    "is_active": true
+  },
+  "decisions": [
+    {
+      "month": 1,
+      "strategy": "balanced",
+      "marketing_spend": 2000,
+      "capital_remaining": 23000
+    },
+    {
+      "month": 2,
+      "strategy": "balanced",
+      "marketing_spend": -2000,
+      "capital_remaining": 0
+    }
+  ],
+  "outcome": {
+    "success": false,
+    "success_probability": 0.1,
+    "confidence": 0.5,
+    "roi": 0.0,
+    "customers": 24,
+    "risk_factors": [
+      "High competition reduces acquisition efficiency.",
+      "Low market demand requires high marketing spend."
+    ],
+    "recommendation": "ABORT"
+  }
+}
