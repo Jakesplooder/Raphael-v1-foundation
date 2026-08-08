@@ -40,6 +40,8 @@ class WorldManager(ServiceModule):
         self.event_bus.subscribe(EventType.AGENT_TASK_ASSIGNED, self._handle_agent_assigned)
         self.event_bus.subscribe(EventType.WORLD_OBSERVATION_RECEIVED, self._handle_observation)
         self.event_bus.subscribe(EventType.WORLD_HYPOTHESIS_CREATED, self._handle_hypothesis)
+        self.event_bus.subscribe(EventType.CAREER_SKILL_VERIFIED, self._handle_career_skill_verified)
+        self.event_bus.subscribe(EventType.MARKET_SIGNAL_ACQUIRED, self._handle_market_signal_acquired)
         
         self._is_initialized = True
         logger.info("WorldManager initialized.")
@@ -56,7 +58,7 @@ class WorldManager(ServiceModule):
         if goal_id:
             # Create a Goal node in the World Model (representing Reality)
             n = self.service.add_node("Goal", goal_id, "Generated Goal Node", "EventBus", str(event.id))
-            self.event_bus.publish(Event(
+            await self.event_bus.publish(Event(
                 source=self.name,
                 type=EventType.WORLD_NODE_CREATED,
                 payload={"node_id": n.node_id}
@@ -75,7 +77,7 @@ class WorldManager(ServiceModule):
                 f"AGENT-{agent_id}", f"TASK-{task_id}", "WORKS_ON",
                 f"{agent_id} assigned to {task_id}", "EventBus", str(event.id)
             )
-            self.event_bus.publish(Event(
+            await self.event_bus.publish(Event(
                 source=self.name,
                 type=EventType.WORLD_RELATIONSHIP_CREATED,
                 payload={"relationship_id": r.relationship_id}
@@ -99,6 +101,25 @@ class WorldManager(ServiceModule):
             generated_by=event.payload.get("agent_id", "Unknown"),
             confidence=0.55
         )
+
+    async def _handle_career_skill_verified(self, event: Event):
+        person_id = event.payload.get("person_id")
+        skill_name = event.payload.get("skill_name")
+        confidence = event.payload.get("confidence", 0.8)
+        if person_id and skill_name:
+            s = self.service.add_node("Skill", skill_name, f"{skill_name} skill", "EventBus", str(event.id), confidence=confidence)
+            r = self.service.add_relationship(person_id, s.node_id, "HAS_SKILL", f"User acquired {skill_name}", "EventBus", str(event.id), confidence=confidence)
+            await self.event_bus.publish(Event(source=self.name, type=EventType.WORLD_RELATIONSHIP_CREATED, payload={"relationship_id": r.relationship_id}))
+
+    async def _handle_market_signal_acquired(self, event: Event):
+        signal_type = event.payload.get("signal_type")
+        content = event.payload.get("content")
+        role = event.payload.get("role")
+        if signal_type and content:
+            n = self.service.add_node("MarketSignal", f"Signal-{str(event.id)[:8]}", content, "EventBus", str(event.id))
+            if role:
+                r = self.service.add_node("Role", role, role, "EventBus", str(event.id))
+                self.service.add_relationship(n.node_id, r.node_id, "AFFECTS", f"Signal affects {role}", "EventBus", str(event.id))
 
     async def start(self) -> None:
         pass

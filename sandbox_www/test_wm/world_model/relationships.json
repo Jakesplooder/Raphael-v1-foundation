@@ -1,0 +1,899 @@
+[
+  {
+    "relationship_id": "REL-030951ADC1",
+    "from_node": "PROJECT-E5818B4EE1",
+    "to_node": "WORKFLOW-8B283E32A6",
+    "relationship_type": "REQUIRES",
+    "summary": "World Model requires Daily Executive Brief.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "World Model requires Daily Executive Brief."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-03B656AC91",
+    "from_node": "SERVICE-B69A8D8E93",
+    "to_node": "RESOURCE-77EB0639F8",
+    "relationship_type": "REQUIRES",
+    "summary": "n8n requires Localhost Service Port.",
+    "confidence": 0.84,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Service Manager",
+        "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+        "source_trust": "A",
+        "summary": "n8n requires Localhost Service Port."
+      }
+    ],
+    "source_system": "Service Manager",
+    "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-0977D6C3E6",
+    "from_node": "BRAND-763CFE8B3F",
+    "to_node": "CATEGORY-F4766F408A",
+    "relationship_type": "COVERS",
+    "summary": "Test",
+    "confidence": 0.82,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "System Generated Records",
+        "source_reference": "test",
+        "source_trust": "A",
+        "summary": "Test"
+      }
+    ],
+    "source_system": "System Generated Records",
+    "source_reference": "test",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-0B4DF3AD2E",
+    "from_node": "BRAND-7B0EBDA15E",
+    "to_node": "CATEGORY-F4766F408A",
+    "relationship_type": "COVERS",
+    "summary": "Test",
+    "confidence": 0.82,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "System Generated Records",
+        "source_reference": "test",
+        "source_trust": "A",
+        "summary": "Test"
+      }
+    ],
+    "source_system": "System Generated Records",
+    "source_reference": "test",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-223C0F5FBD",
+    "from_node": "AGENT-C481A56EFD",
+    "to_node": "WORKFLOW-A409208E69",
+    "relationship_type": "WORKS_ON",
+    "summary": "Commerce Agent works through POD Pipeline.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Commerce Agent works through POD Pipeline."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-23D7BBE835",
+    "from_node": "PROJECT-C233F17979",
+    "to_node": "WORKFLOW-A409208E69",
+    "relationship_type": "REQUIRES",
+    "summary": "POD Studio requires POD Pipeline.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "POD Studio requires POD Pipeline."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-26A92E792A",
+    "from_node": "GOAL-5D8BD79257",
+    "to_node": "PROJECT-C233F17979",
+    "relationship_type": "ADVANCES",
+    "summary": "POD Studio advances Launch POD Business.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "POD Studio advances Launch POD Business."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-28562A224E",
+    "from_node": "AARON-AFAFB73846",
+    "to_node": "GOAL-DE4460D0BA",
+    "relationship_type": "ADVANCES",
+    "summary": "Aaron sponsors Improve Raphael OS.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Aaron sponsors Improve Raphael OS."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-2AC634D19F",
+    "from_node": "GOAL-CCEA4661B7",
+    "to_node": "PROJECT-4216D1949E",
+    "relationship_type": "ADVANCES",
+    "summary": "Agency Pipeline advances Grow Agency Services.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Agency Pipeline advances Grow Agency Services."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-3142FB566E",
+    "from_node": "PROJECT-4216D1949E",
+    "to_node": "AGENT-B82F19F4E1",
+    "relationship_type": "ASSIGNED_TO",
+    "summary": "Sales Agent is responsible for Agency Pipeline.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Sales Agent is responsible for Agency Pipeline."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-314E8F2F6D",
+    "from_node": "AARON-AFAFB73846",
+    "to_node": "RAPHAEL-B21DDCE28B",
+    "relationship_type": "OWNS",
+    "summary": "Aaron owns Raphael OS authority.",
+    "confidence": 0.98,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "System Generated Records",
+        "source_reference": "constitutional_authority",
+        "source_trust": "A",
+        "summary": "Aaron owns Raphael OS authority."
+      }
+    ],
+    "source_system": "System Generated Records",
+    "source_reference": "constitutional_authority",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-3190F8EF1E",
+    "from_node": "BRAND-49DCE0466F",
+    "to_node": "CATEGORY-A5238B1826",
+    "relationship_type": "COVERS",
+    "summary": "Test",
+    "confidence": 0.82,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "System Generated Records",
+        "source_reference": "test",
+        "source_trust": "A",
+        "summary": "Test"
+      }
+    ],
+    "source_system": "System Generated Records",
+    "source_reference": "test",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-3D2BE5C7FE",
+    "from_node": "SERVICE-C590ABF597",
+    "to_node": "RESOURCE-77EB0639F8",
+    "relationship_type": "REQUIRES",
+    "summary": "Postgres requires Localhost Service Port.",
+    "confidence": 0.84,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Service Manager",
+        "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+        "source_trust": "A",
+        "summary": "Postgres requires Localhost Service Port."
+      }
+    ],
+    "source_system": "Service Manager",
+    "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-4A5ECCED06",
+    "from_node": "BRAND-7B0EBDA15E",
+    "to_node": "CATEGORY-D2BE36B9EA",
+    "relationship_type": "COVERS",
+    "summary": "Test",
+    "confidence": 0.82,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "System Generated Records",
+        "source_reference": "test",
+        "source_trust": "A",
+        "summary": "Test"
+      }
+    ],
+    "source_system": "System Generated Records",
+    "source_reference": "test",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-4EF05592FC",
+    "from_node": "AGENT-C4ADE20704",
+    "to_node": "WORKFLOW-8B283E32A6",
+    "relationship_type": "WORKS_ON",
+    "summary": "Developer Agent works through Daily Executive Brief.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Developer Agent works through Daily Executive Brief."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-5089494042",
+    "from_node": "SERVICE-039D802448",
+    "to_node": "RESOURCE-DF7913F4D0",
+    "relationship_type": "REQUIRES",
+    "summary": "ComfyUI requires RTX 4070.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "ComfyUI requires RTX 4070."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-5276833071",
+    "from_node": "SERVICE-24071B57A1",
+    "to_node": "RESOURCE-77EB0639F8",
+    "relationship_type": "REQUIRES",
+    "summary": "Redis requires Localhost Service Port.",
+    "confidence": 0.84,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Service Manager",
+        "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+        "source_trust": "A",
+        "summary": "Redis requires Localhost Service Port."
+      }
+    ],
+    "source_system": "Service Manager",
+    "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-5431C6765A",
+    "from_node": "AARON-AFAFB73846",
+    "to_node": "GOAL-5D8BD79257",
+    "relationship_type": "ADVANCES",
+    "summary": "Aaron sponsors Launch POD Business.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Aaron sponsors Launch POD Business."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-5AC150E76C",
+    "from_node": "SERVICE-65276BE8AD",
+    "to_node": "RESOURCE-8978A32DF4",
+    "relationship_type": "REQUIRES",
+    "summary": "Raphael Dashboard requires Local Runtime.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Raphael Dashboard requires Local Runtime."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-5AEF330682",
+    "from_node": "SERVICE-8404490D26",
+    "to_node": "RESOURCE-77EB0639F8",
+    "relationship_type": "REQUIRES",
+    "summary": "Piper requires Localhost Service Port.",
+    "confidence": 0.84,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Service Manager",
+        "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+        "source_trust": "A",
+        "summary": "Piper requires Localhost Service Port."
+      }
+    ],
+    "source_system": "Service Manager",
+    "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-657922F014",
+    "from_node": "SERVICE-2954BC4B92",
+    "to_node": "RESOURCE-8978A32DF4",
+    "relationship_type": "REQUIRES",
+    "summary": "Voice Gateway requires Local Runtime.",
+    "confidence": 0.84,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Service Manager",
+        "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+        "source_trust": "A",
+        "summary": "Voice Gateway requires Local Runtime."
+      }
+    ],
+    "source_system": "Service Manager",
+    "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-687C2F3CB1",
+    "from_node": "PROJECT-C233F17979",
+    "to_node": "AGENT-C481A56EFD",
+    "relationship_type": "ASSIGNED_TO",
+    "summary": "Commerce Agent is responsible for POD Studio.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Commerce Agent is responsible for POD Studio."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-6C731026D1",
+    "from_node": "SERVICE-4D75D43C4B",
+    "to_node": "RESOURCE-77EB0639F8",
+    "relationship_type": "REQUIRES",
+    "summary": "Ollama requires Localhost Service Port.",
+    "confidence": 0.84,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Service Manager",
+        "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+        "source_trust": "A",
+        "summary": "Ollama requires Localhost Service Port."
+      }
+    ],
+    "source_system": "Service Manager",
+    "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-6D53CA216E",
+    "from_node": "SERVICE-C69D01799E",
+    "to_node": "RESOURCE-77EB0639F8",
+    "relationship_type": "REQUIRES",
+    "summary": "POD Studio Helpers requires Localhost Service Port.",
+    "confidence": 0.84,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Service Manager",
+        "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+        "source_trust": "A",
+        "summary": "POD Studio Helpers requires Localhost Service Port."
+      }
+    ],
+    "source_system": "Service Manager",
+    "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-6F4BB341AB",
+    "from_node": "BRAND-49DCE0466F",
+    "to_node": "CATEGORY-F4766F408A",
+    "relationship_type": "COVERS",
+    "summary": "Test",
+    "confidence": 0.82,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "System Generated Records",
+        "source_reference": "test",
+        "source_trust": "A",
+        "summary": "Test"
+      }
+    ],
+    "source_system": "System Generated Records",
+    "source_reference": "test",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-778DCBCF24",
+    "from_node": "BRAND-7B0EBDA15E",
+    "to_node": "CATEGORY-560040C54A",
+    "relationship_type": "COVERS",
+    "summary": "Test",
+    "confidence": 0.82,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "System Generated Records",
+        "source_reference": "test",
+        "source_trust": "A",
+        "summary": "Test"
+      }
+    ],
+    "source_system": "System Generated Records",
+    "source_reference": "test",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-787EFB3DE2",
+    "from_node": "AARON-AFAFB73846",
+    "to_node": "GOAL-CCEA4661B7",
+    "relationship_type": "ADVANCES",
+    "summary": "Aaron sponsors Grow Agency Services.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Aaron sponsors Grow Agency Services."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-7B5479500D",
+    "from_node": "WORKFLOW-A409208E69",
+    "to_node": "SERVICE-039D802448",
+    "relationship_type": "USES",
+    "summary": "POD Pipeline uses ComfyUI.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "POD Pipeline uses ComfyUI."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-7C5B7D6064",
+    "from_node": "WORKFLOW-CF2D0AD13C",
+    "to_node": "SERVICE-B69A8D8E93",
+    "relationship_type": "USES",
+    "summary": "Knowledge Processing uses n8n.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Knowledge Processing uses n8n."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-7D1941E8B8",
+    "from_node": "PROJECT-E5818B4EE1",
+    "to_node": "AGENT-C4ADE20704",
+    "relationship_type": "ASSIGNED_TO",
+    "summary": "Developer Agent is responsible for World Model.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Developer Agent is responsible for World Model."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-81F689BA52",
+    "from_node": "SERVICE-388A01A6A0",
+    "to_node": "RESOURCE-77EB0639F8",
+    "relationship_type": "REQUIRES",
+    "summary": "Qdrant requires Localhost Service Port.",
+    "confidence": 0.84,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Service Manager",
+        "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+        "source_trust": "A",
+        "summary": "Qdrant requires Localhost Service Port."
+      }
+    ],
+    "source_system": "Service Manager",
+    "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-9921BAE27D",
+    "from_node": "GOAL-DE4460D0BA",
+    "to_node": "PROJECT-E5818B4EE1",
+    "relationship_type": "ADVANCES",
+    "summary": "World Model advances Improve Raphael OS.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "World Model advances Improve Raphael OS."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-A68CC1C995",
+    "from_node": "PROJECT-4216D1949E",
+    "to_node": "WORKFLOW-CF2D0AD13C",
+    "relationship_type": "REQUIRES",
+    "summary": "Agency Pipeline requires Knowledge Processing.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Agency Pipeline requires Knowledge Processing."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-BDF6F8C6B9",
+    "from_node": "WORKFLOW-8B283E32A6",
+    "to_node": "SERVICE-65276BE8AD",
+    "relationship_type": "USES",
+    "summary": "Daily Executive Brief uses Raphael Dashboard.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Daily Executive Brief uses Raphael Dashboard."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-BF059CCB54",
+    "from_node": "AGENT-B82F19F4E1",
+    "to_node": "WORKFLOW-CF2D0AD13C",
+    "relationship_type": "WORKS_ON",
+    "summary": "Sales Agent works through Knowledge Processing.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "Sales Agent works through Knowledge Processing."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-D0F72DCD52",
+    "from_node": "SERVICE-7E356DD50D",
+    "to_node": "RESOURCE-77EB0639F8",
+    "relationship_type": "REQUIRES",
+    "summary": "SearXNG requires Localhost Service Port.",
+    "confidence": 0.84,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Service Manager",
+        "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+        "source_trust": "A",
+        "summary": "SearXNG requires Localhost Service Port."
+      }
+    ],
+    "source_system": "Service Manager",
+    "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-F2D250DC33",
+    "from_node": "BRAND-763CFE8B3F",
+    "to_node": "CATEGORY-E4694D4DF1",
+    "relationship_type": "COVERS",
+    "summary": "Test",
+    "confidence": 0.82,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "System Generated Records",
+        "source_reference": "test",
+        "source_trust": "A",
+        "summary": "Test"
+      }
+    ],
+    "source_system": "System Generated Records",
+    "source_reference": "test",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  },
+  {
+    "relationship_id": "REL-F6475104CF",
+    "from_node": "SERVICE-B69A8D8E93",
+    "to_node": "RESOURCE-0B99B19C8F",
+    "relationship_type": "REQUIRES",
+    "summary": "n8n requires Workflow Archive.",
+    "confidence": 0.78,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Phase 75 Seed",
+        "source_reference": "Phase 75 minimum viable graph",
+        "source_trust": "B",
+        "summary": "n8n requires Workflow Archive."
+      }
+    ],
+    "source_system": "Phase 75 Seed",
+    "source_reference": "Phase 75 minimum viable graph",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "B"
+  },
+  {
+    "relationship_id": "REL-FB79979376",
+    "from_node": "SERVICE-039D802448",
+    "to_node": "RESOURCE-77EB0639F8",
+    "relationship_type": "REQUIRES",
+    "summary": "ComfyUI requires Localhost Service Port.",
+    "confidence": 0.84,
+    "confidence_state": "active",
+    "evidence": [
+      {
+        "source": "Service Manager",
+        "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+        "source_trust": "A",
+        "summary": "ComfyUI requires Localhost Service Port."
+      }
+    ],
+    "source_system": "Service Manager",
+    "source_reference": "C:\\Users\\cyber\\Downloads\\RalphaelOS\\sandbox_www\\test_wm\\launcher\\service_registry.json",
+    "created_at": "2026-07-16T03:41:09",
+    "updated_at": "2026-07-16T03:41:09",
+    "status": "active",
+    "source_trust": "A"
+  }
+]

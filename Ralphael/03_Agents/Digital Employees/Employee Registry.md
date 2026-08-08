@@ -12,7 +12,7 @@ AI Researcher Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\AI Researcher Agent
+/app/vault/03_Agents/AI Researcher Agent
 
 ### Role
 
@@ -79,7 +79,7 @@ Academic Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Academic Agent
+/app/vault/03_Agents/Academic Agent
 
 ### Role
 
@@ -146,7 +146,7 @@ Account Manager Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Account Manager Agent
+/app/vault/03_Agents/Account Manager Agent
 
 ### Role
 
@@ -213,7 +213,7 @@ Audience Growth Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Audience Growth Agent
+/app/vault/03_Agents/Audience Growth Agent
 
 ### Role
 
@@ -280,7 +280,7 @@ Back-End Developer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Back-End Developer Agent
+/app/vault/03_Agents/Back-End Developer Agent
 
 ### Role
 
@@ -347,7 +347,7 @@ Business Analyst Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Business Analyst Agent
+/app/vault/03_Agents/Business Analyst Agent
 
 ### Role
 
@@ -414,7 +414,7 @@ Business Strategy Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Business Strategy Agent
+/app/vault/03_Agents/Business Strategy Agent
 
 ### Role
 
@@ -482,7 +482,7 @@ CTO Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\CTO Agent
+/app/vault/03_Agents/CTO Agent
 
 ### Role
 
@@ -549,7 +549,7 @@ Career Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent
+/app/vault/03_Agents/Career Agent
 
 ### Role
 
@@ -616,7 +616,7 @@ Chief of Staff Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Chief of Staff Agent
+/app/vault/03_Agents/Chief of Staff Agent
 
 ### Role
 
@@ -643,8 +643,11 @@ Raphael
 
 - `TASK-COS-0131A120` [Open] Bounded implementation and milestone planning for BUILD-20260621-DFC03B1E: research a trending pod niche using permissioned internet access find a niche with - evergreen demand - low competition - strong etsy potential - suitable for apparel after research create a pod concept generate artwork only first create typography separately using inkscape generate 4 flux concepts review all concepts score - commercial appeal - readability - print quality - originality - audience fit recommend the winner create - svg - print-ready png - listing draft - export package keep everything local no publishing no uploads no spending
 - `TASK-COS-23897484` [Open] Bounded implementation and milestone planning for BUILD-20260621-A2C45EC6: research a trending pod niche using permissioned internet access find a niche with - evergreen demand - low competition - strong etsy potential - suitable for apparel after research create a pod concept generate artwork only first create typography separately using inkscape generate 4 flux concepts review all concepts score - commercial appeal - readability - print quality - originality - audience fit recommend the winner create - svg - print-ready png - listing draft - export package keep everything local no publishing no uploads no spending
+- `TASK-COS-38D20E9F` [Open] Bounded implementation and milestone planning for BUILD-20260706-95AD1F7F: reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
 - `TASK-COS-5FC78013` [Open] Bounded implementation and milestone planning for BUILD-20260618-5B188EDA: Phase 64B acceptance SaaS marketplace intended to make money with users payments and external APIs
+- `TASK-COS-95E65495` [Open] Bounded implementation and milestone planning for BUILD-20260706-1D3A6AA6: build this app reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
 - `TASK-COS-BBAC49A2` [Open] Notification escalation: Execution Blocked: EXEC-20260617-003D2721. Description: Description contains blocked destructive, external, credential, arbitrary shell, or platform-action terms.. Recommended action: Review safety notes and decide whether a safer request is needed.. Planning only; do not execute actions automatically.
+- `TASK-COS-C2EB3EC5` [Open] Bounded implementation and milestone planning for BUILD-20260706-4EE8E446: reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
 
 ### Assigned KPIs
 
@@ -656,15 +659,15 @@ Executive
 
 ### Related Projects
 
-Lake Charles Gig Marketplace, WooCommerce Vendor Platform
+Lake Charles Gig Marketplace, MentorMap, WooCommerce Vendor Platform
 
 ### Workload
 
-High
+Overloaded
 
 ### Performance Status
 
-Stable
+Needs Attention
 
 ### Last Review Date
 
@@ -686,7 +689,7 @@ Client Success Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Client Success Agent
+/app/vault/03_Agents/Client Success Agent
 
 ### Role
 
@@ -753,7 +756,7 @@ Content Strategist Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Content Strategist Agent
+/app/vault/03_Agents/Content Strategist Agent
 
 ### Role
 
@@ -820,7 +823,7 @@ Customer Support Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Customer Support Agent
+/app/vault/03_Agents/Customer Support Agent
 
 ### Role
 
@@ -887,7 +890,7 @@ Delivery Manager Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Delivery Manager Agent
+/app/vault/03_Agents/Delivery Manager Agent
 
 ### Role
 
@@ -954,7 +957,7 @@ DevOps Cloud Engineer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\DevOps Cloud Engineer Agent
+/app/vault/03_Agents/DevOps Cloud Engineer Agent
 
 ### Role
 
@@ -1021,7 +1024,7 @@ Developer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Developer Agent
+/app/vault/03_Agents/Developer Agent
 
 ### Role
 
@@ -1046,21 +1049,19 @@ Raphael
 
 ### Current Tasks
 
-- `TASK-D-11A930D3` [In Progress] Add tests and setup documentation for Secure Email Service before portfolio review
-- `TASK-D-2B4CAD11` [Open] Build requested app: research a trending pod niche using permissioned internet access find a niche with - evergreen demand - low competition - strong etsy potential - suitable for apparel after research create a pod concept generate artwork only first create typography separately using inkscape generate 4 flux concepts review all concepts score - commercial appeal - readability - print quality - originality - audience fit recommend the winner create - svg - print-ready png - listing draft - export package keep everything local no publishing no uploads no spending
-- `TASK-D-313455C9` [Open] Build requested app: research a trending pod niche using permissioned internet access find a niche with - evergreen demand - low competition - strong etsy potential - suitable for apparel after research create a pod concept generate artwork only first create typography separately using inkscape generate 4 flux concepts review all concepts score - commercial appeal - readability - print quality - originality - audience fit recommend the winner create - svg - print-ready png - listing draft - export package keep everything local no publishing no uploads no spending
-- `TASK-D-988E4B39` [Open] Build requested app: Phase 64B acceptance SaaS marketplace intended to make money with users payments and external APIs
-- `TASK-D-0F535829` [Ready for Review] Build requested app: Phase 64B acceptance simple click counter
-- `TASK-D-3333522F` [Ready for Review] Build requested app: make me a simple react app that tracks clicks phase64 acceptance
-- `TASK-D-33E74488` [Ready for Review] Build requested app: build a file from this response based on the safe memory context i will provide a recommended landing page design to build a clean landing page with a hero section responsive project grid and smooth scrolling for a professional look we can follow these steps 1 create a new html file e g 01-landing-page html in the men
-- `TASK-D-3D4FAAF4` [Ready for Review] Build requested app: build a file from this response to build a daily habit tracker i will create a react application with the following features 1 habit management users can add habits with emojis using a simple input field each habit is stored in memory not persisted to storage and displayed on a list view 2 7-day checklist grid
-- `TASK-D-469D1410` [Ready for Review] Build requested app: create a react app that invoice generator create a simple form-based app that auto-calculates line items and includes a clean layout with a print button
-- `TASK-D-5548727B` [Ready for Review] Build requested app: Phase 64B acceptance internal dashboard app with database assumptions
-- `TASK-D-5C991EA3` [Ready for Review] Build requested app: make me a simple react app that tracks how many times you click a button
-- `TASK-D-6009F7F9` [Ready for Review] Build requested app: build a python app that tracks button clicks
-- `TASK-D-8F5767EF` [Ready for Review] Build requested app: make me a simple react app that tracks how many times you click a button
-- `TASK-D-E0765120` [Ready for Review] Build requested app: Build a Python app that tracks button clicks
-- `TASK-D-FF475D97` [Ready for Review] Build requested app: build a python app that tracks button clicks
+- `TASK-D-0329418D` [Open] Build requested app: build me a landing page for a restaurant website
+- `TASK-D-54D4D775` [Open] Build requested app: reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
+- `TASK-D-8C9DCA2B` [Open] Build requested app: build me a landing page for a restaurant website
+- `TASK-D-A82EAC6B` [Open] Build requested app: build this app reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
+- `TASK-D-B7105918` [Open] Build requested app: build a landing page for a zoo
+- `TASK-D-BD544BAA` [Open] Build requested app: build me a landing page for a restaurant website
+- `TASK-D-D963602B` [Open] Build requested app: create me a landing page for a restaurant website
+- `TASK-D-DBB7DA28` [Open] Build requested app: reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
+- `TASK-D-1D8AE047` [Ready for Review] Build requested app: Invoice Generator: form-based app, auto-calculates line items, clean layout, print button
+- `TASK-D-5E9E7C4E` [Ready for Review] Build requested app: build-20260706-95ad1f7f
+- `TASK-D-6D43C8DE` [Ready for Review] Build requested app: build me a landing page for a resume website
+- `TASK-D-A336AABA` [Ready for Review] Build requested app: Invoice Generator: form-based app, auto-calculates line items, clean layout, print button
+- `TASK-D-F7ECC6B0` [Ready for Review] Build requested app: make a landing page for a resume website
 
 ### Assigned KPIs
 
@@ -1072,7 +1073,7 @@ Executive
 
 ### Related Projects
 
-Economic Development Dashboard, Lake Charles Gig Marketplace, Secure Email Service, Shell Project
+MentorMap
 
 ### Workload
 
@@ -1102,7 +1103,7 @@ Digital Product Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Digital Product Agent
+/app/vault/03_Agents/Digital Product Agent
 
 ### Role
 
@@ -1169,7 +1170,7 @@ Ebook Writer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Ebook Writer Agent
+/app/vault/03_Agents/Ebook Writer Agent
 
 ### Role
 
@@ -1236,7 +1237,7 @@ Engineering Manager Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Engineering Manager Agent
+/app/vault/03_Agents/Engineering Manager Agent
 
 ### Role
 
@@ -1303,7 +1304,7 @@ Finance Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Finance Agent
+/app/vault/03_Agents/Finance Agent
 
 ### Role
 
@@ -1370,7 +1371,7 @@ Front-End Developer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Front-End Developer Agent
+/app/vault/03_Agents/Front-End Developer Agent
 
 ### Role
 
@@ -1437,7 +1438,7 @@ Full-Stack Developer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Full-Stack Developer Agent
+/app/vault/03_Agents/Full-Stack Developer Agent
 
 ### Role
 
@@ -1504,7 +1505,7 @@ Influencer Manager Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Influencer Manager Agent
+/app/vault/03_Agents/Influencer Manager Agent
 
 ### Role
 
@@ -1571,7 +1572,7 @@ Interview Prep Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Interview Prep Agent
+/app/vault/03_Agents/Interview Prep Agent
 
 ### Role
 
@@ -1638,7 +1639,7 @@ Job Search Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Job Search Agent
+/app/vault/03_Agents/Job Search Agent
 
 ### Role
 
@@ -1705,7 +1706,7 @@ Legal Compliance Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Legal Compliance Agent
+/app/vault/03_Agents/Legal Compliance Agent
 
 ### Role
 
@@ -1732,8 +1733,11 @@ Business Strategy Agent
 
 - `TASK-LC-621C042A` [Open] Evaluate opportunity `OPP-20260617-16D5ED27`: Print on demand Bible verse shirts. Expected output: validation questions, risks, next action, and recommendation for Aaron.
 - `TASK-LC-675CC46A` [Open] Safety, external-risk, and approval-boundary review for BUILD-20260621-DFC03B1E: research a trending pod niche using permissioned internet access find a niche with - evergreen demand - low competition - strong etsy potential - suitable for apparel after research create a pod concept generate artwork only first create typography separately using inkscape generate 4 flux concepts review all concepts score - commercial appeal - readability - print quality - originality - audience fit recommend the winner create - svg - print-ready png - listing draft - export package keep everything local no publishing no uploads no spending
+- `TASK-LC-89AB280A` [Open] Safety, external-risk, and approval-boundary review for BUILD-20260706-1D3A6AA6: build this app reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
 - `TASK-LC-9A1FEB3B` [Open] Safety, external-risk, and approval-boundary review for BUILD-20260621-A2C45EC6: research a trending pod niche using permissioned internet access find a niche with - evergreen demand - low competition - strong etsy potential - suitable for apparel after research create a pod concept generate artwork only first create typography separately using inkscape generate 4 flux concepts review all concepts score - commercial appeal - readability - print quality - originality - audience fit recommend the winner create - svg - print-ready png - listing draft - export package keep everything local no publishing no uploads no spending
+- `TASK-LC-9AF789BE` [Open] Safety, external-risk, and approval-boundary review for BUILD-20260706-4EE8E446: reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
 - `TASK-LC-DD7ACD18` [Open] Safety, external-risk, and approval-boundary review for BUILD-20260618-5B188EDA: Phase 64B acceptance SaaS marketplace intended to make money with users payments and external APIs
+- `TASK-LC-EB53DA3A` [Open] Safety, external-risk, and approval-boundary review for BUILD-20260706-95AD1F7F: reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
 
 ### Assigned KPIs
 
@@ -1745,15 +1749,15 @@ Business
 
 ### Related Projects
 
-Lake Charles Gig Marketplace
+Lake Charles Gig Marketplace, MentorMap
 
 ### Workload
 
-High
+Overloaded
 
 ### Performance Status
 
-Stable
+Needs Attention
 
 ### Last Review Date
 
@@ -1775,7 +1779,7 @@ Listing Writer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Listing Writer Agent
+/app/vault/03_Agents/Listing Writer Agent
 
 ### Role
 
@@ -1842,7 +1846,7 @@ Machine Learning AI Engineer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Machine Learning AI Engineer Agent
+/app/vault/03_Agents/Machine Learning AI Engineer Agent
 
 ### Role
 
@@ -1909,7 +1913,7 @@ Market Analyst Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Market Analyst Agent
+/app/vault/03_Agents/Market Analyst Agent
 
 ### Role
 
@@ -1976,7 +1980,7 @@ Marketing Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Marketing Agent
+/app/vault/03_Agents/Marketing Agent
 
 ### Role
 
@@ -2043,7 +2047,7 @@ Newsletter Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Newsletter Agent
+/app/vault/03_Agents/Newsletter Agent
 
 ### Role
 
@@ -2110,7 +2114,7 @@ Operations Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Operations Agent
+/app/vault/03_Agents/Operations Agent
 
 ### Role
 
@@ -2177,7 +2181,7 @@ POD Designer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\POD Designer Agent
+/app/vault/03_Agents/POD Designer Agent
 
 ### Role
 
@@ -2244,7 +2248,7 @@ Portfolio Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Portfolio Agent
+/app/vault/03_Agents/Portfolio Agent
 
 ### Role
 
@@ -2311,7 +2315,7 @@ Product Manager Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Product Manager Agent
+/app/vault/03_Agents/Product Manager Agent
 
 ### Role
 
@@ -2378,7 +2382,7 @@ Product Researcher Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Product Researcher Agent
+/app/vault/03_Agents/Product Researcher Agent
 
 ### Role
 
@@ -2446,7 +2450,7 @@ Project Manager Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Project Manager Agent
+/app/vault/03_Agents/Project Manager Agent
 
 ### Role
 
@@ -2513,7 +2517,7 @@ Proposal Writer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Proposal Writer Agent
+/app/vault/03_Agents/Proposal Writer Agent
 
 ### Role
 
@@ -2580,7 +2584,7 @@ QA Engineer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\QA Engineer Agent
+/app/vault/03_Agents/QA Engineer Agent
 
 ### Role
 
@@ -2647,7 +2651,7 @@ Research Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Research Agent
+/app/vault/03_Agents/Research Agent
 
 ### Role
 
@@ -2672,7 +2676,10 @@ Research Agent
 
 ### Current Tasks
 
+- `TASK-R-1F6AE9F1` [Open] Technical feasibility and evidence review for BUILD-20260706-95AD1F7F: reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
 - `TASK-R-2DE08493` [Open] Technical feasibility and evidence review for BUILD-20260618-5B188EDA: Phase 64B acceptance SaaS marketplace intended to make money with users payments and external APIs
+- `TASK-R-6A72E233` [Open] Technical feasibility and evidence review for BUILD-20260706-4EE8E446: reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
+- `TASK-R-736EDCFA` [Open] Technical feasibility and evidence review for BUILD-20260706-1D3A6AA6: build this app reverse mentormap - complete concept the tagline where senior leaders learn from the next generation 1 the problem opportunity the problem senior leaders 40-65 years old feel disconnected from gen z workplace values and expectations emerging technologies ai blockchain ar vr social media trends tiktok instagram snapchat new communication styles and workplace norms sustainability and dei expectations young professionals 22-30 years old have fresh perspectives and up-to-date skills native understanding of new technologies direct insight into gen z consumer behavior energy and enthusiasm for change the gap traditional mentorship only flows top-down senior leaders don t know what they don t know young professionals lack confidence to teach senior leaders the opportunity market size 50m senior leaders in the us alone average cost 5 000- 10 000 year on executive coaching unmet need reverse mentorship is proven to work but lacks a platform 2 target audience role persona needs willing to pay mentee senior leader vp of marketing at f500 age 52 understand gen z consumers ai marketing tools tiktok strategy 150- 250 hour mentor young professional marketing associate age 26 build network gain visibility mentorship experience side income 75- 125 hour 80 take-home organization hr departments l d teams upskilling leaders retention innovation culture 99- 199 employee year 3 core features for senior leaders mentees reverse mentorship matching algorithm matches leaders with young professionals based on specific learning goals example i want to understand how gen z consumes content on tiktok learning pathways curated topics ai social media gen z culture new work norms sustainability bite-sized learning modules 15-30 min sessions safe zone environment leaders can ask dumb questions without judgment non-hierarchical interaction format no power dynamics young professionals are the experts progress tracking track learning goals skill acquisition metrics manager team feedback integration executive coaching integration option to sync with existing executive coaches reverse mentorship as part of overall development plan for young professionals mentors expertise profile showcase knowledge in specific areas ai social media gen z trends highlight relevant experience work side projects content creation mentorship dashboard view active sessions manage availability track earnings leadership exposure direct access to senior executives build professional network reference opportunities resource library create and share guides templates trend reports get paid for high-quality resources for organizations team packages bulk reverse mentorship subscriptions custom learning cohorts progress dashboard track employee engagement measure skill acquisition roi reporting compliance security enterprise-grade security gdpr ccpa compliance audit trails 4 monetization strategy model 1 pay-per-session primary session type price to leader platform fee 20 young pro take-home 30-min quick session 75 15 60 60-min standard 150 30 120 90-min deep dive 250 50 200 model 2 subscription optional plan price features free 0 limited browsing 1 session preview pro leaders 49 month 2 sessions month progress tracking resource access elite leaders 99 month 4 sessions month priority matching team reports mentor young pro free 80 take-home profile visibility networking model 3 enterprise packages plan price features team 99 employee year 10 employees custom cohorts quarterly reports organization 149 employee year 50 employees dedicated account manager api access global custom 500 employees multi-language compliance support 5 competitive advantage feature reverse mentormap traditional coaching general mentorship two-way learning one-way top-down gen z expertise older coaches affordable 75- 250 300- 1000 hour free scalable platform human-limited current trends outdated ceos love it 6 marketing launch strategy phase 1 invite-only beta month 1-2 target 50 senior leaders 100 young professionals method linkedin outreach executive networks university partnerships goal test matching algorithm collect feedback phase 2 public launch month 3-4 target 500 leaders 1000 young pros channels linkedin ads target senior leaders university career centers recruit young pros hr blogs and podcasts content marketing reverse mentorship benefits phase 3 enterprise expansion month 6 target fortune 500 companies method direct sales hr partnerships differentiator get your leaders gen z-ready 7 technical implementation key features feature tech stack user profiles supabase postgresql matching algorithm ai ml python scikit-learn video calls twilio zoom api payments stripe connect pay split learning paths jsonb in supabase resource library supabase storage analytics mixpanel posthog matching algorithm logic typescript simplified matching criteria const matchscore leader youngpro let score 0 topic alignment if leader interestedtopics includes youngpro expertise score 30 industry relevance if leader industry youngpro industry score 20 learning style preferences if leader prefersinteractive youngpro prefersinteractive score 20 availability overlap const overlap leader availability intersect youngpro availability score overlap hours 5 experience gap ideal 15-25 years const gap leader yearsexperience - youngpro yearsexperience if gap 15 gap 25 score 10 return score 8 risks mitigation risk mitigation power dynamics clear guidelines safe reporting anonymous feedback quality inconsistency young pro screening ratings system session reviews leader skepticism free trial sessions case studies peer referrals low young pro supply partner with universities mentor incentives pay exposure compliance issues legal review enterprise-grade security data protection 9 success metrics metric target leaders signed up 1 000 by month 6 young pros signed up 5 000 by month 6 sessions booked 500 month by month 6 average session rating 4 8 5 ltv leader 500- 1 000 ltv young pro 300- 600 churn rate 10 monthly 10 why this will work proven demand 72 of fortune 500 ceos use reverse mentorship starbucks google and microsoft have formal programs gen z is hungry young professionals want to contribute meaningfully they re eager to share their expertise corporate budget companies cost 40b on training annually reverse mentorship is the hottest trend in l d scalable unlike traditional coaching reverse mentorship is learnable and replicable platform can grow with network effects differentiation no one is doing this at scale first-mover advantage next steps immediate actions validate with 5 senior leaders interview them about needs validate with 10 young pros interview them about motivations build landing page gauge interest with email signups create marketing content write posts about reverse mentorship benefits mvp features user signup with profile setup matching algorithm simplified video call integration payment processing stripe session scheduling ratings system basic admin dashboard launch timeline week milestone 1-2 validation interviews 3-4 landing page waitlist 5-8 mvp development 9-10 beta testing 50 users 11-12 public launch bonus messaging branding motto options reverse the flow flip the future lead with fresh eyes learn from tomorrow s leaders today colors primary blue trust stability for leaders secondary orange energy innovation for young pros accent purple creativity new thinking
 - `TASK-R-DAEBEA05` [Open] Technical feasibility and evidence review for BUILD-20260621-A2C45EC6: research a trending pod niche using permissioned internet access find a niche with - evergreen demand - low competition - strong etsy potential - suitable for apparel after research create a pod concept generate artwork only first create typography separately using inkscape generate 4 flux concepts review all concepts score - commercial appeal - readability - print quality - originality - audience fit recommend the winner create - svg - print-ready png - listing draft - export package keep everything local no publishing no uploads no spending
 - `TASK-R-EB981D23` [Open] Technical feasibility and evidence review for BUILD-20260621-DFC03B1E: research a trending pod niche using permissioned internet access find a niche with - evergreen demand - low competition - strong etsy potential - suitable for apparel after research create a pod concept generate artwork only first create typography separately using inkscape generate 4 flux concepts review all concepts score - commercial appeal - readability - print quality - originality - audience fit recommend the winner create - svg - print-ready png - listing draft - export package keep everything local no publishing no uploads no spending
 
@@ -2686,15 +2693,15 @@ Research
 
 ### Related Projects
 
-Lake Charles Gig Marketplace
+Lake Charles Gig Marketplace, MentorMap
 
 ### Workload
 
-High
+Overloaded
 
 ### Performance Status
 
-Stable
+Needs Attention
 
 ### Last Review Date
 
@@ -2716,7 +2723,7 @@ Resume Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Resume Agent
+/app/vault/03_Agents/Resume Agent
 
 ### Role
 
@@ -2783,7 +2790,7 @@ SEO Specialist Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\SEO Specialist Agent
+/app/vault/03_Agents/SEO Specialist Agent
 
 ### Role
 
@@ -2850,7 +2857,7 @@ Sales Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Sales Agent
+/app/vault/03_Agents/Sales Agent
 
 ### Role
 
@@ -2917,7 +2924,7 @@ Script Writer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Script Writer Agent
+/app/vault/03_Agents/Script Writer Agent
 
 ### Role
 
@@ -2984,7 +2991,7 @@ Scrum Master Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Scrum Master Agent
+/app/vault/03_Agents/Scrum Master Agent
 
 ### Role
 
@@ -3051,7 +3058,7 @@ Social Media Manager Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Social Media Manager Agent
+/app/vault/03_Agents/Social Media Manager Agent
 
 ### Role
 
@@ -3118,7 +3125,7 @@ Software Architect Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Software Architect Agent
+/app/vault/03_Agents/Software Architect Agent
 
 ### Role
 
@@ -3185,7 +3192,7 @@ Store Manager Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Store Manager Agent
+/app/vault/03_Agents/Store Manager Agent
 
 ### Role
 
@@ -3253,7 +3260,7 @@ Tech Lead Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Tech Lead Agent
+/app/vault/03_Agents/Tech Lead Agent
 
 ### Role
 
@@ -3320,7 +3327,7 @@ Technical Research Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Technical Research Agent
+/app/vault/03_Agents/Technical Research Agent
 
 ### Role
 
@@ -3387,7 +3394,7 @@ Trend Analyst Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Trend Analyst Agent
+/app/vault/03_Agents/Trend Analyst Agent
 
 ### Role
 
@@ -3454,7 +3461,7 @@ UI UX Designer Agent
 
 ### Agent Folder
 
-C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\UI UX Designer Agent
+/app/vault/03_Agents/UI UX Designer Agent
 
 ### Role
 

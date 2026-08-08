@@ -1,6 +1,6 @@
 # World Model Executive Brief
 
-Generated: 2026-07-06T21:16:38
+Generated: 2026-07-15T06:17:47
 
 ## Recommendation
 
@@ -8,14 +8,14 @@ Focus on the highest-leverage active project with complete workflow, service, an
 
 ## Signals
 
-- Dependencies: 690
+- Dependencies: 847
 - Blockers: 0
 - Confidence: 0.72
 - Uncertainty: Recommendation is advisory and depends on current graph freshness.
 
 ## Highest Leverage Nodes
 
-- Raphael OS (478 connections)
+- Raphael OS (598 connections)
 - n8n Workflow Studio (340 connections)
 - n8n Workflow Studio (170 connections)
 - Approval Controls (120 connections)

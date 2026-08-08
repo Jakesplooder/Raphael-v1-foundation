@@ -1,0 +1,424 @@
+  0           RESUME                   0
+
+  1           LOAD_SMALL_INT           0
+              LOAD_CONST               1 (('ABC', 'abstractmethod'))
+              IMPORT_NAME              0 (abc)
+              IMPORT_FROM              1 (ABC)
+              STORE_NAME               1 (ABC)
+              IMPORT_FROM              2 (abstractmethod)
+              STORE_NAME               2 (abstractmethod)
+              POP_TOP
+
+  2           LOAD_SMALL_INT           0
+              LOAD_CONST               2 (('Dict', 'Any', 'List'))
+              IMPORT_NAME              3 (typing)
+              IMPORT_FROM              4 (Dict)
+              STORE_NAME               4 (Dict)
+              IMPORT_FROM              5 (Any)
+              STORE_NAME               5 (Any)
+              IMPORT_FROM              6 (List)
+              STORE_NAME               6 (List)
+              POP_TOP
+
+  4           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST               3 (<code object BaseConnector at 0x00000170F559A3A0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 4>)
+              MAKE_FUNCTION
+              LOAD_CONST               4 ('BaseConnector')
+              LOAD_NAME                1 (ABC)
+              CALL                     3
+              STORE_NAME               7 (BaseConnector)
+              LOAD_CONST               5 (None)
+              RETURN_VALUE
+
+Disassembly of <code object BaseConnector at 0x00000170F559A3A0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 4>:
+  --           MAKE_CELL                0 (__classdict__)
+
+   4           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('BaseConnector')
+               STORE_NAME               2 (__qualname__)
+               LOAD_SMALL_INT           4
+               STORE_NAME               3 (__firstlineno__)
+               LOAD_LOCALS
+               STORE_DEREF              0 (__classdict__)
+
+   5           LOAD_CONST               1 ('\nBase class for all Raphael Execution Connectors.\nImplements a strict lifecycle: validate -> prepare -> execute -> verify -> cleanup\n')
+               STORE_NAME               4 (__doc__)
+
+  10           LOAD_NAME                5 (abstractmethod)
+
+  11           LOAD_FAST_BORROW         0 (__classdict__)
+               BUILD_TUPLE              1
+               LOAD_CONST               2 (<code object __annotate__ at 0x00000170F577F660, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 11>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_CONST               3 (<code object metadata at 0x00000170F5B54AB0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 10>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE  16 (annotate)
+
+  10           CALL                     0
+
+  11           STORE_NAME               6 (metadata)
+
+  18           LOAD_NAME                5 (abstractmethod)
+
+  19           LOAD_FAST_BORROW         0 (__classdict__)
+               BUILD_TUPLE              1
+               LOAD_CONST               4 (<code object __annotate__ at 0x00000170F57A4ED0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 19>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_CONST               5 (<code object capabilities at 0x00000170F5B54D50, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 18>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE  16 (annotate)
+
+  18           CALL                     0
+
+  19           STORE_NAME               7 (capabilities)
+
+  26           LOAD_FAST_BORROW         0 (__classdict__)
+               BUILD_TUPLE              1
+               LOAD_CONST               6 (<code object __annotate__ at 0x00000170F57A57D0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 26>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_CONST               7 (<code object validate at 0x00000170F5B54C70, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 26>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE  16 (annotate)
+               STORE_NAME               8 (validate)
+
+  33           LOAD_FAST_BORROW         0 (__classdict__)
+               BUILD_TUPLE              1
+               LOAD_CONST               8 (<code object __annotate__ at 0x00000170F558FCC0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 33>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_CONST               9 (<code object prepare at 0x00000170F5B54B90, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 33>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE  16 (annotate)
+               STORE_NAME               9 (prepare)
+
+  40           LOAD_NAME                5 (abstractmethod)
+
+  41           LOAD_FAST_BORROW         0 (__classdict__)
+               BUILD_TUPLE              1
+               LOAD_CONST              10 (<code object __annotate__ at 0x00000170F558FDF0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 41>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_CONST              11 (<code object execute at 0x00000170F5B551B0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 40>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE  16 (annotate)
+
+  40           CALL                     0
+
+  41           STORE_NAME              10 (execute)
+
+  47           LOAD_FAST_BORROW         0 (__classdict__)
+               BUILD_TUPLE              1
+               LOAD_CONST              12 (<code object __annotate__ at 0x00000170F57A69D0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 47>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_CONST              13 (<code object verify at 0x00000170F5B54FF0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 47>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE  16 (annotate)
+               STORE_NAME              11 (verify)
+
+  54           LOAD_FAST_BORROW         0 (__classdict__)
+               BUILD_TUPLE              1
+               LOAD_CONST              14 (<code object __annotate__ at 0x00000170F5803990, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 54>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_CONST              15 (<code object cleanup at 0x00000170F5B54F10, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 54>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE  16 (annotate)
+               STORE_NAME              12 (cleanup)
+
+  60           LOAD_NAME                5 (abstractmethod)
+
+  61           LOAD_FAST_BORROW         0 (__classdict__)
+               BUILD_TUPLE              1
+               LOAD_CONST              16 (<code object __annotate__ at 0x00000170F5789110, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 61>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_CONST              17 (<code object health at 0x00000170F5B550D0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 60>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE  16 (annotate)
+
+  60           CALL                     0
+
+  61           STORE_NAME              13 (health)
+               LOAD_CONST              18 (())
+               STORE_NAME              14 (__static_attributes__)
+               LOAD_FAST_BORROW         0 (__classdict__)
+               STORE_NAME              15 (__classdictcell__)
+               LOAD_CONST              19 (None)
+               RETURN_VALUE
+
+Disassembly of <code object __annotate__ at 0x00000170F577F660, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 11>:
+  --           COPY_FREE_VARS           1
+
+  11           RESUME                   0
+               LOAD_FAST_BORROW         0 (format)
+               LOAD_SMALL_INT           2
+               COMPARE_OP             132 (>)
+               POP_JUMP_IF_FALSE        3 (to L1)
+               NOT_TAKEN
+               LOAD_COMMON_CONSTANT     1 (NotImplementedError)
+               RAISE_VARARGS            1
+       L1:     LOAD_CONST               1 ('return')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (Dict)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 1 (str)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 2 (Any)
+               BUILD_TUPLE              2
+               BINARY_OP               26 ([])
+               BUILD_MAP                1
+               RETURN_VALUE
+
+Disassembly of <code object metadata at 0x00000170F5B54AB0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 10>:
+ 10           RESUME                   0
+
+ 16           LOAD_CONST               1 (None)
+              RETURN_VALUE
+
+Disassembly of <code object __annotate__ at 0x00000170F57A4ED0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 19>:
+  --           COPY_FREE_VARS           1
+
+  19           RESUME                   0
+               LOAD_FAST_BORROW         0 (format)
+               LOAD_SMALL_INT           2
+               COMPARE_OP             132 (>)
+               POP_JUMP_IF_FALSE        3 (to L1)
+               NOT_TAKEN
+               LOAD_COMMON_CONSTANT     1 (NotImplementedError)
+               RAISE_VARARGS            1
+       L1:     LOAD_CONST               1 ('return')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (List)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 1 (Dict)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 2 (str)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 3 (Any)
+               BUILD_TUPLE              2
+               BINARY_OP               26 ([])
+               BINARY_OP               26 ([])
+               BUILD_MAP                1
+               RETURN_VALUE
+
+Disassembly of <code object capabilities at 0x00000170F5B54D50, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 18>:
+ 18           RESUME                   0
+
+ 24           LOAD_CONST               1 (None)
+              RETURN_VALUE
+
+Disassembly of <code object __annotate__ at 0x00000170F57A57D0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 26>:
+  --           COPY_FREE_VARS           1
+
+  26           RESUME                   0
+               LOAD_FAST_BORROW         0 (format)
+               LOAD_SMALL_INT           2
+               COMPARE_OP             132 (>)
+               POP_JUMP_IF_FALSE        3 (to L1)
+               NOT_TAKEN
+               LOAD_COMMON_CONSTANT     1 (NotImplementedError)
+               RAISE_VARARGS            1
+       L1:     LOAD_CONST               1 ('action')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_CONST               2 ('params')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 1 (Dict)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 2 (Any)
+               BUILD_TUPLE              2
+               BINARY_OP               26 ([])
+               LOAD_CONST               3 ('return')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 3 (bool)
+               BUILD_MAP                3
+               RETURN_VALUE
+
+Disassembly of <code object validate at 0x00000170F5B54C70, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 26>:
+ 26           RESUME                   0
+
+ 31           LOAD_CONST               1 (True)
+              RETURN_VALUE
+
+Disassembly of <code object __annotate__ at 0x00000170F558FCC0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 33>:
+  --           COPY_FREE_VARS           1
+
+  33           RESUME                   0
+               LOAD_FAST_BORROW         0 (format)
+               LOAD_SMALL_INT           2
+               COMPARE_OP             132 (>)
+               POP_JUMP_IF_FALSE        3 (to L1)
+               NOT_TAKEN
+               LOAD_COMMON_CONSTANT     1 (NotImplementedError)
+               RAISE_VARARGS            1
+       L1:     LOAD_CONST               1 ('action')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_CONST               2 ('params')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 1 (Dict)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 2 (Any)
+               BUILD_TUPLE              2
+               BINARY_OP               26 ([])
+               LOAD_CONST               3 ('return')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 1 (Dict)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 2 (Any)
+               BUILD_TUPLE              2
+               BINARY_OP               26 ([])
+               BUILD_MAP                3
+               RETURN_VALUE
+
+Disassembly of <code object prepare at 0x00000170F5B54B90, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 33>:
+ 33           RESUME                   0
+
+ 38           LOAD_FAST_BORROW         2 (params)
+              RETURN_VALUE
+
+Disassembly of <code object __annotate__ at 0x00000170F558FDF0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 41>:
+  --           COPY_FREE_VARS           1
+
+  41           RESUME                   0
+               LOAD_FAST_BORROW         0 (format)
+               LOAD_SMALL_INT           2
+               COMPARE_OP             132 (>)
+               POP_JUMP_IF_FALSE        3 (to L1)
+               NOT_TAKEN
+               LOAD_COMMON_CONSTANT     1 (NotImplementedError)
+               RAISE_VARARGS            1
+       L1:     LOAD_CONST               1 ('action')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_CONST               2 ('params')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 1 (Dict)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 2 (Any)
+               BUILD_TUPLE              2
+               BINARY_OP               26 ([])
+               LOAD_CONST               3 ('return')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 1 (Dict)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 2 (Any)
+               BUILD_TUPLE              2
+               BINARY_OP               26 ([])
+               BUILD_MAP                3
+               RETURN_VALUE
+
+Disassembly of <code object execute at 0x00000170F5B551B0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 40>:
+ 40           RESUME                   0
+
+ 45           LOAD_CONST               1 (None)
+              RETURN_VALUE
+
+Disassembly of <code object __annotate__ at 0x00000170F57A69D0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 47>:
+  --           COPY_FREE_VARS           1
+
+  47           RESUME                   0
+               LOAD_FAST_BORROW         0 (format)
+               LOAD_SMALL_INT           2
+               COMPARE_OP             132 (>)
+               POP_JUMP_IF_FALSE        3 (to L1)
+               NOT_TAKEN
+               LOAD_COMMON_CONSTANT     1 (NotImplementedError)
+               RAISE_VARARGS            1
+       L1:     LOAD_CONST               1 ('action')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_CONST               2 ('result')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 1 (Dict)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 2 (Any)
+               BUILD_TUPLE              2
+               BINARY_OP               26 ([])
+               LOAD_CONST               3 ('return')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 3 (bool)
+               BUILD_MAP                3
+               RETURN_VALUE
+
+Disassembly of <code object verify at 0x00000170F5B54FF0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 47>:
+ 47           RESUME                   0
+
+ 52           LOAD_CONST               1 (True)
+              RETURN_VALUE
+
+Disassembly of <code object __annotate__ at 0x00000170F5803990, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 54>:
+  --           COPY_FREE_VARS           1
+
+  54           RESUME                   0
+               LOAD_FAST_BORROW         0 (format)
+               LOAD_SMALL_INT           2
+               COMPARE_OP             132 (>)
+               POP_JUMP_IF_FALSE        3 (to L1)
+               NOT_TAKEN
+               LOAD_COMMON_CONSTANT     1 (NotImplementedError)
+               RAISE_VARARGS            1
+       L1:     LOAD_CONST               1 ('action')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_CONST               2 ('result')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 1 (Dict)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (str)
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 2 (Any)
+               BUILD_TUPLE              2
+               BINARY_OP               26 ([])
+               LOAD_CONST               3 ('return')
+               LOAD_CONST               4 (None)
+               BUILD_MAP                3
+               RETURN_VALUE
+
+Disassembly of <code object cleanup at 0x00000170F5B54F10, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 54>:
+ 54           RESUME                   0
+
+ 58           LOAD_CONST               1 (None)
+              RETURN_VALUE
+
+Disassembly of <code object __annotate__ at 0x00000170F5789110, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 61>:
+  --           COPY_FREE_VARS           1
+
+  61           RESUME                   0
+               LOAD_FAST_BORROW         0 (format)
+               LOAD_SMALL_INT           2
+               COMPARE_OP             132 (>)
+               POP_JUMP_IF_FALSE        3 (to L1)
+               NOT_TAKEN
+               LOAD_COMMON_CONSTANT     1 (NotImplementedError)
+               RAISE_VARARGS            1
+       L1:     LOAD_CONST               1 ('return')
+               LOAD_DEREF               1 (__classdict__)
+               LOAD_FROM_DICT_OR_GLOBALS 0 (bool)
+               BUILD_MAP                1
+               RETURN_VALUE
+
+Disassembly of <code object health at 0x00000170F5B550D0, file "C:\Users\cyber\Downloads\RalphaelOS\raphael_core\connectors\base_connector.py", line 60>:
+ 60           RESUME                   0
+
+ 65           LOAD_CONST               1 (None)
+              RETURN_VALUE

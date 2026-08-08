@@ -1,0 +1,1816 @@
+{
+  "business_id": "FocusMarketing",
+  "version": 852,
+  "identity": {
+    "brand": "FocusMarketing",
+    "category": "Marketing Education",
+    "audience": "Entrepreneurs"
+  },
+  "financial_intelligence": {
+    "revenue": 3920.318728132776,
+    "expenses": 395.1786956165275,
+    "profit": 3525.1400325162485,
+    "cost_per_mission": 1.59,
+    "cost_per_learning": 0.0,
+    "roi_prediction": 0.0
+  },
+  "operational_intelligence": {
+    "missions_completed": 249,
+    "missions_approved": 39,
+    "average_quality_score": 8.3,
+    "production_time_average": "0m",
+    "approval_rate": 1.0,
+    "production_cost": 4.190373630158358
+  },
+  "strategic_intelligence": {
+    "active_hypotheses": 0,
+    "validated_strategies": 0,
+    "rejected_strategies": 0
+  },
+  "learning_intelligence": {
+    "experiments_run": 0,
+    "experiments_successful": 0,
+    "experiments_failed": 0,
+    "average_learning_velocity": 0.0
+  },
+  "knowledge": {
+    "observations": [
+      {
+        "pattern": "Business psychology videos outperform tool tutorials",
+        "confidence": 0.72,
+        "evidence": [
+          "001"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Avoid generic tool tutorials",
+        "confidence": 0.72,
+        "evidence": [
+          "001"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Business psychology videos outperform tool tutorials",
+        "confidence": 0.72,
+        "evidence": [
+          "002"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Avoid generic tool tutorials",
+        "confidence": 0.72,
+        "evidence": [
+          "003"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Business psychology videos outperform tool tutorials",
+        "confidence": 0.72,
+        "evidence": [
+          "004"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Avoid generic tool tutorials",
+        "confidence": 0.72,
+        "evidence": [
+          "005"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Business psychology videos outperform tool tutorials",
+        "confidence": 0.72,
+        "evidence": [
+          "006"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Avoid generic tool tutorials",
+        "confidence": 0.72,
+        "evidence": [
+          "007"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Business psychology videos outperform tool tutorials",
+        "confidence": 0.72,
+        "evidence": [
+          "008"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Avoid generic tool tutorials",
+        "confidence": 0.72,
+        "evidence": [
+          "009"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Business psychology videos outperform tool tutorials",
+        "confidence": 0.72,
+        "evidence": [
+          "010"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Why LEGO Almost Went Bankrupt",
+        "confidence": 0.72,
+        "evidence": [
+          "011"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Nintendo's Ocean Strategy",
+        "confidence": 0.72,
+        "evidence": [
+          "012"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for How Pixar Scales Creativity",
+        "confidence": 0.72,
+        "evidence": [
+          "013"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for McDonald's Real Estate Empire",
+        "confidence": 0.72,
+        "evidence": [
+          "014"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for IKEA's Psychological Maze",
+        "confidence": 0.72,
+        "evidence": [
+          "015"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Costco's Loss Leader Mastery",
+        "confidence": 0.72,
+        "evidence": [
+          "016"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Ferrari's Artificial Scarcity",
+        "confidence": 0.72,
+        "evidence": [
+          "017"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for The Decoy Effect in SaaS",
+        "confidence": 0.72,
+        "evidence": [
+          "018"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Color Psychology in Branding",
+        "confidence": 0.72,
+        "evidence": [
+          "019"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for How to use LTX for Ads",
+        "confidence": 0.72,
+        "evidence": [
+          "020"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Business Case Studies",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_001"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Business Case Studies",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_002"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Business Case Studies",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_003"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Business Case Studies",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_004"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Business Case Studies",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_005"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Business Case Studies",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_007"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Business Case Studies",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_008"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Business Case Studies",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_009"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Business Case Studies",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_010"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Marketing Psychology",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_011"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Marketing Psychology",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_012"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Marketing Psychology",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_013"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Marketing Psychology",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_014"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for Marketing Psychology",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_015"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for AI Marketing",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_016"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for AI Marketing",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_018"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for AI Marketing",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_019"
+        ],
+        "classification": "observation"
+      },
+      {
+        "pattern": "Result for AI Marketing",
+        "confidence": 0.72,
+        "evidence": [
+          "B3_020"
+        ],
+        "classification": "observation"
+      }
+    ],
+    "hypotheses": [
+      {
+        "id": "hyp_001",
+        "name": "Business psychology videos outperform tool tutorials",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "001"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_002",
+        "name": "Business psychology videos outperform tool tutorials",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "002"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_003",
+        "name": "Avoid generic tool tutorials",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "003"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_004",
+        "name": "Business psychology videos outperform tool tutorials",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "004"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_005",
+        "name": "Avoid generic tool tutorials",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "005"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_006",
+        "name": "Business psychology videos outperform tool tutorials",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "006"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_007",
+        "name": "Avoid generic tool tutorials",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "007"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_008",
+        "name": "Business psychology videos outperform tool tutorials",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "008"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_009",
+        "name": "Avoid generic tool tutorials",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "009"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_010",
+        "name": "Business psychology videos outperform tool tutorials",
+        "state": "VALIDATED",
+        "confidence": 0.89,
+        "evidence_count": 1,
+        "evidence_list": [
+          "010"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_011",
+        "name": "Result for Why LEGO Almost Went Bankrupt",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "011"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_012",
+        "name": "Result for Nintendo's Ocean Strategy",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "012"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_013",
+        "name": "Result for How Pixar Scales Creativity",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "013"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_014",
+        "name": "Result for McDonald's Real Estate Empire",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "014"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_015",
+        "name": "Result for IKEA's Psychological Maze",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "015"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_016",
+        "name": "Result for Costco's Loss Leader Mastery",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "016"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_017",
+        "name": "Result for Ferrari's Artificial Scarcity",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "017"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_018",
+        "name": "Result for The Decoy Effect in SaaS",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "018"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_019",
+        "name": "Result for Color Psychology in Branding",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "019"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_020",
+        "name": "Result for How to use LTX for Ads",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "020"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_001",
+        "name": "Result for Business Case Studies",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_001"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_002",
+        "name": "Result for Business Case Studies",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_002"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_003",
+        "name": "Result for Business Case Studies",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_003"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_004",
+        "name": "Result for Business Case Studies",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_004"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_005",
+        "name": "Result for Business Case Studies",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_005"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_007",
+        "name": "Result for Business Case Studies",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_007"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_008",
+        "name": "Result for Business Case Studies",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_008"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_009",
+        "name": "Result for Business Case Studies",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_009"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_010",
+        "name": "Result for Business Case Studies",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_010"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_011",
+        "name": "Result for Marketing Psychology",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_011"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_012",
+        "name": "Result for Marketing Psychology",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_012"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_013",
+        "name": "Result for Marketing Psychology",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_013"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_014",
+        "name": "Result for Marketing Psychology",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_014"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_015",
+        "name": "Result for Marketing Psychology",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_015"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_016",
+        "name": "Result for AI Marketing",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_016"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_018",
+        "name": "Result for AI Marketing",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_018"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_019",
+        "name": "Result for AI Marketing",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_019"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      },
+      {
+        "id": "hyp_B3_020",
+        "name": "Result for AI Marketing",
+        "state": "PROPOSED",
+        "confidence": 0.75,
+        "evidence_count": 1,
+        "evidence_list": [
+          "B3_020"
+        ],
+        "strategy_action": {
+          "decision": "Increase Business Case Studies production",
+          "approval_required": true
+        }
+      }
+    ],
+    "experiments": [
+      {
+        "experiment_id": "exp_hyp_001",
+        "hypothesis_id": "hyp_001",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_002",
+        "hypothesis_id": "hyp_002",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_003",
+        "hypothesis_id": "hyp_003",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_004",
+        "hypothesis_id": "hyp_004",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_005",
+        "hypothesis_id": "hyp_005",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_006",
+        "hypothesis_id": "hyp_006",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_007",
+        "hypothesis_id": "hyp_007",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_008",
+        "hypothesis_id": "hyp_008",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_009",
+        "hypothesis_id": "hyp_009",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_010",
+        "hypothesis_id": "hyp_010",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "validated"
+      },
+      {
+        "experiment_id": "exp_hyp_011",
+        "hypothesis_id": "hyp_011",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_012",
+        "hypothesis_id": "hyp_012",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_013",
+        "hypothesis_id": "hyp_013",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_014",
+        "hypothesis_id": "hyp_014",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_015",
+        "hypothesis_id": "hyp_015",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_016",
+        "hypothesis_id": "hyp_016",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_017",
+        "hypothesis_id": "hyp_017",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_018",
+        "hypothesis_id": "hyp_018",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_019",
+        "hypothesis_id": "hyp_019",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_020",
+        "hypothesis_id": "hyp_020",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_001",
+        "hypothesis_id": "hyp_B3_001",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_002",
+        "hypothesis_id": "hyp_B3_002",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_003",
+        "hypothesis_id": "hyp_B3_003",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_004",
+        "hypothesis_id": "hyp_B3_004",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_005",
+        "hypothesis_id": "hyp_B3_005",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_007",
+        "hypothesis_id": "hyp_B3_007",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_008",
+        "hypothesis_id": "hyp_B3_008",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_009",
+        "hypothesis_id": "hyp_B3_009",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_010",
+        "hypothesis_id": "hyp_B3_010",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_011",
+        "hypothesis_id": "hyp_B3_011",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_012",
+        "hypothesis_id": "hyp_B3_012",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_013",
+        "hypothesis_id": "hyp_B3_013",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_014",
+        "hypothesis_id": "hyp_B3_014",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_015",
+        "hypothesis_id": "hyp_B3_015",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_016",
+        "hypothesis_id": "hyp_B3_016",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_018",
+        "hypothesis_id": "hyp_B3_018",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_019",
+        "hypothesis_id": "hyp_B3_019",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      },
+      {
+        "experiment_id": "exp_hyp_B3_020",
+        "hypothesis_id": "hyp_B3_020",
+        "control_group": {
+          "type": "AI Marketing",
+          "missions": 1
+        },
+        "test_group": {
+          "type": "Business Case Studies",
+          "missions": 7
+        },
+        "metrics": {
+          "quality_score": true,
+          "approval_rate": true,
+          "production_time": true,
+          "human_feedback": true
+        },
+        "started_at": "",
+        "completed_at": "",
+        "result": "pending"
+      }
+    ],
+    "strategies": [
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "RETIRED",
+        "allocation_score": 1.65,
+        "confidence": 0.20000000000000015
+      },
+      {
+        "strategy": "Marketing Psychology Deep Dives",
+        "state": "ACTIVE",
+        "allocation_score": 1.95,
+        "confidence": 0.40000000000000013
+      },
+      {
+        "strategy": "Generic Tutorials",
+        "state": "RETIRED",
+        "confidence": 0.35,
+        "allocation_score": 50
+      }
+    ]
+  },
+  "growth": {
+    "subscriber_count": 0,
+    "views": 0,
+    "revenue": 0
+  },
+  "confidence": {
+    "business_model_confidence": 0.1
+  },
+  "decision_journal": [
+    {
+      "decision_id": "decision_exp_hyp_010",
+      "decision": "Increase Business Case Studies production",
+      "reasoning": [
+        "Experiment exp_hyp_010 validated with 0.14 confidence increase"
+      ],
+      "confidence": 0.89,
+      "expected_outcome": "Improved engagement",
+      "actual_outcome": null
+    }
+  ]
+}

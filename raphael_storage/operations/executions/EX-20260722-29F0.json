@@ -1,0 +1,23 @@
+{
+  "execution_id": "EX-20260722-29F0",
+  "mission_id": "M-20260722-7B18",
+  "correlation_id": "CORR-50F0D8",
+  "workflow_id": "ltx_storyboard_factory",
+  "context": {
+    "source": "dashboard_chat",
+    "session_id": "test_phase9",
+    "initiated_by": "Aaron",
+    "workflow_id": "ltx_storyboard_factory"
+  },
+  "status": "RUNNING",
+  "progress_percent": 0,
+  "current_node": "",
+  "completed_nodes": [],
+  "failed_nodes": [],
+  "started_at": "2026-07-22T01:23:52.212378Z",
+  "updated_at": "2026-07-22T01:23:52.212716Z",
+  "completed_at": null,
+  "logs": [],
+  "artifacts": [],
+  "metrics": {}
+}

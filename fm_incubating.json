@@ -1,0 +1,61 @@
+{
+  "version": 2,
+  "identity": {
+    "business_id": "focus_mktg",
+    "name": "Focus Marketing",
+    "category": "Marketing Education",
+    "domain": "Creator"
+  },
+  "lifecycle_state": "ACTIVE",
+  "financials": {
+    "revenue": 0.0,
+    "expenses": 0.0,
+    "profit": 0.0,
+    "roi": 8.4
+  },
+  "operations": {
+    "missions_attempted": 0,
+    "missions_successful": 0,
+    "approval_rate": 0.0,
+    "average_quality": 0.0
+  },
+  "strategy": {
+    "active_strategies": [],
+    "retired_strategies": []
+  },
+  "learning": {
+    "experiments_run": 0,
+    "knowledge_base_size": 0
+  },
+  "knowledge": {
+    "observations": [],
+    "hypotheses": [],
+    "experiments": [],
+    "strategies": []
+  },
+  "growth": {
+    "metrics": {}
+  },
+  "risk": {
+    "operational_risk": 0.05,
+    "financial_risk": 0.02
+  },
+  "confidence": 0.97,
+  "venture_metadata": {
+    "parent_portfolio": "Raphael Holdings",
+    "founder": "Raphael OS",
+    "incubation_budget": 0,
+    "validation_deadline": "",
+    "success_threshold": 0.0
+  },
+  "decision_journal": [
+    {
+      "decision": "Received 80% resource allocation",
+      "reasoning": [
+        "Ranked score: 0.7095",
+        "Confidence: 0.97, Pool: Established"
+      ],
+      "expected_outcome": "Maximized portfolio ROI based on current ranking"
+    }
+  ]
+}

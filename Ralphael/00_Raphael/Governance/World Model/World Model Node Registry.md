@@ -44,7 +44,6 @@
 | AGENT-5EA17DB355 | Agent | Business Strategy Agent Memory Links | active | 0.84 | Agent generated with evidence |
 | AGENT-628D0E5632 | Agent | Audience Growth Agent Responsibilities | active | 0.84 | Agent generated with evidence |
 | AGENT-6892881696 | Agent | Business Strategy Agent Inputs | active | 0.84 | Agent generated with evidence |
-| AGENT-6A77D02835 | Agent | Client Success Agent Escalation Rules | active | 0.84 | Agent generated with evidence |
 | AGENT-6CBF14E82B | Agent | Chief of Staff Agent Inputs | active | 0.84 | Agent generated with evidence |
 | AGENT-6F7B5386AB | Agent | Finance Agent | active | 0.84 | Agent generated with evidence |
 | AGENT-70543CD80E | Agent | Chief of Staff Agent Outputs | active | 0.84 | Agent generated with evidence |
@@ -117,73 +116,103 @@
 | AGENT-F87E6DE00E | Agent | UI UX Designer Agent | active | 0.84 | Agent generated with evidence |
 | AGENT-F906108F3E | Agent | Governance Council Brief | active | 0.84 | Agent generated with evidence |
 | AGENT-FB3F557B07 | Agent | CTO Agent | active | 0.84 | Agent generated with evidence |
+| BUILD-01C5AAAE08 | Build | Build Request BUILD-20260628-077E2A26 | generated | 0.84 | Builder Registry |
 | BUILD-07C715DF0F | Build | Build Request BUILD-20260621-DFC03B1E | awaiting_plan_approval | 0.84 | Builder Registry |
 | BUILD-08F7A4909F | Build | Build Classification BCLASS-20260618-496534C3 | active | 0.84 | Builder Registry |
 | BUILD-10C8986B96 | Build | tsconfig.app | active | 0.84 | Builder Registry |
+| BUILD-18192FB9F8 | Build | Build Classification BCLASS-20260706-162051F3 | complete | 0.84 | Builder Registry |
 | BUILD-1D50FADA50 | Build | Build Request BUILD-20260618-6D81562F | ready_for_review | 0.84 | Builder Registry |
 | BUILD-1E82B981FB | Build | File From This Response To Daily Habit Tracker I Will React | active | 0.84 | Builder Registry |
 | BUILD-20563F126D | Build | Technical / Product Review - BUILD-20260618-5B188EDA | active | 0.84 | Builder Registry |
+| BUILD-206F182E2B | Build | Build Request BUILD-20260705-B01624BD | planned | 0.84 | Builder Registry |
+| BUILD-23BE3D80B2 | Build | Build Request BUILD-20260714-3405A018 | planned | 0.84 | Builder Registry |
 | BUILD-24EB3E5943 | Build | Build Classification BCLASS-20260624-46F80AC3 | active | 0.84 | Builder Registry |
 | BUILD-27FF532810 | Build | Build Request BUILD-20260616-73E55DB4 | ready_for_review | 0.84 | Builder Registry |
 | BUILD-29587FFB6B | Build | .oxlintrc | active | 0.84 | Builder Registry |
 | BUILD-2AF67FD6FA | Build | Technical / Product Review - BUILD-20260621-DFC03B1E | active | 0.84 | Builder Registry |
 | BUILD-2E8BC73DD3 | Build | Build Request BUILD-20260624-EDBBECFD | generated | 0.84 | Builder Registry |
 | BUILD-342DCA3309 | Build | Build Request BUILD-20260618-768D0D39 | generated | 0.84 | Builder Registry |
+| BUILD-398B47EC62 | Build | Technical / Product Review - BUILD-20260705-B01624BD | active | 0.84 | Builder Registry |
+| BUILD-3B6BA2D30F | Build | Build Classification BCLASS-20260706-61335DDD | active | 0.84 | Builder Registry |
+| BUILD-3B9A5603CB | Build | Technical / Product Review - BUILD-20260706-95AD1F7F | complete | 0.84 | Builder Registry |
 | BUILD-4243C043BF | Build | React Invoice Generator Simple Form-Based Auto-Calculates Li | active | 0.84 | Builder Registry |
 | BUILD-52003A5F8A | Build | tsconfig.node | active | 0.84 | Builder Registry |
 | BUILD-57735B87E0 | Build | Build Request BUILD-20260616-5C225BE3 | ready_for_review | 0.84 | Builder Registry |
+| BUILD-595B125C00 | Build | Build Request BUILD-20260705-0430215A | generated | 0.84 | Builder Registry |
 | BUILD-5A9D9E5A9B | Build | Build Request BUILD-20260621-A2C45EC6 | awaiting_plan_approval | 0.84 | Builder Registry |
 | BUILD-5B937A618E | Build | Build Request BUILD-20260618-0EACFB8C | ready_for_review | 0.84 | Builder Registry |
 | BUILD-5F8CD9A275 | Build | package-lock | active | 0.84 | Builder Registry |
+| BUILD-6545401161 | Build | Build Classification BCLASS-20260705-11A60115 | active | 0.84 | Builder Registry |
 | BUILD-66CD8CD823 | Build | Build Request BUILD-20260624-E2D9494D | generated | 0.84 | Builder Registry |
 | BUILD-73234FF31B | Build | Build Classification BCLASS-20260618-ABC854CD | active | 0.84 | Builder Registry |
 | BUILD-761D4A7772 | Build | Improvement Request IMPROVE-20260617-66D16F0A | proposed | 0.84 | Builder Registry |
+| BUILD-78D326B7F7 | Build | Build Classification BCLASS-20260710-7E58F849 | active | 0.84 | Builder Registry |
 | BUILD-7F43D172F9 | Build | Technical / Product Review - BUILD-20260621-A2C45EC6 | active | 0.84 | Builder Registry |
+| BUILD-810B7184B9 | Build | Build Request BUILD-20260710-8BAAF62D | planned | 0.84 | Builder Registry |
+| BUILD-81E32E597B | Build | Build Classification BCLASS-20260714-A733FAAB | active | 0.84 | Builder Registry |
 | BUILD-82FD38FA6B | Build | Build Request BUILD-20260624-9B2A7953 | generated | 0.84 | Builder Registry |
 | BUILD-870640315C | Build | Build Classification BCLASS-20260621-3C508032 | active | 0.84 | Builder Registry |
 | BUILD-8ED8B9EE13 | Build | package-lock | active | 0.84 | Builder Registry |
 | BUILD-92D548C3BC | Build | Build Classification BCLASS-20260624-5BCD58E5 | active | 0.84 | Builder Registry |
+| BUILD-9893F23771 | Build | Technical / Product Review - BUILD-20260706-4EE8E446 | complete | 0.84 | Builder Registry |
+| BUILD-9E9F83B965 | Build | Build Classification BCLASS-20260706-40B1C2C8 | complete | 0.84 | Builder Registry |
+| BUILD-9FB4C58AEA | Build | Build Request BUILD-20260710-7B0BC645 | planned | 0.84 | Builder Registry |
+| BUILD-A0E852E782 | Build | Build Classification BCLASS-20260705-F804B9A2 | active | 0.84 | Builder Registry |
+| BUILD-A32C521F5F | Build | Build Classification BCLASS-20260710-9CB6E4C7 | active | 0.84 | Builder Registry |
+| BUILD-A5265BACA0 | Build | Build Request BUILD-20260706-4EE8E446 | awaiting_plan_approval | 0.84 | Builder Registry |
 | BUILD-A7D675D7E8 | Build | Technical / Product Review - BUILD-20260624-EDBBECFD | active | 0.84 | Builder Registry |
+| BUILD-A9826E8C8C | Build | Build Classification BCLASS-20260628-1BF0FDF8 | active | 0.84 | Builder Registry |
 | BUILD-ABD817AEF3 | Build | Generated BUILD-20260616-B3A2A68F | active | 0.84 | Builder Registry |
+| BUILD-B18B529615 | Build | Build Request BUILD-20260710-BB7B9F67 | planned | 0.84 | Builder Registry |
 | BUILD-B1A947EBE7 | Build | Build Classification BCLASS-20260618-66FE71F6 | active | 0.84 | Builder Registry |
 | BUILD-B6B36F65D5 | Build | package | active | 0.84 | Builder Registry |
 | BUILD-B8F30E8C81 | Build | Build Request BUILD-20260618-EEB1DCA8 | ready_for_review | 0.84 | Builder Registry |
+| BUILD-B962E9490B | Build | Landing Page For Resume | active | 0.84 | Builder Registry |
+| BUILD-B9D0D21517 | Build | Technical / Product Review - BUILD-20260706-1D3A6AA6 | complete | 0.84 | Builder Registry |
+| BUILD-BDC8703ACE | Build | Build Request BUILD-20260706-95AD1F7F | awaiting_plan_approval | 0.84 | Builder Registry |
 | BUILD-BFFC9A95C4 | Build | Me Simple React Clicks Phase64 Acceptance | active | 0.84 | Builder Registry |
 | BUILD-C385952B2D | Build | React + TypeScript + Vite | active | 0.84 | Builder Registry |
+| BUILD-C40F3E7387 | Build | Build Classification BCLASS-20260706-91ABCC12 | active | 0.84 | Builder Registry |
+| BUILD-C4C25D4AD8 | Build | Build Request BUILD-20260706-1D3A6AA6 | planned | 0.84 | Builder Registry |
 | BUILD-C695708062 | Build | package-lock | active | 0.84 | Builder Registry |
+| BUILD-C8435FDF41 | Build | Build Classification BCLASS-20260710-7F982CB6 | active | 0.84 | Builder Registry |
 | BUILD-CACB95BDEC | Build | Build Request BUILD-20260618-0E36F620 | ready_for_review | 0.84 | Builder Registry |
 | BUILD-CB6564A8EF | Build | Build Request BUILD-20260618-5B188EDA | awaiting_plan_approval | 0.84 | Builder Registry |
+| BUILD-CFC5830A27 | Build | Build Request BUILD-20260628-8379D077 | generated | 0.84 | Builder Registry |
+| BUILD-D099328FF8 | Build | Build Classification BCLASS-20260710-FBD12863 | active | 0.84 | Builder Registry |
 | BUILD-D1BD662D41 | Build | Builder Governance Review | active | 0.84 | Builder Registry |
+| BUILD-D7EA23AB33 | Build | Build Request BUILD-20260710-A8676842 | planned | 0.84 | Builder Registry |
 | BUILD-DA1FEE95B2 | Build | package | active | 0.84 | Builder Registry |
+| BUILD-DDB042F883 | Build | Build Request BUILD-20260706-F0936B81 | generated | 0.84 | Builder Registry |
 | BUILD-DDF32559AA | Build | Technical / Product Review - BUILD-20260618-0E36F620 | active | 0.84 | Builder Registry |
 | BUILD-DEFF5043E2 | Build | Build Classification BCLASS-20260621-06480206 | active | 0.84 | Builder Registry |
 | BUILD-E15A445C34 | Build | Build Classification BCLASS-20260618-D6F631D7 | active | 0.84 | Builder Registry |
+| BUILD-E54EBA31B3 | Build | Build Request BUILD-20260706-0C6435E3 | generated | 0.84 | Builder Registry |
+| BUILD-E56C6C41A2 | Build | Build Classification BCLASS-20260628-8564A778 | active | 0.84 | Builder Registry |
 | BUILD-E6FAE3F00D | Build | package | active | 0.84 | Builder Registry |
 | BUILD-F218F3BDAA | Build | tsconfig | active | 0.84 | Builder Registry |
 | BUILD-F23CE94AD7 | Build | package | active | 0.84 | Builder Registry |
 | BUILD-F2F7F502CC | Build | Build Request BUILD-20260616-B3A2A68F | ready_for_review | 0.84 | Builder Registry |
 | BUILD-F5658D192E | Build | Build Classification BCLASS-20260624-B8BC8126 | active | 0.84 | Builder Registry |
+| BUILD-FAA2EF62D0 | Build | Landing Page For Resume | active | 0.84 | Builder Registry |
+| BUILD-FB18C272B1 | Build | Build Classification BCLASS-20260706-E0993973 | complete | 0.84 | Builder Registry |
 | BUSINESS-2F11D60B29 | Business | Revenue Streams | active | 0.84 | Agent generated with evidence |
 | BUSINESS-6249E537C6 | Business | Business Ideas | active | 0.84 | Agent generated with evidence |
 | BUSINESS-FF2134341B | Business | Businesses | active | 0.84 | Agent generated with evidence |
-| DECISION-07F4062625 | Decision | Source: PODCON-1A39FD7A6D - IP Safety Note.md | uncleared_—_manual_legal/ip_review_requi | 0.84 | System Generated Records |
 | DECISION-08D4617E67 | Decision | Execution Safety Report | blocked | 0.84 | System Generated Records |
+| DECISION-2C7F1E1544 | Decision | Phase 75.1 Population Gaps | active | 0.84 | System Generated Records |
 | DECISION-3C15B85F32 | Decision | World Model Review | active | 0.84 | System Generated Records |
 | DECISION-3D562F078A | Decision | World Model Executive Brief | complete | 0.84 | System Generated Records |
 | DECISION-5072B6483B | Decision | World Model Overview | active | 0.84 | System Generated Records |
-| DECISION-5E41D790B4 | Decision | POD IP Safety Note PODCON-34A2731F85 | uncleared_—_manual_legal/ip_review_requi | 0.84 | System Generated Records |
 | DECISION-6A1AE1D4F4 | Decision | World Model Access Policy | active | 0.84 | System Generated Records |
 | DECISION-77B541AC38 | Decision | World Model Inference Controls | blocked | 0.84 | System Generated Records |
-| DECISION-87416FC519 | Decision | POD IP Safety Note PODCON-1A39FD7A6D | uncleared_—_manual_legal/ip_review_requi | 0.84 | System Generated Records |
 | DECISION-8A6036143C | Decision | World Model Relationship Registry | active | 0.84 | System Generated Records |
-| DECISION-953317C0B8 | Decision | Source: PODCON-A29C03BC92 - IP Safety Note.md | uncleared_—_manual_legal/ip_review_requi | 0.84 | System Generated Records |
-| DECISION-B20028CA77 | Decision | POD IP Safety Note PODCON-72BCD6458A | uncleared_—_manual_legal/ip_review_requi | 0.84 | System Generated Records |
+| DECISION-9879669E19 | Decision | Phase 75.1 Executive Validation | active | 0.84 | System Generated Records |
 | DECISION-B3B29904D4 | Decision | World Model Conflict Registry | active | 0.84 | System Generated Records |
-| DECISION-B7AD57C01F | Decision | Source: PODCON-72BCD6458A - IP Safety Note.md | uncleared_—_manual_legal/ip_review_requi | 0.84 | System Generated Records |
-| DECISION-BB9FDB253D | Decision | Source: PODCON-34A2731F85 - IP Safety Note.md | uncleared_—_manual_legal/ip_review_requi | 0.84 | System Generated Records |
-| DECISION-C66439E03A | Decision | World Model Node Registry | paused | 0.84 | System Generated Records |
+| DECISION-C66439E03A | Decision | World Model Node Registry | active | 0.84 | System Generated Records |
+| DECISION-DA1BD0CBA0 | Decision | Phase 75.1 Population Validation | active | 0.84 | System Generated Records |
 | DECISION-E05BB1FAE9 | Decision | World Model Health | active | 0.84 | System Generated Records |
-| DECISION-F136192889 | Decision | World Model Query Log | active | 0.84 | System Generated Records |
+| DECISION-F136192889 | Decision | World Model Query Log | blocked | 0.84 | System Generated Records |
 | DELIBERATION-1396D5C800 | Deliberation | Execution Plan PLAN-20260618-2A0A71FA | planned_—_awaiting_aaron_decisions_and_c | 0.84 | Agent generated with evidence |
 | DELIBERATION-1438C0E653 | Deliberation | Creator Council Overview | active | 0.84 | Agent generated with evidence |
 | DELIBERATION-2A44046D45 | Deliberation | Council Task Review | blocked | 0.84 | Agent generated with evidence |
@@ -192,7 +221,7 @@
 | DELIBERATION-5FD13997FE | Deliberation | Communication Brief | active | 0.84 | Agent generated with evidence |
 | DELIBERATION-62C9668328 | Deliberation | Executive Syntheses | complete | 0.84 | Agent generated with evidence |
 | DELIBERATION-708F85B979 | Deliberation | Execution Plan PLAN-20260618-09E595ED | planned_—_awaiting_aaron_decisions_and_c | 0.84 | Agent generated with evidence |
-| DELIBERATION-7BBC081A5B | Deliberation | Communication History | active | 0.84 | Agent generated with evidence |
+| DELIBERATION-7BBC081A5B | Deliberation | Communication History | complete | 0.84 | Agent generated with evidence |
 | DELIBERATION-7D029DF9FB | Deliberation | Execution Plan PLAN-20260618-6BEB9E21 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | Agent generated with evidence |
 | DELIBERATION-81B7F39430 | Deliberation | Council Objectives | complete | 0.84 | Agent generated with evidence |
 | DELIBERATION-877AB6450C | Deliberation | Execution Plan PLAN-20260618-2A8544F8 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | Agent generated with evidence |
@@ -209,291 +238,216 @@
 | EVENT-01FFC5797A | Event | Capability Launch: .oxlintrc | active | 0.82 | System Generated Records |
 | EVENT-03C822F9B5 | Event | Safety Evolution: docker_service_registry | active | 0.82 | System Generated Records |
 | EVENT-045DCD9B8F | Event | Capability Launch: package-lock | active | 0.82 | System Generated Records |
-| EVENT-07B9033370 | Event | Capability Launch: POD Generated Variant PODVAR-F8D9000D90 | active | 0.82 | System Generated Records |
-| EVENT-0818896CD7 | Event | Technical Success: Manual Upload Checklist | active | 0.82 | System Generated Records |
+| EVENT-0AFE8C869D | Event | Safety Evolution: Build Request BUILD-20260714-3405A018 | active | 0.82 | System Generated Records |
 | EVENT-0D167F0E00 | Event | Safety Evolution: Build Request BUILD-20260618-768D0D39 | active | 0.82 | System Generated Records |
-| EVENT-0DD4A90D22 | Event | Phase Completion: POD Listing Draft PODCON-34A2731F85 | active | 0.82 | System Generated Records |
-| EVENT-0FB647D746 | Event | Capability Launch: Source: PODCON-1A39FD7A6D - Mockup Plan.md | active | 0.82 | System Generated Records |
 | EVENT-1115EF1A43 | Event | Safety Evolution: Build Request BUILD-20260624-9B2A7953 | active | 0.82 | System Generated Records |
 | EVENT-132429BCDC | Event | Capability Launch: package-lock | active | 0.82 | System Generated Records |
+| EVENT-1496DCAF26 | Event | Capability Launch: config | active | 0.82 | System Generated Records |
 | EVENT-17787B36A7 | Event | Phase Completion: package | active | 0.82 | System Generated Records |
 | EVENT-18C5952BB3 | Event | Capability Launch: template-index | active | 0.82 | System Generated Records |
-| EVENT-1BED0887C4 | Event | Capability Launch: install_startup_task | active | 0.82 | System Generated Records |
-| EVENT-2150998823 | Event | Capability Launch: service_registry | active | 0.82 | System Generated Records |
-| EVENT-21E1F738F0 | Event | Capability Launch: POD Design Review PODREV-32AB57297E | active | 0.82 | System Generated Records |
-| EVENT-233DCCE336 | Event | Observability Review | active | 0.84 | Self-Healing Registry |
+| EVENT-19A443DD21 | Event | Safety Evolution: Build Request BUILD-20260710-BB7B9F67 | active | 0.82 | System Generated Records |
+| EVENT-1E9703D521 | Event | Safety Evolution: Build Request BUILD-20260710-8BAAF62D | active | 0.82 | System Generated Records |
 | EVENT-24E7EBC5D7 | Event | Capability Launch: Build Classification BCLASS-20260624-B8BC8126 | active | 0.82 | System Generated Records |
 | EVENT-26EFE26C41 | Event | Safety Evolution: Build Request BUILD-20260624-E2D9494D | active | 0.82 | System Generated Records |
-| EVENT-2CBD565E30 | Event | Health Observations | active | 0.84 | Self-Healing Registry |
 | EVENT-2F6AC8BC55 | Event | Phase Completion: Build Classification BCLASS-20260618-ABC854CD | active | 0.82 | System Generated Records |
 | EVENT-3121B7966A | Event | Capability Launch: POD Design Prompts PODCON-FB04B5A340 | active | 0.82 | System Generated Records |
 | EVENT-31556D63C7 | Event | Safety Evolution: Build Request BUILD-20260621-DFC03B1E | active | 0.82 | System Generated Records |
 | EVENT-353DBB950F | Event | Safety Evolution: Build Request BUILD-20260618-0E36F620 | active | 0.82 | System Generated Records |
-| EVENT-368222665E | Event | Capability Launch: POD Export Package PODCON-1A39FD7A6D | active | 0.82 | System Generated Records |
+| EVENT-3667188348 | Event | Safety Evolution: Build Request BUILD-20260706-0C6435E3 | active | 0.82 | System Generated Records |
 | EVENT-396145BA69 | Event | Safety Evolution: Build Classification BCLASS-20260618-66FE71F6 | active | 0.82 | System Generated Records |
-| EVENT-39DD6C01AB | Event | Capability Launch: Source: PODCON-1A39FD7A6D - Listing Draft.md | active | 0.82 | System Generated Records |
-| EVENT-3B14B931BF | Event | OBS-20260624-E2A2F6B3 | cancelled | 0.84 | Self-Healing Registry |
-| EVENT-3ED23F6124 | Event | Capability Launch: start_raphael | active | 0.82 | System Generated Records |
-| EVENT-4086055993 | Event | Capability Launch: Source: PODCON-1A39FD7A6D - Design Prompts.md | active | 0.82 | System Generated Records |
-| EVENT-40E7338F2F | Event | Safety Evolution: POD IP Safety Note PODCON-34A2731F85 | active | 0.82 | System Generated Records |
+| EVENT-3E1D3C6E95 | Event | Capability Launch: Build Classification BCLASS-20260714-A733FAAB | active | 0.82 | System Generated Records |
+| EVENT-4353BE74DB | Event | Capability Launch: Build Classification BCLASS-20260706-61335DDD | active | 0.82 | System Generated Records |
+| EVENT-45266EA3C5 | Event | Technical Success: Build Request BUILD-20260706-4EE8E446 | active | 0.82 | System Generated Records |
 | EVENT-48BF62EAEE | Event | Phase Completion: Me Simple React Clicks Phase64 Acceptance | active | 0.82 | System Generated Records |
-| EVENT-49D4225F96 | Event | Capability Launch: POD Concept PODCON-1A39FD7A6D | active | 0.82 | System Generated Records |
-| EVENT-4CB736D880 | Event | Capability Launch: stop_raphael | active | 0.82 | System Generated Records |
 | EVENT-4D12E1607A | Event | Technical Success: Docker Service Review | active | 0.82 | System Generated Records |
-| EVENT-4D4C4C3B3D | Event | Capability Launch: POD Listing Draft PODCON-1A39FD7A6D | active | 0.82 | System Generated Records |
 | EVENT-4DE2910F57 | Event | Phase Completion: BRAND-7C9EC181C5 | active | 0.82 | System Generated Records |
-| EVENT-5013FF976E | Event | Repair Plans | active | 0.84 | Self-Healing Registry |
-| EVENT-5044ADA599 | Event | OBS-20260624-3DEDA1F2 | cancelled | 0.84 | Self-Healing Registry |
+| EVENT-4F46092BA7 | Event | Technical Success: Technical / Product Review - BUILD-20260706-95AD1F7F | active | 0.82 | System Generated Records |
+| EVENT-501C3C7C3D | Event | Capability Launch: segment | active | 0.82 | System Generated Records |
+| EVENT-505B7E2A7B | Event | Capability Launch: data | active | 0.82 | System Generated Records |
 | EVENT-508AF47F6D | Event | active_issues | cancelled | 0.84 | Self-Healing Registry |
 | EVENT-527CE2DED0 | Event | Capability Launch: app | active | 0.82 | System Generated Records |
-| EVENT-567A2D8C96 | Event | Technical Success: Source: PODREV-32AB57297E - RaphaelPOD_PODGEN-AAD1EFA7DD_00003_.md | active | 0.82 | System Generated Records |
-| EVENT-58C34E3F1F | Event | Capability Launch: settings | active | 0.82 | System Generated Records |
-| EVENT-58FCB3BAE9 | Event | Capability Launch: open_dashboard | active | 0.82 | System Generated Records |
-| EVENT-594CEAAD29 | Event | Capability Launch: POD Generated Variant PODVAR-329955827C | active | 0.82 | System Generated Records |
-| EVENT-5A1ECD12F5 | Event | Capability Launch: remove_startup_task | active | 0.82 | System Generated Records |
-| EVENT-5D631E2782 | Event | Safety Evolution: Source: PODCON-1A39FD7A6D - IP Safety Note.md | active | 0.82 | System Generated Records |
+| EVENT-59B9F7FC97 | Event | Capability Launch: config | active | 0.82 | System Generated Records |
+| EVENT-5A3FB95806 | Event | Capability Launch: Build Classification BCLASS-20260710-9CB6E4C7 | active | 0.82 | System Generated Records |
+| EVENT-5A4BB5CD2D | Event | Capability Launch: Build Classification BCLASS-20260705-F804B9A2 | active | 0.82 | System Generated Records |
+| EVENT-5C851785F6 | Event | Technical Success: Technical / Product Review - BUILD-20260706-4EE8E446 | active | 0.82 | System Generated Records |
+| EVENT-5D243C21D0 | Event | Safety Evolution: Build Request BUILD-20260705-B01624BD | active | 0.82 | System Generated Records |
+| EVENT-5D7D4805F7 | Event | Capability Launch: Build Classification BCLASS-20260706-91ABCC12 | active | 0.82 | System Generated Records |
 | EVENT-5FA69CF719 | Event | Capability Launch: package-lock | active | 0.82 | System Generated Records |
 | EVENT-5FEABA65DF | Event | Safety Evolution: Build Classification BCLASS-20260621-06480206 | active | 0.82 | System Generated Records |
 | EVENT-5FF17950E3 | Event | Safety Evolution: Build Request BUILD-20260621-A2C45EC6 | active | 0.82 | System Generated Records |
+| EVENT-676817D9F2 | Event | Capability Launch: Build Classification BCLASS-20260628-1BF0FDF8 | active | 0.82 | System Generated Records |
 | EVENT-67B43A727D | Event | Phase Completion: Technical / Product Review - BUILD-20260618-5B188EDA | active | 0.82 | System Generated Records |
-| EVENT-6817886309 | Event | Capability Launch: POD Design Review PODREV-55618674D9 | active | 0.82 | System Generated Records |
 | EVENT-6DAF66DB29 | Event | Safety Evolution: Build Request BUILD-20260616-73E55DB4 | active | 0.82 | System Generated Records |
+| EVENT-6F065D9F91 | Event | Capability Launch: Build Classification BCLASS-20260710-7F982CB6 | active | 0.82 | System Generated Records |
 | EVENT-7162C42136 | Event | Capability Launch: Build Classification BCLASS-20260624-5BCD58E5 | active | 0.82 | System Generated Records |
-| EVENT-748E676A97 | Event | Capability Launch: POD Design Review PODREV-76BB017EEC | active | 0.82 | System Generated Records |
-| EVENT-761A18DA74 | Event | Capability Launch: restart_raphael | active | 0.82 | System Generated Records |
+| EVENT-758D3B7EF4 | Event | Capability Launch: Build Classification BCLASS-20260628-8564A778 | active | 0.82 | System Generated Records |
 | EVENT-7D8E8A51D9 | Event | Capability Launch: tsconfig.app | active | 0.82 | System Generated Records |
+| EVENT-7FE40CD401 | Event | Technical Success: Build Classification BCLASS-20260706-162051F3 | active | 0.82 | System Generated Records |
 | EVENT-83D7A9AC62 | Event | Technical Success: Technical / Product Review - BUILD-20260624-EDBBECFD | active | 0.82 | System Generated Records |
-| EVENT-843D98E868 | Event | Capability Launch: POD Generation Request PODGEN-AAD1EFA7DD | active | 0.82 | System Generated Records |
+| EVENT-86F73C7F0E | Event | Capability Launch: config | active | 0.82 | System Generated Records |
+| EVENT-878975131A | Event | Safety Evolution: Build Request BUILD-20260628-8379D077 | active | 0.82 | System Generated Records |
+| EVENT-89E29BA02A | Event | Technical Success: Build Classification BCLASS-20260706-E0993973 | active | 0.82 | System Generated Records |
+| EVENT-8AA3B80DD8 | Event | Safety Evolution: Build Request BUILD-20260628-077E2A26 | active | 0.82 | System Generated Records |
 | EVENT-8BCC1AA03E | Event | Capability Launch: Raphael Dashboard | active | 0.82 | System Generated Records |
-| EVENT-8EB9FC0B1A | Event | OBS-20260624-12F4361B | cancelled | 0.84 | Self-Healing Registry |
 | EVENT-8F151A8AC5 | Event | Capability Launch: Dashboard Chat Log | active | 0.82 | System Generated Records |
 | EVENT-906DAAEB7C | Event | Capability Launch: Build Classification BCLASS-20260618-496534C3 | active | 0.82 | System Generated Records |
-| EVENT-90A360DDA7 | Event | Capability Launch: POD Design Prompts PODCON-1A39FD7A6D | active | 0.82 | System Generated Records |
-| EVENT-91820200B6 | Event | System Reliability Brief | active | 0.84 | Self-Healing Registry |
 | EVENT-91EADD6EFA | Event | Technical Success: Technical / Product Review - BUILD-20260621-DFC03B1E | active | 0.82 | System Generated Records |
 | EVENT-97EABF21E4 | Event | Capability Launch: tsconfig | active | 0.82 | System Generated Records |
-| EVENT-9999C63585 | Event | Capability Launch: health_check | active | 0.82 | System Generated Records |
 | EVENT-99B131D450 | Event | Capability Launch: package | active | 0.82 | System Generated Records |
 | EVENT-9ACCC27CF1 | Event | Capability Launch: Generated BUILD-20260616-B3A2A68F | active | 0.82 | System Generated Records |
 | EVENT-9C01D28FC0 | Event | Phase Completion: Build Classification BCLASS-20260618-D6F631D7 | active | 0.82 | System Generated Records |
+| EVENT-A009463DF6 | Event | Capability Launch: package | active | 0.82 | System Generated Records |
 | EVENT-A0D5B7E277 | Event | Safety Evolution: Build Request BUILD-20260618-5B188EDA | active | 0.82 | System Generated Records |
+| EVENT-A13AF39952 | Event | Capability Launch: Landing Page For Resume | active | 0.82 | System Generated Records |
 | EVENT-A5223E0A76 | Event | Safety Evolution: Build Request BUILD-20260618-EEB1DCA8 | active | 0.82 | System Generated Records |
-| EVENT-A622E8D97A | Event | Safety Evolution: POD IP Safety Note PODCON-1A39FD7A6D | active | 0.82 | System Generated Records |
-| EVENT-A75312CD14 | Event | Phase Completion: Source: PODCON-34A2731F85 - Listing Draft.md | active | 0.82 | System Generated Records |
+| EVENT-A5689B1C8C | Event | Safety Evolution: Build Request BUILD-20260705-0430215A | active | 0.82 | System Generated Records |
 | EVENT-A8094B4A01 | Event | Capability Launch: React + TypeScript + Vite | active | 0.82 | System Generated Records |
-| EVENT-A9795995D6 | Event | Self Healing Overview | active | 0.84 | Self-Healing Registry |
-| EVENT-AA2A4B57A7 | Event | Capability Launch: service_pids | active | 0.82 | System Generated Records |
-| EVENT-AA2F189F8D | Event | Capability Launch: Source: PODCON-34A2731F85 - Mockup Plan.md | active | 0.82 | System Generated Records |
 | EVENT-B0D47DE071 | Event | Safety Evolution: Build Request BUILD-20260618-6D81562F | active | 0.82 | System Generated Records |
+| EVENT-B196F0FB22 | Event | Capability Launch: Build Classification BCLASS-20260705-11A60115 | active | 0.82 | System Generated Records |
 | EVENT-B3CEC939E9 | Event | Technical Success: Technical / Product Review - BUILD-20260621-A2C45EC6 | active | 0.82 | System Generated Records |
+| EVENT-B4DE1C0835 | Event | Capability Launch: Build Classification BCLASS-20260710-7E58F849 | active | 0.82 | System Generated Records |
+| EVENT-B546E64CC1 | Event | Capability Launch: replica_state | active | 0.82 | System Generated Records |
 | EVENT-B7EE995ED0 | Event | Capability Launch: tsconfig.node | active | 0.82 | System Generated Records |
 | EVENT-B852DF2012 | Event | Capability Launch: package | active | 0.82 | System Generated Records |
-| EVENT-B8985A04FA | Event | Capability Launch: startup_registration | active | 0.82 | System Generated Records |
 | EVENT-B9DC159B21 | Event | Capability Launch: prompt-index | active | 0.82 | System Generated Records |
 | EVENT-BAED156CC2 | Event | Safety Evolution: Builder Governance Review | active | 0.82 | System Generated Records |
 | EVENT-BB6BE95941 | Event | Capability Launch: Asset ASSET-EF7C9DF339 | active | 0.82 | System Generated Records |
-| EVENT-BDABF3E2A2 | Event | Capability Launch: POD Generated Variant PODVAR-88139B6CEB | active | 0.82 | System Generated Records |
 | EVENT-C0C97B83E4 | Event | Safety Evolution: Build Request BUILD-20260624-EDBBECFD | active | 0.82 | System Generated Records |
 | EVENT-C1153FDDA9 | Event | Safety Evolution: Build Classification BCLASS-20260621-3C508032 | active | 0.82 | System Generated Records |
-| EVENT-C19689BD22 | Event | Safety Evolution: Source: PODCON-34A2731F85 - IP Safety Note.md | active | 0.82 | System Generated Records |
 | EVENT-C35DE676AB | Event | Capability Launch: Build Classification BCLASS-20260624-46F80AC3 | active | 0.82 | System Generated Records |
-| EVENT-CA31768470 | Event | Phase Completion: POD Design Prompts PODCON-34A2731F85 | active | 0.82 | System Generated Records |
-| EVENT-CD7B728989 | Event | Detected Issues | cancelled | 0.84 | Self-Healing Registry |
+| EVENT-C89C581B02 | Event | Capability Launch: config | active | 0.82 | System Generated Records |
+| EVENT-CCEE9894F5 | Event | Technical Success: Build Request BUILD-20260706-1D3A6AA6 | active | 0.82 | System Generated Records |
 | EVENT-CFD6640FCA | Event | Safety Evolution: Build Request BUILD-20260616-B3A2A68F | active | 0.82 | System Generated Records |
-| EVENT-D662BCE85F | Event | Repair History | active | 0.84 | Self-Healing Registry |
+| EVENT-D36CBB556D | Event | Technical Success: Build Request BUILD-20260706-95AD1F7F | active | 0.82 | System Generated Records |
+| EVENT-D88EEF04E4 | Event | Safety Evolution: Build Request BUILD-20260710-7B0BC645 | active | 0.82 | System Generated Records |
 | EVENT-DAD9CF3CD2 | Event | Phase Completion: Technical / Product Review - BUILD-20260618-0E36F620 | active | 0.82 | System Generated Records |
+| EVENT-DB6554811C | Event | Capability Launch: Build Classification BCLASS-20260710-FBD12863 | active | 0.82 | System Generated Records |
 | EVENT-DB6A46ABE0 | Event | Capability Launch: React Invoice Generator Simple Form-Based Auto-Calculates Li | active | 0.82 | System Generated Records |
-| EVENT-DB91E035B4 | Event | Capability Launch: POD Mockup Plan PODCON-1A39FD7A6D | active | 0.82 | System Generated Records |
+| EVENT-DB93BDA9F4 | Event | Safety Evolution: Build Request BUILD-20260710-A8676842 | active | 0.82 | System Generated Records |
 | EVENT-DCF00BD621 | Event | Capability Launch: Local Asset Export ASSET-EF7C9DF339 | active | 0.82 | System Generated Records |
-| EVENT-DD2052603A | Event | Technical Success: Manual Upload Checklist | active | 0.82 | System Generated Records |
-| EVENT-DF05CA270D | Event | Capability Launch: Selected Image References | active | 0.82 | System Generated Records |
 | EVENT-E2037297BA | Event | Safety Evolution: Build Request BUILD-20260618-0EACFB8C | active | 0.82 | System Generated Records |
 | EVENT-E4F247CACA | Event | Safety Evolution: Build Request BUILD-20260616-5C225BE3 | active | 0.82 | System Generated Records |
+| EVENT-E5584E33EE | Event | Technical Success: Technical / Product Review - BUILD-20260705-B01624BD | active | 0.82 | System Generated Records |
 | EVENT-E73C5030ED | Event | Safety Evolution: !/usr/bin/env python3 | active | 0.82 | System Generated Records |
 | EVENT-E80BD164D1 | Event | Capability Launch: File From This Response To Daily Habit Tracker I Will React | active | 0.82 | System Generated Records |
-| EVENT-EBD9B6C898 | Event | Capability Launch: POD Design Review PODREV-C30067EA89 | active | 0.82 | System Generated Records |
+| EVENT-EB72CDEDC6 | Event | Technical Success: Build Classification BCLASS-20260706-40B1C2C8 | active | 0.82 | System Generated Records |
 | EVENT-ED911804C6 | Event | Capability Launch: package | active | 0.82 | System Generated Records |
-| EVENT-EF6C967672 | Event | Phase Completion: POD Concept PODCON-34A2731F85 | active | 0.82 | System Generated Records |
-| EVENT-F1BB0151F3 | Event | Capability Launch: POD Generated Variant PODVAR-E0409BC97D | active | 0.82 | System Generated Records |
+| EVENT-EF690F0B06 | Event | Capability Launch: Landing Page For Resume | active | 0.82 | System Generated Records |
+| EVENT-EFD02ADD8F | Event | Technical Success: Technical / Product Review - BUILD-20260706-1D3A6AA6 | active | 0.82 | System Generated Records |
+| EVENT-F004752920 | Event | Safety Evolution: Build Request BUILD-20260706-F0936B81 | active | 0.82 | System Generated Records |
 | EVENT-F39A4431F4 | Event | Capability Launch: Docker Compose Plan | active | 0.82 | System Generated Records |
-| EVENT-F7EB09D886 | Event | Technical Success: Source: PODREV-27C9EB858E - RaphaelPOD_PODGEN-15BE7BB785_00002_.md | active | 0.82 | System Generated Records |
 | EXECUTIONPLAN-03B31A3ECD | ExecutionPlan | Execution Plan PLAN-20260618-31D33061 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-08DBEAD535 | ExecutionPlan | Execution Plan PLAN-20260624-EFB95ED6 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
+| EXECUTIONPLAN-1D86E52545 | ExecutionPlan | Execution Plan PLAN-20260706-1630BEFF | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-2ADEE23853 | ExecutionPlan | Execution Plan PLAN-20260618-AC4B5444 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
-| EXECUTIONPLAN-32306205A4 | ExecutionPlan | Execution Plan History | active | 0.84 | System Generated Records |
+| EXECUTIONPLAN-32306205A4 | ExecutionPlan | Execution Plan History | complete | 0.84 | System Generated Records |
 | EXECUTIONPLAN-3619A4F1F8 | ExecutionPlan | Execution Plan PLAN-20260618-99883E1C | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-370FCFC506 | ExecutionPlan | Execution Plan PLAN-20260618-7EFD41AC | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-49730DA931 | ExecutionPlan | Execution Plan Brief | active | 0.84 | System Generated Records |
 | EXECUTIONPLAN-4CBC96CEF3 | ExecutionPlan | Execution Plan PLAN-20260618-1EC44C9D | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-53F5A0DA93 | ExecutionPlan | Execution Plan PLAN-20260618-0FC717CA | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
+| EXECUTIONPLAN-7BD5F0A1DB | ExecutionPlan | Execution Plan PLAN-20260706-D28E4273 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-7CC9609412 | ExecutionPlan | Execution Plan PLAN-20260618-6387E628 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-88867885CB | ExecutionPlan | Execution Plan PLAN-20260618-4EB9C543 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-9D9ED74EEF | ExecutionPlan | Execution Plan Review | active | 0.84 | System Generated Records |
 | EXECUTIONPLAN-A6B30AF54F | ExecutionPlan | Execution Plan PLAN-20260618-C6E88CFB | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-C348218E5A | ExecutionPlan | Execution Planning Overview | active | 0.84 | System Generated Records |
 | EXECUTIONPLAN-C7D20C7FC9 | ExecutionPlan | Execution Plan PLAN-20260621-1CB3747C | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
+| EXECUTIONPLAN-D23E1B6D74 | ExecutionPlan | Execution Plan PLAN-20260706-6A4A05BD | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-DE071BF6B9 | ExecutionPlan | Execution Plan PLAN-20260621-9AC03832 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-F0DBC8A1E7 | ExecutionPlan | Execution Plan PLAN-20260618-EA96CFAE | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-F30B703BF3 | ExecutionPlan | Execution Plan PLAN-20260618-A5595988 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-F46F9CFDC8 | ExecutionPlan | Execution Plan PLAN-20260618-96EA9AB6 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
 | EXECUTIONPLAN-FFCCDAC4E7 | ExecutionPlan | Execution Plan PLAN-20260618-10151440 | planned_—_awaiting_aaron_decisions_and_c | 0.84 | System Generated Records |
-| GOAL-250DB4234F | Goal | Prepare Secure Email Service for portfolio review | active | 0.88 | Task Registry |
+| HYP-037B2E9EA9 | Hypothesis | reverse mentormap - complete concept the tagline where senior leaders learn from the next generation | active | 0.56 | Agent inference |
 | HYP-0671BEB558 | Hypothesis | research a trending pod niche using permissioned internet access find a niche with - evergreen deman | active | 0.56 | Agent inference |
 | HYP-0B9401376F | Hypothesis | Opportunity, council deliberation, execution plan, tracked task, then plan approval | active | 0.56 | Agent inference |
-| HYP-105F2C15B9 | Hypothesis | Source: PODCON-1A39FD7A6D - Listing Draft.md contains an unresolved opportunity, recommendation, or  | active | 0.56 | Agent inference |
-| HYP-13305C3FEB | Hypothesis | Phase 64B acceptance internal dashboard app with database assumptions | active | 0.56 | Agent inference |
 | HYP-17612BC8FA | Hypothesis | build a file from this response based on the safe memory context i will provide a recommended landin | active | 0.56 | Agent inference |
 | HYP-19681F7651 | Hypothesis | Asset ASSET-EF7C9DF339 contains an unresolved opportunity, recommendation, or future-facing assumpti | active | 0.56 | Agent inference |
-| HYP-1FDF984208 | Hypothesis | **POD Suitability**: 8/10 - The design is bold enough to stand out on apparel but could benefit from | active | 0.56 | Agent inference |
+| HYP-2917427B4E | Hypothesis | build this app reverse mentormap - complete concept the tagline where senior leaders learn from the  | active | 0.56 | Agent inference |
+| HYP-2B700254DB | Hypothesis | Build Classification BCLASS-20260710-7E58F849 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
 | HYP-3B6FB24D58 | Hypothesis | Phase 64B acceptance internal dashboard app with database assumptions | active | 0.56 | Agent inference |
 | HYP-3E49E11465 | Hypothesis | Phase 64B acceptance internal dashboard app with database assumptions | active | 0.56 | Agent inference |
 | HYP-41E6151F87 | Hypothesis | Build Classification BCLASS-20260618-496534C3 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
 | HYP-4D3F17D888 | Hypothesis | research a trending pod niche using permissioned internet access find a niche with - evergreen deman | active | 0.56 | Agent inference |
 | HYP-50F925ABB1 | Hypothesis | Opportunity, council deliberation, execution plan, tracked task, then plan approval | active | 0.56 | Agent inference |
-| HYP-523BFC43DF | Hypothesis | research a trending pod niche using permissioned internet access find a niche with - evergreen deman | active | 0.56 | Agent inference |
 | HYP-6A260EC430 | Hypothesis | Build Classification BCLASS-20260624-5BCD58E5 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
+| HYP-756CF18FFB | Hypothesis | Build Classification BCLASS-20260710-FBD12863 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
 | HYP-78DF051814 | Hypothesis | research a trending pod niche using permissioned internet access find a niche with - evergreen deman | active | 0.56 | Agent inference |
-| HYP-79E4DB38BD | Hypothesis | research a trending pod niche using permissioned internet access find a niche with - evergreen deman | active | 0.56 | Agent inference |
-| HYP-79F2D6B8E6 | Hypothesis | Response: Based on the scanned project notes, I recommend polishing the following school projects fo | active | 0.56 | Agent inference |
 | HYP-7BB5599333 | Hypothesis | Build Classification BCLASS-20260618-D6F631D7 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
+| HYP-81F226068D | Hypothesis | Build Classification BCLASS-20260710-7F982CB6 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
+| HYP-832FBABD98 | Hypothesis | Build Classification BCLASS-20260706-61335DDD contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
 | HYP-8ABF120CC1 | Hypothesis | Recommended dimensions: 1024x1024 | active | 0.56 | Agent inference |
 | HYP-8EFD36143B | Hypothesis | Build Request BUILD-20260618-6D81562F contains an unresolved opportunity, recommendation, or future- | active | 0.56 | Agent inference |
-| HYP-BDB9E484A8 | Hypothesis | Build Request BUILD-20260624-E2D9494D contains an unresolved opportunity, recommendation, or future- | active | 0.56 | Agent inference |
-| HYP-C044B0CFD5 | Hypothesis | Treat database, API, authentication, and multi-user behavior as assumptions unless represented by sa | active | 0.56 | Agent inference |
+| HYP-9FC4FDA707 | Hypothesis | Build Classification BCLASS-20260628-1BF0FDF8 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
+| HYP-A5F8BB724B | Hypothesis | Build Classification BCLASS-20260714-A733FAAB contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
+| HYP-B406C0671F | Hypothesis | reverse mentormap - complete concept the tagline where senior leaders learn from the next generation | active | 0.56 | Agent inference |
+| HYP-C58F9A73E5 | Hypothesis | Build Classification BCLASS-20260705-11A60115 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
+| HYP-C6CBE163BF | Hypothesis | Build Classification BCLASS-20260628-8564A778 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
 | HYP-C745F4618C | Hypothesis | research a trending pod niche using permissioned internet access find a niche with - evergreen deman | active | 0.56 | Agent inference |
-| HYP-D34FCEEF56 | Hypothesis | from __future__ import annotations | active | 0.56 | Agent inference |
-| HYP-D9028E0E38 | Hypothesis | build a file from this response based on the safe memory context i will provide a recommended landin | active | 0.56 | Agent inference |
-| HYP-DFF755F763 | Hypothesis | Central safe routing layer for dashboard chat, voice chat, future orb controls, | active | 0.56 | Agent inference |
+| HYP-D88F9ABF96 | Hypothesis | Build Classification BCLASS-20260706-91ABCC12 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
+| HYP-DDC735699A | Hypothesis | Build Classification BCLASS-20260710-9CB6E4C7 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
+| HYP-DF84BBB1A2 | Hypothesis | Build Classification BCLASS-20260705-F804B9A2 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
 | HYP-E2A1469C81 | Hypothesis | Build Classification BCLASS-20260624-46F80AC3 contains an unresolved opportunity, recommendation, or | active | 0.56 | Agent inference |
-| HYP-F910F9FAEB | Hypothesis | Treat database, API, authentication, and multi-user behavior as assumptions unless represented by sa | active | 0.56 | Agent inference |
-| HYP-FA27E0F662 | Hypothesis | If you are developing a production application, we recommend enabling type-aware lint rules by insta | active | 0.56 | Agent inference |
-| HYP-FB36CDBFB8 | Hypothesis | Build Request BUILD-20260624-EDBBECFD contains an unresolved opportunity, recommendation, or future- | active | 0.56 | Agent inference |
 | KNOWLEDGEITEM-024C2054E0 | KnowledgeItem | Identity | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-0433FD2F96 | KnowledgeItem | POD Design Review PODREV-76BB017EEC | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-055D3F389E | KnowledgeItem | Execution Plans | active | 0.86 | System Generated Records |
 | KNOWLEDGEITEM-07A575D023 | KnowledgeItem | Decision Principles | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-08B4F87584 | KnowledgeItem | launcher | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-0D8D992B49 | KnowledgeItem | POD Design Review PODREV-55618674D9 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-0E597D3D92 | KnowledgeItem | Selected Image References | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-116D337FEE | KnowledgeItem | POD Mockup Plan PODCON-72BCD6458A | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-1534B2CB6C | KnowledgeItem | Source: PODREV-32AB57297E - RaphaelPOD_PODGEN-AAD1EFA7DD_00003_.md | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-1813E04853 | KnowledgeItem | POD Generated Variant PODVAR-88139B6CEB | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-190E5E75AE | KnowledgeItem | POD Generated Variant PODVAR-C864085EE8 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-1F5924C28B | KnowledgeItem | POD Generation Request PODGEN-AAD1EFA7DD | generated | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-2119693D9C | KnowledgeItem | Products | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-211F235FF9 | KnowledgeItem | Executive Systems | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-2304952D0D | KnowledgeItem | POD Generation Request PODGEN-15BE7BB785 | generated | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-248E942F9F | KnowledgeItem | self_healing | active | 0.86 | System Generated Records |
 | KNOWLEDGEITEM-26A2954F54 | KnowledgeItem | Command Bus | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-274DB8E2B0 | KnowledgeItem | POD Design Review PODREV-4D56832329 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-275EADE3F7 | KnowledgeItem | POD Generation Request PODGEN-12DFB9509C | generated | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-2CA8CA0A1D | KnowledgeItem | Execution Review | blocked | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-2E164112D4 | KnowledgeItem | Bootstrap Startup Log | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-300B0EC4CB | KnowledgeItem | POD Concept PODCON-1A39FD7A6D | concept | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-30202D57F7 | KnowledgeItem | Approval Controls | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-3385B65CC4 | KnowledgeItem | POD Export Package PODCON-1A39FD7A6D | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-33C590C470 | KnowledgeItem | Behavior Boundaries | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-34CD91F571 | KnowledgeItem | POD Generated Variant PODVAR-575D204DD3 | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-36AA27A0BF | KnowledgeItem | 05_Business | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-3A32EFC425 | KnowledgeItem | POD Design Review PODREV-C30067EA89 | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-3A9517D418 | KnowledgeItem | World Model Review | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-3B1625D3A6 | KnowledgeItem | Assets | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-3C38BCA618 | KnowledgeItem | Deliberations | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-3D21579262 | KnowledgeItem | POD Design Review PODREV-9ED9E64F05 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-3EFC47FD9D | KnowledgeItem | Source: PODREV-0FE0C86709 - RaphaelPOD_PODGEN-12DFB9509C_00003_.md | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-41AB29F5DA | KnowledgeItem | Source: PODCON-1A39FD7A6D - Listing Draft.md | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-43858C8DAF | KnowledgeItem | Local Asset Export ASSET-EF7C9DF339 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-44D0B83685 | KnowledgeItem | Manual Upload Checklist | complete | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-46213A17EE | KnowledgeItem | POD Mockup Plan PODCON-34A2731F85 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-4628D7FA69 | KnowledgeItem | Source: PODCON-34A2731F85 - Listing Draft.md | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-46AE58C60A | KnowledgeItem | Controlled Execution | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-46B5070463 | KnowledgeItem | POD Generated Variant PODVAR-9ACAFF88A5 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-46E347ECC8 | KnowledgeItem | POD Generated Variant PODVAR-329955827C | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-4768358A0C | KnowledgeItem | Escalation Rules | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-47A1369E3B | KnowledgeItem | Response Templates | complete | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-47CC5A77D4 | KnowledgeItem | POD Generated Variant PODVAR-FE426D1F6D | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-49BA60AA57 | KnowledgeItem | Goal Propagation | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-49D2D2122B | KnowledgeItem | Source: PODCON-72BCD6458A - Listing Draft.md | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-50FAD399E3 | KnowledgeItem | World Model Brief | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-5387A91906 | KnowledgeItem | Source: PODCON-72BCD6458A - Design Prompts.md | generated | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-53FAD67C29 | KnowledgeItem | POD SVG Export PODCOMP-9853A8E639 | exported | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-55B5A85850 | KnowledgeItem | Bootstrap Recovery Log | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-577AAABF51 | KnowledgeItem | Execution Requests | blocked | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-595D715BB7 | KnowledgeItem | Asset ASSET-EF7C9DF339 | imported_metadata_—_review_required | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-5E1F2EB9B6 | KnowledgeItem | POD Generated Variant PODVAR-2668E874DE | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-5FAC836266 | KnowledgeItem | command_bus.py | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-6134DD01E9 | KnowledgeItem | POD Export Package PODCON-72BCD6458A | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-62F01C7BEA | KnowledgeItem | Manual Upload Checklist | complete | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-64437398AE | KnowledgeItem | POD Export Package PODCON-34A2731F85 | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-66F3D52F4D | KnowledgeItem | Execution Allowlist | blocked | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-6B38BB00A3 | KnowledgeItem | Source: PODREV-2C764F4CA9 - RaphaelPOD_PODGEN-0A7274E794_00004_.md | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-6C12947049 | KnowledgeItem | BrandLibrary | active | 0.86 | System Generated Records |
 | KNOWLEDGEITEM-6D2B3CCB4A | KnowledgeItem | POD Design Prompts PODCON-FB04B5A340 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-6DFECA5C24 | KnowledgeItem | POD Design Review PODREV-27C9EB858E | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-7449082214 | KnowledgeItem | Controlled Execution Overview | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-7457957053 | KnowledgeItem | Source: PODCON-1A39FD7A6D - Mockup Plan.md | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-749A083DC6 | KnowledgeItem | Execution Log | blocked | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-74B3E32AE0 | KnowledgeItem | Source: PODCON-A29C03BC92 - Listing Draft.md | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-796D33B810 | KnowledgeItem | POD Design Review PODREV-25E92314E2 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-79F51B4C04 | KnowledgeItem | POD Design Prompts PODCON-1A39FD7A6D | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-7ADEE92DA0 | KnowledgeItem | POD Listing Draft PODCON-34A2731F85 | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-7D16FEB656 | KnowledgeItem | prompt-index | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-7F92448DCE | KnowledgeItem | Council Task Review.md | active | 0.86 | System Generated Records |
 | KNOWLEDGEITEM-8043157C3A | KnowledgeItem | World Model | active | 0.86 | System Generated Records |
 | KNOWLEDGEITEM-80AD7C425E | KnowledgeItem | n8n Workflow Studio | active | 0.86 | System Generated Records |
 | KNOWLEDGEITEM-80ADA0F712 | KnowledgeItem | Relationships | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-8303F58EF6 | KnowledgeItem | Manual Upload Checklist | complete | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-852AF03AE6 | KnowledgeItem | !/usr/bin/env python3 | complete | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-856E88AC8F | KnowledgeItem | docker | active | 0.86 | System Generated Records |
 | KNOWLEDGEITEM-86C1EFE8A8 | KnowledgeItem | template-index | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-8A33705AE4 | KnowledgeItem | Communication Style | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-8B90001ED6 | KnowledgeItem | 300dpi | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-8CF5DF388E | KnowledgeItem | Source: PODCON-1A39FD7A6D - Design Prompts.md | generated | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-8EB9062988 | KnowledgeItem | BRAND-7C9EC181C5 | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-97C6C2B3D1 | KnowledgeItem | World State | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-9CCD83961F | KnowledgeItem | builder | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-9E43795C8D | KnowledgeItem | Selected Image References | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-A07EF0CC89 | KnowledgeItem | Self Healing | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-A5906DE3E7 | KnowledgeItem | Selected Image References | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-A89BC96D6B | KnowledgeItem | Inter-Council Communications | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-A95488DF60 | KnowledgeItem | PODStudio | active | 0.86 | System Generated Records |
 | KNOWLEDGEITEM-A9B2611689 | KnowledgeItem | dashboard | active | 0.86 | System Generated Records |
 | KNOWLEDGEITEM-AA8A3B8ECE | KnowledgeItem | 03_Agents | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-AA9DB63AA9 | KnowledgeItem | POD Listing Draft PODCON-72BCD6458A | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-AD2DE20E79 | KnowledgeItem | System Bootstrap | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-B3368244FE | KnowledgeItem | Manual Upload Checklist | complete | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-B37A726C42 | KnowledgeItem | Source: PODREV-27C9EB858E - RaphaelPOD_PODGEN-15BE7BB785_00002_.md | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-B3BB1F4A80 | KnowledgeItem | POD Design Review PODREV-32AB57297E | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-B3D8CC77DC | KnowledgeItem | POD Composition PODCOMP-9853A8E639 | composed | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-B62F9155FF | KnowledgeItem | POD Generated Variant PODVAR-205D112D89 | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-B83732E4B2 | KnowledgeItem | Personality Profile | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-B94C353900 | KnowledgeItem | Platforms | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-BE2F5AF620 | KnowledgeItem | Source: PODCON-34A2731F85 - Design Prompts.md | generated | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-C498F775EB | KnowledgeItem | POD Mockup Plan PODCON-1A39FD7A6D | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-C506BBBB17 | KnowledgeItem | Revenue | active | 0.86 | System Generated Records |
 | KNOWLEDGEITEM-C83100C121 | KnowledgeItem | Execution Policy | blocked | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-CD0D23DCB4 | KnowledgeItem | POD Generated Variant PODVAR-2E8F0FFE6D | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-CDC8AE9514 | KnowledgeItem | POD Generated Variant PODVAR-E0409BC97D | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-D218B1AC5E | KnowledgeItem | Identity Review | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-D22EEFE48E | KnowledgeItem | POD Generated Variant PODVAR-F8D9000D90 | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-D251965DC0 | KnowledgeItem | Raphael Identity | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-D72660A4E4 | KnowledgeItem | Customers | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-D8FEACCC15 | KnowledgeItem | POD Design Prompts PODCON-34A2731F85 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-DB10B6EB99 | KnowledgeItem | POD Design Review PODREV-B8CD2D0379 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-DCB223E146 | KnowledgeItem | POD Design Prompts PODCON-72BCD6458A | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-DF1956487C | KnowledgeItem | Source: PODCON-34A2731F85 - Mockup Plan.md | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-E9E822DF97 | KnowledgeItem | POD Print Export PODCOMP-9853A8E639 | print_ready | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-EE9741005D | KnowledgeItem | Governance | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-F02ED3B86C | KnowledgeItem | POD Design Review PODREV-4EABC98094 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-F0455BD578 | KnowledgeItem | POD Listing Draft PODCON-1A39FD7A6D | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-F1848CBE66 | KnowledgeItem | POD Design Review PODREV-6684EF53CB | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-F437D0DEFE | KnowledgeItem | Bootstrap Review | blocked | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-F4E84817F0 | KnowledgeItem | POD Generated Variant PODVAR-A3F2BB1247 | active | 0.84 | System Generated Records |
-| KNOWLEDGEITEM-F5523B4CF7 | KnowledgeItem | POD Design Review PODREV-0FE0C86709 | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-F760924DF2 | KnowledgeItem | Raphael Bootstrap Overview | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-F91A5B60AA | KnowledgeItem | Bootstrap Health | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-F9F1E0E5DE | KnowledgeItem | Self Improvement | active | 0.86 | System Generated Records |
-| KNOWLEDGEITEM-FB296924F7 | KnowledgeItem | Source: PODCON-72BCD6458A - Mockup Plan.md | active | 0.84 | System Generated Records |
 | KNOWLEDGEITEM-FB8F1F4EF1 | KnowledgeItem | Workflow Runner | active | 0.86 | System Generated Records |
 | RAPHAEL-01FBF823FD | Raphael | Raphael OS | active | 0.94 | System Generated Records |
 | RISK-09B5F8A5AF | Risk | ISSUE-20260624-8EE9524A | cancelled | 0.84 | Self-Healing Registry |
@@ -507,14 +461,21 @@
 | RISK-20EC6F5009 | Risk | ISSUE-20260624-0FA8C90A | cancelled | 0.84 | Self-Healing Registry |
 | RISK-214B65084A | Risk | ISSUE-20260624-A1F083C9 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-246CC9F9AF | Risk | ISSUE-20260624-57562B17 | cancelled | 0.84 | Self-Healing Registry |
+| RISK-2AC9D0039D | Risk | ISSUE-20260627-1A27D76A | cancelled | 0.84 | Self-Healing Registry |
+| RISK-2BB2347F19 | Risk | ISSUE-20260627-20753037 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-2F1BB171A4 | Risk | ISSUE-20260624-1F8958CB | cancelled | 0.84 | Self-Healing Registry |
+| RISK-3002D123F5 | Risk | ISSUE-20260627-2BA26DDD | cancelled | 0.84 | Self-Healing Registry |
 | RISK-3164B5A99B | Risk | ISSUE-20260624-C181A697 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-3C7D53F5C6 | Risk | ISSUE-20260624-C335B097 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-4132A01BEB | Risk | ISSUE-20260624-283C7B37 | blocked | 0.84 | Self-Healing Registry |
+| RISK-41B2932BF7 | Risk | ISSUE-20260627-3ABC14CF | cancelled | 0.84 | Self-Healing Registry |
 | RISK-44161FE07C | Risk | ISSUE-20260624-A6C3FC9A | active | 0.84 | Self-Healing Registry |
 | RISK-44691D0463 | Risk | ISSUE-20260624-07B41B92 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-4B05531C7D | Risk | ISSUE-20260624-0568EF99 | cancelled | 0.84 | Self-Healing Registry |
+| RISK-4CB94A7165 | Risk | ISSUE-20260627-2B4EC032 | cancelled | 0.84 | Self-Healing Registry |
+| RISK-545F75EA7C | Risk | ISSUE-20260627-3CE52C75 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-57DE5232A3 | Risk | ISSUE-20260624-3ECD5613 | cancelled | 0.84 | Self-Healing Registry |
+| RISK-62CA1629BE | Risk | ISSUE-20260627-10BB13FD | cancelled | 0.84 | Self-Healing Registry |
 | RISK-643D8A379C | Risk | ISSUE-20260624-4350C08D | blocked | 0.84 | Self-Healing Registry |
 | RISK-66AAD5F57A | Risk | ISSUE-20260624-64D1FC36 | active | 0.84 | Self-Healing Registry |
 | RISK-6EC0A12227 | Risk | ISSUE-20260624-787829EB | blocked | 0.84 | Self-Healing Registry |
@@ -528,12 +489,18 @@
 | RISK-8C53DF88C1 | Risk | ISSUE-20260624-0BED57B2 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-8E249EF416 | Risk | ISSUE-20260624-E3573FF2 | blocked | 0.84 | Self-Healing Registry |
 | RISK-8F5763AA6E | Risk | ISSUE-20260624-B1C847FC | cancelled | 0.84 | Self-Healing Registry |
+| RISK-99C5EB776F | Risk | ISSUE-20260627-221B3647 | cancelled | 0.84 | Self-Healing Registry |
+| RISK-9C7AF8DB15 | Risk | ISSUE-20260627-276E4D60 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-9C8CA761E5 | Risk | ISSUE-20260624-BDC43632 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-A26C375369 | Risk | ISSUE-20260624-CEBE3BE7 | cancelled | 0.84 | Self-Healing Registry |
+| RISK-A39E0AC5CD | Risk | ISSUE-20260627-342602EE | active | 0.84 | Self-Healing Registry |
 | RISK-A4DCC5D9B1 | Risk | ISSUE-20260624-5F219082 | cancelled | 0.84 | Self-Healing Registry |
+| RISK-A5C5E30217 | Risk | ISSUE-20260627-25F66B5B | cancelled | 0.84 | Self-Healing Registry |
 | RISK-A651B32406 | Risk | ISSUE-20260624-03DD001D | cancelled | 0.84 | Self-Healing Registry |
 | RISK-A811A848BB | Risk | ISSUE-20260624-249F4502 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-A8CAA4551F | Risk | ISSUE-20260624-FB6574A4 | cancelled | 0.84 | Self-Healing Registry |
+| RISK-AA4ED9D5DE | Risk | ISSUE-20260627-37781EFB | cancelled | 0.84 | Self-Healing Registry |
+| RISK-AACE6E6252 | Risk | ISSUE-20260627-365C1855 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-AB1C7C2335 | Risk | ISSUE-20260624-AF67ED6E | cancelled | 0.84 | Self-Healing Registry |
 | RISK-AB4884DCB7 | Risk | ISSUE-20260624-AEA9E7ED | cancelled | 0.84 | Self-Healing Registry |
 | RISK-ABD32F1F31 | Risk | ISSUE-20260624-D2D16F68 | cancelled | 0.84 | Self-Healing Registry |
@@ -543,58 +510,138 @@
 | RISK-BF2ED1BA2C | Risk | ISSUE-20260624-28357239 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-C09493D3EA | Risk | ISSUE-20260624-3D1A756B | cancelled | 0.84 | Self-Healing Registry |
 | RISK-C1FE02A017 | Risk | ISSUE-20260624-45ED9C3E | cancelled | 0.84 | Self-Healing Registry |
+| RISK-C2051CF4C9 | Risk | ISSUE-20260627-068C2F3F | cancelled | 0.84 | Self-Healing Registry |
 | RISK-C39B56E25F | Risk | ISSUE-20260624-19F09458 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-C72C96C897 | Risk | ISSUE-20260624-4C76A381 | cancelled | 0.84 | Self-Healing Registry |
+| RISK-C80BC40718 | Risk | ISSUE-20260627-09BB9502 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-CD27D92F2C | Risk | ISSUE-20260624-1BECF77E | cancelled | 0.84 | Self-Healing Registry |
+| RISK-CF561B06F9 | Risk | ISSUE-20260627-09B225F3 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-D138C44DA1 | Risk | ISSUE-20260624-EC718FC1 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-D2F3AC5FA4 | Risk | ISSUE-20260624-B4A6C1C1 | cancelled | 0.84 | Self-Healing Registry |
+| RISK-D5A4113666 | Risk | ISSUE-20260627-365C0FF1 | blocked | 0.84 | Self-Healing Registry |
 | RISK-DBE63DBE91 | Risk | ISSUE-20260624-80B67265 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-DCC4BC90FB | Risk | ISSUE-20260624-73BE78A7 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-E3C352F7BC | Risk | ISSUE-20260624-29272A2C | cancelled | 0.84 | Self-Healing Registry |
 | RISK-E3C3EF51D2 | Risk | ISSUE-20260624-67C18A6C | cancelled | 0.84 | Self-Healing Registry |
+| RISK-E4D069E946 | Risk | ISSUE-20260627-100C9C35 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-E98EC6BD20 | Risk | ISSUE-20260624-E3C7734A | blocked | 0.84 | Self-Healing Registry |
+| RISK-EAD489B712 | Risk | ISSUE-20260627-04E9A05D | cancelled | 0.84 | Self-Healing Registry |
 | RISK-F4C602F29E | Risk | ISSUE-20260624-43E7B089 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-FE2E2DF4DB | Risk | ISSUE-20260624-75665A43 | cancelled | 0.84 | Self-Healing Registry |
 | RISK-FEDD8BE90F | Risk | ISSUE-20260624-7B4DE7CD | cancelled | 0.84 | Self-Healing Registry |
+| SERVICE-072B1ACF36 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-0864066690 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-0A38616622 | Service | Piper | paused | 0.91 | Service Manager |
+| SERVICE-0B834FC0AF | Service | config | active | 0.84 | Service Manager |
+| SERVICE-0D26AD9C3D | Service | shard_config | active | 0.84 | Service Manager |
 | SERVICE-0E4B34C121 | Service | Postgres | paused | 0.91 | Service Manager |
 | SERVICE-0F6854B40F | Service | open_dashboard | active | 0.74 | Service Manager |
+| SERVICE-10C14F399A | Service | config | active | 0.84 | Service Manager |
+| SERVICE-10CD134CE3 | Service | segment | active | 0.84 | Service Manager |
 | SERVICE-14E09C63B4 | Service | Service Manager | active | 0.86 | System Generated Records |
+| SERVICE-17618A13BC | Service | config | active | 0.84 | Service Manager |
+| SERVICE-18B50B0AA2 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-197407CF05 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-19E67B992C | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-1A117BC229 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-1B69BDCE8E | Service | segment | active | 0.84 | Service Manager |
 | SERVICE-1DABB87172 | Service | Docker Compose Plan | active | 0.84 | Service Manager |
+| SERVICE-1E21FFE0B1 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-1F2DD1F606 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-20D353BA38 | Service | newest_clocks | active | 0.84 | Service Manager |
+| SERVICE-24700168BC | Service | package | active | 0.84 | Service Manager |
+| SERVICE-2EC8AB0C6D | Service | config | active | 0.84 | Service Manager |
+| SERVICE-2F27343E83 | Service | replica_state | active | 0.84 | Service Manager |
 | SERVICE-30113DC961 | Service | health_check | active | 0.74 | Service Manager |
-| SERVICE-3BA2B8D6E9 | Service | POD Concept PODCON-34A2731F85 | concept | 0.84 | Service Manager |
+| SERVICE-31E62769BC | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-31F1964E9F | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-3254955A28 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-3447A46AE5 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-367D9EF6B8 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-368B0DC2C7 | Service | shard_key_mapping | active | 0.84 | Service Manager |
+| SERVICE-38AE113068 | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-3A2DAF77D5 | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-3BB1715491 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-3C7AC27113 | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-4029E07328 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-44BB237F0A | Service | Redis | paused | 0.91 | Service Manager |
+| SERVICE-45F0624989 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-4B62793602 | Service | settings | active | 0.74 | Service Manager |
+| SERVICE-4BE54F60B8 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-4DA071D4BB | Service | config | active | 0.84 | Service Manager |
+| SERVICE-4FE7454B85 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-557B66708F | Service | install_startup_task | active | 0.74 | Service Manager |
+| SERVICE-56AFAA31A0 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-5DDDD60C10 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-5FA7126671 | Service | Docker Service Review | active | 0.84 | Service Manager |
+| SERVICE-60937EA314 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-627AB4991B | Service | Local Service Manager Review | active | 0.84 | Service Manager |
 | SERVICE-64974265B0 | Service | docker_service_registry | blocked | 0.84 | Service Manager |
+| SERVICE-6568CCF668 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-67352E79ED | Service | service_pids | active | 0.84 | Service Manager |
+| SERVICE-6D864CA135 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-6E15691475 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-6F429403B0 | Service | Voice Gateway | paused | 0.91 | Service Manager |
-| SERVICE-7A24B9410D | Service | n8n | paused | 0.91 | Service Manager |
+| SERVICE-716726EDE0 | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-7376846AD1 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-75AD8903DD | Service | config | active | 0.84 | Service Manager |
+| SERVICE-7A24B9410D | Service | n8n | active | 0.91 | Service Manager |
 | SERVICE-7D9DA64538 | Service | Raphael Dashboard | active | 0.91 | Service Manager |
 | SERVICE-81D0D73D48 | Service | SearXNG | active | 0.91 | Service Manager |
-| SERVICE-8D0FF15BE1 | Service | start_raphael | active | 0.74 | Service Manager |
+| SERVICE-85105FA7C4 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-85B577188E | Service | config | active | 0.84 | Service Manager |
+| SERVICE-86155EBA2C | Service | config | active | 0.84 | Service Manager |
 | SERVICE-914ED3BD9C | Service | startup_registration | active | 0.84 | Service Manager |
+| SERVICE-922B68DC59 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-9459415FAD | Service | Ollama | active | 0.91 | Service Manager |
 | SERVICE-97322D43A3 | Service | Voice | active | 0.86 | System Generated Records |
 | SERVICE-9B780A44AD | Service | Qdrant | active | 0.86 | System Generated Records |
+| SERVICE-9EFDD0CF3A | Service | config | active | 0.84 | Service Manager |
+| SERVICE-A1939D5129 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-A208CDC7D7 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-A6D5677D6B | Service | POD Studio Helpers | active | 0.91 | Service Manager |
 | SERVICE-A83933DDD7 | Service | Dashboard Chat Log | cancelled | 0.84 | Service Manager |
+| SERVICE-A9642A8CF7 | Service | shard_config | active | 0.84 | Service Manager |
+| SERVICE-AC79AA61E1 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-ADE6F81B90 | Service | data | active | 0.84 | Service Manager |
+| SERVICE-ADFEA47BD1 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-AF2E600E5F | Service | Raphael Dashboard | active | 0.84 | Service Manager |
+| SERVICE-B0A8440397 | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-B1779BC8B4 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-B1B54A74F6 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-B200C27269 | Service | segment | active | 0.84 | Service Manager |
 | SERVICE-B49BA6D4BD | Service | ComfyUI | active | 0.91 | Service Manager |
 | SERVICE-BA7EF00C21 | Service | ComfyUI | active | 0.86 | System Generated Records |
 | SERVICE-BAE06A99B4 | Service | restart_raphael | active | 0.74 | Service Manager |
+| SERVICE-BBB5610EC2 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-C7378A325A | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-C737DA796A | Service | config | active | 0.84 | Service Manager |
 | SERVICE-C876D4F0B4 | Service | n8n | active | 0.86 | System Generated Records |
 | SERVICE-D3602941E3 | Service | remove_startup_task | active | 0.74 | Service Manager |
-| SERVICE-D4DE0B0C6C | Service | stop_raphael | active | 0.74 | Service Manager |
+| SERVICE-D729AE522B | Service | config | active | 0.84 | Service Manager |
+| SERVICE-D9D5B4D911 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-DCD1AB8747 | Service | Qdrant | active | 0.91 | Service Manager |
+| SERVICE-DE6328C7DC | Service | config | active | 0.84 | Service Manager |
+| SERVICE-E12B8A3DB2 | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-E2AB943D87 | Service | config | active | 0.84 | Service Manager |
 | SERVICE-E4BB64298A | Service | service_registry | active | 0.84 | Service Manager |
+| SERVICE-E663172E26 | Service | segment | active | 0.84 | Service Manager |
 | SERVICE-E7E179A4F4 | Service | Dashboard | active | 0.86 | System Generated Records |
+| SERVICE-E8C35CB019 | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-EA6784D90F | Service | config | active | 0.84 | Service Manager |
 | SERVICE-F15D0394B1 | Service | Bootstrap Service Registry | active | 0.84 | Service Manager |
+| SERVICE-F595458576 | Service | config | active | 0.84 | Service Manager |
+| SERVICE-F7074DB23D | Service | config | active | 0.84 | Service Manager |
+| SERVICE-F7F1C56AA1 | Service | segment | active | 0.84 | Service Manager |
+| SERVICE-FB671E127C | Service | config | active | 0.84 | Service Manager |
+| SERVICE-FC17DD983F | Service | raft_state | active | 0.84 | Service Manager |
+| SERVICE-FD23BB0DE4 | Service | shard_key_mapping | active | 0.84 | Service Manager |
 | SERVICE-FD4AA0E8FF | Service | app | active | 0.84 | Service Manager |
+| SERVICE-FE5AF551F1 | Service | replica_state | active | 0.84 | Service Manager |
+| SERVICE-FE6805DDDA | Service | config | active | 0.84 | Service Manager |
 | TASK-066704A874 | Task | Agent Task - 2026-06-17 | open | 0.84 | Agent generated with evidence |
 | TASK-141AC9799F | Task | Agent Task - 2026-06-17 | open | 0.84 | Agent generated with evidence |
+| TASK-3812F40704 | Task | Agent Task - 2026-07-06 | open | 0.84 | Agent generated with evidence |
 | TASK-80B8E81FFA | Task | Agent Task - 2026-06-21 | open | 0.84 | Agent generated with evidence |
 | TASK-AB93A23227 | Task | Agent Task - 2026-06-17 | open | 0.84 | Agent generated with evidence |
 | TASK-B63C9A3F97 | Task | Agent Task - 2026-06-18 | open | 0.84 | Agent generated with evidence |
@@ -694,7 +741,6 @@
 | WORKFLOW-7565AE7F20 | Workflow | Archived n8n Workflow WFARCH-061936E775 | cataloged_from_read-only_archive | 0.84 | Workflow Runner |
 | WORKFLOW-77EB590F3B | Workflow | Archived n8n Workflow WFARCH-139FD8DA5F | cataloged_from_read-only_archive | 0.84 | Workflow Runner |
 | WORKFLOW-790DF15D25 | Workflow | Archived n8n Workflow WFARCH-0DA65CABFF | cataloged_from_read-only_archive | 0.84 | Workflow Runner |
-| WORKFLOW-7BA265834C | Workflow | POD Concept PODCON-72BCD6458A | concept | 0.84 | Workflow Runner |
 | WORKFLOW-7D067D62C1 | Workflow | Archived n8n Workflow WFARCH-12623AC0B7 | cataloged_from_read-only_archive | 0.84 | Workflow Runner |
 | WORKFLOW-80AD7C425E | Workflow | n8n Workflow Studio | active | 0.86 | System Generated Records |
 | WORKFLOW-877B61DD80 | Workflow | Archived n8n Workflow WFARCH-0E2C6A39BA | cataloged_from_read-only_archive | 0.84 | Workflow Runner |

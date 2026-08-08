@@ -88,6 +88,13 @@ class EventType(str, Enum):
     WORKFLOW_FAILED = "workflow_failed"
     WORKFLOW_CANCELLED = "workflow_cancelled"
     
+    # Workflow Nodes & Artifacts (Phase 9.5)
+    NODE_STARTED = "node_started"
+    NODE_COMPLETED = "node_completed"
+    ARTIFACT_CREATED = "artifact_created"
+    ARTIFACT_UPDATED = "artifact_updated"
+    ARTIFACT_READY = "artifact_ready"
+    
     # Agent Lifecycle
     AGENT_CREATED = "agent_created"
     AGENT_ACTIVATED = "agent_activated"
@@ -140,6 +147,10 @@ class EventType(str, Enum):
     COMMERCE_LISTING_CREATED = "commerce_listing_created"
     COMMERCE_PRODUCT_PUBLISHED = "commerce_product_published"
     COMMERCE_SALES_SYNCED = "commerce_sales_synced"
+    
+    # Career Domain Events
+    CAREER_SKILL_VERIFIED = "career_skill_verified"
+    MARKET_SIGNAL_ACQUIRED = "market_signal_acquired"
 
 class Event(BaseModel):
     """The strict event schema for the Hybrid Event Bus."""
@@ -152,6 +163,17 @@ class Event(BaseModel):
     priority: EventPriority = EventPriority.NORMAL
     payload: Dict[str, Any] = Field(default_factory=dict)
     
+    # OS Mission Correlation Fields
+    version: int = 1
+    correlation_id: Optional[str] = None
+    execution_id: Optional[str] = None
+    node_id: Optional[str] = None
+    mission_id: Optional[str] = None
+    workflow_id: Optional[str] = None
+    council: Optional[str] = None
+    agent: Optional[str] = None
+    parent_mission: Optional[str] = None
+    
     @property
     def is_durable(self) -> bool:
         """Determines if the event must survive a hard crash (SQLite) vs Memory queue."""
@@ -162,7 +184,9 @@ class Event(BaseModel):
             EventType.PREDICTION_CREATED,
             EventType.AUTHORITY_GRANTED,
             EventType.JOB_STATE_CHANGED,
-            EventType.AGENT_STATE_TRANSITION
+            EventType.AGENT_STATE_TRANSITION,
+            EventType.CAREER_SKILL_VERIFIED,
+            EventType.MARKET_SIGNAL_ACQUIRED
         }
         return self.type in durable_types
 

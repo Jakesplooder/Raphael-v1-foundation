@@ -2,8 +2,9 @@ import asyncio
 import threading
 from typing import Dict, Any
 
-from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from pydantic import BaseModel
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse, StreamingResponse
 import uvicorn
 
 from .interfaces import ServiceModule, ModuleHealth
@@ -56,6 +57,98 @@ class KernelDashboard(ServiceModule):
                 return {"error": "WorldModelService not registered in Kernel"}
             return svc.get_graph()
 
+        @self.app.get("/api/events/stream")
+        async def stream_events(request: Request):
+            """
+            Server-Sent Events (SSE) stream for real-time Matrix View updates.
+            Subscribes to global_event_bus with a wildcard.
+            """
+            from .event_bus import global_event_bus
+            import json
+            
+            queue = asyncio.Queue()
+            
+            async def sse_handler(event):
+                try:
+                    # Filter out purely noisy events if needed, but for Matrix we want full visibility
+                    payload = {
+                        "id": event.id,
+                        "type": event.type if isinstance(event.type, str) else event.type.value,
+                        "source": event.source,
+                        "target": event.target,
+                        "timestamp": event.timestamp,
+                        "trace_id": event.trace_id,
+                        "payload": event.payload,
+                        "mission_id": getattr(event, "mission_id", None),
+                        "workflow_id": getattr(event, "workflow_id", None),
+                        "council": getattr(event, "council", None),
+                        "agent": getattr(event, "agent", None),
+                        "parent_mission": getattr(event, "parent_mission", None)
+                    }
+                    await queue.put(payload)
+                except Exception as e:
+                    pass
+
+            global_event_bus.subscribe("*", sse_handler)
+            
+            async def event_generator():
+                try:
+                    while True:
+                        if await request.is_disconnected():
+                            break
+                        
+                        try:
+                            # Wait for an event with a timeout to detect disconnects
+                            event_data = await asyncio.wait_for(queue.get(), timeout=2.0)
+                            yield f"data: {json.dumps(event_data)}\n\n"
+                        except asyncio.TimeoutError:
+                            # Send a ping to keep connection alive
+                            yield ": ping\n\n"
+                except asyncio.CancelledError:
+                    pass
+                finally:
+                    # Clean up: remove the handler from wildcard_subscribers
+                    if sse_handler in global_event_bus._wildcard_subscribers:
+                        global_event_bus._wildcard_subscribers.remove(sse_handler)
+
+            return StreamingResponse(event_generator(), media_type="text/event-stream")
+
+        @self.app.get("/api/events/recent")
+        def get_recent_events():
+            from .event_bus import global_event_bus
+            return {"items": global_event_bus.get_recent_events()}
+
+        class IntentPayload(BaseModel):
+            prompt: str
+
+        @self.app.post("/api/intent")
+        async def handle_intent(payload: IntentPayload):
+            from raphael_core.operator.chat_controller import chat_controller
+            
+            # The dashboard UI doesn't always send a session ID, default to "main"
+            session_id = "main_dashboard"
+            
+            # chat_controller handles everything: Intent Router -> Planner -> Output formatting
+            response_data = chat_controller.process_message(session_id, payload.prompt)
+            
+            # response_data already matches the schema expected by api_gateway and index_html.txt
+            # e.g., "intent", "response", "command", "status", "awaiting_confirmation"
+            
+            return response_data
+            
+        @self.app.post("/api/builder/request")
+        async def api_builder_request(request: Request):
+            from raphael_core.kernel.services.capability_service import CapabilityService
+            payload = await request.json()
+            spec = payload.get("description", payload.get("spec", ""))
+            return CapabilityService.execute("builder.application", {"spec": spec})
+
+        @self.app.post("/api/video/generate")
+        async def api_video_generate(request: Request):
+            from raphael_core.kernel.services.capability_service import CapabilityService
+            payload = await request.json()
+            return CapabilityService.execute("video.generate", payload)
+            
         @self.app.get("/api/inspector")
         def get_inspector():
             return store.get_full_state()
@@ -67,6 +160,32 @@ class KernelDashboard(ServiceModule):
             if not mgr:
                 return {"error": "GoalsManager not registered in Kernel"}
             return {"items": mgr.get_all_goals()}
+
+        @self.app.get("/api/missions")
+        def get_missions():
+            from .registry import registry
+            dispatcher = registry.get_service("MissionDispatcher")
+            if not dispatcher:
+                return {"error": "MissionDispatcher not registered"}
+            missions = [m.model_dump() for m in dispatcher._active_missions.values()]
+            return {"items": missions}
+
+        @self.app.get("/api/business/{object_type}")
+        def get_business_objects(object_type: str):
+            from .managers.business_manager import global_business_manager
+            from .models import business_objects
+            
+            # Map object_type string to the class
+            class_map = {
+                name.lower(): cls for name, cls in business_objects.__dict__.items()
+                if isinstance(cls, type) and issubclass(cls, business_objects.BusinessObject)
+            }
+            cls = class_map.get(object_type.lower())
+            if not cls:
+                return {"error": f"Invalid business object type: {object_type}"}
+                
+            objects = global_business_manager.list_all(cls)
+            return {"items": [obj.model_dump() for obj in objects]}
 
         @self.app.get("/api/tasks")
         def get_tasks():

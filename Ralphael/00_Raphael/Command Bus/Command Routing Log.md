@@ -58150,3 +58150,78 @@ python raphael.py pod-workflow-continue "PODFLOW-20260713-EEB64A4A"
 - Safety reason: Confirmation required for write, delegation, execution, or other state-changing command.
 - Spoken response: I can classify this build first, then create the tracked task and apply the required council route. Low and medium builds can generate safely after confirmation; high-complexity builds stop for plan approval. Say confirm to continue.
 
+## 2026-07-31T17:10:49
+
+- Source: dashboard
+- Input: hello Raphael
+- Normalized: hello raphael
+- Intent: greeting
+- Command type: identity
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Hello Aaron. I'm online. How can I help?
+
+## 2026-07-31T17:11:01
+
+- Source: dashboard
+- Input: hello Raphael
+- Normalized: hello raphael
+- Intent: greeting
+- Command type: identity
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Hello Aaron. I'm online. How can I help?
+
+## 2026-07-31T17:15:40
+
+- Source: dashboard
+- Input: hello Raphael
+- Normalized: hello raphael
+- Intent: greeting
+- Command type: identity
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Hello Aaron. I'm online. How can I help?
+
+## 2026-07-31T17:18:56
+
+- Source: dashboard
+- Input: hello Raphael
+- Normalized: hello raphael
+- Intent: greeting
+- Command type: identity
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Hello Aaron. I'm online. How can I help?
+
+## 2026-07-31T17:19:17
+
+- Source: dashboard
+- Input: hello Raphael
+- Normalized: hello raphael
+- Intent: greeting
+- Command type: identity
+- Matched command: None
+- CLI args: []
+- Requires confirmation: No
+- Confirmation key: None
+- Status: routed
+- Safety reason: None
+- Spoken response: Hello Aaron. I'm online. How can I help?
+

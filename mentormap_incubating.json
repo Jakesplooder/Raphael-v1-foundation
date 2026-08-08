@@ -1,0 +1,67 @@
+{
+  "version": 2,
+  "identity": {
+    "business_id": "mentormap_001",
+    "name": "MentorMap",
+    "category": "Career Technology",
+    "domain": "career"
+  },
+  "lifecycle_state": "INCUBATING",
+  "financials": {
+    "revenue": 0,
+    "expenses": 0.0,
+    "profit": 0.0,
+    "roi": 0.0,
+    "investment": 250
+  },
+  "operations": {
+    "missions_attempted": 0,
+    "missions_successful": 0,
+    "approval_rate": 0.0,
+    "average_quality": 0.0,
+    "mvp_progress": 0
+  },
+  "strategy": {
+    "active_strategies": [],
+    "retired_strategies": [],
+    "current_hypothesis": "AI matching increases mentor discovery"
+  },
+  "learning": {
+    "experiments_run": 0,
+    "knowledge_base_size": 0
+  },
+  "knowledge": {
+    "observations": [],
+    "hypotheses": [],
+    "experiments": [],
+    "strategies": []
+  },
+  "growth": {
+    "metrics": {},
+    "users": 0,
+    "mentors": 0
+  },
+  "risk": {
+    "operational_risk": 0.4,
+    "financial_risk": 0.1
+  },
+  "confidence": 0.74,
+  "venture_metadata": {
+    "parent_portfolio": "Raphael Holdings",
+    "founder": "Raphael OS",
+    "incubation_budget": 500,
+    "validation_deadline": "30 days",
+    "success_threshold": 0.75,
+    "venture_stage": "INCUBATING"
+  },
+  "decision_journal": [
+    {
+      "decision": "Received 20% resource allocation",
+      "reasoning": [
+        "Ranked score: 0.4185",
+        "Confidence: 0.74, Pool: Established"
+      ],
+      "expected_outcome": "Maximized portfolio ROI based on current ranking"
+    }
+  ]
+}

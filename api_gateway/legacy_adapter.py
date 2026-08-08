@@ -2990,11 +2990,29 @@ def command_display(command: list[str]) -> str:
 
 def dashboard_route_agent_ask(phrase: str, voice_config: dict[str, Any], voice_gateway) -> Any | None:
     text = voice_gateway.normalize(phrase, str(voice_config.get("wake_word", "raphael")))
-    match = re.search(r"^ask\s+(.+? agent)\s+(.+)$", text)
-    if not match:
+    
+    agent_phrase = None
+    question = None
+    
+    m1 = re.search(r"^ask\s+(.+? agent)\s+(?:to\s+)?(.+)$", text)
+    if m1:
+        agent_phrase = m1.group(1).strip()
+        question = m1.group(2).strip()
+        
+    if not agent_phrase:
+        m2 = re.search(r"^(.*?)\s+to\s+(.+? agent)$", text)
+        if m2:
+            question = m2.group(1).strip()
+            agent_phrase = m2.group(2).strip()
+            
+    if not agent_phrase:
+        m3 = re.search(r"^(.+? agent)\s+(.+)$", text)
+        if m3:
+            agent_phrase = m3.group(1).strip()
+            question = m3.group(2).strip()
+
+    if not agent_phrase or not question:
         return None
-    agent_phrase = match.group(1).strip()
-    question = match.group(2).strip()
     agents = [
         "Chief of Staff Agent",
         "Research Agent",
@@ -3182,10 +3200,20 @@ def dashboard_chat_response(
             "awaiting_confirmation": False,
         }
     try:
+        from raphael_core.operator.chat_controller import chat_controller
+        session_id = re.sub(r"[^A-Za-z0-9_-]", "", test_session_id)[:80] or "default"
+        
+        # Intercept via new OS Router
+        router_result = chat_controller.process_message(session_id, phrase)
+        if router_result.get("response"):
+            # The Router handled it, return immediately
+            log_dashboard_chat(phrase, router_result.get("intent", ""), router_result.get("command", ""), router_result.get("status", ""), router_result.get("response", ""), router_result.get("confirmation_required", False))
+            return router_result
+
+        # If empty response, fallback to legacy CommandBus
         bus_module = load_command_bus()
         bus = bus_module.RaphaelCommandBus()
         if test_mode:
-            session_id = re.sub(r"[^A-Za-z0-9_-]", "", test_session_id)[:80] or "default"
             with DASHBOARD_CHAT_TEST_LOCK:
                 if reset_test_session:
                     DASHBOARD_CHAT_TEST_SESSIONS.pop(session_id, None)
@@ -4046,6 +4074,8 @@ INDEX_HTML = r"""<!doctype html>
 <script src="/static/js/galaxy_map.js?v=57-presence"></script>
 <script src="/static/js/employee_network.js?v=56-employee-network"></script>
 <script src="/static/js/matrix.js?v=59-communications"></script>
+<script src="/static/js/business_dashboard.js?v=1"></script>
+<script src="/static/js/missions.js?v=1"></script>
 <script>
 const pages = [
   ["home", "Home / Command Center"], ["chat", "Dashboard Chat"], ["daily", "Daily Operating Loop"], ["knowledge", "Knowledge Ingestion"], ["relationships", "Knowledge Relationships"], ["n8nstudio", "n8n Workflow Studio"], ["workflowrunner", "Workflow Runner"], ["communications", "Inter-Council Communications"], ["commandbus", "Command Bus"], ["notifications", "Notifications"], ["activity", "Activity Stream"], ["briefs", "Executive Briefs"], ["identity", "Identity"], ["world", "World Model"], ["simulations", "Simulations"], ["opportunities", "Opportunities"], ["allocation", "Resource Allocation"], ["blueprints", "Business Blueprints"], ["commerce", "Commerce"], ["podstudio", "POD Design Studio"], ["assetlibrary", "Asset & Brand Library"], ["agency", "Agency"], ["creator", "Creator"], ["kpis", "KPIs"], ["finance", "Financial Intelligence"], ["portfolio", "Business Portfolio"], ["initiatives", "Executive Initiatives"], ["employees", "Digital Employees"], ["executionplans", "Execution Plans"], ["execution", "Controlled Execution"], ["builder", "Builder"], ["projects", "Projects"], ["goals", "Goals"], ["goalpropagation", "Goal Propagation"], ["deliberations", "Deliberations"], ["tasks", "Tasks"],

@@ -24,6 +24,7 @@ class StepStatus(str, Enum):
     BLOCKED = "blocked"
     SKIPPED = "skipped"
     RETRIED = "retried"
+    CANCELLED = "cancelled"
 
 class WorkflowContext(BaseModel):
     goal: Optional[str] = None

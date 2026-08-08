@@ -1,10 +1,14 @@
 # POD Product Pipeline
 
-Generated: 2026-07-14T05:42:09
+Generated: 2026-07-21T03:23:44
 
 | Concept ID | Product Idea | Prompts | Requests | Variants | Reviews | Typography | Compositions | SVG | Print | Listings | Exports | Status |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| PODCON-1CA3AC7157 | create a pod concept for a dolphin t-shirt | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Pending |
+| PODCON-89CF229DDA | generate a POD concept for a dragon t shirt | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Pending |
+| PODCON-73537DAD2E | Generate a POD concept for a motorcycle t shirt | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Concept |
+| PODCON-A5B0E616B5 | Generate a POD concept for a eagle shirt | 1 | 1 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Rejected |
+| PODCON-FCDA7A1AF6 | Generate a POD concept for a eagle shirt | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Concept |
+| PODCON-1CA3AC7157 | create a pod concept for a dolphin t-shirt | 1 | 1 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Rejected |
 | PODCON-5EF08BBAE0 | start a POD concept for a flying pig shirt | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Blocked |
 | PODCON-B150E1CD94 | Generate a POD concept for a dolphin t-shirt | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Concept |
 | PODCON-FE7D77C007 | generate a POD concept for a shark t-shirt | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Concept |
@@ -33,7 +37,7 @@ Generated: 2026-07-14T05:42:09
 
 ## Runtime Assets
 
-- Generated image assets: 32
+- Generated image assets: 40
 - Runtime root: `/app/runtime/PODStudio`
 - Raw image memory indexing: False
 

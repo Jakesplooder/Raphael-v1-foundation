@@ -23,7 +23,7 @@ NODE_TYPES = {
     "Goal", "Task", "Workflow", "Execution", "Initiative", "Opportunity",
     "Skill", "Resource", "Service", "Model", "Tool", "KnowledgeItem", "Asset",
     "PODConcept", "Build", "Deliberation", "ExecutionPlan", "Risk",
-    "Constraint", "Decision", "Metric", "Event", "Hypothesis",
+    "Constraint", "Decision", "Metric", "Event", "Hypothesis", "Brand", "Category",
 }
 
 RELATIONSHIP_TYPES = {
@@ -31,7 +31,7 @@ RELATIONSHIP_TYPES = {
     "ASSIGNED_TO", "SUPPORTS", "ADVANCES", "DEPENDS_ON", "BLOCKED_BY",
     "REQUIRES", "USES", "PRODUCES", "GENERATES", "REVIEWS", "GOVERNS",
     "PART_OF", "RELATED_TO", "ENABLES", "RISKS", "MITIGATES", "MEASURES",
-    "LEARNS_FROM",
+    "LEARNS_FROM", "COVERS",
 }
 
 SOURCE_TRUST = {

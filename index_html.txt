@@ -194,7 +194,9 @@
 <script src="/static/js/raphael_orb.js?v=57-presence-2"></script>
 <script src="/static/js/galaxy_map.js?v=57-presence"></script>
 <script src="/static/js/employee_network.js?v=56-employee-network"></script>
+<script src="/static/js/event_store.js"></script>
 <script src="/static/js/matrix.js?v=59-communications"></script>
+<script src="/static/js/mission_control.js"></script>
 <script>
 const pages = [
   ["home", "Home / Command Center"], ["chat", "Dashboard Chat"], ["daily", "Daily Operating Loop"], ["knowledge", "Knowledge Ingestion"], ["relationships", "Knowledge Relationships"], ["n8nstudio", "n8n Workflow Studio"], ["workflowrunner", "Workflow Runner"], ["communications", "Inter-Council Communications"], ["commandbus", "Command Bus"], ["notifications", "Notifications"], ["activity", "Activity Stream"], ["briefs", "Executive Briefs"], ["identity", "Identity"], ["world", "World Model"], ["simulations", "Simulations"], ["opportunities", "Opportunities"], ["allocation", "Resource Allocation"], ["blueprints", "Business Blueprints"], ["commerce", "Commerce"], ["podstudio", "POD Design Studio"], ["assetlibrary", "Asset & Brand Library"], ["agency", "Agency"], ["creator", "Creator"], ["kpis", "KPIs"], ["finance", "Financial Intelligence"], ["portfolio", "Business Portfolio"], ["initiatives", "Executive Initiatives"], ["employees", "Digital Employees"], ["executionplans", "Execution Plans"], ["execution", "Controlled Execution"], ["builder", "Builder"], ["projects", "Projects"], ["goals", "Goals"], ["goalpropagation", "Goal Propagation"], ["deliberations", "Deliberations"], ["tasks", "Tasks"],
@@ -695,7 +697,10 @@ function renderBubble(message, index) {
     : formatResponseText(message.text);
   const command = message.command ? `<div class="mt-2 rounded border border-cyan-300/20 p-2"><div class="muted text-xs">Command</div><code>${esc(message.command)}</code></div>` : "";
   const status = message.status ? `<div class="mt-2"><span class="pill">${esc(message.status)}</span>${message.awaiting ? '<span class="pill">awaiting confirmation</span>' : ''}</div>` : "";
-  const actions = message.role === "raphael" ? `<div class="mt-2"><button class="copy" onclick="copyChatResponse(${index})">copy response</button>${hasCode(message.text) ? `<button class="copy" onclick="createFileInstead(${index})">create file instead</button>` : ""}</div>` : "";
+  let actions = message.role === "raphael" ? `<div class="mt-2"><button class="copy" onclick="copyChatResponse(${index})">copy response</button>${hasCode(message.text) ? `<button class="copy" onclick="createFileInstead(${index})">create file instead</button>` : ""}</div>` : "";
+  if (message.awaiting) {
+    actions += `<div class="mt-2 flex gap-2"><button class="copy" style="background:#164e63;color:#cffafe;border-color:#22d3ee" onclick="sendQuickChat('Execute')">Execute</button><button class="copy" onclick="sendQuickChat('Modify')">Modify</button><button class="copy" onclick="sendQuickChat('Cancel')">Cancel</button></div>`;
+  }
   return `<div class="bubble ${cls}"><strong>${who}</strong><div class="mt-1">${body}</div>${command}${status}${meta}${actions}</div>`;
 }
 function useChatExample(text) {
@@ -2863,53 +2868,37 @@ load().catch(err => {
   document.getElementById("content").innerHTML = `<article class="card full error-banner"><h2>Dashboard Error</h2><p>Raphael could not load dashboard data. The CLI remains available.</p><pre>${esc(err)}</pre><button class="copy" onclick="location.reload()">Retry</button><button class="copy" onclick="copyCommand('python raphael.py system-check')">Copy system check</button></article>`;
 });
 
-// --- Phase 3: WebSocket Live Events ---
-let wsConnection = null;
-function initWebSocket() {
-  if (wsConnection) return;
-  const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-  const wsUrl = `${wsProtocol}//${window.location.host}/ws/events`;
-  
-  wsConnection = new WebSocket(wsUrl);
-  
-  wsConnection.onopen = () => {
-    console.log("[RRK WebSocket] Connected to EventBus");
-    const wsStatusPill = document.createElement("span");
-    wsStatusPill.id = "ws-status-pill";
-    wsStatusPill.className = "pill";
-    wsStatusPill.textContent = "Live Events: Connected";
-    wsStatusPill.style.color = "var(--cyan)";
-    document.querySelector("header div:last-child")?.appendChild(wsStatusPill);
-  };
-  
-  wsConnection.onmessage = (event) => {
-    console.log("[RRK WebSocket] Event received:", event.data);
-    try {
-      const payload = JSON.parse(event.data);
-      // Example handler: If the event contains a new activity count, update the UI dynamically
-      if (payload.type === "ACTIVITY_UPDATE" && document.getElementById("activity-counter")) {
-         document.getElementById("activity-counter").textContent = `Activity ${payload.count}`;
-         document.getElementById("activity-counter").classList.add("flash");
-         setTimeout(() => document.getElementById("activity-counter").classList.remove("flash"), 500);
-      }
-    } catch (e) {
-      console.warn("Failed to parse WS event:", e);
+// --- Phase 9.5: Unified Event Layer ---
+const wsStatusPill = document.createElement("span");
+wsStatusPill.id = "ws-status-pill";
+wsStatusPill.className = "pill";
+wsStatusPill.textContent = "Live Events: Connecting";
+wsStatusPill.style.color = "var(--cyan)";
+document.querySelector("header div:last-child")?.appendChild(wsStatusPill);
+
+if (window.EventStore) {
+  window.EventStore.connect();
+  window.EventStore.subscribe(event => {
+    if ((event.type === "ACTIVITY_UPDATE" || event.type === "activity_logged") && document.getElementById("activity-counter")) {
+         document.getElementById("activity-counter").textContent = `Activity ${event.count || 0}`;
+         document.getElementById("activity-counter").classList.add("pulse");
+         setTimeout(() => {
+             const el = document.getElementById("activity-counter");
+             if (el) el.classList.remove("pulse");
+         }, 2000);
+         if (window.active === "activity") window.render();
     }
-  };
-  
-  wsConnection.onclose = () => {
-    console.log("[RRK WebSocket] Disconnected");
-    const pill = document.getElementById("ws-status-pill");
-    if (pill) {
-      pill.textContent = "Live Events: Disconnected";
-      pill.style.color = "var(--pink)";
+    if (event.type === "NOTIFICATION_NEW" && document.getElementById("notification-bell")) {
+         document.getElementById("notification-bell").textContent = `Notifications ${event.count || 0}`;
+         document.getElementById("notification-bell").classList.add("pulse");
+         setTimeout(() => {
+             const el = document.getElementById("notification-bell");
+             if (el) el.classList.remove("pulse");
+         }, 2000);
+         if (window.active === "notifications") window.render();
     }
-    wsConnection = null;
-    setTimeout(initWebSocket, 5000); // Reconnect loop
-  };
+  });
 }
-// Start WebSocket connection
-initWebSocket();
 
 </script>
 </body>

@@ -2,33 +2,33 @@
 
 ## What is blocking Raphael OS completion?
 
-Phase Completion: Me Simple React Clicks Phase64 Acceptance (Event, confidence 0.82); Aaron (Aaron, confidence 0.94); Raphael OS (Raphael, confidence 0.94); Postgres (Service, confidence 0.91)
+Phase 75.1 Executive Validation (Decision, confidence 0.84); Phase Completion: Me Simple React Clicks Phase64 Acceptance (Event, confidence 0.82); Aaron (Aaron, confidence 0.94); Raphael OS (Raphael, confidence 0.94)
 
-Sources: C:\RaphaelOS\builder\workspace\BUILD-20260618-768D0D39\README.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Decision Hierarchy.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael
+Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Governance\World Model\Phase 75.1 Executive Validation.md, C:\RaphaelOS\builder\workspace\BUILD-20260618-768D0D39\README.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Decision Hierarchy.md
 
 ## What depends on ComfyUI?
 
-ComfyUI (Service, confidence 0.91); ComfyUI (Service, confidence 0.86); World Model Executive Brief (Decision, confidence 0.84); World Model Node Registry (Decision, confidence 0.84)
+ComfyUI (Service, confidence 0.91); ComfyUI (Service, confidence 0.86); Phase 75.1 Executive Validation (Decision, confidence 0.84); World Model Query Log (Decision, confidence 0.84)
 
-Sources: C:\RaphaelOS\launcher\service_registry.json, C:\RaphaelOS\command_bus.py, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Governance\World Model\World Model Executive Brief.md
+Sources: C:\RaphaelOS\launcher\service_registry.json, C:\RaphaelOS\command_bus.py, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Governance\World Model\Phase 75.1 Executive Validation.md
 
 ## What depends on Qdrant?
 
-Qdrant (Service, confidence 0.91); Qdrant (Service, confidence 0.86); World Model Node Registry (Decision, confidence 0.84); Health Observations (Event, confidence 0.84)
+Qdrant (Service, confidence 0.91); Qdrant (Service, confidence 0.86); Phase 75.1 Executive Validation (Decision, confidence 0.84); active_issues (Event, confidence 0.84)
 
-Sources: C:\RaphaelOS\launcher\service_registry.json, C:\RaphaelOS\dashboard\app.py, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Governance\World Model\World Model Node Registry.md
+Sources: C:\RaphaelOS\launcher\service_registry.json, C:\RaphaelOS\dashboard\app.py, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Governance\World Model\Phase 75.1 Executive Validation.md
 
 ## What would fail if Qdrant disappeared?
 
-Qdrant (Service, confidence 0.91); Qdrant (Service, confidence 0.86); World Model Node Registry (Decision, confidence 0.84); Health Observations (Event, confidence 0.84)
+Qdrant (Service, confidence 0.91); Qdrant (Service, confidence 0.86); Phase 75.1 Executive Validation (Decision, confidence 0.84); active_issues (Event, confidence 0.84)
 
-Sources: C:\RaphaelOS\launcher\service_registry.json, C:\RaphaelOS\dashboard\app.py, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Governance\World Model\World Model Node Registry.md
+Sources: C:\RaphaelOS\launcher\service_registry.json, C:\RaphaelOS\dashboard\app.py, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Governance\World Model\Phase 75.1 Executive Validation.md
 
 ## What projects advance Raphael OS completion?
 
-Phase Completion: Me Simple React Clicks Phase64 Acceptance (Event, confidence 0.82); Aaron (Aaron, confidence 0.94); Raphael OS (Raphael, confidence 0.94); Postgres (Service, confidence 0.91)
+Phase 75.1 Executive Validation (Decision, confidence 0.84); Phase Completion: Me Simple React Clicks Phase64 Acceptance (Event, confidence 0.82); Aaron (Aaron, confidence 0.94); Raphael OS (Raphael, confidence 0.94)
 
-Sources: C:\RaphaelOS\builder\workspace\BUILD-20260618-768D0D39\README.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Decision Hierarchy.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael
+Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Governance\World Model\Phase 75.1 Executive Validation.md, C:\RaphaelOS\builder\workspace\BUILD-20260618-768D0D39\README.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Decision Hierarchy.md
 
 ## What goals lack supporting projects?
 
@@ -50,21 +50,21 @@ Sources: C:\RaphaelOS\launcher\service_registry.json, C:\Users\cyber\Downloads\R
 
 ## What changed in the last 30 days?
 
-Daily Executive Brief (Workflow, confidence 0.92); Account Manager Agent Escalation Rules (Agent, confidence 0.84); Business Strategy Agent Escalation Rules (Agent, confidence 0.84); Client Success Agent Escalation Rules (Agent, confidence 0.84)
+Daily Executive Brief (Workflow, confidence 0.92); Account Manager Agent Escalation Rules (Agent, confidence 0.84); Business Strategy Agent Escalation Rules (Agent, confidence 0.84); Audience Growth Agent Escalation Rules (Agent, confidence 0.84)
 
 Sources: C:\RaphaelOS\workflow_runner\workflow_registry.json, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Account Manager Agent\Escalation Rules.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Business Strategy Agent\Escalation Rules.md
 
 ## What relationships are decaying?
 
-Prepare Secure Email Service for portfolio review (Goal, confidence 0.88); Career Agent SOPs (Agent, confidence 0.84); Career Agent Outputs (Agent, confidence 0.84); Career Agent Memory Links (Agent, confidence 0.84)
+Career Agent SOPs (Agent, confidence 0.84); Career Agent Outputs (Agent, confidence 0.84); Career Agent Memory Links (Agent, confidence 0.84); Career Agent (Agent, confidence 0.84)
 
-Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Goals.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\SOPs.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\Outputs.md
+Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\SOPs.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\Outputs.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\Memory Links.md
 
 ## What hypotheses are active?
 
-Prepare Secure Email Service for portfolio review (Goal, confidence 0.88); Career Agent SOPs (Agent, confidence 0.84); Career Agent Outputs (Agent, confidence 0.84); Career Agent Memory Links (Agent, confidence 0.84)
+Career Agent SOPs (Agent, confidence 0.84); Career Agent Outputs (Agent, confidence 0.84); Career Agent Memory Links (Agent, confidence 0.84); Career Agent (Agent, confidence 0.84)
 
-Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Goals.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\SOPs.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\Outputs.md
+Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\SOPs.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\Outputs.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\Memory Links.md
 
 ## What safety systems protect authority autonomy?
 
@@ -86,15 +86,15 @@ Sources: C:\RaphaelOS\builder\classifications\BCLASS-20260618-66FE71F6.md, C:\Ra
 
 ## Which businesses are inactive?
 
-Prepare Secure Email Service for portfolio review (Goal, confidence 0.88); Career Agent SOPs (Agent, confidence 0.84); Career Agent Outputs (Agent, confidence 0.84); Career Agent Memory Links (Agent, confidence 0.84)
+Career Agent SOPs (Agent, confidence 0.84); Career Agent Outputs (Agent, confidence 0.84); Career Agent Memory Links (Agent, confidence 0.84); Career Agent (Agent, confidence 0.84)
 
-Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Goals.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\SOPs.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\Outputs.md
+Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\SOPs.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\Outputs.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Career Agent\Memory Links.md
 
 ## Which systems govern Workflow Runner?
 
-World Model Executive Brief (Decision, confidence 0.84); Knowledge Processing (Workflow, confidence 0.92); POD Pipeline (Workflow, confidence 0.92); Daily Executive Brief (Workflow, confidence 0.92)
+World Model Executive Brief (Decision, confidence 0.84); Phase 75.1 Executive Validation (Decision, confidence 0.84); Knowledge Processing (Workflow, confidence 0.92); POD Pipeline (Workflow, confidence 0.92)
 
-Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Governance\World Model\World Model Executive Brief.md, C:\RaphaelOS\workflow_runner\workflow_registry.json, C:\RaphaelOS\workflow_runner\workflow_registry.json
+Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Governance\World Model\World Model Executive Brief.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Governance\World Model\Phase 75.1 Executive Validation.md, C:\RaphaelOS\workflow_runner\workflow_registry.json
 
 ## Which services support executive briefs?
 
@@ -128,9 +128,9 @@ Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\n8n Workflow St
 
 ## Which systems mitigate external action risk?
 
-Account Manager Agent Escalation Rules (Agent, confidence 0.84); Business Strategy Agent Escalation Rules (Agent, confidence 0.84); Client Success Agent Escalation Rules (Agent, confidence 0.84); Audience Growth Agent Escalation Rules (Agent, confidence 0.84)
+Account Manager Agent Escalation Rules (Agent, confidence 0.84); Business Strategy Agent Escalation Rules (Agent, confidence 0.84); Audience Growth Agent Escalation Rules (Agent, confidence 0.84); Chief of Staff Agent Escalation Rules (Agent, confidence 0.84)
 
-Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Account Manager Agent\Escalation Rules.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Business Strategy Agent\Escalation Rules.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Client Success Agent\Escalation Rules.md
+Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Account Manager Agent\Escalation Rules.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Business Strategy Agent\Escalation Rules.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Audience Growth Agent\Escalation Rules.md
 
 ## Which records came from Self-Healing?
 
@@ -152,15 +152,15 @@ Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Councils\Governa
 
 ## Which events are safety evolution events?
 
-Safety Evolution: docker_service_registry (Event, confidence 0.82); Safety Evolution: Build Request BUILD-20260618-768D0D39 (Event, confidence 0.82); Safety Evolution: Build Request BUILD-20260624-9B2A7953 (Event, confidence 0.82); Safety Evolution: Build Request BUILD-20260624-E2D9494D (Event, confidence 0.82)
+Safety Evolution: docker_service_registry (Event, confidence 0.82); Safety Evolution: Build Request BUILD-20260714-3405A018 (Event, confidence 0.82); Safety Evolution: Build Request BUILD-20260618-768D0D39 (Event, confidence 0.82); Safety Evolution: Build Request BUILD-20260624-9B2A7953 (Event, confidence 0.82)
 
-Sources: C:\RaphaelOS\docker\docker_service_registry.json, C:\RaphaelOS\builder\requests\2026-06-18-make-me-a-simple-react-app-that-tracks-clicks-phase64-acceptance.md, C:\RaphaelOS\builder\requests\2026-06-24-build-a-file-from-this-response-based-on-the-safe-memory-context-i-wil.md
+Sources: C:\RaphaelOS\docker\docker_service_registry.json, C:\RaphaelOS\builder\requests\2026-07-14-build-a-landing-page-for-a-zoo.md, C:\RaphaelOS\builder\requests\2026-06-18-make-me-a-simple-react-app-that-tracks-clicks-phase64-acceptance.md
 
 ## Which events are workflow archive events?
 
-Archived n8n Workflow WFARCH-0F9AD1688B (Workflow, confidence 0.84); Archived n8n Workflow WFARCH-06E88C4A8D (Workflow, confidence 0.84); Source: PODCON-72BCD6458A - Listing Draft.md (KnowledgeItem, confidence 0.84); Source: PODCON-A29C03BC92 - Listing Draft.md (KnowledgeItem, confidence 0.84)
+Archived n8n Workflow WFARCH-0F9AD1688B (Workflow, confidence 0.84); Archived n8n Workflow WFARCH-06E88C4A8D (Workflow, confidence 0.84); Archived n8n Workflow WFARCH-035CE83C40 (Workflow, confidence 0.84); Archived n8n Workflow WFARCH-14D29757AB (Workflow, confidence 0.84)
 
-Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\n8n Workflow Studio\Workflow Summaries\WFARCH-0F9AD1688B - Backup Squarespace code Injections to Github.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\n8n Workflow Studio\Workflow Summaries\WFARCH-06E88C4A8D - 1087_Manual_Unleashedsoftware_Automation_Triggered.md, C:\RaphaelOS\PODStudio\exports\PODCON-72BCD6458A\Listing Draft.md
+Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\n8n Workflow Studio\Workflow Summaries\WFARCH-0F9AD1688B - Backup Squarespace code Injections to Github.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\n8n Workflow Studio\Workflow Summaries\WFARCH-06E88C4A8D - 1087_Manual_Unleashedsoftware_Automation_Triggered.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\n8n Workflow Studio\Workflow Summaries\WFARCH-035CE83C40 - Personal Assistant MCP server.md
 
 ## Which agents relate to commerce?
 
@@ -170,7 +170,7 @@ Sources: C:\RaphaelOS\workflow_runner\workflow_registry.json, C:\Users\cyber\Dow
 
 ## Which agents relate to POD?
 
-Knowledge Processing (Workflow, confidence 0.92); POD Pipeline (Workflow, confidence 0.92); POD Studio Helpers (Service, confidence 0.91); PODStudio (KnowledgeItem, confidence 0.86)
+Knowledge Processing (Workflow, confidence 0.92); POD Pipeline (Workflow, confidence 0.92); POD Studio Helpers (Service, confidence 0.91); 03_Agents (KnowledgeItem, confidence 0.86)
 
 Sources: C:\RaphaelOS\workflow_runner\workflow_registry.json, C:\RaphaelOS\workflow_runner\workflow_registry.json, C:\RaphaelOS\launcher\service_registry.json
 
@@ -182,7 +182,7 @@ Sources: C:\RaphaelOS\workflow_runner\workflow_registry.json, C:\RaphaelOS\launc
 
 ## Which workflows use local services?
 
-Local Asset Export ASSET-EF7C9DF339 (KnowledgeItem, confidence 0.84); Workflow Runner Overview (Workflow, confidence 0.84); Capability Launch: Local Asset Export ASSET-EF7C9DF339 (Event, confidence 0.82); Treat database, API, authentication, and multi-user behavior as assumptions unless represented by sa (Hypothesis, confidence 0.56)
+Local Asset Export ASSET-EF7C9DF339 (KnowledgeItem, confidence 0.84); Workflow Runner Overview (Workflow, confidence 0.84); Capability Launch: Local Asset Export ASSET-EF7C9DF339 (Event, confidence 0.82); Raphael OS (Raphael, confidence 0.94)
 
 Sources: C:\RaphaelOS\BrandLibrary\exports\ASSET-EF7C9DF339\README.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Workflow Runner\Workflow Runner Overview.md, C:\RaphaelOS\BrandLibrary\exports\ASSET-EF7C9DF339\README.md
 
@@ -194,7 +194,7 @@ Sources: C:\RaphaelOS\launcher\service_registry.json, C:\RaphaelOS\dashboard, C:
 
 ## Which decisions mention approval?
 
-Approval Controls (KnowledgeItem, confidence 0.86); Governance Council Decisions (Agent, confidence 0.84); Governance Council Charter (Agent, confidence 0.84); Build Request BUILD-20260621-DFC03B1E (Build, confidence 0.84)
+Approval Controls (KnowledgeItem, confidence 0.86); Governance Council Decisions (Agent, confidence 0.84); Governance Council Charter (Agent, confidence 0.84); Build Request BUILD-20260628-077E2A26 (Build, confidence 0.84)
 
 Sources: C:\RaphaelOS\builder\Builder Governance Review.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Councils\Governance Council\Council Decisions.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Councils\Governance Council\Council Charter.md
 
@@ -248,9 +248,9 @@ Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Execution Plans
 
 ## Which records mention safety policy?
 
-Governance Council Charter (Agent, confidence 0.84); Raphael OS (Raphael, confidence 0.94); Source: PODCON-1A39FD7A6D - IP Safety Note.md (Decision, confidence 0.84); Execution Safety Report (Decision, confidence 0.84)
+Governance Council Charter (Agent, confidence 0.84); Raphael OS (Raphael, confidence 0.94); Execution Safety Report (Decision, confidence 0.84); World Model Overview (Decision, confidence 0.84)
 
-Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Councils\Governance Council\Council Charter.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael, C:\RaphaelOS\PODStudio\exports\PODCON-1A39FD7A6D\IP Safety Note.md
+Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Councils\Governance Council\Council Charter.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Controlled Execution\Execution Safety Report.md
 
 ## Which records mention governance?
 
@@ -266,9 +266,9 @@ Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael, C:\RaphaelOS\b
 
 ## Which records mention opportunity?
 
-Raphael OS (Raphael, confidence 0.94); Execution Planning Overview (ExecutionPlan, confidence 0.84); Opportunity, council deliberation, execution plan, tracked task, then plan approval (Hypothesis, confidence 0.56); Source: PODCON-1A39FD7A6D - Listing Draft.md contains an unresolved opportunity, recommendation, or  (Hypothesis, confidence 0.56)
+Raphael OS (Raphael, confidence 0.94); Execution Planning Overview (ExecutionPlan, confidence 0.84); Agent Task - 2026-07-06 (Task, confidence 0.84); reverse mentormap - complete concept the tagline where senior leaders learn from the next generation (Hypothesis, confidence 0.56)
 
-Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Execution Plans\Execution Planning Overview.md, C:\RaphaelOS\builder\classifications\BCLASS-20260618-66FE71F6.md
+Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael\Execution Plans\Execution Planning Overview.md, C:\Users\cyber\Downloads\RalphaelOS\Ralphael\03_Agents\Chief of Staff Agent\Tasks\2026-07-06-Bounded-implementation-and-milestone-planning-for-BUILD-2026 2.md
 
 ## Which records mention workflow failure?
 
@@ -284,7 +284,7 @@ Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael, C:\RaphaelOS\l
 
 ## Which records mention Qdrant?
 
-Raphael OS (Raphael, confidence 0.94); Qdrant (Service, confidence 0.91); Qdrant (Service, confidence 0.86); World Model Node Registry (Decision, confidence 0.84)
+Raphael OS (Raphael, confidence 0.94); Qdrant (Service, confidence 0.91); Qdrant (Service, confidence 0.86); Phase 75.1 Executive Validation (Decision, confidence 0.84)
 
 Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael, C:\RaphaelOS\launcher\service_registry.json, C:\RaphaelOS\dashboard\app.py
 
@@ -296,7 +296,7 @@ Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael, C:\RaphaelOS\l
 
 ## Which records mention ComfyUI?
 
-Raphael OS (Raphael, confidence 0.94); ComfyUI (Service, confidence 0.91); ComfyUI (Service, confidence 0.86); World Model Executive Brief (Decision, confidence 0.84)
+Raphael OS (Raphael, confidence 0.94); ComfyUI (Service, confidence 0.91); ComfyUI (Service, confidence 0.86); Phase 75.1 Executive Validation (Decision, confidence 0.84)
 
 Sources: C:\Users\cyber\Downloads\RalphaelOS\Ralphael\00_Raphael, C:\RaphaelOS\launcher\service_registry.json, C:\RaphaelOS\command_bus.py
 

@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "workflows": [
+    {
+      "workflow_id": "pod-pipeline",
+      "name": "POD Pipeline",
+      "category": "creative",
+      "description": "Concept, prompt, local generation, review, typography, composition, and local export.",
+      "execution_mode": "native",
+      "risk_level": "medium",
+      "approval_required": true,
+      "enabled": true,
+      "source": "Perform a local POD Studio workflow using the configured local model. Keep all outputs local."
+    },
+    {
+      "workflow_id": "knowledge-processing",
+      "name": "Knowledge Processing",
+      "category": "knowledge",
+      "description": "Import registered sources, summarize, classify, relate, and index generated knowledge.",
+      "execution_mode": "native",
+      "risk_level": "medium",
+      "approval_required": true,
+      "enabled": true,
+      "source": "registered_knowledge_sources"
+    },
+    {
+      "workflow_id": "daily-executive-brief",
+      "name": "Daily Executive Brief",
+      "category": "core",
+      "description": "Review tasks, goals, communications, and knowledge updates, then generate local briefs.",
+      "execution_mode": "native",
+      "risk_level": "low",
+      "approval_required": true,
+      "enabled": true,
+      "source": "raphael_brief_engine"
+    }
+  ]
+}

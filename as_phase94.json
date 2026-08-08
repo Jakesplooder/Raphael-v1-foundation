@@ -1,0 +1,78 @@
+{
+  "version": 3,
+  "identity": {
+    "business_id": "ai_store_001",
+    "name": "AI Store",
+    "category": "Commerce Technology",
+    "domain": "commerce"
+  },
+  "lifecycle_state": "INCUBATING",
+  "financials": {
+    "revenue": 0,
+    "expenses": 0.0,
+    "profit": 0.0,
+    "roi": 0.0,
+    "investment": 300,
+    "cogs": 0,
+    "gross_margin": 0
+  },
+  "operations": {
+    "missions_attempted": 0,
+    "missions_successful": 0,
+    "approval_rate": 0.0,
+    "average_quality": 0.0,
+    "mvp_progress": 0,
+    "storefront_status": "not_started"
+  },
+  "strategy": {
+    "active_strategies": [],
+    "retired_strategies": [],
+    "current_hypothesis": "AI professionals will pay premium for curated, reliable AI tools and hardware",
+    "business_model": "transaction_economy"
+  },
+  "learning": {
+    "experiments_run": 0,
+    "knowledge_base_size": 0
+  },
+  "knowledge": {
+    "observations": [],
+    "hypotheses": [],
+    "experiments": [],
+    "strategies": []
+  },
+  "growth": {
+    "metrics": {},
+    "products_listed": 0,
+    "validated_suppliers": 0,
+    "transactions": 0,
+    "monthly_visitors": 0
+  },
+  "risk": {
+    "operational_risk": 0.35,
+    "financial_risk": 0.1,
+    "supply_chain_risk": 0.25,
+    "customer_acquisition_risk": 0.4
+  },
+  "confidence": 0.35,
+  "venture_metadata": {
+    "venture_id": "ai_store_001",
+    "division": "commerce",
+    "parent_portfolio": "Raphael Holdings",
+    "founder": "Raphael OS",
+    "capital_source": "exploration_pool",
+    "incubation_budget": 500,
+    "validation_deadline": "30 days",
+    "success_threshold": 0.75,
+    "venture_stage": "INCUBATING"
+  },
+  "decision_journal": [
+    {
+      "decision": "Received 9% resource allocation (Exploration pool)",
+      "reasoning": [
+        "Ranked score: 0.3195",
+        "Lifecycle: INCUBATING, Pool: Exploration"
+      ],
+      "expected_outcome": "Maximized portfolio ROI based on current ranking"
+    }
+  ]
+}

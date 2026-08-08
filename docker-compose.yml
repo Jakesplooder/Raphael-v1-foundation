@@ -26,11 +26,15 @@ services:
     tty: true
 
   api-gateway:
-    build: ./api_gateway
+    build:
+      context: .
+      dockerfile: api_gateway/Dockerfile
     container_name: api-gateway
+    command: ["uvicorn", "gateway:app", "--host", "0.0.0.0", "--port", "8000"]
     ports:
       - "8787:8000"  # Serve legacy UI on 8787
     environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
       - RRK_URL=http://raphaelos:8788
       - RAPHAEL_RUNTIME_DIR=/app/runtime
       - RAPHAEL_VAULT_DIR=/app/vault
@@ -48,6 +52,7 @@ services:
       - C:/Users/cyber/Downloads/RalphaelOS/Ralphael:/app/vault
       - C:/RaphaelOS:/app/runtime
       - ./api_gateway:/app
+      - ./raphael_core:/app/raphael_core
       - C:/Users/cyber/Downloads/RalphaelOS/config:/app/config:ro
       - C:/Users/cyber/Downloads/RalphaelOS:/app/repo:ro
       - type: bind
@@ -114,6 +119,24 @@ services:
       - C:/ComfyUI/models:/opt/ComfyUI/models
       - C:/ComfyUI/output:/opt/ComfyUI/output
       - C:/ComfyUI/input:/opt/ComfyUI/input
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  xtts-api-server:
+    image: daswer123/xtts-api-server:latest
+    container_name: raphael-xtts
+    ports:
+      - "8020:8020"
+    volumes:
+      - C:/RaphaelOS/docker/xtts/speakers:/app/speakers
+    environment:
+      - PORT=8020
+      - EXAMPLE_FOLDER=/app/speakers
     deploy:
       resources:
         reservations:

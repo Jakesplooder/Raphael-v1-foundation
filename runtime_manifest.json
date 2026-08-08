@@ -1,7 +1,7 @@
 {
   "kernel_version": "2.0.0",
-  "boot_time": 1784068888.5795934,
-  "runtime_mode": "enterprise",
+  "boot_time": 1784874982.7206807,
+  "runtime_mode": "production",
   "services": [
     "EventBus",
     "JobSystem",
@@ -26,6 +26,8 @@
     "BuilderManager",
     "ProjectManager",
     "WorkflowPlans",
+    "IntentRouter",
+    "MissionDispatcher",
     "Memory",
     "Knowledge",
     "Workflowrunner",
@@ -38,6 +40,6 @@
   "health": "OK",
   "constitution_version": "1.0",
   "world_model_version": "2.0",
-  "trace_seed": "RRK-1784068888.5796852",
-  "startup_duration_ms": 117.52001953125
+  "trace_seed": "RRK-1784874982.7207198",
+  "startup_duration_ms": 115.02734375
 }

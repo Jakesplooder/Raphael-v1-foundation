@@ -2,6 +2,7 @@ import asyncio
 import sqlite3
 import json
 import os
+import datetime
 from typing import Callable, Coroutine, Dict, List, Any
 from collections import defaultdict
 
@@ -19,11 +20,17 @@ class EventBus(ServiceModule):
     
     def __init__(self):
         self._subscribers: Dict[str, List[EventHandler]] = defaultdict(list)
+        self._wildcard_subscribers: List[EventHandler] = []
         self._volatile_queue: asyncio.Queue = asyncio.Queue()
         self._running = False
         self._worker_task = None
         self._db_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", "."), "kernel_events.db")
         self._conn = None
+        self._recent_events = []
+        self._max_recent = 200
+        
+    def get_recent_events(self) -> List[Dict[str, Any]]:
+        return self._recent_events
         
     @property
     def name(self) -> str:
@@ -104,8 +111,12 @@ class EventBus(ServiceModule):
         }
 
     def subscribe(self, event_type: str, handler: EventHandler) -> None:
-        self._subscribers[event_type].append(handler)
-        ObservabilityLayer.debug(self.name, f"Subscribed handler to {event_type}")
+        if event_type == "*":
+            self._wildcard_subscribers.append(handler)
+            ObservabilityLayer.debug(self.name, "Subscribed wildcard handler")
+        else:
+            self._subscribers[event_type].append(handler)
+            ObservabilityLayer.debug(self.name, f"Subscribed handler to {event_type}")
 
     async def publish(self, event: Event) -> None:
         """Publish an event to the bus."""
@@ -117,6 +128,8 @@ class EventBus(ServiceModule):
         
         if event.is_durable:
             self._persist_durable_event(event)
+            
+        self._log_event_to_file(event)
             
         await self._volatile_queue.put(event)
 
@@ -133,6 +146,30 @@ class EventBus(ServiceModule):
         except Exception as e:
             ObservabilityLayer.error(self.name, f"Failed to persist durable event: {e}", trace_id=event.trace_id)
 
+    def _log_event_to_file(self, event: Event) -> None:
+        try:
+            today = datetime.datetime.now().strftime("%Y-%m-%d")
+            base_dir = os.environ.get("RAPHAEL_DATA_DIR", "c:\\RaphaelOS")
+            if not os.path.isabs(base_dir) and base_dir == ".":
+                base_dir = "c:\\RaphaelOS"
+            storage_dir = os.path.join(base_dir, "raphael_storage", "events")
+            os.makedirs(storage_dir, exist_ok=True)
+            log_path = os.path.join(storage_dir, f"{today}.log")
+            
+            event_dict = event.model_dump()
+            event_dict["type"] = event.type if isinstance(event.type, str) else event.type.value
+            event_dict["priority"] = event.priority if isinstance(event.priority, int) else event.priority.value
+            
+            with open(log_path, "a", encoding="utf-8") as f:
+                f.write(json.dumps(event_dict) + "\n")
+                
+            self._recent_events.append(event_dict)
+            if len(self._recent_events) > self._max_recent:
+                self._recent_events.pop(0)
+        except Exception as e:
+            ObservabilityLayer.error(self.name, f"Failed to log event to file: {e}", trace_id=event.trace_id)
+
+
     async def _event_loop(self) -> None:
         while self._running:
             try:
@@ -141,7 +178,8 @@ class EventBus(ServiceModule):
                 
                 # In a massive system, we'd use asyncio.gather for parallel dispatch,
                 # but we'll do simple iteration for predictability in v1
-                for handler in handlers:
+                all_handlers = handlers + self._wildcard_subscribers
+                for handler in all_handlers:
                     try:
                         await handler(event)
                     except Exception as e:

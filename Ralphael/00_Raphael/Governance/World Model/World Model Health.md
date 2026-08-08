@@ -1,20 +1,20 @@
 # World Model Health
 
-Generated: 2026-07-06T04:41:12
+Generated: 2026-07-21T03:03:08
 
-- Nodes: 779
-- Relationships: 2092
+- Nodes: 835
+- Relationships: 2341
 - Events: 100
 - Hypotheses: 30
-- Conflicts: 1
+- Conflicts: 0
 - Minimum viable graph connected: False
-- Nodes confidence > 0.7: 0.961
+- Nodes confidence > 0.7: 0.964
 - Relationships with evidence: 1.0
 - Active nodes missing source_reference: 0
 
 ## Review Queues
 
-- Stale nodes: 29
+- Stale nodes: 0
 - Stale relationships: 0
 - Review candidates: 0
 - Dormant entities: 0

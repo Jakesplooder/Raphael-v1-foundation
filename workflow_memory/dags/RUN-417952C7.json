@@ -1,0 +1,37 @@
+{
+  "run_id": "RUN-417952C7",
+  "status": "COMPLETED",
+  "nodes": {
+    "node1": {
+      "definition": {
+        "id": "node1",
+        "tool": "mock",
+        "action": "test_action"
+      },
+      "state": "COMPLETED",
+      "outputs": {
+        "status": "ok"
+      },
+      "error": ""
+    },
+    "node2": {
+      "definition": {
+        "id": "node2",
+        "tool": "mock",
+        "action": "test_action"
+      },
+      "state": "COMPLETED",
+      "outputs": {
+        "status": "ok"
+      },
+      "error": ""
+    }
+  },
+  "edges": [
+    [
+      "node1",
+      "node2"
+    ]
+  ],
+  "created_at": "2026-07-21T03:55:41.562668"
+}

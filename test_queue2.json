@@ -1,0 +1,39 @@
+{
+  "remaining": [],
+  "completed": [
+    {
+      "request_id": "req_200",
+      "brand_id": "Brand_A",
+      "payload": {
+        "mock_youtube_db": [
+          "req_200"
+        ]
+      },
+      "brand_context": {
+        "brand_id": "Brand_A",
+        "youtube_credentials_ref": "ref_A",
+        "voice_profile": "voice_a",
+        "visual_style": {},
+        "content_categories": [],
+        "publish_default": "private"
+      }
+    },
+    {
+      "request_id": "req_200",
+      "brand_id": "Brand_B",
+      "payload": {
+        "mock_youtube_db": [
+          "req_200"
+        ]
+      },
+      "brand_context": {
+        "brand_id": "Brand_B",
+        "youtube_credentials_ref": "ref_B",
+        "voice_profile": "voice_b",
+        "visual_style": {},
+        "content_categories": [],
+        "publish_default": "private"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "generated": "2026-07-16T03:41:09",
+  "node_count": 102,
+  "relationship_count": 39,
+  "event_count": 1,
+  "hypothesis_count": 1,
+  "conflict_count": 0,
+  "stale_nodes": [],
+  "stale_relationships": [],
+  "review_candidates": [],
+  "dormant_entities": [],
+  "deprecated_entities": [],
+  "active_nodes_missing_source_reference": [],
+  "quality": {
+    "nodes_confidence_gt_0_7_ratio": 0.99,
+    "relationships_with_evidence_ratio": 1.0,
+    "minimum_viable_graph_connected": true
+  }
+}

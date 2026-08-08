@@ -8,6 +8,7 @@
     "raphael_core.kernel.dashboard",
     "raphael_core.world_model",
     "raphael_core.agent_runtime",
-    "raphael_core.kernel.infrastructure"
+    "raphael_core.kernel.infrastructure",
+    "raphael_core.kernel.services.capability_observatory"
   ]
 }

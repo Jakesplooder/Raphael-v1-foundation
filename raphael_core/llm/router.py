@@ -18,19 +18,24 @@ class LLMRouter:
             "gemini": GeminiProvider(),
             "local_reasoner": LocalReasonerProvider()
         }
+        self.role_map = {
+            "planning": "gemini",
+            "coding": "ollama", # qwen-coder via ollama
+            "reasoning": "ollama",
+            "memory": "local_reasoner",
+            "vision": "gemini"
+        }
         
     def execute(self, system_prompt: str, context: str, task: str, 
                 budget_mode: str = "balanced", capability: str = "reasoning", 
                 category: str = "executive") -> ReasoningResult:
         """
         Routes the task to the optimal provider and returns the ReasoningResult.
-        Rule: LLMs reason. Raphael decides.
         """
-        # Try cache first
-        provider_name = self.manager.select_provider(budget_mode, capability)
+        provider_name = self.role_map.get(capability, self.manager.select_provider(budget_mode, capability))
+        
         cached = CacheManager.get(provider_name, system_prompt, context, task, category)
         if cached:
-            # We return the cached result but flag it in the trace (could add cache_hit=True)
             return cached
             
         provider = self.providers.get(provider_name)
@@ -38,7 +43,11 @@ class LLMRouter:
             provider = self.providers["ollama"]
             
         try:
-            result = provider.reason("default", system_prompt, context, task)
+            req_model = "default"
+            if capability == "coding" and provider_name == "ollama":
+                req_model = "qwen2.5-coder"
+                
+            result = provider.reason(req_model, system_prompt, context, task)
             # Record success and cache
             cost = getattr(result, 'cost', 0.0) # Providers might return cost
             self.manager.record_success(provider_name, result.latency_sec, result.token_count, cost)

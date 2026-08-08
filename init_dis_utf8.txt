@@ -1,0 +1,56 @@
+  0           RESUME                   0
+
+  1           LOAD_SMALL_INT           1
+              LOAD_CONST               1 (('N8nConnector',))
+              IMPORT_NAME              0 (n8n)
+              IMPORT_FROM              1 (N8nConnector)
+              STORE_NAME               1 (N8nConnector)
+              POP_TOP
+
+  2           LOAD_SMALL_INT           1
+              LOAD_CONST               2 (('ComfyUIConnector',))
+              IMPORT_NAME              2 (comfyui)
+              IMPORT_FROM              3 (ComfyUIConnector)
+              STORE_NAME               3 (ComfyUIConnector)
+              POP_TOP
+
+  3           LOAD_SMALL_INT           1
+              LOAD_CONST               3 (('YouTubeConnector',))
+              IMPORT_NAME              4 (youtube)
+              IMPORT_FROM              5 (YouTubeConnector)
+              STORE_NAME               5 (YouTubeConnector)
+              POP_TOP
+
+  4           LOAD_SMALL_INT           1
+              LOAD_CONST               4 (('ShopifyConnector',))
+              IMPORT_NAME              6 (shopify)
+              IMPORT_FROM              7 (ShopifyConnector)
+              STORE_NAME               7 (ShopifyConnector)
+              POP_TOP
+
+  5           LOAD_SMALL_INT           1
+              LOAD_CONST               5 (('FilesystemConnector',))
+              IMPORT_NAME              8 (filesystem)
+              IMPORT_FROM              9 (FilesystemConnector)
+              STORE_NAME               9 (FilesystemConnector)
+              POP_TOP
+
+  9           LOAD_CONST               6 ('n8n')
+              LOAD_NAME                1 (N8nConnector)
+
+ 10           LOAD_CONST               7 ('comfyui')
+              LOAD_NAME                3 (ComfyUIConnector)
+
+ 11           LOAD_CONST               8 ('youtube')
+              LOAD_NAME                5 (YouTubeConnector)
+
+ 12           LOAD_CONST               9 ('shopify')
+              LOAD_NAME                7 (ShopifyConnector)
+
+ 13           LOAD_CONST              10 ('filesystem')
+              LOAD_NAME                9 (FilesystemConnector)
+
+  8           BUILD_MAP                5
+              STORE_NAME              10 (CONNECTOR_REGISTRY)
+              LOAD_CONST              11 (None)
+              RETURN_VALUE

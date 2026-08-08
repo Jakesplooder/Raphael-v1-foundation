@@ -1,0 +1,104 @@
+{
+  "version": 3,
+  "identity": {
+    "business_id": "agency_001",
+    "name": "Raphael Agency",
+    "category": "AI Services",
+    "domain": "agency"
+  },
+  "lifecycle_state": "INCUBATING",
+  "financials": {
+    "revenue": 0,
+    "expenses": 0.0,
+    "profit": 0.0,
+    "roi": 0.0,
+    "investment": 400,
+    "monthly_recurring_revenue": 0,
+    "service_margin": 0,
+    "customer_acquisition_cost": 0,
+    "lifetime_value": 0
+  },
+  "operations": {
+    "missions_attempted": 0,
+    "missions_successful": 0,
+    "approval_rate": 0.0,
+    "average_quality": 0.0,
+    "clients": 0,
+    "contracts": 0,
+    "active_engagements": 0,
+    "delivery_capacity": 5,
+    "delivery_quality_score": 0,
+    "utilization_rate": 0,
+    "mvp_progress": 0
+  },
+  "strategy": {
+    "active_strategies": [],
+    "retired_strategies": [],
+    "business_model": "service_economy",
+    "current_hypothesis": "AI automation reduces service delivery cost by 60%, enabling profitable agency operations at scale",
+    "service_lines": [
+      {
+        "name": "Marketing Automation",
+        "status": "planned",
+        "revenue": 0
+      },
+      {
+        "name": "Cybersecurity Audits",
+        "status": "planned",
+        "revenue": 0
+      },
+      {
+        "name": "Business Process Automation",
+        "status": "planned",
+        "revenue": 0
+      }
+    ]
+  },
+  "learning": {
+    "experiments_run": 0,
+    "knowledge_base_size": 0
+  },
+  "knowledge": {
+    "observations": [],
+    "hypotheses": [],
+    "experiments": [],
+    "strategies": []
+  },
+  "growth": {
+    "metrics": {},
+    "pipeline_leads": 0,
+    "conversion_rate": 0,
+    "churn_rate": 0,
+    "net_revenue_retention": 0
+  },
+  "risk": {
+    "operational_risk": 0.2,
+    "financial_risk": 0.1,
+    "client_concentration_risk": 0.3,
+    "talent_dependency_risk": 0.15,
+    "delivery_risk": 0.2
+  },
+  "confidence": 0.6,
+  "venture_metadata": {
+    "venture_id": "agency_001",
+    "division": "agency",
+    "parent_portfolio": "Raphael Holdings",
+    "founder": "Raphael OS",
+    "capital_source": "exploration_pool",
+    "incubation_budget": 400,
+    "validation_deadline": "30 days",
+    "success_threshold": 0.7,
+    "venture_stage": "INCUBATING",
+    "strategic_role": "internal_cash_flow_engine"
+  },
+  "decision_journal": [
+    {
+      "decision": "Received 7% resource allocation (Exploration pool)",
+      "reasoning": [
+        "Ranked score: 0.4005",
+        "Lifecycle: INCUBATING, Pool: Exploration"
+      ],
+      "expected_outcome": "Maximized portfolio ROI based on current ranking"
+    }
+  ]
+}

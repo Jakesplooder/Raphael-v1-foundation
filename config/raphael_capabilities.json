@@ -1,0 +1,65 @@
+{
+  "generated_at": "2026-07-21T13:17:29.919755Z",
+  "workflows": [
+    {
+      "id": "ltx_storyboard_factory",
+      "name": "LTX Storyboard Factory",
+      "domain": "creative",
+      "available": true,
+      "requires_confirmation": true
+    },
+    {
+      "id": "commerce_store_factory",
+      "name": "Commerce Store Factory",
+      "domain": "business",
+      "available": true,
+      "requires_confirmation": true
+    },
+    {
+      "id": "pod_studio",
+      "name": "POD Studio",
+      "domain": "creative",
+      "available": true,
+      "requires_confirmation": true
+    },
+    {
+      "id": "builder_workflow",
+      "name": "Builder Workflow",
+      "domain": "engineering",
+      "available": true,
+      "requires_confirmation": true
+    }
+  ],
+  "engines": [
+    {
+      "id": "comfyui",
+      "status": "online",
+      "capabilities": [
+        "image_generation",
+        "video_generation"
+      ]
+    },
+    {
+      "id": "ltx",
+      "status": "online",
+      "capabilities": [
+        "video_generation"
+      ]
+    },
+    {
+      "id": "n8n",
+      "status": "online",
+      "capabilities": [
+        "workflow_automation",
+        "api_integration"
+      ]
+    }
+  ],
+  "councils": [
+    "Commerce Council",
+    "Agency Council",
+    "Creator Council",
+    "Executive Council",
+    "Engineering Council"
+  ]
+}
