@@ -1,27 +1,50 @@
-.env
-.env.*
+# Dependencies
+node_modules/
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
 
-# Caches and runtime memory
-memory/llm_cache/
-world_model/predictions/
-world_model/reasoning_traces/
-logs/
-runtime/
+# Env / secrets
+.env
+*.env.local
+*.env.*.local
 
-# Databases
+# DB / binary artifacts
 *.db
+*.db-shm
+*.db-wal
 *.sqlite
+*.sqlite3
 
-# IDEs
-.idea/
-.vscode/
+# Large media / generated outputs (tracked by content store, not git)
+*.mp4
+*.wav
+*.mp3
+*.aac
+*.png
+*.jpg
+*.jpeg
+*.webp
+test_images/
+test_videos/
+vault/
 
-# Builder outputs
-builder/workspace/
-builder/requests/
+# Logs
+*.log
+logs/
 
-#Analytics
-analytics/credentials/*
-raphael_core/analytics/credentials/*.json
+# Temp / scratch
+temp.json
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db

@@ -36,6 +36,12 @@ class ExecutionQueue:
             step.status = StepStatus.FAILED
             self._failed.append(step)
 
+    def mark_cancelled(self, step_id: str) -> None:
+        step = self._remove_from_all(step_id)
+        if step:
+            step.status = StepStatus.CANCELLED
+            self._failed.append(step)
+
     def get_pending(self) -> List[WorkflowStep]:
         return list(self._pending)
 

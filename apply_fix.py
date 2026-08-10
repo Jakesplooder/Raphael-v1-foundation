@@ -2,8 +2,8 @@ import os
 import re
 from pathlib import Path
 
-LEGACY_PATH = Path(r"C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py")
-COMMAND_BUS_PATH = Path(r"C:\RaphaelOS\command_bus.py")
+LEGACY_PATH = Path(r"R:\RalphaelOS_Repo\raphael_core\legacy.py")
+COMMAND_BUS_PATH = Path(r"R:\RaphaelOS\command_bus.py")
 
 # 1. Patch command_bus.py
 with open(COMMAND_BUS_PATH, "r", encoding="utf-8") as f:

@@ -16,8 +16,9 @@ from ..services.execution_queue import ExecutionQueue
 from ..services.workflow_scheduler import WorkflowScheduler
 
 class WorkflowPlanManager(ServiceModule):
-    def __init__(self, config: RaphaelConfig):
+    def __init__(self, event_bus: EventBus, config: RaphaelConfig):
         self.config = config
+        self.event_bus = event_bus
         self._health = "pending"
         self._router = APIRouter(prefix="/api/workflowplans")
         
@@ -28,7 +29,8 @@ class WorkflowPlanManager(ServiceModule):
         self.queue = ExecutionQueue()
         self.scheduler = WorkflowScheduler(self.queue, self.registry)
         
-        self.event_bus = None
+
+        self.active_plans = {}
 
     @property
     def name(self) -> str:
@@ -39,18 +41,97 @@ class WorkflowPlanManager(ServiceModule):
         return ["EventBus", "Gateway"]
 
     async def initialize(self, **kwargs) -> None:
-        self.event_bus = kwargs.get("event_bus")
         self._setup_routes()
         self._health = "initialized"
 
     async def start(self) -> None:
         self._health = "running"
+        self._engine_task = None
         if self.event_bus:
-            # We would subscribe to events here if needed
-            pass
+            self.event_bus.subscribe(EventType.WORKFLOW_PLAN_REQUESTED, self._handle_plan_requested)
+            self._engine_task = asyncio.create_task(self._engine_loop())
+
+    async def _handle_plan_requested(self, event: Event) -> None:
+        import logging
+        from ..observability import ObservabilityLayer
+        logger = logging.getLogger("workflow_plan_manager")
+        logger.info(f"_handle_plan_requested received event: {event.id}")
+        ObservabilityLayer.info("WorkflowPlanManager", f"_handle_plan_requested received event: {event.id}")
+        
+        payload = event.payload
+        template_dump = payload.get("template")
+        if not template_dump:
+            logger.error("No template dump in payload!")
+            ObservabilityLayer.error("WorkflowPlanManager", "No template dump in payload!")
+            return
+            
+        from ..models.workflow_plan import WorkflowTemplate, WorkflowPlan
+        template = WorkflowTemplate(**template_dump)
+        plan = WorkflowPlan(
+            template_id=template.template_id,
+            phases=template.phases
+        )
+        self.active_plans[plan.plan_id] = plan
+        
+        try:
+            self.repository.save_plan(plan)
+            logger.info(f"Saved WorkflowPlan {plan.plan_id}")
+            ObservabilityLayer.info("WorkflowPlanManager", f"Saved WorkflowPlan {plan.plan_id} to {self.repository.base_dir}")
+        except Exception as e:
+            ObservabilityLayer.error("WorkflowPlanManager", f"Failed to save plan: {e}")
+        
+    async def _engine_loop(self) -> None:
+        import logging
+        logger = logging.getLogger("rrk.managers.workflow_plan")
+        
+        # Load running plans from disk on startup
+        for plan in self.repository.list_plans():
+            self.active_plans[plan.plan_id] = plan
+            
+        while self._health == "running":
+            try:
+                plans = list(self.active_plans.values())
+                # Schedule new steps
+                for plan in plans:
+                    self.scheduler.schedule(plan)
+                    
+                # Dispatch ready steps
+                await self.scheduler.dispatch(plans)
+                
+                # Save state back to repository and cleanup finished plans
+                finished_plans = []
+                from ..models.workflow_plan import WorkflowStatus, StepStatus
+                
+                for plan_id, plan in self.active_plans.items():
+                    # Check if all steps completed
+                    if plan.status not in (WorkflowStatus.FAILED, WorkflowStatus.CANCELLED):
+                        all_completed = True
+                        for phase in plan.phases.values():
+                            for step in phase.steps.values():
+                                if step.status != StepStatus.COMPLETED:
+                                    all_completed = False
+                                    break
+                        if all_completed and len(plan.phases) > 0:
+                            plan.status = WorkflowStatus.COMPLETED
+                            logger.info(f"WorkflowPlan {plan.plan_id} completed successfully.")
+                            
+                    self.repository.save_plan(plan)
+                    
+                    if plan.status in (WorkflowStatus.COMPLETED, WorkflowStatus.FAILED, WorkflowStatus.CANCELLED):
+                        finished_plans.append(plan_id)
+                        
+                for plan_id in finished_plans:
+                    del self.active_plans[plan_id]
+                    
+            except Exception as e:
+                logger.error(f"Error in Workflow Engine loop: {e}")
+                
+            await asyncio.sleep(2)
 
     async def stop(self) -> None:
         self._health = "stopped"
+        if hasattr(self, '_engine_task') and self._engine_task:
+            self._engine_task.cancel()
 
     async def shutdown(self) -> None:
         self._health = "shutdown"

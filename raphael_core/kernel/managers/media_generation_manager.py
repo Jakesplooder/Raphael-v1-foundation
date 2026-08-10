@@ -1,27 +1,37 @@
 import logging
-import uuid
-import time
-import asyncio
 from typing import Dict, Any, List
-from pathlib import Path
 
 from ..interfaces import ServiceModule, Event, EventType, ModuleHealth
-from ..providers.workflow.image_generation_provider import ImageGenerationProvider
+from ..services.media_generation.image_service import ImageGenerationService
+from ..models.media_generation import GenerationRequest
 
-logger = logging.getLogger("rrk.managers.media")
+logger = logging.getLogger("rrk.managers.media_generation")
 
 class MediaGenerationManager(ServiceModule):
-    def __init__(self, event_bus, config):
+    """
+    Manages media generation (images, video, audio) across different renderers.
+    Host for ImageGenerationService.
+    """
+    
+    def __init__(self, event_bus, config, commerce_repo):
         self.event_bus = event_bus
         self.config = config
-        self._is_initialized = False
-        self.provider = ImageGenerationProvider()
-        self.active_jobs = {}
-        self.asset_registry = {}
         
-        # Path for persistent job storage
-        os_root = getattr(self.config, "os_root", Path("C:/RaphaelOS"))
-        self.jobs_file = os_root / "runtime" / "media_jobs.json"
+        # Initialize Renderer Adapters
+        from ..providers.commerce.comfyui_adapter import ComfyUIAdapter
+        self.comfyui_adapter = ComfyUIAdapter()
+        
+        # Initialize Repositories
+        from ..repositories.media_generation_repository import MediaGenerationRepository
+        self.media_repo = MediaGenerationRepository(config.os_root)
+        
+        # Initialize Services
+        self.image_service = ImageGenerationService(
+            renderer=self.comfyui_adapter, 
+            commerce_repo=commerce_repo,
+            media_repo=self.media_repo
+        )
+        self._is_initialized = False
 
     @property
     def name(self) -> str:
@@ -29,112 +39,70 @@ class MediaGenerationManager(ServiceModule):
 
     @property
     def depends_on(self) -> List[str]:
-        return ["EventBus"]
+        return ["EventBus", "CommerceManager"]
 
     async def initialize(self) -> None:
-        self.event_bus.subscribe(EventType.JOB_STARTED, self._handle_job_started)
+        self.event_bus.subscribe(EventType.COMMERCE_IMAGE_GENERATED, self._handle_legacy_trigger)
         self._is_initialized = True
         logger.info("MediaGenerationManager initialized.")
 
+    async def _handle_legacy_trigger(self, event: Event):
+        pass
+
     async def start(self) -> None:
-        """
-        Start the module and load any persisted jobs from disk to ensure Active Jobs panel populates.
-        """
-        self._load_jobs()
-        logger.info(f"MediaGenerationManager started. Loaded {len(self.active_jobs)} jobs.")
-
-    def _load_jobs(self):
-        import json
-        if self.jobs_file.exists():
-            try:
-                with open(self.jobs_file, "r") as f:
-                    data = json.load(f)
-                    self.active_jobs = data.get("active_jobs", {})
-                    self.asset_registry = data.get("asset_registry", {})
-            except Exception as e:
-                logger.error(f"Failed to load media jobs: {e}")
-
-    def _save_jobs(self):
-        import json
-        self.jobs_file.parent.mkdir(parents=True, exist_ok=True)
-        with open(self.jobs_file, "w") as f:
-            json.dump({
-                "active_jobs": self.active_jobs,
-                "asset_registry": self.asset_registry
-            }, f)
-
-    async def _handle_job_started(self, event: Event):
-        payload = event.payload
-        if payload.get("type") != "image_generation":
-            return
-            
-        job_id = payload.get("job_id", str(uuid.uuid4()))
-        prompt = payload.get("prompt", "")
-        
-        # Chat-triggered generation request defaults
-        business_id = payload.get("business_id", "chat-adhoc")
-        mission_id = payload.get("mission_id", f"chat-{int(time.time())}")
-        
-        self.active_jobs[job_id] = {
-            "status": "running",
-            "prompt": prompt,
-            "business_id": business_id,
-            "mission_id": mission_id,
-            "start_time": time.time()
-        }
-        self._save_jobs()
-        
-        # Fire off the actual generation in a background task so we don't block the event bus
-        asyncio.create_task(self._run_generation(job_id, prompt))
-        
-    async def _run_generation(self, job_id: str, prompt: str):
-        try:
-            asset_path = await self.provider.generate(prompt)
-            self.active_jobs[job_id]["status"] = "completed"
-            asset_id = str(uuid.uuid4())
-            self.active_jobs[job_id]["asset_id"] = asset_id
-            self.asset_registry[asset_id] = str(asset_path)
-            logger.info(f"Job {job_id} completed successfully. Asset: {asset_id}")
-        except Exception as e:
-            logger.error(f"Job {job_id} failed: {e}")
-            self.active_jobs[job_id]["status"] = "failed"
-            self.active_jobs[job_id]["error"] = str(e)
-            
-        self._save_jobs()
+        await self.image_service.start()
+        logger.info("ImageGenerationService started.")
 
     async def stop(self) -> None:
-        self._save_jobs()
+        await self.image_service.stop()
         
     async def shutdown(self) -> None:
         self._is_initialized = False
 
     def status(self) -> str:
-        return "running" if self._is_initialized else "stopped"
+        return f"running (active jobs: {len(self.image_service.active_jobs)})"
 
     async def heartbeat(self) -> bool | Dict[str, Any]:
         return True
 
     def health(self) -> ModuleHealth:
-        # Synchronous health check to avoid coroutine object errors in HealthMonitor
         return ModuleHealth.OK
 
     async def metrics(self) -> dict:
-        return {}
+        from ..models.media_generation import GenerationStatus
+        
+        all_jobs = self.media_repo.get_jobs()
+        queued = sum(1 for j in all_jobs if j.status == GenerationStatus.QUEUED)
+        running = sum(1 for j in all_jobs if j.status == GenerationStatus.RUNNING)
+        completed = sum(1 for j in all_jobs if j.status == GenerationStatus.COMPLETED)
+        failed = sum(1 for j in all_jobs if j.status == GenerationStatus.FAILED)
+        cancelled = sum(1 for j in all_jobs if j.status == GenerationStatus.CANCELLED)
+        
+        completed_durations = [j.telemetry.get("duration", 0) for j in all_jobs if j.status == GenerationStatus.COMPLETED and j.telemetry.get("duration") is not None]
+        avg_render_time = sum(completed_durations) / len(completed_durations) if completed_durations else 0.0
+        
+        return {
+            "queue_size": queued,
+            "running": running,
+            "completed": completed,
+            "failed": failed,
+            "cancelled": cancelled,
+            "avg_render_time_sec": round(avg_render_time, 3),
+            "total_jobs": len(all_jobs)
+        }
 
     async def handle_request(self, method: str, endpoint: str, payload: Dict[str, Any]) -> Any:
-        # Serve jobs status
-        if method == "GET" and endpoint == "/api/status/jobs":
-            return {"jobs": self.active_jobs}
-            
-        # Security fix: ID-based lookup resolving real path server-side, never a client-supplied raw path
-        elif method == "GET" and endpoint.startswith("/api/asset/"):
-            asset_id = endpoint.split("/")[-1]
-            if asset_id in self.asset_registry:
-                from fastapi.responses import FileResponse
-                return FileResponse(self.asset_registry[asset_id])
-            
-            # Return 404 cleanly
-            from fastapi import Response
-            return Response(content='{"error": "Asset not found"}', status_code=404, media_type="application/json")
+        if method == "POST" and endpoint == "/api/media/generate":
+            import uuid
+            req = GenerationRequest(
+                request_id=f"REQ-{uuid.uuid4().hex[:6].upper()}",
+                business_id=payload.get("business_id"),
+                mission_id=payload.get("mission_id"),
+                asset_type=payload.get("asset_type", "image"),
+                prompt=payload.get("prompt", ""),
+                metadata=payload.get("metadata", {})
+            )
+            job_id = await self.image_service.generate_asset(req)
+            return {"status": "queued", "request_id": req.request_id}
             
         return {"error": "Unknown endpoint"}

@@ -58,11 +58,6 @@ from .workflow_recovery import (
     WorkflowMemoryEntry,
 )
 
-)
-
-from raphael_core.kernel.registry import registry
-from raphael_core.kernel.interfaces import Event, EventType
-
 logger = logging.getLogger("rrk.workflow.engine")
 
 
@@ -213,55 +208,11 @@ class WorkflowEngine:
 
             logger.info(f"\n[ENGINE] Executing: {step.display_name or step.name}")
 
-            event_bus = registry.get_service("EventBus")
-            if event_bus:
-                # Fire and forget publishing since we're not inside an async loop here
-                import asyncio
-                payload = {
-                    "step_name": step.name,
-                    "workflow_type": workflow.workflow_type
-                }
-                started_event = Event(
-                    source="WorkflowEngine",
-                    type=EventType.NODE_STARTED,
-                    execution_id=execution.execution_id,
-                    node_id=step.name,
-                    payload=payload
-                )
-                try:
-                    loop = asyncio.get_running_loop()
-                    loop.create_task(event_bus.publish(started_event))
-                except RuntimeError:
-                    asyncio.run(event_bus.publish(started_event))
-                except Exception:
-                    pass
-
             try:
                 result = workflow.execute_step(step.name, execution.context)
                 logger.info(
                     f"[ENGINE] [OK] {step.name} → {result.get('state', 'success')}"
                 )
-                
-                if event_bus:
-                    try:
-                        import asyncio
-                        completed_event = Event(
-                            source="WorkflowEngine",
-                            type=EventType.NODE_COMPLETED,
-                            execution_id=execution.execution_id,
-                            node_id=step.name,
-                            payload=result
-                        )
-                        try:
-                            loop = asyncio.get_running_loop()
-                            loop.create_task(event_bus.publish(completed_event))
-                        except RuntimeError:
-                            asyncio.run(event_bus.publish(completed_event))
-                        except Exception:
-                            pass
-                    except Exception:
-                        pass
-                        
                 execution.current_step += 1
 
             except Exception as exc:

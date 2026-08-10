@@ -16,7 +16,7 @@ def emit_performance_review(record: dict):
     Mocks emitting a Performance Review Record node to the World Model.
     Persists it to a local json for CLI/testing.
     """
-    fp = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\performance_reviews.json")
+    fp = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\performance_reviews.json")
     os.makedirs(os.path.dirname(fp), exist_ok=True)
     reviews = []
     if os.path.exists(fp):
@@ -27,14 +27,14 @@ def emit_performance_review(record: dict):
         json.dump(reviews, f, indent=2)
 
 def get_performance_reviews() -> List[dict]:
-    fp = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\performance_reviews.json")
+    fp = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\performance_reviews.json")
     if not os.path.exists(fp):
         return []
     with open(fp, "r", encoding="utf-8") as f:
         return json.load(f)
         
 def acknowledge_review(review_id: str):
-    fp = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\performance_reviews.json")
+    fp = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\performance_reviews.json")
     if not os.path.exists(fp): return False
     with open(fp, "r", encoding="utf-8") as f:
         reviews = json.load(f)
@@ -55,7 +55,7 @@ class WorldModelEmitter:
         """
         node_id = f"TRN-{str(uuid.uuid4())[:8].upper()}"
         
-        log_path = os.path.join(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model"), "training_records.json")
+        log_path = os.path.join(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model"), "training_records.json")
         try:
             if os.path.exists(log_path):
                 with open(log_path, 'r', encoding='utf-8') as f:
@@ -74,7 +74,7 @@ class WorldModelEmitter:
         return node_id
 
 def get_training_records() -> List[Dict[str, Any]]:
-    log_path = os.path.join(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model"), "training_records.json")
+    log_path = os.path.join(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model"), "training_records.json")
     try:
         if os.path.exists(log_path):
             with open(log_path, 'r', encoding='utf-8') as f:

@@ -73,7 +73,7 @@ def main():
                         print(f"Result video: {filename}")
                         # Extract Audio
                         video_path = Path(r"C:\ComfyUI\output") / filename
-                        audio_path = Path(r"C:\Users\cyber\Downloads\RalphaelOS") / "test_audio.aac"
+                        audio_path = Path(r"R:\RalphaelOS_Repo") / "test_audio.aac"
                         if audio_path.exists():
                             audio_path.unlink()
                             

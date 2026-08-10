@@ -2,7 +2,7 @@ import os
 import json
 from typing import List, Dict, Any
 
-LEDGER_FILE = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\llm_ledger.json")
+LEDGER_FILE = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\llm_ledger.json")
 
 def load_ledger() -> List[Dict[str, Any]]:
     if not os.path.exists(LEDGER_FILE):

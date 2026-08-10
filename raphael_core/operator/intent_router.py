@@ -7,7 +7,6 @@ from raphael_core.llm.router import LLMRouter
 class IntentClass(str, enum.Enum):
     CAPABILITY_QUERY = "capability_query"
     WORKFLOW_QUERY = "workflow_query"
-    STATUS_QUERY = "status_query"
     CONVERSATION = "conversation"
     RESEARCH = "research"
     CREATION = "creation"
@@ -17,9 +16,7 @@ class IntentClass(str, enum.Enum):
     DECISION = "decision"
     APPROVAL = "approval"
     REJECTION = "rejection"
-    MODIFICATION = "modification"
-    CAPABILITY_DISPATCH = "capability_dispatch"
-    EXECUTIVE_COMMAND = "executive_command"
+    GENERATE_ASSET = "generate_asset"
     UNKNOWN = "unknown"
 
 CAPABILITY_TRIGGERS = [
@@ -39,6 +36,18 @@ CREATION_TRIGGERS = [
     "build",
     "generate",
     "design"
+]
+
+GENERATE_ASSET_TRIGGERS = [
+    "generate an image",
+    "create a picture",
+    "generate a picture",
+    "create an image",
+    "draw me",
+    "draw a",
+    "paint a",
+    "generate art",
+    "make an image"
 ]
 
 BUSINESS_TRIGGERS = [
@@ -65,65 +74,21 @@ class HybridIntentRouter:
         self.llm = LLMRouter()
         
     def _emit_event(self, intent_val: str, confidence: float):
-        from raphael_core.kernel.event_bus import emit
-        emit("INTENT_DETECTED", "dashboard_chat", {
-            "intent": intent_val,
-            "confidence": confidence,
-            "source": "dashboard_chat"
-        })
+        import logging
+        logger = logging.getLogger("intent_router")
+        logger.debug(f"INTENT_DETECTED: {intent_val} (confidence: {confidence})")
 
     def route(self, prompt: str) -> Tuple[IntentClass, Dict[str, Any]]:
         p = prompt.strip().lower()
         
         # Stage 1: Deterministic Routing / Hard Interceptors
-        if p in ["approve", "/approve", "yes", "execute", "[execute]", "confirm"]:
+        if p in ["approve", "/approve", "yes", "execute", "[execute]"]:
             self._emit_event("approval", 1.0)
             return IntentClass.APPROVAL, {"action": "approve"}
             
-        if p in ["reject", "/reject", "no", "cancel", "[cancel]", "stop"]:
+        if p in ["reject", "/reject", "no", "cancel", "[cancel]"]:
             self._emit_event("rejection", 1.0)
             return IntentClass.REJECTION, {"action": "reject"}
-            
-        if p in ["modify", "edit", "change"] or p.startswith("modify ") or p.startswith("edit ") or p.startswith("change "):
-            self._emit_event("modification", 1.0)
-            return IntentClass.MODIFICATION, {"action": "modify"}
-            
-        if p in ["what should i prioritize today", "what should i do today", "prioritize"]:
-            self._emit_event("executive_command", 1.0)
-            return IntentClass.EXECUTIVE_COMMAND, {"command": "priority"}
-            
-        if p in ["list councils", "show councils", "what councils exist"]:
-            self._emit_event("executive_command", 1.0)
-            return IntentClass.EXECUTIVE_COMMAND, {"command": "councils"}
-            
-        if p in ["show agents", "list agents"]:
-            self._emit_event("executive_command", 1.0)
-            return IntentClass.EXECUTIVE_COMMAND, {"command": "agents"}
-            
-        if p in ["show missions", "list missions"]:
-            self._emit_event("executive_command", 1.0)
-            return IntentClass.EXECUTIVE_COMMAND, {"command": "missions"}
-            
-        if p in ["start storyboard", "run storyboard", "create video", "make me a video"]:
-            self._emit_event("capability_dispatch", 1.0)
-            return IntentClass.CAPABILITY_DISPATCH, {"workflow_id": "video.generate"}
-            
-        if p in ["start pod", "create product", "run pod pipeline"]:
-            self._emit_event("capability_dispatch", 1.0)
-            return IntentClass.CAPABILITY_DISPATCH, {"workflow_id": "pod.generate"}
-            
-        if p in ["start build", "build this", "run builder"]:
-            self._emit_event("capability_dispatch", 1.0)
-            return IntentClass.CAPABILITY_DISPATCH, {"workflow_id": "builder.application"}
-            
-        # Legacy CommandBus fallbacks
-        if any(trigger in p for trigger in ["save to knowledge", "raw json", "show sources", "show snippets", "save source", "remember this"]):
-            self._emit_event("conversation", 1.0)
-            return IntentClass.CONVERSATION, {"action": "legacy_fallback"}
-            
-        if any(trigger in p for trigger in ["status", "how is the", "status of", "statua", "ststus"]):
-            self._emit_event("status_query", 1.0)
-            return IntentClass.STATUS_QUERY, {"query": "status"}
             
         if any(trigger in p for trigger in CAPABILITY_TRIGGERS):
             self._emit_event("capability_query", 1.0)
@@ -140,6 +105,11 @@ class HybridIntentRouter:
         if is_creation and is_business:
             self._emit_event("business", 0.9)
             return IntentClass.BUSINESS, {"source": "hard_interceptor"}
+            
+        is_generate_asset = any(trigger in p for trigger in GENERATE_ASSET_TRIGGERS)
+        if is_generate_asset:
+            self._emit_event("generate_asset", 1.0)
+            return IntentClass.GENERATE_ASSET, {"source": "hard_interceptor"}
             
         if is_creation:
             self._emit_event("creation", 0.9)

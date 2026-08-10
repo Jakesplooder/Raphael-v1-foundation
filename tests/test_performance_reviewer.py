@@ -101,6 +101,6 @@ def test_performance_acknowledge():
             break
             
     # Clean up mock file
-    fp = r"C:\RaphaelOS\world_model\performance_reviews.json"
+    fp = r"R:\RaphaelOS\world_model\performance_reviews.json"
     if os.path.exists(fp):
         os.remove(fp)

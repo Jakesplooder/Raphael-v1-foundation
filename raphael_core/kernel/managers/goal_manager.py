@@ -51,8 +51,8 @@ class GoalManager(ServiceModule):
     async def heartbeat(self) -> bool | Dict[str, Any]:
         return True
 
-    async def health(self) -> ModuleHealth:
-        return ModuleHealth(status="OK", details={"goals_tracked": len(self.repository.goals)})
+    def health(self) -> ModuleHealth:
+        return ModuleHealth.OK
 
     async def metrics(self) -> dict:
         return {}

@@ -24,7 +24,7 @@ def detect_opportunities(world_model: Dict[str, Any] = None) -> List[Dict[str, A
             if world_model and "nodes" in world_model:
                 return [n for n in world_model["nodes"] if n.get("node_type") == label]
             else:
-                with open(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), "world_model", "nodes.json"), "r", encoding="utf-8") as f:
+                with open(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), "world_model", "nodes.json"), "r", encoding="utf-8") as f:
                     nodes = json.load(f)
                     return [n for n in nodes if n.get("node_type") == label]
         except Exception:

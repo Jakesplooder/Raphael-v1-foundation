@@ -5,7 +5,7 @@ from pathlib import Path
 import requests
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_core.kernel.services.media_generation.xtts_client import XTTSClient
 
@@ -35,7 +35,7 @@ def main():
         "And here is the second sentence, which will be spoken by the same voice in the same continuous breath."
     )
     
-    out_path = str(Path(r"C:\Users\cyber\Downloads\RalphaelOS\xtts_master_audio.wav").absolute())
+    out_path = str(Path(r"R:\RalphaelOS_Repo\xtts_master_audio.wav").absolute())
     
     try:
         # Use persona_1.wav that we mapped to the container

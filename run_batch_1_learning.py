@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import random
 
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_domains.creator.business_twin.twin import BusinessTwin
 from raphael_domains.creator.business_twin.projection_engine import CreatorProjectionEngine
@@ -48,7 +48,7 @@ def run_learning_loop():
     ae_mod.emit = patched_emit
 
     # 2. Process the 10 missions in Review/Ready
-    ready_dir = Path(r"C:\RaphaelOS\Missions\Review\Ready")
+    ready_dir = Path(r"R:\RaphaelOS\Missions\Review\Ready")
     mission_folders = list(ready_dir.glob("*_FocusMarketing_*"))
     
     if not mission_folders:

@@ -3,7 +3,7 @@ import logging
 from pathlib import Path
 from pprint import pprint
 
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_core.kernel.repositories.idempotency_store import IdempotencyStore
 from raphael_domains.creator.video_engine import VideoPipelineFSM, BrandContext

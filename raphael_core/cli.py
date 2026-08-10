@@ -211,7 +211,7 @@ def _daemon_main(args: list[str]) -> int:
         import os
         
         # Register Core Services dynamically
-        system_manifest_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), "config", "system_manifest.json")
+        system_manifest_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), "config", "system_manifest.json")
         try:
             with open(system_manifest_path, "r", encoding="utf-8") as f:
                 sys_manifest = json.load(f)
@@ -222,7 +222,7 @@ def _daemon_main(args: list[str]) -> int:
         # Register Digital Workforce Agents dynamically
         import json
         import os
-        config_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), "config", "workforce_config.json")
+        config_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), "config", "workforce_config.json")
         try:
             with open(config_path, "r", encoding="utf-8") as f:
                 workforce_config = json.load(f)
@@ -243,7 +243,7 @@ def _daemon_main(args: list[str]) -> int:
 
         # Register Builder Subsystem
         from .kernel.managers.builder_manager import BuilderManager
-        builder_root = os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS")
+        builder_root = os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS")
         registry.register_service(BuilderManager(os.path.join(builder_root, "builder")))
 
         # Register Project Subsystem
@@ -256,7 +256,7 @@ def _daemon_main(args: list[str]) -> int:
         
         # Register Workflow Plans Subsystem
         from .kernel.managers.workflow_plan_manager import WorkflowPlanManager
-        registry.register_service(WorkflowPlanManager(config))
+        registry.register_service(WorkflowPlanManager(registry.get_service("EventBus"), config))
         
         # Register Core UI Services
         from .kernel.services.intent_router import IntentRouter
@@ -280,6 +280,10 @@ def _daemon_main(args: list[str]) -> int:
         from .kernel.managers.agent_manager import AgentManager
         registry.register_service(AgentManager(registry.get_service("EventBus"), config))
 
+        # Register Core UI Services
+        from .kernel.dashboard import KernelDashboard
+        registry.register_service(KernelDashboard(registry.get_service("EventBus")))
+
         # Register Goals Subsystem
         from .kernel.managers.goal_manager import GoalManager
         registry.register_service(GoalManager(registry.get_service("EventBus"), config))
@@ -292,6 +296,24 @@ def _daemon_main(args: list[str]) -> int:
         from .kernel.managers.commerce_manager import CommerceManager
         registry.register_service(CommerceManager(registry.get_service("EventBus"), config))
 
+        # Register Media Generation Subsystem (depends on EventBus + CommerceManager)
+        from .kernel.managers.media_generation_manager import MediaGenerationManager
+        from .kernel.repositories.commerce_repository import CommerceRepository
+        import pathlib as _pathlib
+        _os_root = _pathlib.Path(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"))
+        _commerce_repo = CommerceRepository(_os_root)
+        registry.register_service(MediaGenerationManager(registry.get_service("EventBus"), config, _commerce_repo))
+
+        # Wire ImageGenerationProvider into WorkflowPlanManager's CapabilityRegistry
+        # Must happen after both WorkflowPlans and MediaGenerationManager are registered.
+        from .kernel.providers.workflow.image_generation_provider import ImageGenerationProvider
+        _wpm = registry.get_service("WorkflowPlans")
+        _mgm = registry.get_service("MediaGenerationManager")
+        if _wpm and _mgm:
+            _wpm.registry.register(ImageGenerationProvider(_mgm.image_service))
+            ObservabilityLayer.info("CLI", "ImageGenerationProvider registered into WorkflowPlans CapabilityRegistry.")
+        else:
+            ObservabilityLayer.warning("CLI", "Could not wire ImageGenerationProvider: WorkflowPlans or MediaGenerationManager not found.")
 
         kernel = Kernel(mode=mode)
         
@@ -471,21 +493,11 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"Failed to reach Builder service via Gateway: {e}")
                 return 1
 
-        elif command == "builder-run":
-            spec = ""
-            if "--spec" in tail:
-                idx = tail.index("--spec")
-                spec = tail[idx+1]
-            elif "--prompt" in tail:
-                idx = tail.index("--prompt")
-                spec = tail[idx+1]
-            else:
-                if tail:
-                    spec = " ".join(tail)
-                else:
-                    raise SystemExit("builder-run requires --spec or --prompt")
+        elif command == "build-request":
+            if not tail:
+                raise SystemExit("build-request requires DESCRIPTION")
             
-            payload = {"spec": spec}
+            payload = {"description": " ".join(tail)}
             data = json.dumps(payload).encode("utf-8")
             req = urllib.request.Request(
                 "http://127.0.0.1:8787/api/builder/request",
@@ -501,48 +513,7 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"Failed to reach Builder service via Gateway: {e}")
                 return 1
 
-    if args and args[0] == "video-generate":
-        import urllib.request
-        import json
-        config_path, rest = _extract_config(args)
-        tail = rest[1:]
-        
-        prompt = ""
-        brand = ""
-        project = ""
-        
-        if "--prompt" in tail:
-            idx = tail.index("--prompt")
-            prompt = tail[idx+1]
-        elif tail and not tail[0].startswith("--"):
-            prompt = " ".join([t for t in tail if not t.startswith("--")])
-            
-        if "--brand" in tail:
-            idx = tail.index("--brand")
-            brand = tail[idx+1]
-            
-        if "--project" in tail:
-            idx = tail.index("--project")
-            project = tail[idx+1]
-            
-        if not prompt:
-            raise SystemExit("video-generate requires --prompt")
-            
-        payload = {"prompt": prompt, "brand": brand, "project": project}
-        data = json.dumps(payload).encode("utf-8")
-        req = urllib.request.Request(
-            "http://127.0.0.1:8787/api/video/generate",
-            data=data,
-            headers={"Content-Type": "application/json"},
-            method="POST"
-        )
-        try:
-            with urllib.request.urlopen(req, timeout=5) as response:
-                print(json.loads(response.read().decode()))
-            return 0
-        except Exception as e:
-            print(f"Failed to reach Video service via Gateway: {e}")
-            return 1
+    if args and args[0].startswith("project-"):
         import urllib.request
         import json
         config_path, rest = _extract_config(args)

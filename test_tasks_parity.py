@@ -16,7 +16,7 @@ def test_tasks_parity():
     
     # Initialize RRK repository directly for testing
     import json
-    settings = json.loads(Path(r"C:\Users\cyber\Downloads\RalphaelOS\config\settings.json").read_text())
+    settings = json.loads(Path(r"R:\RalphaelOS_Repo\config\settings.json").read_text())
     vault_path = Path(settings["vault_path"])
     print(f"DEBUG: Using vault path: {vault_path}")
     print(f"DEBUG: Vault path exists? {vault_path.exists()}")

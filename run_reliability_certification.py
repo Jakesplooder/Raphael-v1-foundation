@@ -6,7 +6,7 @@ import random
 from pathlib import Path
 from datetime import datetime
 
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_domains.creator.business_twin.twin import BusinessTwin
 from raphael_domains.creator.business_twin.projection_engine import CreatorProjectionEngine
@@ -77,7 +77,7 @@ def decay_strategy(twin, strategy_name: str, decay_amount: float = 0.15):
                     "retired_confidence": round(new_conf, 2),
                     "reason": "Declining ROI and quality over repeated missions."
                 }
-                retired_dir = Path(r"C:\RaphaelOS\Strategies\retired")
+                retired_dir = Path(r"R:\RaphaelOS\Strategies\retired")
                 retired_dir.mkdir(parents=True, exist_ok=True)
                 (retired_dir / f"{strategy_name.replace(' ', '_').lower()}.json").write_text(json.dumps(death_cert, indent=2))
                 print(f"\n[STRATEGY] {strategy_name} RETIRED. Death certificate created.")
@@ -89,7 +89,7 @@ def execute_mission(mission_id: str, strategy: str, twin: BusinessTwin, chaos_ty
     
     start_time = time.time()
     
-    base_dir = Path(r"C:\RaphaelOS\Missions\Certification")
+    base_dir = Path(r"R:\RaphaelOS\Missions\Certification")
     mission_dir = base_dir / mission_id
     
     # Chaos: Storage Failure
@@ -260,7 +260,7 @@ def run_reliability_certification():
         print("❌ FAILED: Did not quarantine Twin properly on fatal incidents")
         passed = False
         
-    retired = Path(r"C:\RaphaelOS\Strategies\retired")
+    retired = Path(r"R:\RaphaelOS\Strategies\retired")
     if not retired.exists() or not list(retired.glob("*.json")):
         print("❌ FAILED: Strategy Drift not detected (No Death Certificate)")
         passed = False

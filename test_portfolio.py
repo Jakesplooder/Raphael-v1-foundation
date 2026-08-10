@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_core.kernel.services.business_registry.base_twin import BaseTwin
 from raphael_core.kernel.services.business_registry.lifecycle import LifecycleState

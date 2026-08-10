@@ -85,11 +85,8 @@ class CommerceManager(ServiceModule):
     async def heartbeat(self) -> bool | Dict[str, Any]:
         return True
 
-    async def health(self) -> ModuleHealth:
-        return ModuleHealth(status="OK", details={
-            "products": len(self.repository.get_products()),
-            "assets": len(self.repository.get_assets())
-        })
+    def health(self) -> ModuleHealth:
+        return ModuleHealth.OK
 
     async def metrics(self) -> dict:
         return {}

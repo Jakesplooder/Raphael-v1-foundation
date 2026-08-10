@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Dict, Any
 
-class AutomationProvider(ABC):
+from ..workflow_providers import WorkflowProvider
+
+class AutomationProvider(WorkflowProvider):
     """
     Abstract interface for all automation execution providers (e.g. Python, n8n, Docker).
     """
@@ -10,6 +12,12 @@ class AutomationProvider(ABC):
     @abstractmethod
     def provider_name(self) -> str:
         pass
+
+    def name(self) -> str:
+        return self.provider_name
+        
+    def capabilities(self) -> list[str]:
+        return [self.provider_name]
 
     @abstractmethod
     async def execute_step(self, action: str, parameters: Dict[str, Any], idempotency_key: str = None) -> Dict[str, Any]:

@@ -78,7 +78,7 @@ Respond EXACTLY in this JSON format:
             return MissionProposal(
                 intent=intent,
                 objective=f"Error generating plan: {e}",
-                requires_approval=True,
+                requires_approval=False,
                 status="Error"
             )
 

@@ -6,7 +6,7 @@ from datetime import datetime
 from collections import defaultdict
 
 # Data Paths
-WM_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model")
+WM_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model")
 REPORTS_DIR = os.path.join(WM_DIR, "reports")
 CAUSAL_GRAPH = os.path.join(REPORTS_DIR, "causal_graph.json")
 LESSONS = os.path.join(REPORTS_DIR, "institutional_lessons.json")

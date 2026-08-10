@@ -13,7 +13,7 @@ class ProductCapabilityRegistry:
             "ebook": "AIProvider",
             "notion_template": "TemplateProvider",
             "software": "BuilderProvider",
-            "shirt_design": "ComfyUIProvider",
+            "shirt_design": "ImageGenerationService",
             "mockup": "MockupProvider",
             "seo": "AIProvider",
             "listing": "ListingProvider",

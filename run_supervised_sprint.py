@@ -5,7 +5,7 @@ import time
 import random
 from pathlib import Path
 
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_domains.creator.business_twin.twin import BusinessTwin
 from raphael_domains.creator.mission_analytics.analytics_engine import MissionAnalyticsEngine
@@ -25,7 +25,7 @@ def simulate_mission_execution(mission_id: str, strategy: str, should_fail: bool
     if should_fail:
         print(f"!!! INJECTED FAILURE in {mission_id} !!!")
         # Generate failure incident artifact
-        incidents_dir = Path(r"C:\RaphaelOS\Incidents")
+        incidents_dir = Path(r"R:\RaphaelOS\Incidents")
         incidents_dir.mkdir(parents=True, exist_ok=True)
         incident_folder = incidents_dir / f"2026-07-17_Mission_{mission_id}_failure"
         incident_folder.mkdir(exist_ok=True)

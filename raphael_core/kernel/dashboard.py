@@ -10,6 +10,7 @@ import uvicorn
 from .interfaces import ServiceModule, ModuleHealth
 from .observability import ObservabilityLayer
 from .state import store
+from .event_bus import EventBus
 
 
 class KernelDashboard(ServiceModule):
@@ -18,12 +19,14 @@ class KernelDashboard(ServiceModule):
     Dedicated FastAPI server on port 8788 strictly for Kernel Diagnostics.
     """
     
-    def __init__(self):
+    def __init__(self, event_bus: EventBus = None):
         self._running = False
         self._server = None
         self._thread = None
+        self.event_bus = event_bus
 
         self.app = FastAPI(title="Raphael Runtime Kernel (RRK) Dashboard")
+        self.app.state.event_bus = event_bus
         
         @self.app.get("/")
         def read_root():
@@ -113,41 +116,64 @@ class KernelDashboard(ServiceModule):
 
             return StreamingResponse(event_generator(), media_type="text/event-stream")
 
-        @self.app.get("/api/events/recent")
-        def get_recent_events():
-            from .event_bus import global_event_bus
-            return {"items": global_event_bus.get_recent_events()}
-
         class IntentPayload(BaseModel):
             prompt: str
 
         @self.app.post("/api/intent")
-        async def handle_intent(payload: IntentPayload):
+        async def handle_intent(payload: IntentPayload, request: Request):
             from raphael_core.operator.chat_controller import chat_controller
-            
-            # The dashboard UI doesn't always send a session ID, default to "main"
-            session_id = "main_dashboard"
-            
-            # chat_controller handles everything: Intent Router -> Planner -> Output formatting
-            response_data = chat_controller.process_message(session_id, payload.prompt)
-            
-            # response_data already matches the schema expected by api_gateway and index_html.txt
-            # e.g., "intent", "response", "command", "status", "awaiting_confirmation"
-            
-            return response_data
-            
-        @self.app.post("/api/builder/request")
-        async def api_builder_request(request: Request):
-            from raphael_core.kernel.services.capability_service import CapabilityService
-            payload = await request.json()
-            spec = payload.get("description", payload.get("spec", ""))
-            return CapabilityService.execute("builder.application", {"spec": spec})
 
-        @self.app.post("/api/video/generate")
-        async def api_video_generate(request: Request):
-            from raphael_core.kernel.services.capability_service import CapabilityService
-            payload = await request.json()
-            return CapabilityService.execute("video.generate", payload)
+            session_id = "main_dashboard"
+            response_data = chat_controller.process_message(session_id, payload.prompt)
+
+            # Generic execution trigger: fire whenever the intent router approves execution.
+            # The step's required_capabilities field determines which provider handles it,
+            # so this works for image generation today and any future capability.
+            if response_data.get("intent") == "execute":
+                event_bus = getattr(request.app.state, "event_bus", None)
+                if event_bus:
+                    import time
+                    import uuid
+                    from .interfaces import Event, EventType
+                    from .models.workflow_plan import WorkflowTemplate, WorkflowPhase, WorkflowStep
+
+                    command = response_data.get("command", "generate_asset")
+                    capability = response_data.get("capability", "ImageGenerationService")
+
+                    step = WorkflowStep(
+                        step_id="step_exec",
+                        name=command,
+                        action=command,
+                        required_capabilities=[capability],
+                        parameters={
+                            "prompt": payload.prompt,
+                            "business_id": "chat-adhoc",
+                            "mission_id": f"chat-{session_id}-{int(time.time())}",
+                        },
+                    )
+                    template = WorkflowTemplate(
+                        template_id=f"tpl_{uuid.uuid4().hex[:8]}",
+                        name=command,
+                        phases={
+                            "phase1": WorkflowPhase(
+                                phase_id="phase1",
+                                name="Execution",
+                                steps={"step_exec": step},
+                            )
+                        },
+                    )
+                    try:
+                        await event_bus.publish(
+                            Event(
+                                type=EventType.WORKFLOW_PLAN_REQUESTED,
+                                source="dashboard_api",
+                                payload={"template": template.model_dump()},
+                            )
+                        )
+                    except Exception as e:
+                        ObservabilityLayer.warning("Dashboard", f"Failed to publish WORKFLOW_PLAN_REQUESTED: {e}")
+
+            return response_data
             
         @self.app.get("/api/inspector")
         def get_inspector():

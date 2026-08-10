@@ -33,16 +33,26 @@ class YouTubeAnalyticsProvider(AnalyticsProvider):
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
                 from google.auth.transport.requests import Request
-                creds.refresh(Request())
-            else:
-                flow = InstalledAppFlow.from_client_secrets_file(
-                    self.credentials_path,
-                    SCOPES
-                )
-                creds = flow.run_local_server(port=0)
-                
-            with open(self.token_path, "w") as f:
-                f.write(creds.to_json())
+                try:
+                    creds.refresh(Request())
+                except Exception as e:
+                    print(f"[YouTubeAnalyticsProvider] Refresh token invalid or revoked: {e}")
+                    if os.path.exists(self.token_path):
+                        os.remove(self.token_path)
+                    creds = None
+
+            if not creds:
+                try:
+                    flow = InstalledAppFlow.from_client_secrets_file(
+                        self.credentials_path,
+                        SCOPES
+                    )
+                    creds = flow.run_local_server(port=0)
+                    with open(self.token_path, "w") as f:
+                        f.write(creds.to_json())
+                except Exception as e:
+                    print(f"[YouTubeAnalyticsProvider] Authorization flow required: {e}")
+                    return
 
         self.youtube = build("youtube", "v3", credentials=creds)
         self.analytics = build("youtubeAnalytics", "v2", credentials=creds)
@@ -91,21 +101,24 @@ class YouTubeAnalyticsProvider(AnalyticsProvider):
             )
             
     def test_connection(self):
-        channel_response = self.youtube.channels().list(
-            mine=True, part="snippet,statistics"
-        ).execute()
-        
-        if not channel_response.get("items"):
-            return None
+        if not hasattr(self, 'youtube') or self.youtube is None:
+            return {"status": "auth_required", "message": "YouTube OAuth authorization required"}
+        try:
+            channel_response = self.youtube.channels().list(
+                mine=True, part="snippet,statistics"
+            ).execute()
             
-        channel = channel_response["items"][0]
-        
-        # Count videos (we can get from playlist or search)
-        uploads_playlist = channel.get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads")
-        video_count = channel["statistics"].get("videoCount", 0)
-        
-        return {
-            "title": channel["snippet"]["title"],
-            "subscribers": channel["statistics"]["subscriberCount"],
-            "videos": video_count
-        }
+            if not channel_response.get("items"):
+                return None
+                
+            channel = channel_response["items"][0]
+            video_count = channel["statistics"].get("videoCount", 0)
+            
+            return {
+                "title": channel["snippet"]["title"],
+                "subscribers": channel["statistics"]["subscriberCount"],
+                "videos": video_count,
+                "status": "connected"
+            }
+        except Exception as e:
+            return {"status": "error", "message": str(e)}

@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, r"C:\RaphaelOS")
+sys.path.insert(0, r"R:\RaphaelOS")
 from command_bus import RaphaelCommandBus
 
 bus = RaphaelCommandBus()

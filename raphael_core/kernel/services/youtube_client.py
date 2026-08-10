@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 SCOPES = ['https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtube.readonly']
 
 class YouTubeClient:
-    def __init__(self, credentials_dir: str = r"C:\RaphaelOS\credentials"):
+    def __init__(self, credentials_dir: str = r"R:\RaphaelOS\credentials"):
         self.credentials_dir = Path(credentials_dir)
         self.client_secrets_file = self.credentials_dir / "youtube_client_secrets.json"
         self.token_file = self.credentials_dir / "youtube_token.json"

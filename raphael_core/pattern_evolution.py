@@ -2,7 +2,7 @@ import json
 import os
 from typing import Dict, Any
 
-WM_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model")
+WM_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model")
 PATTERN_NODES_OUT = os.path.join(WM_DIR, "pattern_nodes.json")
 
 def process_reflection(reflection: Dict[str, Any], prediction: Dict[str, Any]):

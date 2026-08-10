@@ -48,6 +48,6 @@ def test_near_miss_logging_and_pressure():
     assert pressure_data["near_miss_count_72h"] >= 1
     
     # Clean up test log to not pollute real log
-    log_file = r"C:\RaphaelOS\world_model\near_misses.json"
+    log_file = r"R:\RaphaelOS\world_model\near_misses.json"
     if os.path.exists(log_file):
         os.remove(log_file)

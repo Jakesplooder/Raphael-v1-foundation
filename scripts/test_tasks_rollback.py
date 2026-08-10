@@ -7,13 +7,13 @@ import asyncio
 from deepdiff import DeepDiff
 
 # Add api_gateway to sys.path
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS\api_gateway")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
+sys.path.insert(0, r"R:\RalphaelOS_Repo\api_gateway")
 
 from api_gateway.gateway import get_overview as api_overview
 from api_gateway.gateway import client as gateway_client
 
-REGISTRY_PATH = Path(r"C:\Users\cyber\Downloads\RalphaelOS\api_gateway\feature_registry.json")
+REGISTRY_PATH = Path(r"R:\RalphaelOS_Repo\api_gateway\feature_registry.json")
 
 def set_feature_backend(feature: str, backend: str):
     with open(REGISTRY_PATH, "r", encoding="utf-8") as f:

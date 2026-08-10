@@ -26,7 +26,7 @@ class NotificationService:
         self.telegram = TelegramProvider()
         self.ledger = DeliveryLedger()
         
-        self.notifications_dir = Path(r"C:\RaphaelOS\Notifications")
+        self.notifications_dir = Path(r"R:\RaphaelOS\Notifications")
         self.notifications_dir.mkdir(parents=True, exist_ok=True)
         self.routing_log = self.notifications_dir / "routing_decisions.jsonl"
         

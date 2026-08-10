@@ -80,8 +80,8 @@ class AgentManager(ServiceModule):
     async def heartbeat(self) -> bool | Dict[str, Any]:
         return True
 
-    async def health(self) -> ModuleHealth:
-        return ModuleHealth(status="OK", details={"agents_tracked": len(self.repository.instances)})
+    def health(self) -> ModuleHealth:
+        return ModuleHealth.OK
 
     async def metrics(self) -> dict:
         return {}

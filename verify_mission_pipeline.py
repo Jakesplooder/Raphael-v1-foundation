@@ -3,7 +3,7 @@ import os
 import glob
 from pathlib import Path
 
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_core.kernel.repositories.idempotency_store import IdempotencyStore
 from raphael_domains.creator.video_engine import VideoPipelineFSM, BrandContext
@@ -15,12 +15,12 @@ def run_tests():
     if store_path.exists(): os.remove(store_path)
     
     import shutil
-    ready_dir = Path(r"C:\RaphaelOS\Missions\Review\Ready")
+    ready_dir = Path(r"R:\RaphaelOS\Missions\Review\Ready")
     if ready_dir.exists():
         for d in ready_dir.glob("*_FocusMarketing_001"):
             shutil.rmtree(d)
             
-    active_dir = Path(r"C:\RaphaelOS\Missions\Active")
+    active_dir = Path(r"R:\RaphaelOS\Missions\Active")
     if active_dir.exists():
         for d in active_dir.glob("*_FocusMarketing_001"):
             shutil.rmtree(d)
@@ -37,7 +37,7 @@ def run_tests():
     print(f"Final State: {result['final_state']}")
     
     # Now verify the outputs
-    ready_dir = Path(r"C:\RaphaelOS\Missions\Review\Ready")
+    ready_dir = Path(r"R:\RaphaelOS\Missions\Review\Ready")
     folders = list(ready_dir.glob("*_FocusMarketing_001"))
     
     assert len(folders) > 0, "No mission folder found in Review/Ready!"

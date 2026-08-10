@@ -10,7 +10,7 @@ from . import world_model
 from . import pattern_engine
 
 # Output Paths
-WM_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model")
+WM_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model")
 TRACE_DIR = os.path.join(WM_DIR, "reasoning_traces")
 os.makedirs(TRACE_DIR, exist_ok=True)
 

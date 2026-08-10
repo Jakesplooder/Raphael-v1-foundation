@@ -1,7 +1,7 @@
 import re
 import os
 
-legacy_file = r'C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py'
+legacy_file = r'R:\RalphaelOS_Repo\raphael_core\legacy.py'
 
 with open(legacy_file, 'r', encoding='utf-8') as f:
     content = f.read()

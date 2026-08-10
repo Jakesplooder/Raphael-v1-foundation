@@ -5,7 +5,7 @@ from typing import Dict, Any
 from raphael_core.kernel.event_bus import emit
 
 class IncidentManager:
-    def __init__(self, incidents_dir=r"C:\RaphaelOS\Incidents"):
+    def __init__(self, incidents_dir=r"R:\RaphaelOS\Incidents"):
         self.incidents_dir = Path(incidents_dir)
         self.incidents_dir.mkdir(parents=True, exist_ok=True)
         

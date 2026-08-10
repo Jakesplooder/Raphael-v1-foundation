@@ -3,7 +3,7 @@ from raphael_core.workforce_health import scan_workforce_health
 import os
 
 def test_state_machine_validity():
-    reg = AgentRuntimeRegistry(filepath=r"C:\RaphaelOS\workforce\test_registry.json")
+    reg = AgentRuntimeRegistry(filepath=r"R:\RaphaelOS\workforce\test_registry.json")
     lif = AgentLifecycleManager(reg)
     
     # Valid transition
@@ -21,7 +21,7 @@ def test_state_machine_validity():
         pass
 
 def test_authority_boundary():
-    reg = AgentRuntimeRegistry(filepath=r"C:\RaphaelOS\workforce\test_registry.json")
+    reg = AgentRuntimeRegistry(filepath=r"R:\RaphaelOS\workforce\test_registry.json")
     lif = AgentLifecycleManager(reg)
     reg.create_agent_record("TEST-2", "Test", 1, "Council", [], "model")
     lif.request_transition("TEST-2", "onboarding", "Starting", [])
@@ -36,7 +36,7 @@ def test_authority_boundary():
     assert agent["current_state"] == "active"
 
 def test_onboarding_checklist():
-    reg = AgentRuntimeRegistry(filepath=r"C:\RaphaelOS\workforce\test_registry.json")
+    reg = AgentRuntimeRegistry(filepath=r"R:\RaphaelOS\workforce\test_registry.json")
     lif = AgentLifecycleManager(reg)
     onb = OnboardingProtocol(reg, lif)
     
@@ -50,7 +50,7 @@ def test_onboarding_checklist():
     assert res["failed_item"] == "world_model_node"
 
 def test_canary_baseline_initialization():
-    reg = AgentRuntimeRegistry(filepath=r"C:\RaphaelOS\workforce\test_registry.json")
+    reg = AgentRuntimeRegistry(filepath=r"R:\RaphaelOS\workforce\test_registry.json")
     lif = AgentLifecycleManager(reg)
     onb = OnboardingProtocol(reg, lif)
     
@@ -63,7 +63,7 @@ def test_canary_baseline_initialization():
     assert agent["onboarding_completed_at"] is not None
 
 def test_workforce_health_signals():
-    reg = AgentRuntimeRegistry(filepath=r"C:\RaphaelOS\workforce\test_registry.json")
+    reg = AgentRuntimeRegistry(filepath=r"R:\RaphaelOS\workforce\test_registry.json")
     lif = AgentLifecycleManager(reg)
     
     reg.create_agent_record("TEST-5", "Test", 1, "Council", [], "model")
@@ -81,7 +81,7 @@ def test_world_model_integration():
     pass
 
 def test_onboarding_resume():
-    reg = AgentRuntimeRegistry(filepath=r"C:\RaphaelOS\workforce\test_registry.json")
+    reg = AgentRuntimeRegistry(filepath=r"R:\RaphaelOS\workforce\test_registry.json")
     lif = AgentLifecycleManager(reg)
     onb = OnboardingProtocol(reg, lif)
     
@@ -105,5 +105,5 @@ def test_onboarding_resume():
     agent = reg.get_agent("TEST-7")
     assert agent["current_state"] == "active"
     
-    if os.path.exists(r"C:\RaphaelOS\workforce\test_registry.json"):
-        os.remove(r"C:\RaphaelOS\workforce\test_registry.json")
+    if os.path.exists(r"R:\RaphaelOS\workforce\test_registry.json"):
+        os.remove(r"R:\RaphaelOS\workforce\test_registry.json")

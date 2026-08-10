@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import time
 import importlib.util
 import json
 import os
@@ -23,10 +24,16 @@ class DummyApp:
     def post(self, *args, **kwargs): return lambda f: f
     def mount(self, *args, **kwargs): pass
 app = DummyApp()
-
-
 APP_DIR = Path(__file__).resolve().parent
-CONFIG_PATH = Path(os.environ.get("RAPHAEL_CONFIG_PATH", "C:/Users/cyber/Downloads/RalphaelOS/config/settings.json"))
+if "RAPHAEL_CLI_PATH" in os.environ:
+    REPO_DIR = Path(os.environ["RAPHAEL_CLI_PATH"]).parent
+else:
+    REPO_DIR = APP_DIR.parent
+
+if str(REPO_DIR) not in sys.path:
+    sys.path.insert(0, str(REPO_DIR))
+
+CONFIG_PATH = Path(os.environ.get("RAPHAEL_CONFIG_PATH", str(REPO_DIR / "config.json")))
 DASHBOARD_CHAT_LOG = APP_DIR / "logs" / "Dashboard Chat Log.md"
 PENDING_CHAT_ROUTE: dict[str, Any] = {"route": None, "phrase": ""}
 COMMAND_BUS_SESSION: dict[str, Any] = {}
@@ -40,19 +47,34 @@ def load_settings() -> dict[str, Any]:
     if CONFIG_PATH.exists():
         return json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     return {
-        "vault_path": "C:/Users/cyber/Downloads/RalphaelOS/Ralphael",
-        "runtime_path": "C:/RaphaelOS",
+        "vault_path": "R:/RaphaelOS/Ralphael",
+        "runtime_path": "R:/RaphaelOS",
         "qdrant_url": "http://localhost:6333",
         "vision_model": "qwen2.5vl",
     }
 
 
 def vault_path() -> Path:
-    return Path("/app/vault")
-
+    import json
+    import os
+    config_path = os.environ.get("RAPHAEL_CONFIG_PATH") or (REPO_DIR / "config.json")
+    if config_path and Path(config_path).exists():
+        with open(config_path, "r", encoding="utf-8") as f:
+            config = json.load(f)
+            if "vault_path" in config:
+                return Path(config["vault_path"])
+    return Path(os.environ.get("RAPHAEL_VAULT_DIR", str(REPO_DIR / "Ralphael")))
 
 def runtime_path() -> Path:
-    return Path("/app/runtime")
+    import json
+    import os
+    config_path = os.environ.get("RAPHAEL_CONFIG_PATH") or (REPO_DIR / "config.json")
+    if config_path and Path(config_path).exists():
+        with open(config_path, "r", encoding="utf-8") as f:
+            config = json.load(f)
+            if "runtime_path" in config:
+                return Path(config["runtime_path"])
+    return Path(os.environ.get("RAPHAEL_RUNTIME_DIR", str(REPO_DIR / "runtime")))
 
 
 def read_text(path: Path, limit: int | None = None) -> str:
@@ -85,15 +107,26 @@ def excerpt(text: str, limit: int = 700) -> str:
 
 
 def note_card(label: str, rel_path: str) -> dict[str, Any]:
-    path = vault_path() / rel_path
-    text = read_text(path, 4000)
-    return {
-        "label": label,
-        "path": str(path),
-        "exists": path.exists(),
-        "updated": dt.datetime.fromtimestamp(path.stat().st_mtime).isoformat(timespec="seconds") if path.exists() else "",
-        "content": excerpt(text, 1100) if text else "",
-    }
+    try:
+        path = vault_path() / rel_path
+        exists = path.exists()
+        updated = dt.datetime.fromtimestamp(path.stat().st_mtime).isoformat(timespec="seconds") if exists else ""
+        text = read_text(path, 4000) if exists else ""
+        return {
+            "label": label,
+            "path": str(path),
+            "exists": exists,
+            "updated": updated,
+            "content": excerpt(text, 1100) if text else "",
+        }
+    except Exception as e:
+        return {
+            "label": label,
+            "path": rel_path,
+            "exists": False,
+            "updated": "",
+            "content": "",
+        }
 
 
 def current_mode() -> dict[str, str]:
@@ -264,8 +297,9 @@ def n8n_workflow_studio_data() -> dict[str, Any]:
         current = root / folder
         if not current.exists():
             continue
-        for path in sorted(current.glob("*.md"), key=lambda value: value.stat().st_mtime, reverse=True):
-            text = read_text(path, 120000)
+        files = sorted(current.glob("*.md"), key=lambda value: value.stat().st_mtime, reverse=True)[:10]
+        for path in files:
+            text = read_text(path, 5000)
             node_section = section_value(text, "Nodes") or section_value(text, "Node Analysis")
             node_match = re.search(r"Nodes:\s*(\d+)", node_section)
             node_types = [
@@ -1080,6 +1114,8 @@ def world_records(record_type: str) -> list[dict[str, str]]:
             "status": subsection_value(body, "Status") or "Unknown",
             "description": excerpt(subsection_value(body, "Description"), 220),
             "business": subsection_value(body, "Business Name"),
+            "analytics_channel": subsection_value(body, "Analytics Channel"),
+            "analytics_source": subsection_value(body, "Analytics Source"),
             "projects": subsection_value(body, "Related Projects") or "Unlinked",
             "goals": subsection_value(body, "Related Goals") or "Unlinked",
             "council": subsection_value(body, "Related Council"),
@@ -1303,13 +1339,15 @@ def pod_studio_records(folder: str, id_heading: str) -> list[dict[str, Any]]:
 
 def pod_design_studio_data() -> dict[str, Any]:
     settings = load_settings()
-    runtime = Path(str(settings.get("runtime_path", "C:/RaphaelOS"))) / "PODStudio"
+    runtime = Path(str(settings.get("runtime_path", "R:/RaphaelOS"))) / "PODStudio"
     generated = []
     generated_root = runtime / "generated"
     if generated_root.exists():
         for path in sorted(generated_root.rglob("*"), key=lambda item: item.stat().st_mtime if item.exists() else 0, reverse=True):
             if path.is_file() and path.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}:
                 generated.append({"name": path.name, "path": str(path), "size": path.stat().st_size})
+                if len(generated) >= 30:
+                    break
     typography_root = vault_path() / "05_Business" / "Commerce" / "POD Design Studio" / "Typography Engine"
     typography_runtime = runtime / "working" / "typography"
     typography = {
@@ -1339,6 +1377,12 @@ def pod_design_studio_data() -> dict[str, Any]:
         "exports": pod_studio_records("Export Packages", "Concept ID"),
         "generated": generated,
         "typography": typography,
+        "overview": note_card("POD Design Studio Overview", "05_Business/Commerce/POD Design Studio/POD Design Studio Overview.md"),
+        "tools": note_card("POD Studio Tool Registry", "05_Business/Commerce/POD Design Studio/POD Studio Tool Registry.md"),
+        "pipeline": note_card("POD Product Pipeline", "05_Business/Commerce/POD Design Studio/POD Product Pipeline.md"),
+        "workflow": note_card("POD Studio Workflow", "05_Business/Commerce/POD Design Studio/POD Studio Workflow.md"),
+        "brief": note_card("POD Studio Brief", "05_Business/Commerce/POD Design Studio/POD Studio Brief.md"),
+        "review": note_card("POD Studio Review", "05_Business/Commerce/POD Design Studio/POD Studio Review.md"),
         "comfyui_diagnostic": {
             "path": str(runtime / "logs" / "ComfyUI Diagnostic.md"),
             "content": excerpt(read_text(runtime / "logs" / "ComfyUI Diagnostic.md", 6000), 1600),
@@ -1380,7 +1424,7 @@ def brand_library_records(folder: str, id_heading: str) -> list[dict[str, Any]]:
 
 def asset_brand_library_data() -> dict[str, Any]:
     settings = load_settings()
-    runtime = Path(str(settings.get("runtime_path", "C:/RaphaelOS"))) / "BrandLibrary"
+    runtime = Path(str(settings.get("runtime_path", "R:/RaphaelOS"))) / "BrandLibrary"
     asset_folders = ["Logos", "POD Assets", "Content Assets", "Agency Assets", "Creator Assets", "Exported Assets"]
     assets = []
     for folder in asset_folders:
@@ -2817,9 +2861,9 @@ def maintenance_data(health: dict[str, Any] | None = None) -> dict[str, Any]:
             "python raphael.py dependency-check",
         ],
         "helpers": [
-            r"C:\RaphaelOS\scripts\start-raphael.ps1",
-            r"C:\RaphaelOS\scripts\health-check.ps1",
-            r"C:\RaphaelOS\scripts\restart-dashboard.ps1",
+            r"R:\RaphaelOS\scripts\start-raphael.ps1",
+            r"R:\RaphaelOS\scripts\health-check.ps1",
+            r"R:\RaphaelOS\scripts\restart-dashboard.ps1",
         ],
         "safety": {
             "backup_scope": "Vault and Raphael runtime files only.",
@@ -2923,6 +2967,10 @@ def load_voice_gateway():
 
 def load_command_bus():
     bus_path = runtime_path() / "command_bus.py"
+    bus_dir = str(bus_path.parent)
+    if bus_dir not in sys.path:
+        sys.path.insert(0, bus_dir)
+        
     spec = importlib.util.spec_from_file_location("raphael_command_bus_dashboard", bus_path)
     if spec is None or spec.loader is None:
         raise RuntimeError(f"Unable to load Command Bus from {bus_path}")
@@ -3207,8 +3255,53 @@ def dashboard_chat_response(
         router_result = chat_controller.process_message(session_id, phrase)
         if router_result.get("response"):
             # The Router handled it, return immediately
+            
+            # If the intent is execute, spawn the background runner + D13-A hooks
+            if router_result.get("intent") == "execute":
+                workflow_id = router_result.get("command")
+                exec_id = f"EX-{__import__('datetime').datetime.utcnow().strftime('%Y%m%d')}-{__import__('uuid').uuid4().hex[:4].upper()}"
+                repo_dir = str(REPO_DIR)
+                if workflow_id:
+                    import subprocess
+                    subprocess.Popen(["python", "raphael.py", "workflow-execute", workflow_id], cwd=repo_dir)
+                    
+                    # D13-A: Emit WORKFLOW_STARTED event to the Event Fabric
+                    try:
+                        import sys
+                        if repo_dir not in sys.path:
+                            sys.path.insert(0, str(REPO_DIR))
+                        from raphael_core.events import event_bus, EventType
+                        mission_id = router_result.get("_mission_id", "")
+                        event_bus.publish(
+                            EventType.WORKFLOW_STARTED,
+                            payload={"workflow_id": workflow_id},
+                            mission_id=mission_id,
+                            execution_id=exec_id,
+                            actor="user",
+                            source="legacy_adapter",
+                        )
+                    except Exception as _evt_exc:
+                        pass  # Event emission is non-critical
+
+                    # D13-A: Create Initiative + Tasks via Initiative Manager
+                    try:
+                        from raphael_core.operator.initiative_manager import initiative_manager
+                        initiative_manager.create_from_execution(
+                            mission_id=router_result.get("_mission_id", ""),
+                            execution_id=exec_id,
+                            workflow_id=workflow_id,
+                            workflow_name=router_result.get("command", workflow_id),
+                            objective=router_result.get("response", "Workflow execution"),
+                        )
+                    except Exception as _init_exc:
+                        pass  # Initiative creation is non-critical
+                    
+                    # Patch exec_id into response for UI display
+                    router_result["_execution_id"] = exec_id
+
             log_dashboard_chat(phrase, router_result.get("intent", ""), router_result.get("command", ""), router_result.get("status", ""), router_result.get("response", ""), router_result.get("confirmation_required", False))
             return router_result
+
 
         # If empty response, fallback to legacy CommandBus
         bus_module = load_command_bus()
@@ -4201,7 +4294,7 @@ function renderChat() {
       <div>${quick.map(([label, phrase]) => `<button class="copy" onclick="sendQuickChat('${esc(phrase)}')">${esc(label)}</button>`).join("")}</div>
       <h2 class="mt-4">Try Saying</h2>
       <div>${examples.map(x => `<button class="copy" onclick="useChatExample('${esc(x)}')">${esc(x)}</button>`).join("")}</div>
-      <p class="muted mt-3">Browser voice places transcript text into Dashboard Chat and routes it through the Command Bus. Raphael does not save or upload audio. Piper remains available through <code>C:/RaphaelOS/voice_gateway.py</code>.</p>
+      <p class="muted mt-3">Browser voice places transcript text into Dashboard Chat and routes it through the Command Bus. Raphael does not save or upload audio. Piper remains available through <code>R:/RaphaelOS/voice_gateway.py</code>.</p>
     </article>
     <article class="card full">
       <h2>Dashboard Chat</h2>
@@ -4253,7 +4346,7 @@ function dashboardVoiceInputEnabled() {
   return data?.maintenance?.system_health?.dashboard_chat?.voice_input_enabled !== false;
 }
 function voiceFallbackMessage() {
-  return "Browser speech recognition is unavailable. Use: python C:/RaphaelOS/voice_gateway.py voice-once (or chat).";
+  return "Browser speech recognition is unavailable. Use: python R:/RaphaelOS/voice_gateway.py voice-once (or chat).";
 }
 function setDashboardVoiceState(state, message = "") {
   dashboardVoiceState = state;
@@ -4273,7 +4366,7 @@ function setDashboardVoiceState(state, message = "") {
 }
 function initDashboardVoiceBridge() {
   if (!dashboardVoiceInputEnabled()) {
-    dashboardVoiceMessage = "Browser microphone input is disabled in config/settings.json. Use C:/RaphaelOS/voice_gateway.py if voice input is needed.";
+    dashboardVoiceMessage = "Browser microphone input is disabled in config/settings.json. Use R:/RaphaelOS/voice_gateway.py if voice input is needed.";
     const mic = document.getElementById("chat-mic");
     if (mic) mic.disabled = true;
     const message = document.getElementById("voice-message");
@@ -4332,7 +4425,7 @@ function toggleDashboardVoice() {
   recognition.onerror = event => {
     const permission = ["not-allowed", "service-not-allowed"].includes(event.error);
     setDashboardVoiceState("error", permission
-      ? "Microphone permission was denied. Allow microphone access for localhost, or use C:/RaphaelOS/voice_gateway.py."
+      ? "Microphone permission was denied. Allow microphone access for localhost, or use R:/RaphaelOS/voice_gateway.py."
       : `Speech recognition error: ${event.error}. ${voiceFallbackMessage()}`);
   };
   recognition.onend = () => {
@@ -4726,7 +4819,7 @@ function renderBuilder() {
   return `
     <article class="card full">
       <h2>Builder Mode</h2>
-      <p class="muted">Sandbox-first app/file generation. Builder files are created under <code>C:/RaphaelOS/builder/workspace</code> first.</p>
+      <p class="muted">Sandbox-first app/file generation. Builder files are created under <code>R:/RaphaelOS/builder/workspace</code> first.</p>
       <button class="copy" onclick="copyCommand('${esc(data.commands.build_classify)}')">${esc(data.commands.build_classify)}</button>
       <button class="copy" onclick="copyCommand('${esc(data.commands.build_with_council)}')">${esc(data.commands.build_with_council)}</button>
       <button class="copy" onclick="copyCommand('${esc(data.commands.build_review)}')">${esc(data.commands.build_review)}</button>

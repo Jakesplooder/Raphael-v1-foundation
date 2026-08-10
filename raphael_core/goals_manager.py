@@ -16,7 +16,7 @@ class GoalsManager(ServiceModule):
     """
     def __init__(self):
         self._running = False
-        self.vault_path = Path(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"))
+        self.vault_path = Path(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"))
         
         # In a real DI system, this would be injected.
         self.repository = MarkdownGoalRepository(self.vault_path)

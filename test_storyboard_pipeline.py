@@ -5,14 +5,14 @@ import time
 from pathlib import Path
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_core.kernel.repositories.idempotency_store import IdempotencyStore
 from raphael_domains.creator.video_engine import VideoPipelineFSM, BrandContext
 from verify_youtube_upload import create_dummy_video
 
 def main():
-    store = IdempotencyStore(Path(r"C:\RaphaelOS\System\idempotency"))
+    store = IdempotencyStore(Path(r"R:\RaphaelOS\System\idempotency"))
     engine = VideoPipelineFSM(store)
     
     brand = BrandContext(

@@ -13,7 +13,8 @@ from .registry import registry
 from .models.infrastructure import (
     HealthSeverity, DependencyState, ServiceCapability, DependencyInfo,
     HostProcess, ContainerStatus, DockerHealth, ServiceStatus, InfrastructureSnapshot,
-    InfrastructureEvent, InfrastructureState, ServicePolicy, ServicePolicyState
+    InfrastructureEvent, InfrastructureState, ServicePolicy, ServicePolicyState,
+    ServiceIdentity, ServiceExecution
 )
 
 logger = logging.getLogger("rrk.infrastructure")

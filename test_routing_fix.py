@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 import json
 
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from api_gateway.legacy_adapter import dashboard_route_agent_ask
 

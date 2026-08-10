@@ -12,7 +12,7 @@ class PortfolioLearning:
     Tracks cross-portfolio patterns, business model comparisons, and strategic insights.
     """
     def __init__(self):
-        self.learning_dir = Path(r"C:\RaphaelOS\Portfolio\Learning")
+        self.learning_dir = Path(r"R:\RaphaelOS\Portfolio\Learning")
         self.learning_dir.mkdir(parents=True, exist_ok=True)
         self.learning_file = self.learning_dir / "portfolio_intelligence.json"
         self.intelligence = self._load()

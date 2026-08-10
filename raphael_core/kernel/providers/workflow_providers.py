@@ -22,11 +22,17 @@ class PlanningProvider(WorkflowProvider):
 
 class ExecutionProvider(WorkflowProvider):
     @abc.abstractmethod
-    async def execute_step(self, step: WorkflowStep, context: Dict[str, Any]) -> Dict[str, Any]:
+    async def execute_step(self, action: str, parameters: Dict[str, Any], idempotency_key: str = None) -> Dict[str, Any]:
         """
-        Executes a workflow step and returns the result dictionary.
+        Executes a specific workflow step.
         """
         pass
+        
+    async def cancel_step(self, idempotency_key: str) -> bool:
+        """
+        Cancels an in-flight execution step using its idempotency_key.
+        """
+        return False
 
 class VerificationProvider(WorkflowProvider):
     @abc.abstractmethod

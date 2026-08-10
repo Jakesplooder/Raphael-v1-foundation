@@ -30,7 +30,7 @@ class MissionContext:
         }
 
 class MissionArtifactPipeline:
-    def __init__(self, os_root: Path = Path(r"C:\RaphaelOS")):
+    def __init__(self, os_root: Path = Path(r"R:\RaphaelOS")):
         self.os_root = os_root
         self.missions_root = self.os_root / "Missions"
         

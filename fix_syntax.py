@@ -2,7 +2,7 @@ import os
 import re
 from pathlib import Path
 
-LEGACY_PATH = Path(r"C:\Users\cyber\Downloads\RalphaelOS\raphael_core\legacy.py")
+LEGACY_PATH = Path(r"R:\RalphaelOS_Repo\raphael_core\legacy.py")
 
 with open(LEGACY_PATH, "r", encoding="utf-8") as f:
     leg = f.read()

@@ -15,7 +15,7 @@ class AgentLifecycleManager(ServiceModule):
     Maintains the runtime/agent_runtime.json snapshot.
     """
     
-    def __init__(self, data_dir: str = os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS")):
+    def __init__(self, data_dir: str = os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS")):
         self.runtime_dir = os.path.join(data_dir, "runtime")
         self.history_dir = os.path.join(data_dir, "history")
         self.runtime_file = os.path.join(self.runtime_dir, "agent_runtime.json")
@@ -160,7 +160,7 @@ class CheckpointManager(ServiceModule):
     to checkpoint/<agent>.json.
     """
     
-    def __init__(self, data_dir: str = os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS")):
+    def __init__(self, data_dir: str = os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS")):
         self.checkpoint_dir = os.path.join(data_dir, "checkpoint")
         os.makedirs(self.checkpoint_dir, exist_ok=True)
         self._running = False
@@ -231,7 +231,7 @@ class RecoveryManager(ServiceModule):
     Detects crashed jobs on boot and restores them to Step N/M using checkpoints.
     """
     
-    def __init__(self, data_dir: str = os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS")):
+    def __init__(self, data_dir: str = os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS")):
         self.checkpoint_dir = os.path.join(data_dir, "checkpoint")
         self._running = False
         self._recovered_count = 0

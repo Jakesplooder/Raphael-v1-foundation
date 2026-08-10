@@ -1,0 +1,3037 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Raphael OS Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/css/matrix.css?v=57-presence" />
+  <link rel="stylesheet" href="/static/css/employee_network.css?v=56-employee-network-fix1" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050817;
+      --panel: rgba(10, 18, 45, .82);
+      --panel2: rgba(8, 14, 34, .94);
+      --line: rgba(91, 224, 255, .22);
+      --cyan: #31d8ff;
+      --pink: #ff37d4;
+      --violet: #7a5cff;
+      --text: #e9f6ff;
+      --muted: #8ea6c8;
+      --good: #50f2a6;
+      --warn: #ffd166;
+      --bad: #ff6b8a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font: 14px/1.45 "Segoe UI", Inter, system-ui, sans-serif;
+      background:
+        linear-gradient(rgba(49,216,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(49,216,255,.06) 1px, transparent 1px),
+        radial-gradient(circle at 20% 0%, rgba(255,55,212,.23), transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(49,216,255,.22), transparent 32%),
+        var(--bg);
+      background-size: 42px 42px, 42px 42px, auto, auto, auto;
+    }
+    body:before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none;
+      background: linear-gradient(120deg, transparent, rgba(49,216,255,.08), transparent);
+      mask-image: radial-gradient(circle at center, black, transparent 75%);
+    }
+    .shell { display: grid; grid-template-columns: 230px 1fr; min-height: 100vh; }
+    aside {
+      position: sticky; top: 0; height: 100vh; padding: 22px 16px;
+      background: rgba(3, 7, 21, .72); border-right: 1px solid var(--line);
+      box-shadow: 0 0 32px rgba(49,216,255,.12);
+      overflow-y: auto; scrollbar-width: thin;
+    }
+    .brand { font-size: 20px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .brand span { color: var(--cyan); text-shadow: 0 0 18px var(--cyan); }
+    .sub { color: var(--muted); margin: 4px 0 22px; }
+    nav button {
+      width: 100%; display: block; margin: 7px 0; padding: 10px 12px; color: var(--muted);
+      border: 1px solid transparent; border-radius: 8px; background: transparent; text-align: left; cursor: pointer;
+    }
+    nav button.active, nav button:hover {
+      color: var(--text); border-color: rgba(49,216,255,.38); background: rgba(49,216,255,.08);
+      box-shadow: inset 0 0 18px rgba(49,216,255,.08);
+    }
+    main { padding: 24px; }
+    header {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; margin-bottom: 18px;
+      padding: 18px; border: 1px solid rgba(255,55,212,.38); border-radius: 10px;
+      background: linear-gradient(135deg, rgba(255,55,212,.1), rgba(49,216,255,.08));
+      box-shadow: 0 0 28px rgba(255,55,212,.16);
+    }
+    h1 { margin: 0; font-size: 26px; }
+    h2 { margin: 0 0 12px; font-size: 16px; color: var(--cyan); }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .card {
+      grid-column: span 4; padding: 15px; border: 1px solid var(--line); border-radius: 8px;
+      background: var(--panel); box-shadow: 0 0 22px rgba(49,216,255,.08);
+      min-width: 0;
+    }
+    .wide { grid-column: span 8; }
+    .full { grid-column: 1 / -1; }
+    .stat { font-size: 28px; font-weight: 700; color: var(--text); }
+    .muted { color: var(--muted); }
+    .pill {
+      display: inline-flex; gap: 6px; align-items: center; padding: 4px 8px; margin: 3px 4px 3px 0;
+      border: 1px solid rgba(49,216,255,.28); border-radius: 999px; color: var(--muted); background: rgba(49,216,255,.06);
+    }
+    .ok { color: var(--good); } .warn { color: var(--warn); } .bad { color: var(--bad); }
+    pre {
+      white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; color: #d9eaff;
+      font: 12px/1.45 Consolas, ui-monospace, monospace;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 9px 7px; border-bottom: 1px solid rgba(91,224,255,.13); text-align: left; vertical-align: top; }
+    th { color: var(--cyan); font-weight: 600; }
+    .bar { height: 7px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; margin-top: 8px; }
+    .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--pink)); }
+    .copy {
+      border: 1px solid rgba(255,55,212,.38); color: var(--text); border-radius: 8px; background: rgba(255,55,212,.09);
+      padding: 8px 10px; cursor: pointer; margin: 4px 5px 4px 0;
+    }
+    .copy:hover { box-shadow: 0 0 18px rgba(255,55,212,.18); }
+    .empty { color: var(--muted); padding: 14px; border: 1px dashed rgba(91,224,255,.18); border-radius: 8px; }
+    .maintenance-hero { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .maintenance-hero.healthy { border-color: rgba(80,242,166,.35); }
+    .maintenance-hero.attention { border-color: rgba(255,107,138,.42); }
+    .maintenance-state { display: inline-flex; padding: 4px 8px; border-radius: 999px; border: 1px solid currentColor; font-size: 11px; }
+    
+    header h1 { margin: 0; font-size: 20px; font-weight: 500; color: var(--text); display: flex; align-items: center; gap: 8px; }
+    
+    #connection-status-banner {
+      background: var(--bad);
+      color: #fff;
+      padding: 8px 16px;
+      text-align: center;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .active-jobs-panel {
+      padding: 16px 32px 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .job-card {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    
+    .job-card[data-status="failed"] { border-color: var(--bad); }
+    .job-card[data-status="completed"] { border-color: var(--good); }
+    
+    .job-card .spinner {
+      width: 24px;
+      height: 24px;
+      border: 3px solid rgba(49,216,255,0.2);
+      border-top-color: var(--cyan);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    
+    .job-card .job-thumb {
+      max-width: 64px;
+      max-height: 64px;
+      border-radius: 4px;
+    }
+    .error-banner {
+      display: grid; gap: 7px; border-color: rgba(255,107,138,.5);
+      background: linear-gradient(135deg, rgba(255,107,138,.12), rgba(8,14,34,.92));
+      box-shadow: 0 0 24px rgba(255,107,138,.12);
+    }
+    .maintenance-error {
+      display: grid; gap: 3px; margin: 6px 0; padding: 9px;
+      border: 1px solid rgba(255,107,138,.16); border-radius: 8px; background: rgba(255,107,138,.05);
+    }
+    .maintenance-error strong { color: #ff9aae; }
+    .maintenance-error span { color: var(--muted); overflow-wrap: anywhere; }
+    .raphael-core {
+      position: relative; width: min(680px, 100%); height: clamp(340px, 52vw, 600px); margin: 0 auto 18px;
+      border-radius: 14px; overflow: hidden; display: grid; place-items: center;
+      background: #000008;
+      border: 1px solid rgba(91,224,255,.18);
+      box-shadow: 0 0 42px rgba(49,216,255,.16), inset 0 0 44px rgba(123,111,255,.12);
+    }
+    .raphael-core canvas {
+      width: 100%; height: 100%; display: block;
+    }
+    .raphael-core:after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        radial-gradient(circle at center, transparent 0 58%, rgba(0,0,8,.24) 76%, rgba(0,0,8,.7) 100%);
+      background-size: 100% 4px, auto;
+      mix-blend-mode: screen;
+    }
+    .core-text {
+      position: absolute; left: 0; right: 0; bottom: 22px; z-index: 1; text-align: center;
+      text-transform: uppercase; letter-spacing: .14em; color: rgba(180,190,255,.82);
+      text-shadow: 0 0 18px rgba(123,111,255,.65), 0 0 34px rgba(49,216,255,.32);
+    }
+    .chat-log { display: flex; flex-direction: column; gap: 12px; max-height: 520px; overflow: auto; padding-right: 4px; }
+    .bubble { border: 1px solid rgba(91,224,255,.18); border-radius: 10px; padding: 12px; background: rgba(8,14,34,.72); }
+    .bubble.user { border-color: rgba(255,55,212,.28); background: rgba(255,55,212,.08); }
+    .bubble.raphael { border-color: rgba(255,209,102,.35); background: rgba(255,209,102,.07); }
+    .chat-input {
+      width: 100%; min-height: 92px; resize: vertical; color: var(--text); border: 1px solid rgba(49,216,255,.32);
+      border-radius: 10px; background: rgba(2,7,22,.82); padding: 12px; outline: none;
+    }
+    .chat-input:focus { box-shadow: 0 0 0 3px rgba(49,216,255,.12), 0 0 22px rgba(49,216,255,.16); }
+    .mic-button { min-width: 44px; border: 1px solid rgba(49,216,255,.42); background: rgba(49,216,255,.08); color: #bff6ff; border-radius: 10px; padding: 9px 12px; }
+    .mic-button[data-active="true"] { background: rgba(255,75,180,.18); border-color: rgba(255,75,180,.7); box-shadow: 0 0 20px rgba(255,75,180,.25); }
+    .voice-state { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+    .voice-error { color: #ff9fae; }
+    .primary {
+      border: 1px solid rgba(255,209,102,.52); color: #fff9d6; border-radius: 10px;
+      background: linear-gradient(90deg, rgba(255,209,102,.18), rgba(49,216,255,.14)); padding: 10px 14px; cursor: pointer;
+    }
+    .primary:hover { box-shadow: 0 0 22px rgba(255,209,102,.24); }
+    @media (max-width: 980px) {
+      .shell { grid-template-columns: 1fr; }
+      aside { position: relative; height: auto; }
+      .card, .wide { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body class="matrix-view">
+<div class="shell">
+  <aside id="classic-sidebar">
+    <div class="brand">Raphael <span>OS</span></div>
+    <div class="sub">Local command layer</div>
+    <nav id="nav"></nav>
+  </aside>
+  <main>
+    <div id="connection-status-banner" style="display: none;"></div>
+    <header>
+      <div>
+        <h1 id="title">Command Center</h1>
+        <div id="subtitle" class="muted">Read-only localhost dashboard</div>
+      </div>
+      <div class="muted" style="text-align:right">
+        <button class="copy" id="bootstrap-health-pill" onclick="active='maintenance'; render();">Core: Loading · AI: Loading · Creative: Loading · Voice: Loading</button>
+        <button class="copy" id="view-toggle" data-matrix-action="toggle-view">Classic View</button>
+        <button class="copy" id="activity-counter" onclick="active='activity'; render();">Activity 0</button>
+        <button class="copy" id="notification-bell" onclick="active='notifications'; render();">Notifications 0</button>
+        <div id="generated">Loading...</div>
+      </div>
+    </header>
+    <section id="matrix-root" class="matrix-root"></section>
+    <section id="active-jobs-panel" class="active-jobs-panel"></section>
+    <section id="content" class="grid"></section>
+  </main>
+</div>
+<script src="/static/js/matrix_config.js?v=63b-pod-studio"></script>
+<script src="/static/js/transitions.js?v=56-employee-network"></script>
+<script src="/static/js/hud.js?v=56-employee-network"></script>
+<script src="/static/js/raphael_orb.js?v=57-presence-2"></script>
+<script src="/static/js/galaxy_map.js?v=57-presence"></script>
+<script src="/static/js/employee_network.js?v=56-employee-network"></script>
+<script src="/static/js/matrix.js?v=59-communications"></script>
+<script>
+const pages = [
+  ["home", "Home / Command Center"], ["chat", "Dashboard Chat"], ["daily", "Daily Operating Loop"], ["knowledge", "Knowledge Ingestion"], ["relationships", "Knowledge Relationships"], ["n8nstudio", "n8n Workflow Studio"], ["workflowrunner", "Workflow Runner"], ["communications", "Inter-Council Communications"], ["commandbus", "Command Bus"], ["notifications", "Notifications"], ["activity", "Activity Stream"], ["briefs", "Executive Briefs"], ["identity", "Identity"], ["world", "World Model"], ["simulations", "Simulations"], ["opportunities", "Opportunities"], ["allocation", "Resource Allocation"], ["blueprints", "Business Blueprints"], ["commerce", "Commerce"], ["podstudio", "POD Design Studio"], ["assetlibrary", "Asset & Brand Library"], ["agency", "Agency"], ["creator", "Creator"], ["kpis", "KPIs"], ["finance", "Financial Intelligence"], ["portfolio", "Business Portfolio"], ["initiatives", "Executive Initiatives"], ["employees", "Digital Employees"], ["executionplans", "Execution Plans"], ["execution", "Controlled Execution"], ["builder", "Builder"], ["projects", "Projects"], ["goals", "Goals"], ["goalpropagation", "Goal Propagation"], ["deliberations", "Deliberations"], ["tasks", "Tasks"],
+  ["agents", "Agents"], ["councils", "Councils"], ["workflows", "Workflows"], ["memory", "Memory Search"], ["voice", "Voice Status"],
+  ["vision", "Vision Requests"], ["search", "Internet Access"], ["health", "System Health"], ["selfhealing", "Self-Healing"], ["maintenance", "Maintenance"]
+];
+var data = null;
+var active = "home";
+var serviceActionState = null;
+var dashboardChatTestState = null;
+var workflowActionState = null;
+var selfHealingActionState = null;
+let chatMessages = [
+  { role: "raphael", text: "Raphael is online. Type a command or ask a question.", meta: "Ready" }
+];
+
+function esc(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function statusClass(value) {
+  const s = String(value || "").toLowerCase();
+  if (s.includes("done") || s.includes("completed") || s.includes("active") || s === "ok" || s === "true" || s === "healthy" || s === "running" || s === "external") return "ok";
+  if (s.includes("pending") || s.includes("waiting") || s.includes("in progress")) return "warn";
+  if (s.includes("blocked") || s.includes("failed") || s === "false") return "bad";
+  return "muted";
+}
+function copyCommand(cmd) {
+  navigator.clipboard.writeText(cmd);
+}
+function card(title, body, cls="card") {
+  return `<article class="${cls}"><h2>${esc(title)}</h2>${body}</article>`;
+}
+function table(rows, cols) {
+  if (!rows.length) return `<div class="empty">No records found.</div>`;
+  return `<table><thead><tr>${cols.map(c=>`<th>${esc(c[0])}</th>`).join("")}</tr></thead><tbody>` +
+    rows.map(row => `<tr>${cols.map(c=>`<td>${c[2] ? c[2](row[c[1]], row) : esc(row[c[1]])}</td>`).join("")}</tr>`).join("") +
+    `</tbody></table>`;
+}
+function renderHome() {
+  const c = data.counts;
+  const notes = data.notes.map(n => card(n.label, n.exists ? `<div class="muted">${esc(n.updated)}</div><pre>${esc(n.content)}</pre>` : `<div class="empty">Missing note: ${esc(n.path)}</div>`, "card wide")).join("");
+  const latestBrief = data.briefs && data.briefs.latest && data.briefs.latest.exists
+    ? card("Latest Executive Brief", `<div class="muted">${esc(data.briefs.latest.updated)}</div><pre>${esc(data.briefs.latest.content)}</pre><button class="copy" onclick="active='briefs'; render();">Open Executive Briefs</button>`, "card full")
+    : "";
+  const recentActivity = data.activity && data.activity.recent
+    ? card("Recent Activity", table(data.activity.recent, [["Time","Timestamp"],["Type","Event Type"],["Title","Title"],["Severity","Severity"]]) + `<button class="copy" onclick="active='activity'; render();">Open Activity Stream</button>`, "card full")
+    : "";
+  return [
+    latestBrief,
+    card("Current Mode", `<div class="stat">${esc(data.mode.mode)}</div><pre>${esc(data.mode.focus)}</pre>`),
+    card("Open Tasks", `<div class="stat">${c.tasks_open}</div><span class="${c.tasks_blocked ? "bad" : "ok"}">${c.tasks_blocked} blocked</span>`),
+    card("Requests", `<span class="pill">Vision ${c.vision_pending}</span><span class="pill">Search ${c.search_pending}</span><span class="pill">Workflows ${c.workflow_pending}</span>`),
+    recentActivity,
+    card("Copy CLI Commands", Object.values(data.commands).map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join(""), "card full"),
+    notes
+  ].join("");
+}
+function renderInternetOverviewCard(overview, result = {}) {
+  if (!overview || !overview.request_id) {
+    return `<article class="card full"><h2>AI Overview</h2><div class="empty">No internet overview has been saved yet.</div></article>`;
+  }
+  const points = (overview.key_points || []).slice(0, 3).map(point => `<li>${esc(point)}</li>`).join("");
+  const sources = (overview.sources || []).slice(0, 3).map((source, index) => `
+    <li><strong>${index + 1}. ${esc(source.title || source.url || "Source")}</strong> <span class="muted">${esc(source.note || "")}</span></li>
+  `).join("");
+  return `
+    <article class="card full ai-overview-card">
+      <h2>AI Overview</h2>
+      <span class="pill">${esc(overview.request_id)}</span>
+      <span class="pill">Confidence ${esc(overview.confidence || "Low")}</span>
+      <h3>Answer</h3>
+      <p>${esc(overview.answer || "No source-backed answer could be generated.")}</p>
+      <h3>Key points</h3>
+      <ul>${points || "<li>No key points available.</li>"}</ul>
+      <h3>Sources</h3>
+      <ol>${sources || "<li>No sources available.</li>"}</ol>
+      <p class="muted">${esc(overview.confidence_reason || "Insufficient evidence.")}</p>
+      <div class="mt-3">
+        <button class="copy" onclick="sendQuickChat('show sources')">Show Sources</button>
+        <button class="copy" onclick="sendQuickChat('show snippets')">Show Snippets</button>
+        <button class="copy" onclick="sendQuickChat('raw JSON')">Show Raw JSON</button>
+        <button class="copy" onclick="sendQuickChat('save to knowledge')">Save to Knowledge</button>
+      </div>
+    </article>
+  `;
+}
+function renderChat() {
+  const examples = ["hello Raphael", "what should I prioritize today?", "summarize Secure Email Service", "ask Developer Agent what this project needs", "memory search portfolio review"];
+  const quick = [
+    ["Command Center", "command center"],
+    ["Prioritize", "what should I prioritize today?"],
+    ["List Councils", "list councils"],
+    ["Council Status", "council status"],
+    ["Council Task Review", "council task review"],
+    ["Executive Summary", "executive summary on Secure Email Service"],
+    ["Debate Topic", "debate Build MentorMap MVP"],
+    ["Detect Initiatives", "detect initiatives"],
+    ["Brief Initiatives", "brief initiatives"],
+    ["Employee Registry", "show employee registry"],
+    ["Employee Workload", "show employee workload"],
+    ["Run Initiative Detection", "run initiative detection"],
+    ["Refresh KPI Dashboard", "run KPI dashboard refresh"],
+    ["Morning Brief", "give me a morning brief"],
+    ["Executive Brief", "executive brief"],
+    ["Weekly Brief", "weekly brief"],
+    ["Build Python App", "build a Python app that tracks button clicks"]
+  ];
+  return `
+    <article class="card wide">
+      <h2>Raphael Command Core</h2>
+      <div class="raphael-core">
+        <canvas id="raphael-orb" width="680" height="600" aria-label="Raphael command orb"></canvas>
+      </div>
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="pill">Safe CLI allowlist</span>
+        <span class="pill">Ollama general mode</span>
+        <span class="pill">Confirm gated actions</span>
+        <span class="pill">No arbitrary shell</span>
+      </div>
+    </article>
+    <article class="card">
+      <h2>Quick Controls</h2>
+      <div>${quick.map(([label, phrase]) => `<button class="copy" onclick="sendQuickChat('${esc(phrase)}')">${esc(label)}</button>`).join("")}</div>
+      <h2 class="mt-4">Try Saying</h2>
+      <div>${examples.map(x => `<button class="copy" onclick="useChatExample('${esc(x)}')">${esc(x)}</button>`).join("")}</div>
+      <p class="muted mt-3">Browser voice places transcript text into Dashboard Chat and routes it through the Command Bus. Raphael does not save or upload audio. Piper remains available through <code>C:/RaphaelOS/voice_gateway.py</code>.</p>
+    </article>
+    <article class="card full">
+      <h2>Dashboard Chat</h2>
+      ${chatMessages.some(m => m.awaiting) ? `<div class="mb-3 rounded-lg border border-amber-300/50 bg-amber-300/10 p-3 text-amber-100">Pending action: type <strong>confirm</strong> to continue or <strong>cancel</strong> to stop it.</div>` : ""}
+      <div id="chat-log" class="chat-log mb-4">${chatMessages.map((m, i) => renderBubble(m, i)).join("")}</div>
+      <textarea id="chat-input" class="chat-input" placeholder="Ask Raphael..."></textarea>
+      <div class="mt-3 flex flex-wrap items-center gap-2">
+        <button class="primary" onclick="sendChat()">Send to Raphael</button>
+        <button id="chat-mic" class="mic-button" data-active="${dashboardVoiceState === "listening"}" onclick="toggleDashboardVoice()" title="Speak to Raphael" aria-label="Speak to Raphael">🎙</button>
+        <button class="copy" onclick="useChatExample('confirm')">confirm</button>
+        <button class="copy" onclick="useChatExample('cancel')">cancel</button>
+        <label class="muted text-xs"><input id="chat-tts-enabled" type="checkbox" ${dashboardVoiceSpeakResponses ? "checked" : ""} onchange="dashboardVoiceSpeakResponses=this.checked"> speak responses</label>
+        <span id="voice-state" class="voice-state muted">${esc(dashboardVoiceState)}</span>
+        <span id="chat-status" class="muted"></span>
+      </div>
+      <div id="voice-message" class="${dashboardVoiceState === "error" ? "voice-error" : "muted"} mt-2 text-xs">${esc(dashboardVoiceMessage)}</div>
+    </article>
+    ${renderInternetOverviewCard(data.internet_access?.latest_overview, data.internet_access?.latest_result)}
+  `;
+}
+function hexColor(hex, alpha) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+function setRaphaelOrbSpeaking() {
+  const canvas = document.getElementById("raphael-orb");
+  if (canvas) {
+    canvas.dataset.mode = "speaking";
+  }
+}
+function setRaphaelOrbIdle() {
+  const canvas = document.getElementById("raphael-orb");
+  if (canvas) canvas.dataset.mode = "idle";
+}
+let dashboardSpeechRecognition = null;
+let dashboardVoiceState = "idle";
+let dashboardVoiceMessage = "";
+let dashboardVoiceFinalTranscript = "";
+let dashboardVoiceSpeakResponses = false;
+let dashboardVoiceSubmitted = false;
+let taskFocusId = "";
+
+function dashboardSpeechRecognitionClass() {
+  return window.SpeechRecognition || window.webkitSpeechRecognition || null;
+}
+function dashboardVoiceInputEnabled() {
+  return data?.maintenance?.system_health?.dashboard_chat?.voice_input_enabled !== false;
+}
+function voiceFallbackMessage() {
+  return "Browser speech recognition is unavailable. Use: python C:/RaphaelOS/voice_gateway.py voice-once (or chat).";
+}
+function setDashboardVoiceState(state, message = "") {
+  dashboardVoiceState = state;
+  dashboardVoiceMessage = message;
+  const stateNode = document.getElementById("voice-state");
+  if (stateNode) stateNode.textContent = state;
+  const messageNode = document.getElementById("voice-message");
+  if (messageNode) {
+    messageNode.textContent = message;
+    messageNode.className = `${state === "error" ? "voice-error" : "muted"} mt-2 text-xs`;
+  }
+  const mic = document.getElementById("chat-mic");
+  if (mic) mic.dataset.active = state === "listening" ? "true" : "false";
+  const canvas = document.getElementById("raphael-orb");
+  if (canvas) canvas.dataset.mode = state;
+  window.RaphaelOrb?.setState(state);
+}
+function initDashboardVoiceBridge() {
+  if (!dashboardVoiceInputEnabled()) {
+    dashboardVoiceMessage = "Browser microphone input is disabled in config/settings.json. Use C:/RaphaelOS/voice_gateway.py if voice input is needed.";
+    const mic = document.getElementById("chat-mic");
+    if (mic) mic.disabled = true;
+    const message = document.getElementById("voice-message");
+    if (message) message.textContent = dashboardVoiceMessage;
+    return;
+  }
+  if (!dashboardSpeechRecognitionClass()) {
+    dashboardVoiceMessage = voiceFallbackMessage();
+    const mic = document.getElementById("chat-mic");
+    if (mic) mic.disabled = true;
+    const message = document.getElementById("voice-message");
+    if (message) message.textContent = dashboardVoiceMessage;
+  }
+}
+function toggleDashboardVoice() {
+  if (!dashboardVoiceInputEnabled()) {
+    setDashboardVoiceState("error", "Browser microphone input is disabled in config/settings.json.");
+    return;
+  }
+  if (dashboardSpeechRecognition && dashboardVoiceState === "listening") {
+    dashboardSpeechRecognition.stop();
+    return;
+  }
+  const Recognition = dashboardSpeechRecognitionClass();
+  if (!Recognition) {
+    setDashboardVoiceState("error", voiceFallbackMessage());
+    return;
+  }
+  dashboardVoiceFinalTranscript = "";
+  dashboardVoiceSubmitted = false;
+  const recognition = new Recognition();
+  dashboardSpeechRecognition = recognition;
+  recognition.lang = navigator.language || "en-US";
+  recognition.continuous = false;
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 1;
+  recognition.onstart = () => setDashboardVoiceState("listening", "Listening… Speak naturally. Audio is not saved by Raphael.");
+  recognition.onaudiostart = () => setDashboardVoiceState("listening", "Listening…");
+  recognition.onresult = event => {
+    setDashboardVoiceState("transcribing", "Transcribing through the browser speech interface…");
+    let interim = "";
+    for (let i = event.resultIndex; i < event.results.length; i += 1) {
+      const transcript = event.results[i][0]?.transcript || "";
+      if (event.results[i].isFinal) dashboardVoiceFinalTranscript += transcript;
+      else interim += transcript;
+    }
+    const input = document.getElementById("chat-input");
+    if (input) input.value = (dashboardVoiceFinalTranscript || interim).trim();
+    if (dashboardVoiceFinalTranscript.trim() && !dashboardVoiceSubmitted) {
+      dashboardVoiceSubmitted = true;
+      setDashboardVoiceState("thinking", "Transcript ready. Routing through Dashboard Chat and Command Bus…");
+      recognition.stop();
+      setTimeout(() => sendChat({ fromVoice: true }), 80);
+    }
+  };
+  recognition.onerror = event => {
+    const permission = ["not-allowed", "service-not-allowed"].includes(event.error);
+    setDashboardVoiceState("error", permission
+      ? "Microphone permission was denied. Allow microphone access for localhost, or use C:/RaphaelOS/voice_gateway.py."
+      : `Speech recognition error: ${event.error}. ${voiceFallbackMessage()}`);
+  };
+  recognition.onend = () => {
+    dashboardSpeechRecognition = null;
+    if (!dashboardVoiceFinalTranscript && !["thinking", "speaking", "error"].includes(dashboardVoiceState)) {
+      setDashboardVoiceState("idle", "Listening stopped. No audio was saved.");
+    }
+  };
+  try {
+    recognition.start();
+  } catch (error) {
+    setDashboardVoiceState("error", "Unable to start browser microphone: " + error);
+  }
+}
+function speakDashboardResponse(text) {
+  if (!dashboardVoiceSpeakResponses || !("speechSynthesis" in window) || !text) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(String(text).slice(0, 1600));
+  utterance.onstart = () => setDashboardVoiceState("speaking", "Speaking response…");
+  utterance.onend = () => setDashboardVoiceState("idle", "Ready. No audio was saved.");
+  utterance.onerror = () => setDashboardVoiceState("error", "Browser text-to-speech failed.");
+  window.speechSynthesis.speak(utterance);
+}
+function initRaphaelOrb() {
+  const canvas = document.getElementById("raphael-orb");
+  if (!canvas || canvas.dataset.started === "true") return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  canvas.dataset.started = "true";
+  canvas.dataset.mode = "idle";
+  const cx = 340, cy = 300;
+  let t = 0;
+  const rings = [
+    { r: 60,  speed: 0.008, segments: 8,  width: 3,   color: "#7B6FFF" },
+    { r: 90,  speed: -0.005, segments: 12, width: 2,   color: "#5B8FFF" },
+    { r: 120, speed: 0.004, segments: 16, width: 1.5, color: "#8B5FEF" },
+    { r: 155, speed: -0.003, segments: 24, width: 1,   color: "#4B7FFF" },
+    { r: 190, speed: 0.002, segments: 32, width: 1,   color: "#6B4FDF" },
+    { r: 230, speed: -0.0015, segments: 48, width: .7, color: "#3B6FEF" },
+  ];
+  const particles = Array.from({length: 80}, () => ({
+    angle: Math.random() * Math.PI * 2,
+    r: 20 + Math.random() * 200,
+    speed: (Math.random() - .5) * .02,
+    size: Math.random() * 2.5 + .5,
+    alpha: Math.random(),
+    color: Math.random() > .5 ? "#8B7FFF" : "#5BAFFF"
+  }));
+  const dataArcs = Array.from({length: 6}, (_, i) => ({
+    r: 105 + i * 22,
+    startAngle: Math.random() * Math.PI * 2,
+    span: .3 + Math.random() * 1.2,
+    speed: (Math.random() > .5 ? 1 : -1) * (.01 + Math.random() * .02),
+    width: 2 + Math.random() * 3,
+    color: `hsl(${230 + i * 15}, 80%, ${60 + i * 3}%)`
+  }));
+  function mode() { return canvas.dataset.mode || "idle"; }
+  function drawCoreGlow() {
+    const active = mode() === "speaking";
+    let og = ctx.createRadialGradient(cx, cy, 0, cx, cy, 260);
+    og.addColorStop(0, "rgba(80,60,200,0.18)");
+    og.addColorStop(.5, "rgba(40,80,220,0.08)");
+    og.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = og;
+    ctx.beginPath(); ctx.arc(cx, cy, 260, 0, Math.PI*2); ctx.fill();
+
+    const pulse = .85 + Math.sin(t * 3) * .15 + (active ? Math.sin(t * 18) * .1 : 0);
+    let cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, 55 * pulse);
+    cg.addColorStop(0, "rgba(255,255,255,0.95)");
+    cg.addColorStop(.15, "rgba(180,160,255,0.9)");
+    cg.addColorStop(.4, "rgba(100,120,255,0.7)");
+    cg.addColorStop(.7, "rgba(60,80,220,0.4)");
+    cg.addColorStop(1, "rgba(40,40,180,0)");
+    ctx.fillStyle = cg;
+    ctx.beginPath(); ctx.arc(cx, cy, 55 * pulse, 0, Math.PI*2); ctx.fill();
+
+    let ig = ctx.createRadialGradient(cx, cy, 0, cx, cy, 20);
+    ig.addColorStop(0, "rgba(255,255,255,1)");
+    ig.addColorStop(.5, "rgba(200,210,255,0.8)");
+    ig.addColorStop(1, "rgba(150,160,255,0)");
+    ctx.fillStyle = ig;
+    ctx.beginPath(); ctx.arc(cx, cy, 20, 0, Math.PI*2); ctx.fill();
+  }
+  function drawRayBurst() {
+    const numRays = mode() === "speaking" ? 24 : 18;
+    for (let i = 0; i < numRays; i++) {
+      const angle = (i / numRays) * Math.PI * 2 + t * .3;
+      const len = 40 + Math.random() * 180;
+      const alpha = .03 + Math.random() * .07;
+      ctx.strokeStyle = `rgba(140,160,255,${alpha})`;
+      ctx.lineWidth = .5;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(angle) * len, cy + Math.sin(angle) * len);
+      ctx.stroke();
+    }
+  }
+  function drawRings() {
+    rings.forEach(ring => {
+      const segAngle = (Math.PI * 2) / ring.segments;
+      const offset = t * ring.speed * 60;
+      for (let i = 0; i < ring.segments; i++) {
+        const a = i * segAngle + offset;
+        const gap = segAngle * .15;
+        ctx.save();
+        ctx.strokeStyle = hexColor(ring.color, .6 + Math.sin(t * 2 + i) * .2);
+        ctx.lineWidth = ring.width;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = ring.color;
+        ctx.beginPath();
+        ctx.arc(cx, cy, ring.r, a + gap, a + segAngle - gap);
+        ctx.stroke();
+        ctx.restore();
+      }
+    });
+  }
+  function drawDataArcs() {
+    dataArcs.forEach(arc => {
+      arc.startAngle += arc.speed;
+      ctx.save();
+      ctx.strokeStyle = arc.color.replace("hsl", "hsla").replace(")", ", 0.5)");
+      ctx.lineWidth = arc.width;
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = arc.color;
+      ctx.beginPath();
+      ctx.arc(cx, cy, arc.r, arc.startAngle, arc.startAngle + arc.span);
+      ctx.stroke();
+      for (let k = 0; k < 4; k++) {
+        const ta = arc.startAngle + (arc.span / 4) * k;
+        ctx.beginPath();
+        ctx.moveTo(cx + Math.cos(ta) * (arc.r - 4), cy + Math.sin(ta) * (arc.r - 4));
+        ctx.lineTo(cx + Math.cos(ta) * (arc.r + 4), cy + Math.sin(ta) * (arc.r + 4));
+        ctx.stroke();
+      }
+      ctx.restore();
+    });
+  }
+  function drawHexCore() {
+    const radius = 42 + Math.sin(t * 2) * 3;
+    ctx.save();
+    ctx.strokeStyle = "rgba(180,190,255,0.5)";
+    ctx.lineWidth = 1.5;
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = "#7B8FFF";
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const a = (i / 6) * Math.PI * 2 + t * .5;
+      const x = cx + Math.cos(a) * radius;
+      const y = cy + Math.sin(a) * radius;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.stroke();
+    ctx.restore();
+  }
+  function drawParticles() {
+    particles.forEach(p => {
+      p.angle += p.speed;
+      p.alpha = .3 + Math.abs(Math.sin(t * 1.5 + p.angle)) * .7;
+      ctx.save();
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = p.color;
+      ctx.beginPath();
+      ctx.arc(cx + Math.cos(p.angle) * p.r, cy + Math.sin(p.angle) * p.r, p.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    });
+  }
+  function drawSpeakingWave() {
+    if (mode() !== "speaking") return;
+    for (let ring = 0; ring < 3; ring++) {
+      const baseR = 62 + ring * 8;
+      ctx.save();
+      ctx.strokeStyle = `rgba(160,180,255,${.4 - ring * .1})`;
+      ctx.lineWidth = 2 - ring * .5;
+      ctx.beginPath();
+      for (let i = 0; i <= 120; i++) {
+        const a = (i / 120) * Math.PI * 2;
+        const wave = Math.sin(a * 8 + t * 20 + ring * 2) * (6 - ring * 1.5);
+        const r = baseR + wave;
+        const x = cx + Math.cos(a) * r;
+        const y = cy + Math.sin(a) * r;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+  function drawLabel() {
+    ctx.save();
+    ctx.font = "500 13px Consolas, monospace";
+    ctx.fillStyle = "rgba(140,160,255,0.72)";
+    ctx.textAlign = "center";
+    ctx.fillText(mode() === "idle" ? "AWAITING COMMAND" : "PROCESSING...", cx, cy + 280);
+    for (let i = 0; i < 5; i++) {
+      const active = Math.floor((t * 3) % 5) === i;
+      ctx.fillStyle = active ? "rgba(140,180,255,0.9)" : "rgba(80,80,150,0.4)";
+      ctx.beginPath();
+      ctx.arc(cx - 20 + i * 10, cy + 265, 2, 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+  function draw() {
+    if (!canvas.isConnected) return;
+    ctx.clearRect(0, 0, 680, 600);
+    ctx.fillStyle = "#000008";
+    ctx.fillRect(0, 0, 680, 600);
+    drawRayBurst();
+    drawParticles();
+    drawDataArcs();
+    drawRings();
+    drawHexCore();
+    drawCoreGlow();
+    drawSpeakingWave();
+    drawLabel();
+    t += .016;
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+function hasCode(text) {
+  return /```|\\b(def|class|function|const|let|import)\\b/.test(text || "");
+}
+function formatResponseText(text) {
+  const escaped = esc(text);
+  if (escaped.includes("```")) {
+    return escaped.replace(/```([\\s\\S]*?)```/g, '<pre class="mt-2 rounded-lg border border-cyan-300/20 bg-black/30 p-3">$1</pre>');
+  }
+  return `<div class="whitespace-pre-wrap">${escaped}</div>`;
+}
+function renderBubble(message, index) {
+  const who = message.role === "user" ? "Aaron" : "Raphael";
+  const cls = message.role === "user" ? "user" : "raphael";
+  const meta = message.meta ? `<div class="muted text-xs mt-2">${esc(message.meta)}</div>` : "";
+  const body = (message.text || "").length > 900
+    ? `<details open><summary class="cursor-pointer text-cyan-200">Long response</summary>${formatResponseText(message.text)}</details>`
+    : formatResponseText(message.text);
+  const command = message.command ? `<div class="mt-2 rounded border border-cyan-300/20 p-2"><div class="muted text-xs">Command</div><code>${esc(message.command)}</code></div>` : "";
+  const status = message.status ? `<div class="mt-2"><span class="pill">${esc(message.status)}</span>${message.awaiting ? '<span class="pill">awaiting confirmation</span>' : ''}</div>` : "";
+  let actions = message.role === "raphael" ? `<div class="mt-2"><button class="copy" onclick="copyChatResponse(${index})">copy response</button>${hasCode(message.text) ? `<button class="copy" onclick="createFileInstead(${index})">create file instead</button>` : ""}</div>` : "";
+  if (message.awaiting) {
+    actions += `<div class="mt-2 flex gap-2"><button class="copy" style="background:#164e63;color:#cffafe;border-color:#22d3ee" onclick="sendQuickChat('Execute')">Execute</button><button class="copy" onclick="sendQuickChat('Modify')">Modify</button><button class="copy" onclick="sendQuickChat('Cancel')">Cancel</button></div>`;
+  }
+  return `<div class="bubble ${cls}"><strong>${who}</strong><div class="mt-1">${body}</div>${command}${status}${meta}${actions}</div>`;
+}
+function useChatExample(text) {
+  const input = document.getElementById("chat-input");
+  if (input) {
+    input.value = text;
+    input.focus();
+  }
+}
+function sendQuickChat(text) {
+  const input = document.getElementById("chat-input");
+  if (input) {
+    input.value = text;
+    sendChat();
+  } else {
+    sendDashboardPhrase(text);
+  }
+}
+function copyChatResponse(index) {
+  navigator.clipboard.writeText(chatMessages[index]?.text || "");
+}
+function createFileInstead(index) {
+  const text = chatMessages[index]?.text || "";
+  useChatExample("build a file from this response: " + text.slice(0, 300));
+}
+async function sendChat(options = {}) {
+  const input = document.getElementById("chat-input");
+  const status = document.getElementById("chat-status");
+  const phrase = (input?.value || "").trim();
+  if (!phrase) return;
+  chatMessages.push({ role: "user", text: phrase });
+  input.value = "";
+  status.textContent = "Raphael is thinking...";
+  setDashboardVoiceState("thinking", options.fromVoice ? "Voice transcript sent through Command Bus." : "Routing through Command Bus…");
+  render();
+  if (window.RaphaelOrb) window.RaphaelOrb.setState("thinking");
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: phrase })
+    });
+    const payload = await res.json();
+    const meta = `${payload.intent || "unknown"}${payload.confirmation_required ? " · confirmation required" : ""}`;
+    chatMessages.push({ role: "raphael", text: payload.response || "No response.", meta, command: payload.command || "", status: payload.status || "", awaiting: !!payload.awaiting_confirmation });
+    if (window.RaphaelMatrix) window.RaphaelMatrix.noteCommandResult(payload.response || payload.status || "");
+    updateOrbFromChatPayload(payload);
+    window.RaphaelOrb?.refreshPresence();
+    setDashboardVoiceState("speaking", "Raphael response received.");
+    speakDashboardResponse(payload.response || "");
+  } catch (err) {
+    chatMessages.push({ role: "raphael", text: "Dashboard chat failed safely: " + err, meta: "Error" });
+    if (window.RaphaelOrb) window.RaphaelOrb.setState("error");
+  }
+  render();
+  if (!dashboardVoiceSpeakResponses && dashboardVoiceState !== "error") {
+    setDashboardVoiceState("speaking", "Raphael response received.");
+    setTimeout(() => setDashboardVoiceState("recommendation_ready", "Response ready."), 1400);
+  } else {
+    setDashboardVoiceState(dashboardVoiceState, dashboardVoiceMessage);
+  }
+  const log = document.getElementById("chat-log");
+  if (log) log.scrollTop = log.scrollHeight;
+}
+async function sendDashboardPhrase(phrase) {
+  if (!phrase) return;
+  if (window.RaphaelOrb) window.RaphaelOrb.setState("thinking");
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: phrase })
+    });
+    const payload = await res.json();
+    chatMessages.push({ role: "user", text: phrase });
+    chatMessages.push({ role: "raphael", text: payload.response || "No response.", meta: payload.intent || "matrix", command: payload.command || "", status: payload.status || "", awaiting: !!payload.awaiting_confirmation });
+    if (window.RaphaelMatrix) window.RaphaelMatrix.noteCommandResult(payload.response || payload.status || "");
+    updateOrbFromChatPayload(payload);
+    window.RaphaelOrb?.refreshPresence();
+  } catch (err) {
+    chatMessages.push({ role: "raphael", text: "Dashboard command failed safely: " + err, meta: "Error" });
+    if (window.RaphaelOrb) window.RaphaelOrb.setState("error");
+  }
+  if (window.RaphaelMatrix && document.body.classList.contains("matrix-view")) window.RaphaelMatrix.renderMatrixHome();
+}
+function updateOrbFromChatPayload(payload) {
+  if (!window.RaphaelOrb) return;
+  const status = String(payload?.status || "").toLowerCase();
+  const response = String(payload?.response || "").toLowerCase();
+  if (payload?.awaiting_confirmation || payload?.confirmation_required) {
+    window.RaphaelOrb.setState("warning");
+    window.RaphaelOrb.setStatusText("CONFIRMATION REQUIRED");
+    return;
+  }
+  if (status.includes("failed") || status.includes("refused") || status.includes("blocked") || response.includes("blocked")) {
+    window.RaphaelOrb.setState("error");
+    window.RaphaelOrb.setStatusText("ACTION BLOCKED");
+    return;
+  }
+  window.RaphaelOrb.setState("speaking");
+  window.RaphaelOrb.setStatusText("RAPHAEL IS RESPONDING");
+  setTimeout(() => {
+    if (!chatMessages.some(message => message.awaiting)) window.RaphaelOrb?.setState("recommendation_ready");
+  }, 1400);
+}
+function renderCommandBus() {
+  const bus = data.command_bus;
+  const commands = [
+    data.commands.command_bus_status,
+    data.commands.command_bus_test,
+    data.commands.command_bus_review,
+    data.commands.command_list,
+    data.commands.command_help
+  ];
+  return `
+    <article class="card full">
+      <h2>Command Bus</h2>
+      <span class="pill">Enabled ${bus.enabled}</span>
+      <span class="pill">Log all routes ${bus.log_all}</span>
+      <span class="pill">Write confirmations ${bus.requires_confirmation}</span>
+      <span class="pill">Execution ${bus.allow_execution}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('what should I prioritize today')">test: prioritize</button>
+        <button class="copy" onclick="sendQuickChat('list councils')">test: councils</button>
+        <button class="copy" onclick="sendQuickChat('which business should I focus on')">test: portfolio</button>
+        <button class="copy" onclick="sendQuickChat('send email to client')">test: blocked</button>
+      </div>
+      <p class="muted mt-3">Central routing and logging only. No safety boundary is weakened; writes, delegation, execution, finance updates, KPI updates, and builder actions still require confirmation.</p>
+    </article>
+    <article class="card wide"><h2>Command Registry</h2>${bus.registry.exists ? `<div class="muted">${esc(bus.registry.updated)}</div><pre>${esc(bus.registry.content)}</pre>` : `<div class="empty">No command registry yet.</div>`}</article>
+    <article class="card wide"><h2>Command Safety Policy</h2>${bus.safety.exists ? `<div class="muted">${esc(bus.safety.updated)}</div><pre>${esc(bus.safety.content)}</pre>` : `<div class="empty">No safety policy yet.</div>`}</article>
+    <article class="card wide"><h2>Command Review</h2>${bus.review.exists ? `<div class="muted">${esc(bus.review.updated)}</div><pre>${esc(bus.review.content)}</pre>` : `<div class="empty">No command review yet.</div>`}</article>
+    <article class="card wide"><h2>Command Routing Log</h2>${bus.routing_log.exists ? `<div class="muted">${esc(bus.routing_log.updated)}</div><pre>${esc(bus.routing_log.content)}</pre>` : `<div class="empty">No routing log yet.</div>`}</article>
+    <article class="card wide"><h2>Command Bus Overview</h2>${bus.overview.exists ? `<div class="muted">${esc(bus.overview.updated)}</div><pre>${esc(bus.overview.content)}</pre>` : `<div class="empty">No overview yet.</div>`}</article>
+  `;
+}
+function renderProjects() {
+  return card("Projects", table(data.projects, [
+    ["Project", "name"], ["Status", "status", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+    ["Score", "score", v=>v ? `<div>${v}/100</div><div class="bar"><i style="width:${v}%"></i></div>` : "n/a"],
+    ["Summary", "has_summary", v=>v ? "yes" : "no"], ["Health", "has_health", v=>v ? "yes" : "no"]
+  ]), "card full");
+}
+function renderBuilder() {
+  const rows = data.build_requests || [];
+  return `
+    <article class="card full">
+      <h2>Builder Mode</h2>
+      <p class="muted">Sandbox-first app/file generation. Builder files are created under <code>C:/RaphaelOS/builder/workspace</code> first.</p>
+      <button class="copy" onclick="copyCommand('${esc(data.commands.build_classify)}')">${esc(data.commands.build_classify)}</button>
+      <button class="copy" onclick="copyCommand('${esc(data.commands.build_with_council)}')">${esc(data.commands.build_with_council)}</button>
+      <button class="copy" onclick="copyCommand('${esc(data.commands.build_review)}')">${esc(data.commands.build_review)}</button>
+      <button class="copy" onclick="copyCommand('${esc(data.commands.builder_governance_review)}')">${esc(data.commands.builder_governance_review)}</button>
+      <button class="copy" onclick="sendQuickChat('build a Python app that tracks button clicks')">chat: build click tracker</button>
+    </article>
+    <article class="card full">
+      <h2>Build Requests</h2>
+      ${table(rows, [
+        ["ID","id"],
+        ["Complexity","complexity",v=>v ? `<span class="${statusClass(v)}">${esc(v)}</span>` : "unclassified"],
+        ["Task ID","task_id",v=>v ? `<code>${esc(v)}</code>` : "unlinked"],
+        ["Task Set","task_set",v=>v ? `<code>${esc(v)}</code>` : "n/a"],
+        ["Task Status","task_status",v=>v ? `<span class="${statusClass(v)}">${esc(v)}</span>` : "unknown"],
+        ["Agent","assigned_agent"],
+        ["Councils","councils"],
+        ["Deliberation","deliberation_id",v=>v ? `<code>${esc(v)}</code>` : "n/a"],
+        ["Execution Plan","execution_plan_id",v=>v ? `<code>${esc(v)}</code>` : "n/a"],
+        ["Safety","safety_status"],
+        ["Next Command","next_command",v=>v ? `<code>${esc(v)}</code>` : "n/a"],
+        ["Description","description"],
+        ["Status","status",v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Workspace","workspace",v=>v ? `<code>${esc(v)}</code>` : "n/a"],
+        ["Created","created"]
+      ])}
+    </article>
+    <article class="card full">
+      <h2>Build Governance & Files</h2>
+      ${rows.length ? rows.map(r => `<div class="bubble raphael"><strong>${esc(r.id)}</strong><div class="mt-1"><span class="pill">${esc(r.complexity || "Unclassified")}</span><span class="pill">Task ${esc(r.task_id || "unlinked")}</span><span class="pill">${esc(r.task_status || "unknown")}</span><span class="pill">${esc(r.safety_status || "sandbox only")}</span></div><div class="muted mt-2">${esc(r.councils || "No councils required")}</div>${r.files ? `<pre class="mt-2">${esc(r.files)}</pre>` : `<div class="empty mt-2">No generated files yet.</div>`}<button class="copy" onclick="quickBuildAction('classify','${esc(r.id)}')">Classify build</button><button class="copy" onclick="quickBuildAction('plan','${esc(r.id)}')">Council plan</button><button class="copy" ${String(r.complexity).startsWith("3") && r.status === "Awaiting Plan Approval" ? `onclick="quickBuildAction('approve','${esc(r.id)}')"` : "disabled"}>Approve council plan</button><button class="copy" ${!r.files && (!String(r.complexity).startsWith("3") || r.status === "Approved") ? `onclick="quickBuildAction('generate','${esc(r.id)}')"` : "disabled"}>Generate after approval</button><button class="copy" ${r.task_id ? `onclick="openRelatedTask('${esc(r.task_id)}')"` : "disabled"}>Open related task</button><button class="copy" ${r.deliberation_id ? `onclick="active='deliberations'; render();"` : "disabled"}>Open deliberation</button><button class="copy" ${r.execution_plan_id ? `onclick="active='executionplans'; render();"` : "disabled"}>Open execution plan</button><button class="copy" ${r.files ? `onclick="sendQuickChat('mark build ${esc(r.id)} ready for review')"` : "disabled"}>Mark build complete</button></div>`).join("") : `<div class="empty">No Builder requests yet.</div>`}
+    </article>
+  `;
+}
+function quickBuildAction(action, buildId) {
+  const build = (data.build_requests || []).find(item => item.id === buildId);
+  if (!build) return;
+  if (action === "classify") sendQuickChat(`classify this build: ${build.description}`);
+  if (action === "plan") sendQuickChat(`create council plan for ${build.id}`);
+  if (action === "approve") sendQuickChat(`approve council plan for ${build.id}`);
+  if (action === "generate") sendQuickChat(`generate build ${build.id}`);
+}
+function renderIdentity() {
+  const identity = data.identity;
+  const fileCards = identity.files.map(file => card(file.name.replace(".md", ""), file.exists ? `<div class="muted">${esc(file.updated)}</div><pre>${esc(file.content)}</pre>` : `<div class="empty">Missing identity file: ${esc(file.path)}</div>`, "card wide")).join("");
+  return `
+    <article class="card full">
+      <h2>Identity Layer</h2>
+      <span class="pill">Enabled ${identity.enabled}</span>
+      <span class="pill">Style ${esc(identity.communication_style)}</span>
+      <span class="pill">Length ${esc(identity.response_length_default)}</span>
+      <span class="pill">Uncertainty ${identity.always_disclose_uncertainty}</span>
+      <span class="pill">Actionable ${identity.prefer_actionable_recommendations}</span>
+      <span class="pill">Escalate ${identity.escalate_when_uncertain}</span>
+      <div class="mt-3">
+        <button class="copy" onclick="copyCommand('${esc(data.commands.identity_status)}')">${esc(data.commands.identity_status)}</button>
+        <button class="copy" onclick="copyCommand('${esc(data.commands.identity_review)}')">${esc(data.commands.identity_review)}</button>
+        <button class="copy" onclick="copyCommand('${esc(data.commands.identity_brief)}')">${esc(data.commands.identity_brief)}</button>
+        <button class="copy" onclick="sendQuickChat('who are you?')">chat: who are you?</button>
+        <button class="copy" onclick="sendQuickChat('explain your rules')">chat: explain rules</button>
+      </div>
+    </article>
+    ${fileCards}
+  `;
+}
+function renderWorldModel() {
+  const world = data.world_model;
+  const records = world.records;
+  const commands = [
+    data.commands.world_status,
+    data.commands.world_review,
+    data.commands.world_brief,
+    data.commands.add_business,
+    data.commands.add_product
+  ];
+  const recordTable = (rows, includeBusiness=false) => table(rows, [
+    ["ID", "id"],
+    ["Name", "name"],
+    ["Type", "type"],
+    ...(includeBusiness ? [["Business", "business"]] : []),
+    ["Status", "status", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+    ["Council", "council"],
+    ["Description", "description"]
+  ]);
+  return `
+    <article class="card full">
+      <h2>World Model</h2>
+      <span class="pill">Enabled ${world.enabled}</span>
+      <span class="pill">Update confirmation ${world.requires_confirmation}</span>
+      <span class="pill">Businesses ${records.business.length}</span>
+      <span class="pill">Products ${records.product.length}</span>
+      <span class="pill">Revenue ${records.revenue_stream.length}</span>
+      <span class="pill">Platforms ${records.platform.length}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('world status')">chat: world status</button>
+        <button class="copy" onclick="sendQuickChat('review the world model')">chat: review world model</button>
+        <button class="copy" onclick="sendQuickChat('give me a world brief')">chat: world brief</button>
+      </div>
+      <p class="muted mt-3">Read-only dashboard view. Add/update world model records through confirmed safe CLI/chat commands only.</p>
+    </article>
+    <article class="card full"><h2>Businesses</h2>${recordTable(records.business)}</article>
+    <article class="card full"><h2>Products</h2>${recordTable(records.product, true)}</article>
+    <article class="card full"><h2>Revenue Streams</h2>${recordTable(records.revenue_stream, true)}</article>
+    <article class="card full"><h2>Platforms</h2>${recordTable(records.platform)}</article>
+    <article class="card full"><h2>Assets</h2>${recordTable(records.asset)}</article>
+    <article class="card full"><h2>Relationships</h2>${recordTable(records.relationship)}</article>
+    <article class="card wide"><h2>World Review</h2>${world.review.exists ? `<div class="muted">${esc(world.review.updated)}</div><pre>${esc(world.review.content)}</pre>` : `<div class="empty">World review has not been generated yet.</div>`}</article>
+    <article class="card wide"><h2>World Brief</h2>${world.brief.exists ? `<div class="muted">${esc(world.brief.updated)}</div><pre>${esc(world.brief.content)}</pre>` : `<div class="empty">World brief has not been generated yet.</div>`}</article>
+  `;
+}
+function renderSimulations() {
+  const sim = data.simulations;
+  const commands = [
+    data.commands.simulation_status,
+    data.commands.simulate,
+    data.commands.simulate_many,
+    data.commands.simulate_business,
+    data.commands.compare_opportunities,
+    data.commands.simulation_review
+  ];
+  return `
+    <article class="card full">
+      <h2>Simulation Engine</h2>
+      <span class="pill">Enabled ${sim.enabled}</span>
+      <span class="pill">Saved result confirmation ${sim.requires_confirmation}</span>
+      <span class="pill">Results ${sim.results.length}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('simulate Etsy store versus agency')">chat: simulate Etsy vs agency</button>
+        <button class="copy" onclick="sendQuickChat('compare AI influencer, Etsy store, and Shopify agency')">chat: compare three</button>
+        <button class="copy" onclick="sendQuickChat('compare opportunities')">chat: compare opportunities</button>
+      </div>
+      <p class="muted mt-3">Advisory scoring only. No business actions, platform access, spending, or external search are performed.</p>
+    </article>
+    <article class="card full">
+      <h2>Recent Simulations</h2>
+      ${table(sim.results, [
+        ["ID", "id"],
+        ["Type", "type"],
+        ["Options", "options"],
+        ["Recommendation", "recommendation"],
+        ["Created", "created"]
+      ])}
+    </article>
+    <article class="card wide">
+      <h2>Simulation Criteria</h2>
+      ${sim.criteria.exists ? `<div class="muted">${esc(sim.criteria.updated)}</div><pre>${esc(sim.criteria.content)}</pre>` : `<div class="empty">Simulation criteria have not been generated yet.</div>`}
+    </article>
+    <article class="card wide">
+      <h2>Simulation Review</h2>
+      ${sim.review.exists ? `<div class="muted">${esc(sim.review.updated)}</div><pre>${esc(sim.review.content)}</pre>` : `<div class="empty">Simulation review has not been generated yet.</div>`}
+    </article>
+    <article class="card full">
+      <h2>Simulation Results Index</h2>
+      ${sim.results_index.exists ? `<div class="muted">${esc(sim.results_index.updated)}</div><pre>${esc(sim.results_index.content)}</pre>` : `<div class="empty">No simulation results index yet.</div>`}
+    </article>
+  `;
+}
+function renderOpportunities() {
+  const opp = data.opportunities;
+  const commands = [
+    data.commands.opportunity_status,
+    data.commands.detect_opportunities,
+    data.commands.opportunity_review,
+    data.commands.opportunity_brief,
+    data.commands.add_opportunity,
+    data.commands.score_opportunity,
+    data.commands.opportunity_delegate
+  ];
+  return `
+    <article class="card full">
+      <h2>Opportunity Detection Engine</h2>
+      <span class="pill">Enabled ${opp.enabled}</span>
+      <span class="pill">Delegation confirmation ${opp.requires_confirmation}</span>
+      <span class="pill">Threshold ${opp.threshold}</span>
+      <span class="pill">Opportunities ${opp.records.length}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('detect opportunities')">chat: detect opportunities</button>
+        <button class="copy" onclick="sendQuickChat('review opportunities')">chat: review opportunities</button>
+        <button class="copy" onclick="sendQuickChat('brief opportunities')">chat: brief opportunities</button>
+      </div>
+      <p class="muted mt-3">Recommendation layer only. No store creation, platform access, spending, uploads, external browsing, or automatic delegation.</p>
+    </article>
+    <article class="card full">
+      <h2>Opportunity Inbox</h2>
+      ${table(opp.records, [
+        ["ID", "id"],
+        ["Title", "title"],
+        ["Type", "type"],
+        ["Score", "score"],
+        ["Risk", "risk"],
+        ["Status", "status", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Council", "council"],
+        ["Next", "next"]
+      ])}
+    </article>
+    <article class="card wide"><h2>Opportunity Scores</h2>${opp.scores.exists ? `<div class="muted">${esc(opp.scores.updated)}</div><pre>${esc(opp.scores.content)}</pre>` : `<div class="empty">No scored opportunities yet.</div>`}</article>
+    <article class="card wide"><h2>Opportunity Review</h2>${opp.review.exists ? `<div class="muted">${esc(opp.review.updated)}</div><pre>${esc(opp.review.content)}</pre>` : `<div class="empty">No opportunity review yet.</div>`}</article>
+    <article class="card full"><h2>Opportunity Brief</h2>${opp.brief.exists ? `<div class="muted">${esc(opp.brief.updated)}</div><pre>${esc(opp.brief.content)}</pre>` : `<div class="empty">No opportunity brief yet.</div>`}</article>
+  `;
+}
+function renderAllocation() {
+  const allocation = data.allocation;
+  const p = allocation.profile;
+  const commands = [
+    data.commands.resource_status,
+    data.commands.set_resource_profile,
+    data.commands.allocation_plan,
+    data.commands.allocation_plan_for,
+    data.commands.allocate_next_hours,
+    data.commands.allocation_review,
+    data.commands.allocation_brief
+  ];
+  return `
+    <article class="card full">
+      <h2>Resource Allocation</h2>
+      <span class="pill">Enabled ${allocation.enabled}</span>
+      <span class="pill">Delegation confirmation ${allocation.requires_confirmation}</span>
+      <span class="pill">Hours ${esc(p.weekly_hours)}</span>
+      <span class="pill">Budget ${esc(p.weekly_budget)}</span>
+      <span class="pill">Focus slots ${esc(p.focus_slots)}</span>
+      <span class="pill">Mode ${esc(p.mode)}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('allocate my next 10 hours')">chat: next 10 hours</button>
+        <button class="copy" onclick="sendQuickChat('what should I work on this week')">chat: this week</button>
+        <button class="copy" onclick="sendQuickChat('make a resource plan')">chat: resource plan</button>
+        <button class="copy" onclick="sendQuickChat('allocate resources for print on demand')">chat: print on demand</button>
+      </div>
+      <p class="muted mt-3">Recommendations only. No spending, task execution, platform access, or external action.</p>
+    </article>
+    <article class="card wide"><h2>Resource Profile</h2><pre>${esc(JSON.stringify(p, null, 2))}</pre></article>
+    <article class="card wide"><h2>Allocation Rules</h2>${allocation.rules.exists ? `<div class="muted">${esc(allocation.rules.updated)}</div><pre>${esc(allocation.rules.content)}</pre>` : `<div class="empty">No allocation rules yet.</div>`}</article>
+    <article class="card full"><h2>Allocation Plan</h2>${allocation.plan.exists ? `<div class="muted">${esc(allocation.plan.updated)}</div><pre>${esc(allocation.plan.content)}</pre>` : `<div class="empty">No allocation plan yet.</div>`}</article>
+    <article class="card wide"><h2>Allocation Review</h2>${allocation.review.exists ? `<div class="muted">${esc(allocation.review.updated)}</div><pre>${esc(allocation.review.content)}</pre>` : `<div class="empty">No allocation review yet.</div>`}</article>
+    <article class="card wide"><h2>Allocation Brief</h2>${allocation.brief.exists ? `<div class="muted">${esc(allocation.brief.updated)}</div><pre>${esc(allocation.brief.content)}</pre>` : `<div class="empty">No allocation brief yet.</div>`}</article>
+  `;
+}
+function renderBlueprints() {
+  const bp = data.blueprints;
+  const commands = [
+    data.commands.blueprint_status,
+    data.commands.blueprint_business,
+    data.commands.blueprint_review,
+    data.commands.blueprint_next_actions,
+    data.commands.blueprint_delegate
+  ];
+  return `
+    <article class="card full">
+      <h2>Business Blueprints</h2>
+      <span class="pill">Enabled ${bp.enabled}</span>
+      <span class="pill">Delegation confirmation ${bp.requires_confirmation}</span>
+      <span class="pill">Depth ${esc(bp.depth)}</span>
+      <span class="pill">Blueprints ${bp.records.length}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('create a blueprint for a print on demand Etsy store')">chat: Etsy POD blueprint</button>
+        <button class="copy" onclick="sendQuickChat('blueprint an AI influencer ebook business')">chat: AI influencer ebook</button>
+        <button class="copy" onclick="sendQuickChat('make a business blueprint for a Shopify agency')">chat: Shopify agency</button>
+        <button class="copy" onclick="sendQuickChat('review blueprints')">chat: review blueprints</button>
+      </div>
+      <p class="muted mt-3">Planning only. No store creation, platform access, product upload, spending, outreach, or external browsing.</p>
+    </article>
+    <article class="card full">
+      <h2>Recent Blueprints</h2>
+      ${table(bp.records, [
+        ["ID", "id"],
+        ["Business", "name"],
+        ["Type", "type"],
+        ["Council", "council"],
+        ["Concept", "concept"],
+        ["Next", "next"]
+      ])}
+    </article>
+    <article class="card wide"><h2>Blueprint Index</h2>${bp.index.exists ? `<div class="muted">${esc(bp.index.updated)}</div><pre>${esc(bp.index.content)}</pre>` : `<div class="empty">No blueprint index yet.</div>`}</article>
+    <article class="card wide"><h2>Blueprint Review</h2>${bp.review.exists ? `<div class="muted">${esc(bp.review.updated)}</div><pre>${esc(bp.review.content)}</pre>` : `<div class="empty">No blueprint review yet.</div>`}</article>
+    <article class="card full"><h2>Blueprint Template</h2>${bp.template.exists ? `<div class="muted">${esc(bp.template.updated)}</div><pre>${esc(bp.template.content)}</pre>` : `<div class="empty">No blueprint template yet.</div>`}</article>
+  `;
+}
+function renderCommerce() {
+  const commerce = data.commerce;
+  const commands = [
+    data.commands.commerce_status,
+    data.commands.commerce_review,
+    data.commands.commerce_brief,
+    data.commands.commerce_product_idea,
+    data.commands.commerce_listing_plan,
+    data.commands.commerce_store_plan,
+    data.commands.commerce_digital_product,
+    data.commands.commerce_pipeline,
+    data.commands.commerce_delegate
+  ];
+  const noteTable = rows => table(rows, [
+    ["Name", "name"],
+    ["Idea", "idea"],
+    ["Target / Niche", "target"],
+    ["Next", "next"],
+    ["Updated", "updated"]
+  ]);
+  return `
+    <article class="card full">
+      <h2>Commerce Council</h2>
+      <span class="pill">Enabled ${commerce.enabled}</span>
+      <span class="pill">Delegation confirmation ${commerce.requires_confirmation}</span>
+      <span class="pill">No platform actions ${commerce.no_platform_actions}</span>
+      <span class="pill">Products ${commerce.pod_ideas.length + commerce.digital_products.length}</span>
+      <span class="pill">Listing plans ${commerce.listing_plans.length}</span>
+      <div class="mt-2">${commerce.platforms.map(p => `<span class="pill">${esc(p)}</span>`).join("")}</div>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('commerce status')">chat: commerce status</button>
+        <button class="copy" onclick="sendQuickChat('commerce review')">chat: commerce review</button>
+        <button class="copy" onclick="sendQuickChat('create product idea Bible verse shirt')">chat: product idea</button>
+        <button class="copy" onclick="sendQuickChat('make listing plan for Bible verse shirt')">chat: listing plan</button>
+        <button class="copy" onclick="sendQuickChat('make store plan for print on demand Etsy store')">chat: store plan</button>
+        <button class="copy" onclick="sendQuickChat('create digital product idea AI prompt ebook')">chat: digital product</button>
+        <button class="copy" onclick="sendQuickChat('show commerce pipeline')">chat: pipeline</button>
+        <button class="copy" onclick="active='podstudio'; render();">Open POD Design Studio</button>
+      </div>
+      <p class="muted mt-3">Planning and preparation only. No store creation, product upload, platform login, spending, publishing, or external browsing.</p>
+    </article>
+    <article class="card wide"><h2>Commerce Brief</h2>${commerce.brief.exists ? `<div class="muted">${esc(commerce.brief.updated)}</div><pre>${esc(commerce.brief.content)}</pre>` : `<div class="empty">No commerce brief yet.</div>`}</article>
+    <article class="card wide"><h2>Product Pipeline</h2>${commerce.pipeline.exists ? `<div class="muted">${esc(commerce.pipeline.updated)}</div><pre>${esc(commerce.pipeline.content)}</pre>` : `<div class="empty">No commerce pipeline yet.</div>`}</article>
+    <article class="card full"><h2>POD Ideas</h2>${noteTable(commerce.pod_ideas)}</article>
+    <article class="card full"><h2>Listing Plans</h2>${noteTable(commerce.listing_plans)}</article>
+    <article class="card full"><h2>Store Plans</h2>${noteTable(commerce.store_plans)}</article>
+    <article class="card full"><h2>Digital Products</h2>${noteTable(commerce.digital_products)}</article>
+    <article class="card wide"><h2>Commerce Review</h2>${commerce.review.exists ? `<div class="muted">${esc(commerce.review.updated)}</div><pre>${esc(commerce.review.content)}</pre>` : `<div class="empty">No commerce review yet.</div>`}</article>
+    <article class="card wide"><h2>Task Board</h2>${commerce.task_board.exists ? `<div class="muted">${esc(commerce.task_board.updated)}</div><pre>${esc(commerce.task_board.content)}</pre>` : `<div class="empty">No commerce task board yet.</div>`}</article>
+    <article class="card wide"><h2>Strategy</h2>${commerce.strategy.exists ? `<div class="muted">${esc(commerce.strategy.updated)}</div><pre>${esc(commerce.strategy.content)}</pre>` : `<div class="empty">No commerce strategy yet.</div>`}</article>
+    <article class="card wide"><h2>KPI Draft</h2>${commerce.kpis.exists ? `<div class="muted">${esc(commerce.kpis.updated)}</div><pre>${esc(commerce.kpis.content)}</pre>` : `<div class="empty">No commerce KPI draft yet.</div>`}</article>
+  `;
+}
+function renderPODStudio() {
+  const pod = data.pod_design_studio;
+  const commands = ["pod_status","pod_tool_status","pod_comfyui_test","pod_generation_log","pod_generation_debug","pod_concept","pod_prompt","pod_generation_request","pod_generate","pod_review_design","pod_review_batch","pod_refactor_plan","pod_remove_background","pod_upscale","pod_typography_create","pod_compose_design","pod_svg_export","pod_print_export","pod_typography_review","pod_typography_status","pod_listing_draft","pod_export_package","pod_pipeline","pod_review","pod_brief"];
+  const concept = pod.concepts[0]?.id || "";
+  const request = pod.requests[0] || {};
+  const generatedFolder = request.output_folder || (request.id ? `${pod.runtime}/generated/${request.id}` : `${pod.runtime}/generated`);
+  const typography = pod.typography || {assets:[],compositions:[],svg_exports:[],print_exports:[]};
+  const typeAsset = typography.assets[0] || {};
+  const composition = typography.compositions[0] || {};
+  const generatedImage = pod.generated[0]?.path || "";
+  return `
+    <article class="card full">
+      <h2>POD Design Studio</h2>
+      <span class="pill">Enabled ${pod.enabled}</span>
+      <span class="pill">Concepts ${pod.concepts.length}</span>
+      <span class="pill">Requests ${pod.requests.length}</span>
+      <span class="pill">Generated assets ${pod.generated.length}</span>
+      <span class="pill">Reviews ${pod.reviews.length}</span>
+      <span class="pill">Publishing ${pod.safety.publishing}</span>
+      <div class="mt-3">${commands.map(key => `<button class="copy" onclick="copyCommand('${esc(data.commands[key])}')">${esc(data.commands[key])}</button>`).join("")}</div>
+      <div class="mt-3">
+        <button class="copy" onclick="sendQuickChat('pod status')">chat: status</button>
+        <button class="copy" onclick="sendQuickChat('create pod concept Christian mountain cross shirt')">chat: concept</button>
+        <button class="copy" onclick="sendQuickChat('generate pod prompt')">chat: prompt</button>
+        <button class="copy" onclick="sendQuickChat('show pod pipeline')">chat: pipeline</button>
+        <button class="copy" onclick="sendQuickChat('create pod listing draft')">chat: listing</button>
+      </div>
+      <h3 class="mt-3">POD Pipeline Quick Actions</h3>
+      <div>
+        <button class="copy" ${concept ? `onclick="sendQuickChat('generate pod prompt ${esc(concept)}')"` : "disabled"}>1. Generate Prompt</button>
+        <button class="copy" ${concept ? `onclick="sendQuickChat('create pod generation request ${esc(concept)} sdxl')"` : "disabled"}>2. Create SDXL Request</button>
+        <button class="copy" ${concept ? `onclick="sendQuickChat('create pod generation request ${esc(concept)} flux')"` : "disabled"}>3. Create Flux Request</button>
+        <button class="copy" ${request.id ? `onclick="sendQuickChat('generate pod design ${esc(request.id)}')"` : "disabled"}>4. Generate Designs</button>
+        <button class="copy" ${request.image_count > 0 ? `onclick="sendQuickChat('review pod batch ${esc(generatedFolder.replace(/\\/g, "\\\\"))}')"` : "disabled"}>5. Review Batch</button>
+        <button class="copy" onclick="sendQuickChat('create typography')">6. Create Typography</button>
+        <button class="copy" ${generatedImage && typeAsset.id ? `onclick="sendQuickChat('compose pod design ${esc(generatedImage.replace(/\\/g, "\\\\"))} ${esc(typeAsset.id)}')"` : "disabled"}>7. Compose Design</button>
+        <button class="copy" ${composition.id ? `onclick="sendQuickChat('export SVG ${esc(composition.id)}')"` : "disabled"}>8. Export SVG</button>
+        <button class="copy" ${composition.id ? `onclick="sendQuickChat('export print-ready design ${esc(composition.id)}')"` : "disabled"}>9. Export Print File</button>
+        <button class="copy" ${concept ? `onclick="sendQuickChat('create pod listing draft ${esc(concept)}')"` : "disabled"}>10. Create Listing Draft</button>
+        <button class="copy" ${concept ? `onclick="sendQuickChat('export pod package ${esc(concept)}')"` : "disabled"}>11. Export Package</button>
+      </div>
+      <p class="muted mt-3">Local production only. Generation, tool execution, and export require confirmation. No Etsy/Printify action, credentials, spending, or external APIs.</p>
+    </article>
+    <article class="card wide"><h2>Tool Status</h2><pre>${esc(pod.tools.content)}</pre></article>
+    <article class="card wide"><h2>Product Pipeline</h2><pre>${esc(pod.pipeline.content)}</pre></article>
+    <article class="card full"><h2>Concepts</h2>${table(pod.concepts, [["ID","id"],["Idea","name"],["Status","status"],["Updated","updated"]])}</article>
+    <article class="card full"><h2>Design Prompts</h2>${table(pod.prompts, [["Concept","id"],["Name","name"],["Updated","updated"]])}</article>
+    <article class="card full"><h2>Generation Requests</h2>${table(pod.requests, [["ID","id"],["Concept","concept"],["Model","model"],["Status","status",v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],["Prompt ID","prompt_id"],["Images","image_count"],["Output Folder","output_folder"],["Error","error"],["Updated","updated"]])}</article>
+    <article class="card full"><h2>ComfyUI Output Bridge</h2>
+      <div><strong>Open generated folder:</strong> <code>${esc(generatedFolder)}</code></div>
+      ${request.status === "Generated" && !request.image_count ? `<div class="bad mt-3">Generation is marked Generated but the output folder is empty. Run the generation log diagnostic.</div>` : ""}
+      ${request.error && request.error !== "None" ? `<pre class="bad mt-3">${esc(request.error)}</pre>` : ""}
+      <button class="copy" onclick="sendQuickChat('test pod comfyui')">Run ComfyUI diagnostic</button>
+      ${request.id ? `<button class="copy" onclick="sendQuickChat('show pod generation log ${esc(request.id)}')">Show generation log</button>` : ""}
+      ${request.id && request.error && request.error !== "None" ? `<button class="copy" onclick="copyCommand('${esc(request.debug_command)}')">Copy generation debug command</button>
+        <details class="mt-3"><summary>Generation debug files</summary>
+          <div><strong>Submitted payload:</strong> <code>${esc(request.submitted_payload)}</code></div>
+          <div><strong>ComfyUI error:</strong> <code>${esc(request.comfyui_error_file)}</code></div>
+        </details>` : ""}
+      ${pod.comfyui_diagnostic.content ? `<pre>${esc(pod.comfyui_diagnostic.content)}</pre>` : ""}
+    </article>
+    <article class="card full"><h2>Generated Variants</h2>${table(pod.generated, [["File","name"],["Path","path"],["Bytes","size"]])}</article>
+    <article class="card full">
+      <h2>Typography & Composition Engine</h2>
+      <span class="pill">Enabled ${typography.enabled}</span>
+      <span class="pill">Inkscape ${typography.inkscape_enabled}</span>
+      <span class="pill">Typography ${typography.assets.length}</span>
+      <span class="pill">Compositions ${typography.compositions.length}</span>
+      <span class="pill">SVG exports ${typography.svg_exports.length}</span>
+      <span class="pill">Print exports ${typography.print_exports.length}</span>
+      <div class="muted mt-3">Configured Inkscape: ${esc(typography.inkscape_path || "Not configured")}</div>
+      <div class="mt-3">
+        <button class="copy" onclick="sendQuickChat('create typography')">Create Typography</button>
+        <button class="copy" ${generatedImage && typeAsset.id ? `onclick="sendQuickChat('compose pod design ${esc(generatedImage.replace(/\\/g, "\\\\"))} ${esc(typeAsset.id)}')"` : "disabled"}>Compose Design</button>
+        <button class="copy" ${composition.id ? `onclick="sendQuickChat('export SVG ${esc(composition.id)}')"` : "disabled"}>Export SVG</button>
+        <button class="copy" ${composition.id ? `onclick="sendQuickChat('export print-ready design ${esc(composition.id)}')"` : "disabled"}>Export Print-Ready PNG</button>
+        <button class="copy" onclick="sendQuickChat('typography review')">Review Typography</button>
+      </div>
+    </article>
+    <article class="card full"><h2>Typography Assets</h2>${table(typography.assets, [["ID","id"],["Phrase","name"],["Status","status"],["Updated","updated"]])}</article>
+    <article class="card full"><h2>Compositions</h2>${table(typography.compositions, [["ID","id"],["Concept","concept"],["Status","status"],["Updated","updated"]])}</article>
+    <article class="card wide"><h2>SVG Exports</h2>${table(typography.svg_exports, [["Composition","id"],["Status","status"],["Updated","updated"]])}</article>
+    <article class="card wide"><h2>Print Exports</h2>${table(typography.print_exports, [["Composition","id"],["Status","status"],["Updated","updated"]])}</article>
+    <article class="card wide"><h2>Typography Review</h2><pre>${esc(typography.reviews.content)}</pre></article>
+    <article class="card wide"><h2>Composition Reviews</h2><pre>${esc(typography.composition_reviews.content)}</pre></article>
+    <article class="card full"><h2>Design Reviews</h2>${table(pod.reviews, [["ID","id"],["Score","score"],["Status","status"],["Updated","updated"]])}</article>
+    <article class="card full"><h2>Listing Drafts</h2>${table(pod.listings, [["Concept","id"],["Name","name"],["Updated","updated"]])}</article>
+    <article class="card full"><h2>Export Packages</h2>${table(pod.exports, [["Concept","id"],["Status","status"],["Updated","updated"]])}</article>
+    <article class="card wide"><h2>Studio Review</h2><pre>${esc(pod.review.content)}</pre></article>
+    <article class="card wide"><h2>Studio Brief</h2><pre>${esc(pod.brief.content)}</pre></article>`;
+}
+function renderAssetLibrary() {
+  const lib = data.asset_brand_library;
+  const commands = ["asset_status","brand_create","brand_review","brand_brief","brand_show","asset_import","asset_review","asset_search","asset_related","asset_tag","asset_export","prompt_library","template_library","design_system_review"];
+  return `
+    <article class="card full">
+      <h2>Asset & Brand Library</h2>
+      <span class="pill">Enabled ${lib.enabled}</span>
+      <span class="pill">Brands ${lib.brands.length}</span>
+      <span class="pill">Assets ${lib.assets.length}</span>
+      <span class="pill">Import confirmation ${lib.safety.import_confirmation}</span>
+      <span class="pill">Export confirmation ${lib.safety.export_confirmation}</span>
+      <span class="pill">Image memory ${lib.safety.memory_images}</span>
+      <div class="mt-3">${commands.map(key => `<button class="copy" onclick="copyCommand('${esc(data.commands[key])}')">${esc(data.commands[key])}</button>`).join("")}</div>
+      <div class="mt-3">
+        <button class="copy" onclick="sendQuickChat('show asset library')">chat: asset library</button>
+        <button class="copy" onclick="sendQuickChat('create brand New Brand')">chat: create brand</button>
+        <button class="copy" onclick="sendQuickChat('show prompt library')">chat: prompts</button>
+        <button class="copy" onclick="sendQuickChat('show templates')">chat: templates</button>
+        <button class="copy" onclick="sendQuickChat('review brand')">chat: brand review</button>
+      </div>
+      <p class="muted mt-3">Metadata-first local reuse. Originals remain unchanged; no upload, publishing, cloud sync, credentials, or spending.</p>
+    </article>
+    <article class="card wide"><h2>Brand Registry</h2><pre>${esc(lib.brand_registry.content)}</pre></article>
+    <article class="card wide"><h2>Asset Registry</h2><pre>${esc(lib.asset_registry.content)}</pre></article>
+    <article class="card full"><h2>Brands</h2>${table(lib.brands, [["ID","id"],["Name","name"],["Status","status"],["Updated","updated"]])}</article>
+    <article class="card full"><h2>Visual Asset Explorer</h2>${table(lib.assets, [["ID","id"],["Name","name"],["Type","type"],["Tags","tags"],["Status","status"],["Updated","updated"]])}</article>
+    <article class="card wide"><h2>Prompt Library</h2><pre>${esc(lib.prompt_library.content)}</pre></article>
+    <article class="card wide"><h2>Template Library</h2><pre>${esc(lib.template_library.content)}</pre></article>
+    <article class="card wide"><h2>Design Systems</h2><pre>${esc(lib.design_systems.content)}</pre></article>
+    <article class="card wide"><h2>Asset Relationships & Reviews</h2><pre>${esc(lib.asset_review.content)}</pre></article>
+    <article class="card full"><h2>Asset Reviews</h2>${table(lib.reviews, [["ID","id"],["Name","name"],["Status","status"],["Updated","updated"]])}</article>`;
+}
+function renderAgency() {
+  const agency = data.agency;
+  const commands = [
+    data.commands.agency_status,
+    data.commands.agency_review,
+    data.commands.agency_brief,
+    data.commands.agency_service_offer,
+    data.commands.agency_client_profile,
+    data.commands.agency_proposal_plan,
+    data.commands.agency_delivery_plan,
+    data.commands.agency_pipeline,
+    data.commands.agency_delegate
+  ];
+  const noteTable = rows => table(rows, [
+    ["Name", "name"],
+    ["Subject", "subject"],
+    ["Target / Context", "target"],
+    ["Next", "next"],
+    ["Updated", "updated"]
+  ]);
+  return `
+    <article class="card full">
+      <h2>Agency Council</h2>
+      <span class="pill">Enabled ${agency.enabled}</span>
+      <span class="pill">Delegation confirmation ${agency.requires_confirmation}</span>
+      <span class="pill">No external outreach ${agency.no_external_outreach}</span>
+      <span class="pill">Service offers ${agency.service_offers.length}</span>
+      <span class="pill">Client profiles ${agency.client_profiles.length}</span>
+      <span class="pill">Proposals ${agency.proposal_plans.length}</span>
+      <span class="pill">Delivery plans ${agency.delivery_plans.length}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('agency status')">chat: agency status</button>
+        <button class="copy" onclick="sendQuickChat('agency review')">chat: agency review</button>
+        <button class="copy" onclick="sendQuickChat('create service offer Shopify Integration')">chat: service offer</button>
+        <button class="copy" onclick="sendQuickChat('create proposal plan ERP integration')">chat: proposal plan</button>
+        <button class="copy" onclick="sendQuickChat('create client profile local retailer')">chat: client profile</button>
+        <button class="copy" onclick="sendQuickChat('show agency pipeline')">chat: pipeline</button>
+      </div>
+      <p class="muted mt-3">Planning and management only. No outreach, emails, CRM access, contracts, invoicing, payment processing, spending, external APIs, or external systems.</p>
+    </article>
+    <article class="card wide"><h2>Agency Brief</h2>${agency.brief.exists ? `<div class="muted">${esc(agency.brief.updated)}</div><pre>${esc(agency.brief.content)}</pre>` : `<div class="empty">No agency brief yet.</div>`}</article>
+    <article class="card wide"><h2>Agency Pipeline</h2>${agency.pipeline.exists ? `<div class="muted">${esc(agency.pipeline.updated)}</div><pre>${esc(agency.pipeline.content)}</pre>` : `<div class="empty">No agency pipeline yet.</div>`}</article>
+    <article class="card full"><h2>Service Offers</h2>${noteTable(agency.service_offers)}</article>
+    <article class="card full"><h2>Client Profiles</h2>${noteTable(agency.client_profiles)}</article>
+    <article class="card full"><h2>Proposal Plans</h2>${noteTable(agency.proposal_plans)}</article>
+    <article class="card full"><h2>Delivery Plans</h2>${noteTable(agency.delivery_plans)}</article>
+    <article class="card wide"><h2>Agency Review</h2>${agency.review.exists ? `<div class="muted">${esc(agency.review.updated)}</div><pre>${esc(agency.review.content)}</pre>` : `<div class="empty">No agency review yet.</div>`}</article>
+    <article class="card wide"><h2>Task Board</h2>${agency.task_board.exists ? `<div class="muted">${esc(agency.task_board.updated)}</div><pre>${esc(agency.task_board.content)}</pre>` : `<div class="empty">No agency task board yet.</div>`}</article>
+    <article class="card wide"><h2>Service Catalog</h2>${agency.catalog.exists ? `<div class="muted">${esc(agency.catalog.updated)}</div><pre>${esc(agency.catalog.content)}</pre>` : `<div class="empty">No agency service catalog yet.</div>`}</article>
+    <article class="card wide"><h2>KPI Draft</h2>${agency.kpis.exists ? `<div class="muted">${esc(agency.kpis.updated)}</div><pre>${esc(agency.kpis.content)}</pre>` : `<div class="empty">No agency KPI draft yet.</div>`}</article>
+  `;
+}
+function renderCreator() {
+  const creator = data.creator;
+  const commands = [
+    data.commands.creator_status,
+    data.commands.creator_review,
+    data.commands.creator_brief,
+    data.commands.creator_content_idea,
+    data.commands.creator_content_plan,
+    data.commands.creator_script,
+    data.commands.creator_ebook_plan,
+    data.commands.creator_offer_plan,
+    data.commands.creator_pipeline,
+    data.commands.creator_delegate
+  ];
+  const noteTable = rows => table(rows, [
+    ["Name", "name"],
+    ["Subject", "subject"],
+    ["Audience / Pillar", "audience"],
+    ["Next", "next"],
+    ["Updated", "updated"]
+  ]);
+  return `
+    <article class="card full">
+      <h2>Creator Council</h2>
+      <span class="pill">Enabled ${creator.enabled}</span>
+      <span class="pill">Delegation confirmation ${creator.requires_confirmation}</span>
+      <span class="pill">No publishing ${creator.no_publishing}</span>
+      <span class="pill">Ideas ${creator.content_ideas.length}</span>
+      <span class="pill">Plans ${creator.content_plans.length}</span>
+      <span class="pill">Scripts ${creator.scripts.length}</span>
+      <span class="pill">Ebooks ${creator.ebooks.length}</span>
+      <span class="pill">Offers ${creator.offers.length}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('creator status')">chat: creator status</button>
+        <button class="copy" onclick="sendQuickChat('creator review')">chat: creator review</button>
+        <button class="copy" onclick="sendQuickChat('create content idea AI automation tips')">chat: content idea</button>
+        <button class="copy" onclick="sendQuickChat('create content plan AI automation tips')">chat: content plan</button>
+        <button class="copy" onclick="sendQuickChat('create script AI automation tips')">chat: script</button>
+        <button class="copy" onclick="sendQuickChat('create ebook plan AI automation for local businesses')">chat: ebook</button>
+        <button class="copy" onclick="sendQuickChat('show creator pipeline')">chat: pipeline</button>
+      </div>
+      <p class="muted mt-3">Planning only. No posting, uploads, email sends, social account access, platform logins, account creation, or publishing.</p>
+    </article>
+    <article class="card wide"><h2>Creator Brief</h2>${creator.brief.exists ? `<div class="muted">${esc(creator.brief.updated)}</div><pre>${esc(creator.brief.content)}</pre>` : `<div class="empty">No creator brief yet.</div>`}</article>
+    <article class="card wide"><h2>Creator Pipeline</h2>${creator.pipeline.exists ? `<div class="muted">${esc(creator.pipeline.updated)}</div><pre>${esc(creator.pipeline.content)}</pre>` : `<div class="empty">No creator pipeline yet.</div>`}</article>
+    <article class="card full"><h2>Content Ideas</h2>${noteTable(creator.content_ideas)}</article>
+    <article class="card full"><h2>Content Plans</h2>${noteTable(creator.content_plans)}</article>
+    <article class="card full"><h2>Scripts</h2>${noteTable(creator.scripts)}</article>
+    <article class="card full"><h2>Ebooks</h2>${noteTable(creator.ebooks)}</article>
+    <article class="card full"><h2>Offers</h2>${noteTable(creator.offers)}</article>
+    <article class="card wide"><h2>Creator Review</h2>${creator.review.exists ? `<div class="muted">${esc(creator.review.updated)}</div><pre>${esc(creator.review.content)}</pre>` : `<div class="empty">No creator review yet.</div>`}</article>
+    <article class="card wide"><h2>Task Board</h2>${creator.task_board.exists ? `<div class="muted">${esc(creator.task_board.updated)}</div><pre>${esc(creator.task_board.content)}</pre>` : `<div class="empty">No creator task board yet.</div>`}</article>
+    <article class="card wide"><h2>Content Calendar</h2>${creator.calendar.exists ? `<div class="muted">${esc(creator.calendar.updated)}</div><pre>${esc(creator.calendar.content)}</pre>` : `<div class="empty">No creator content calendar yet.</div>`}</article>
+    <article class="card wide"><h2>KPI Draft</h2>${creator.kpis.exists ? `<div class="muted">${esc(creator.kpis.updated)}</div><pre>${esc(creator.kpis.content)}</pre>` : `<div class="empty">No creator KPI draft yet.</div>`}</article>
+  `;
+}
+function renderKPIs() {
+  const kpis = data.kpis;
+  const commands = [
+    data.commands.kpi_status,
+    data.commands.kpi_dashboard,
+    data.commands.kpi_review,
+    data.commands.kpi_brief,
+    data.commands.kpi_add,
+    data.commands.kpi_update,
+    data.commands.kpi_history
+  ];
+  return `
+    <article class="card full">
+      <h2>KPI System</h2>
+      <span class="pill">Enabled ${kpis.enabled}</span>
+      <span class="pill">Update confirmation ${kpis.requires_confirmation}</span>
+      <span class="pill">External collection ${kpis.auto_external}</span>
+      <span class="pill">KPIs ${kpis.records.length}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('show KPI dashboard')">chat: dashboard</button>
+        <button class="copy" onclick="sendQuickChat('review KPIs')">chat: review</button>
+        <button class="copy" onclick="sendQuickChat('add KPI monthly agency revenue target 1000')">chat: add KPI</button>
+      </div>
+      <p class="muted mt-3">Reporting only. No external metric collection, financial access, platform access, spending, publishing, uploads, messages, or business execution.</p>
+    </article>
+    <article class="card full">
+      <h2>KPI Registry</h2>
+      ${table(kpis.records, [
+        ["ID", "id"],
+        ["Name", "name"],
+        ["Category", "category"],
+        ["Owner", "owner"],
+        ["Current", "current"],
+        ["Target", "target"],
+        ["Status", "status", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Updated", "updated"]
+      ])}
+    </article>
+    <article class="card wide"><h2>KPI Dashboard</h2>${kpis.dashboard.exists ? `<div class="muted">${esc(kpis.dashboard.updated)}</div><pre>${esc(kpis.dashboard.content)}</pre>` : `<div class="empty">No KPI dashboard yet.</div>`}</article>
+    <article class="card wide"><h2>KPI Review</h2>${kpis.review.exists ? `<div class="muted">${esc(kpis.review.updated)}</div><pre>${esc(kpis.review.content)}</pre>` : `<div class="empty">No KPI review yet.</div>`}</article>
+    <article class="card wide"><h2>KPI Brief</h2>${kpis.brief.exists ? `<div class="muted">${esc(kpis.brief.updated)}</div><pre>${esc(kpis.brief.content)}</pre>` : `<div class="empty">No KPI brief yet.</div>`}</article>
+    <article class="card wide"><h2>KPI Targets</h2>${kpis.targets.exists ? `<div class="muted">${esc(kpis.targets.updated)}</div><pre>${esc(kpis.targets.content)}</pre>` : `<div class="empty">No KPI targets yet.</div>`}</article>
+    <article class="card full"><h2>KPI History</h2>${kpis.history.exists ? `<div class="muted">${esc(kpis.history.updated)}</div><pre>${esc(kpis.history.content)}</pre>` : `<div class="empty">No KPI history yet.</div>`}</article>
+  `;
+}
+function renderFinance() {
+  const finance = data.finance;
+  const commands = [
+    data.commands.finance_status,
+    data.commands.finance_summary,
+    data.commands.finance_review,
+    data.commands.finance_brief,
+    data.commands.finance_forecast,
+    data.commands.finance_add_revenue,
+    data.commands.finance_add_expense,
+    data.commands.finance_budget,
+    data.commands.finance_history
+  ];
+  const fmt = value => `${esc(finance.currency)} ${Number(value || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+  return `
+    <article class="card full">
+      <h2>Financial Intelligence</h2>
+      <span class="pill">Enabled ${finance.enabled}</span>
+      <span class="pill">Update confirmation ${finance.requires_confirmation}</span>
+      <span class="pill">External accounts ${finance.external_accounts}</span>
+      <span class="pill">Currency ${esc(finance.currency)}</span>
+      <span class="pill">Entries ${finance.records.length}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('show financial summary')">chat: summary</button>
+        <button class="copy" onclick="sendQuickChat('review finances')">chat: review</button>
+        <button class="copy" onclick="sendQuickChat('financial forecast')">chat: forecast</button>
+        <button class="copy" onclick="sendQuickChat('add revenue Agency 500 Shopify setup')">chat: add revenue</button>
+        <button class="copy" onclick="sendQuickChat('add expense Commerce 25 Etsy listing tools')">chat: add expense</button>
+        <button class="copy" onclick="sendQuickChat('set budget Creator 100')">chat: set budget</button>
+      </div>
+      <p class="muted mt-3">Manual local tracking only. No bank connections, payment processor access, invoices, tax filing, purchases, money movement, external APIs, or platform actions.</p>
+    </article>
+    <article class="card"><h2>Total Revenue</h2><div class="stat">${fmt(finance.totals.revenue)}</div></article>
+    <article class="card"><h2>Total Expenses</h2><div class="stat">${fmt(finance.totals.expenses)}</div></article>
+    <article class="card"><h2>Net Profit/Loss</h2><div class="stat">${fmt(finance.totals.net)}</div></article>
+    <article class="card"><h2>Budgets</h2><div class="stat">${fmt(finance.totals.budgets)}</div></article>
+    <article class="card full">
+      <h2>Financial Ledger</h2>
+      ${table(finance.records, [
+        ["ID", "id"],
+        ["Date", "date"],
+        ["Type", "type", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Business", "business"],
+        ["Amount", "amount", v=>fmt(v)],
+        ["Description", "description"],
+        ["Category", "category"],
+        ["KPI", "kpi"],
+        ["Initiative", "initiative"]
+      ])}
+    </article>
+    <article class="card wide"><h2>Profit Summary</h2>${finance.profit.exists ? `<div class="muted">${esc(finance.profit.updated)}</div><pre>${esc(finance.profit.content)}</pre>` : `<div class="empty">No profit summary yet.</div>`}</article>
+    <article class="card wide"><h2>Revenue Tracker</h2>${finance.revenue.exists ? `<div class="muted">${esc(finance.revenue.updated)}</div><pre>${esc(finance.revenue.content)}</pre>` : `<div class="empty">No revenue tracker yet.</div>`}</article>
+    <article class="card wide"><h2>Expense Tracker</h2>${finance.expenses.exists ? `<div class="muted">${esc(finance.expenses.updated)}</div><pre>${esc(finance.expenses.content)}</pre>` : `<div class="empty">No expense tracker yet.</div>`}</article>
+    <article class="card wide"><h2>Budget Plan</h2>${finance.budget.exists ? `<div class="muted">${esc(finance.budget.updated)}</div><pre>${esc(finance.budget.content)}</pre>` : `<div class="empty">No budget plan yet.</div>`}</article>
+    <article class="card wide"><h2>Financial Review</h2>${finance.review.exists ? `<div class="muted">${esc(finance.review.updated)}</div><pre>${esc(finance.review.content)}</pre>` : `<div class="empty">No financial review yet.</div>`}</article>
+    <article class="card wide"><h2>Financial Brief</h2>${finance.brief.exists ? `<div class="muted">${esc(finance.brief.updated)}</div><pre>${esc(finance.brief.content)}</pre>` : `<div class="empty">No financial brief yet.</div>`}</article>
+    <article class="card wide"><h2>Financial Forecast</h2>${finance.forecast.exists ? `<div class="muted">${esc(finance.forecast.updated)}</div><pre>${esc(finance.forecast.content)}</pre>` : `<div class="empty">No financial forecast yet.</div>`}</article>
+  `;
+}
+function renderPortfolio() {
+  const portfolio = data.portfolio;
+  const commands = [
+    data.commands.portfolio_status,
+    data.commands.portfolio_scorecard,
+    data.commands.portfolio_review,
+    data.commands.portfolio_brief,
+    data.commands.portfolio_roadmap,
+    data.commands.portfolio_compare,
+    data.commands.portfolio_prioritize,
+    data.commands.portfolio_decision,
+    data.commands.portfolio_delegate
+  ];
+  return `
+    <article class="card full">
+      <h2>Business Portfolio Manager</h2>
+      <span class="pill">Enabled ${portfolio.enabled}</span>
+      <span class="pill">Delegation confirmation ${portfolio.requires_confirmation}</span>
+      <span class="pill">Business lines ${portfolio.records.length}</span>
+      <span class="pill">Top focus ${esc(portfolio.top.business || "Unknown")}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('portfolio review')">chat: review</button>
+        <button class="copy" onclick="sendQuickChat('portfolio brief')">chat: brief</button>
+        <button class="copy" onclick="sendQuickChat('portfolio scorecard')">chat: scorecard</button>
+        <button class="copy" onclick="sendQuickChat('portfolio roadmap')">chat: roadmap</button>
+        <button class="copy" onclick="sendQuickChat('which business should I focus on')">chat: focus</button>
+        <button class="copy" onclick="sendQuickChat('compare Agency and Commerce')">chat: compare</button>
+        <button class="copy" onclick="sendQuickChat('record portfolio decision focus on Agency this week')">chat: decision</button>
+      </div>
+      <p class="muted mt-3">Analysis and recommendation only. No business execution, spending, outreach, publishing, uploads, platform access, or external APIs.</p>
+    </article>
+    <article class="card full">
+      <h2>Portfolio Scorecard</h2>
+      ${table(portfolio.records, [
+        ["Recommendation ID", "id"],
+        ["Business", "business"],
+        ["Council", "council"],
+        ["Focus", "score", v=>v ? `<div>${esc(v)}/100</div><div class="bar"><i style="width:${esc(v)}%"></i></div>` : "n/a"],
+        ["Revenue", "revenue"],
+        ["Expenses", "expenses"],
+        ["Profit", "profit"],
+        ["Potential", "potential"],
+        ["Speed", "speed"],
+        ["Strategic", "strategic"],
+        ["Momentum", "momentum"],
+        ["Recommended Action", "action"]
+      ])}
+    </article>
+    <article class="card wide"><h2>Portfolio Brief</h2>${portfolio.brief.exists ? `<div class="muted">${esc(portfolio.brief.updated)}</div><pre>${esc(portfolio.brief.content)}</pre>` : `<div class="empty">No portfolio brief yet.</div>`}</article>
+    <article class="card wide"><h2>Portfolio Review</h2>${portfolio.review.exists ? `<div class="muted">${esc(portfolio.review.updated)}</div><pre>${esc(portfolio.review.content)}</pre>` : `<div class="empty">No portfolio review yet.</div>`}</article>
+    <article class="card wide"><h2>Portfolio Roadmap</h2>${portfolio.roadmap.exists ? `<div class="muted">${esc(portfolio.roadmap.updated)}</div><pre>${esc(portfolio.roadmap.content)}</pre>` : `<div class="empty">No portfolio roadmap yet.</div>`}</article>
+    <article class="card wide"><h2>Business Portfolio</h2>${portfolio.portfolio.exists ? `<div class="muted">${esc(portfolio.portfolio.updated)}</div><pre>${esc(portfolio.portfolio.content)}</pre>` : `<div class="empty">No business portfolio yet.</div>`}</article>
+    <article class="card wide"><h2>Portfolio Decisions</h2>${portfolio.decisions.exists ? `<div class="muted">${esc(portfolio.decisions.updated)}</div><pre>${esc(portfolio.decisions.content)}</pre>` : `<div class="empty">No portfolio decisions yet.</div>`}</article>
+  `;
+}
+function renderNotifications() {
+  const n = data.notifications;
+  const commands = [
+    data.commands.notification_status,
+    data.commands.notification_detect,
+    data.commands.notification_review,
+    data.commands.notification_brief,
+    data.commands.notification_list,
+    data.commands.notification_read,
+    data.commands.notification_dismiss,
+    data.commands.notification_escalate
+  ];
+  const sectors = Object.entries(n.sector_counts || {}).map(([name,count]) => `<span class="pill">${esc(name)} ${esc(count)}</span>`).join("");
+  return `
+    <article class="card full">
+      <h2>Notification Center</h2>
+      <span class="pill">Enabled ${n.enabled}</span>
+      <span class="pill">Auto detect ${n.auto_detect}</span>
+      <span class="pill">Escalation confirmation ${n.requires_confirmation}</span>
+      <span class="pill">Active ${n.records.length}</span>
+      <span class="pill">New Critical/High ${n.critical_high_count}</span>
+      <div class="mt-3">${sectors}</div>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('show notifications')">chat: list</button>
+        <button class="copy" onclick="sendQuickChat('detect notifications')">chat: detect</button>
+        <button class="copy" onclick="sendQuickChat('notification brief')">chat: brief</button>
+      </div>
+      <p class="muted mt-3">Notify only. No automatic execution, spending, emails, uploads, publishing, source edits, or external actions.</p>
+    </article>
+    <article class="card full">
+      <h2>Notification Inbox</h2>
+      ${table(n.records, [
+        ["ID", "id"],
+        ["Severity", "severity", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Type", "type"],
+        ["Status", "status", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Title", "title"],
+        ["Source", "source"],
+        ["Action", "action"],
+        ["Created", "created"]
+      ])}
+    </article>
+    <article class="card wide"><h2>Notification Brief</h2>${n.brief.exists ? `<div class="muted">${esc(n.brief.updated)}</div><pre>${esc(n.brief.content)}</pre>` : `<div class="empty">No notification brief yet.</div>`}</article>
+    <article class="card wide"><h2>Notification Review</h2>${n.review.exists ? `<div class="muted">${esc(n.review.updated)}</div><pre>${esc(n.review.content)}</pre>` : `<div class="empty">No notification review yet.</div>`}</article>
+    <article class="card wide"><h2>Notification Rules</h2>${n.rules.exists ? `<div class="muted">${esc(n.rules.updated)}</div><pre>${esc(n.rules.content)}</pre>` : `<div class="empty">No notification rules yet.</div>`}</article>
+    <article class="card wide"><h2>Notification History</h2>${n.history.exists ? `<div class="muted">${esc(n.history.updated)}</div><pre>${esc(n.history.content)}</pre>` : `<div class="empty">No notification history yet.</div>`}</article>
+  `;
+}
+function renderExecutiveBriefs() {
+  const b = data.briefs;
+  const commands = [
+    data.commands.brief_status,
+    data.commands.morning_brief,
+    data.commands.evening_review,
+    data.commands.weekly_brief,
+    data.commands.monthly_review,
+    data.commands.executive_brief,
+    data.commands.brief_history,
+    data.commands.brief_preferences
+  ];
+  return `
+    <article class="card">
+      <h2>Executive Brief Engine</h2>
+      <div class="stat">${b.enabled ? "Enabled" : "Disabled"}</div>
+      <div class="mt-3">
+        <button class="copy" onclick="sendQuickChat('give me a morning brief')">chat: morning</button>
+        <button class="copy" onclick="sendQuickChat('executive brief')">chat: executive</button>
+        <button class="copy" onclick="sendQuickChat('weekly brief')">chat: weekly</button>
+        <button class="copy" onclick="sendQuickChat('monthly review')">chat: monthly</button>
+        <button class="copy" onclick="sendQuickChat('evening review')">chat: evening</button>
+      </div>
+    </article>
+    <article class="card">
+      <h2>Copy CLI Commands</h2>
+      ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+    </article>
+    <article class="card full"><h2>Latest Brief</h2>${b.latest.exists ? `<div class="muted">${esc(b.latest.updated)}</div><pre>${esc(b.latest.content)}</pre>` : `<div class="empty">No latest brief yet.</div>`}</article>
+    <article class="card wide"><h2>Morning Brief</h2>${b.morning.exists ? `<div class="muted">${esc(b.morning.updated)}</div><pre>${esc(b.morning.content)}</pre>` : `<div class="empty">No morning brief yet.</div>`}</article>
+    <article class="card wide"><h2>Evening Review</h2>${b.evening.exists ? `<div class="muted">${esc(b.evening.updated)}</div><pre>${esc(b.evening.content)}</pre>` : `<div class="empty">No evening review yet.</div>`}</article>
+    <article class="card wide"><h2>Weekly Executive Brief</h2>${b.weekly.exists ? `<div class="muted">${esc(b.weekly.updated)}</div><pre>${esc(b.weekly.content)}</pre>` : `<div class="empty">No weekly brief yet.</div>`}</article>
+    <article class="card wide"><h2>Monthly Business Review</h2>${b.monthly.exists ? `<div class="muted">${esc(b.monthly.updated)}</div><pre>${esc(b.monthly.content)}</pre>` : `<div class="empty">No monthly review yet.</div>`}</article>
+    <article class="card wide"><h2>Brief Preferences</h2>${b.preferences.exists ? `<div class="muted">${esc(b.preferences.updated)}</div><pre>${esc(b.preferences.content)}</pre>` : `<div class="empty">No brief preferences yet.</div>`}</article>
+    <article class="card wide"><h2>Brief History</h2>${b.history.exists ? `<div class="muted">${esc(b.history.updated)}</div><pre>${esc(b.history.content)}</pre>` : `<div class="empty">No brief history yet.</div>`}</article>
+  `;
+}
+function renderDailyOperatingLoop() {
+  const d = data.daily_operating;
+  const commands = [
+    data.commands.daily_start,
+    data.commands.daily_focus,
+    data.commands.daily_plan,
+    data.commands.daily_checkin,
+    data.commands.daily_end,
+    data.commands.daily_review
+  ];
+  const blocks = d.plan_blocks || {};
+  const end = d.end_sections || {};
+  return `
+    <article class="card">
+      <h2>Today's Focus</h2>
+      <div class="muted">${esc(d.date)}</div>
+      <pre>${esc(d.focus)}</pre>
+      <button class="copy" onclick="sendQuickChat('Raphael what should I focus on')">Refresh focus</button>
+    </article>
+    <article class="card">
+      <h2>Daily Actions</h2>
+      <button class="copy" onclick="sendQuickChat('Raphael start my day')">Start my day</button>
+      <button class="copy" onclick="sendQuickChat('Raphael plan my day')">Plan my day</button>
+      <button class="copy" onclick="sendQuickChat('Raphael check in')">Check in</button>
+      <button class="copy" onclick="sendQuickChat('Raphael end my day')">End my day</button>
+    </article>
+    <article class="card full">
+      <h2>Top Tasks</h2>
+      <pre>${esc(d.tasks)}</pre>
+    </article>
+    <article class="card full">
+      <h2>Warnings</h2>
+      <pre>${esc(d.warnings)}</pre>
+    </article>
+    <article class="card wide">
+      <h2>Today's Plan</h2>
+      <h3>Focus Block 1</h3><pre>${esc(blocks.focus_1 || "Run daily-plan.")}</pre>
+      <h3>Focus Block 2</h3><pre>${esc(blocks.focus_2 || "Run daily-plan.")}</pre>
+      <h3>Admin Block</h3><pre>${esc(blocks.admin || "Run daily-plan.")}</pre>
+      <h3>Optional Creative / Business</h3><pre>${esc(blocks.optional || "Run daily-plan.")}</pre>
+    </article>
+    <article class="card wide">
+      <h2>Check-ins</h2>
+      ${d.checkins.exists ? `<div class="muted">${esc(d.checkins.updated)}</div><pre>${esc(d.checkins.content)}</pre>` : `<div class="empty">No check-in recorded today.</div>`}
+    </article>
+    <article class="card full">
+      <h2>End Review</h2>
+      ${d.end_review.exists ? `
+        <h3>What Got Done</h3><pre>${esc(end.done)}</pre>
+        <h3>What Moved</h3><pre>${esc(end.moved)}</pre>
+        <h3>Blockers</h3><pre>${esc(end.blockers)}</pre>
+        <h3>Tomorrow</h3><pre>${esc(end.tomorrow)}</pre>
+      ` : `<div class="empty">No end-of-day review generated yet.</div>`}
+    </article>
+    <article class="card full">
+      <h2>CLI Commands</h2>
+      ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+      <div class="muted mt-3">${esc(d.safety)}</div>
+    </article>
+  `;
+}
+function renderActivityStream() {
+  const a = data.activity;
+  const commands = [
+    data.commands.activity_status,
+    data.commands.activity_feed,
+    data.commands.activity_review,
+    data.commands.activity_brief,
+    data.commands.activity_timeline,
+    data.commands.activity_stats,
+    data.commands.activity_log,
+    data.commands.activity_read
+  ];
+  return `
+    <article class="card">
+      <h2>Activity Stream</h2>
+      <div class="stat">${a.summary.today}</div>
+      <div class="muted">events today</div>
+      <span class="pill">Week ${a.summary.week}</span>
+      <span class="pill">High ${a.summary.high_events}</span>
+      <span class="pill">Critical ${a.summary.critical_events}</span>
+    </article>
+    <article class="card">
+      <h2>Matrix Prep</h2>
+      <div class="muted">Most active council</div>
+      <div class="stat" style="font-size:20px">${esc(a.summary.most_active_council)}</div>
+      <div class="muted mt-3">Most active business</div>
+      <div class="stat" style="font-size:20px">${esc(a.summary.most_active_business)}</div>
+    </article>
+    <article class="card">
+      <h2>Copy CLI Commands</h2>
+      ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+      <div class="mt-3">
+        <button class="copy" onclick="sendQuickChat('show activity')">chat: show activity</button>
+        <button class="copy" onclick="sendQuickChat('activity brief')">chat: brief</button>
+        <button class="copy" onclick="sendQuickChat('what happened recently')">chat: recent</button>
+      </div>
+    </article>
+    <article class="card full"><h2>Live Feed</h2>${table(a.recent, [["Event ID","Event ID"],["Time","Timestamp"],["Type","Event Type"],["Severity","Severity"],["Title","Title"],["Source","Source System"]])}</article>
+    <article class="card wide"><h2>Activity Brief</h2>${a.brief.exists ? `<div class="muted">${esc(a.brief.updated)}</div><pre>${esc(a.brief.content)}</pre>` : `<div class="empty">No activity brief yet.</div>`}</article>
+    <article class="card wide"><h2>Activity Review</h2>${a.review.exists ? `<div class="muted">${esc(a.review.updated)}</div><pre>${esc(a.review.content)}</pre>` : `<div class="empty">No activity review yet.</div>`}</article>
+    <article class="card wide"><h2>Activity Timeline</h2>${a.timeline.exists ? `<div class="muted">${esc(a.timeline.updated)}</div><pre>${esc(a.timeline.content)}</pre>` : `<div class="empty">No activity timeline yet.</div>`}</article>
+    <article class="card wide"><h2>Activity Statistics</h2>${a.stats.exists ? `<div class="muted">${esc(a.stats.updated)}</div><pre>${esc(a.stats.content)}</pre>` : `<div class="empty">No activity statistics yet.</div>`}</article>
+  `;
+}
+function renderInitiatives() {
+  const initiatives = data.initiatives;
+  const commands = [
+    data.commands.initiative_status,
+    data.commands.initiative_detect,
+    data.commands.initiative_review,
+    data.commands.initiative_brief,
+    data.commands.initiative_score,
+    data.commands.initiative_delegate,
+    data.commands.initiative_history
+  ];
+  return `
+    <article class="card full">
+      <h2>Executive Initiative Engine</h2>
+      <span class="pill">Enabled ${initiatives.enabled}</span>
+      <span class="pill">Delegation confirmation ${initiatives.requires_confirmation}</span>
+      <span class="pill">Auto execute ${initiatives.auto_execute}</span>
+      <span class="pill">Threshold ${initiatives.threshold}</span>
+      <span class="pill">Initiatives ${initiatives.records.length}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('detect initiatives')">chat: detect</button>
+        <button class="copy" onclick="sendQuickChat('review initiatives')">chat: review</button>
+        <button class="copy" onclick="sendQuickChat('brief initiatives')">chat: brief</button>
+        <button class="copy" onclick="sendQuickChat('what initiatives should I focus on')">chat: focus</button>
+      </div>
+      <p class="muted mt-3">Recommendations only. No execution, spending, platform access, emails, publishing, uploads, source edits, arbitrary shell commands, or autonomous delegation.</p>
+    </article>
+    <article class="card full">
+      <h2>Top Recommended Initiatives</h2>
+      ${table(initiatives.top, [
+        ["ID", "id"],
+        ["Title", "title"],
+        ["Type", "type"],
+        ["Score", "score", v=>v ? `<div>${esc(v)}/100</div><div class="bar"><i style="width:${esc(v)}%"></i></div>` : "n/a"],
+        ["Priority", "priority", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Council", "council"],
+        ["Action", "action"]
+      ])}
+    </article>
+    <article class="card full">
+      <h2>Initiative Inbox</h2>
+      ${table(initiatives.records, [
+        ["ID", "id"],
+        ["Title", "title"],
+        ["Status", "status", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Priority", "priority"],
+        ["Council", "council"],
+        ["Evidence", "evidence"],
+        ["Created", "created"]
+      ])}
+    </article>
+    <article class="card wide"><h2>Initiative Brief</h2>${initiatives.brief.exists ? `<div class="muted">${esc(initiatives.brief.updated)}</div><pre>${esc(initiatives.brief.content)}</pre>` : `<div class="empty">No initiative brief yet.</div>`}</article>
+    <article class="card wide"><h2>Initiative Review</h2>${initiatives.review.exists ? `<div class="muted">${esc(initiatives.review.updated)}</div><pre>${esc(initiatives.review.content)}</pre>` : `<div class="empty">No initiative review yet.</div>`}</article>
+    <article class="card wide"><h2>Initiative Scores</h2>${initiatives.scores.exists ? `<div class="muted">${esc(initiatives.scores.updated)}</div><pre>${esc(initiatives.scores.content)}</pre>` : `<div class="empty">No initiative scores yet.</div>`}</article>
+    <article class="card full"><h2>Initiative History</h2>${initiatives.history.exists ? `<div class="muted">${esc(initiatives.history.updated)}</div><pre>${esc(initiatives.history.content)}</pre>` : `<div class="empty">No initiative history yet.</div>`}</article>
+  `;
+}
+function renderEmployees() {
+  const employees = data.employees;
+  if (window.RaphaelEmployeeNetwork) {
+    return window.RaphaelEmployeeNetwork.renderPage(data.employee_network, employees);
+  }
+  const commands = [
+    data.commands.employee_status,
+    data.commands.employee_registry,
+    data.commands.employee_org_chart,
+    data.commands.employee_workload,
+    data.commands.employee_brief,
+    data.commands.employee_review,
+    data.commands.employee_task_brief,
+    data.commands.employee_assign_kpi,
+    data.commands.employee_reassign
+  ];
+  return `
+    <article class="card full">
+      <h2>Digital Employee System</h2>
+      <span class="pill">Enabled ${employees.enabled}</span>
+      <span class="pill">Reviews ${employees.reviews_enabled}</span>
+      <span class="pill">Reassignment confirmation ${employees.requires_reassignment_confirmation}</span>
+      <span class="pill">Employees ${employees.records.length}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('show employee registry')">chat: registry</button>
+        <button class="copy" onclick="sendQuickChat('show org chart')">chat: org chart</button>
+        <button class="copy" onclick="sendQuickChat('show employee workload')">chat: workload</button>
+        <button class="copy" onclick="sendQuickChat('brief Product Researcher Agent')">chat: brief employee</button>
+        <button class="copy" onclick="sendQuickChat('review employee Store Manager Agent')">chat: review employee</button>
+      </div>
+      <p class="muted mt-3">Organization and evaluation only. No task execution, business execution, platform access, external action, source edits, spending, uploads, messages, or publishing.</p>
+    </article>
+    <article class="card full">
+      <h2>Employee Registry</h2>
+      ${table(employees.records, [
+        ["ID", "id"],
+        ["Employee", "name"],
+        ["Role", "role"],
+        ["Department", "department"],
+        ["Manager", "manager"],
+        ["Workload", "workload", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Performance", "performance", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Reviewed", "reviewed"]
+      ])}
+    </article>
+    <article class="card wide"><h2>Org Chart</h2>${employees.org_chart.exists ? `<div class="muted">${esc(employees.org_chart.updated)}</div><pre>${esc(employees.org_chart.content)}</pre>` : `<div class="empty">No org chart yet.</div>`}</article>
+    <article class="card wide"><h2>Workload Review</h2>${employees.workload.exists ? `<div class="muted">${esc(employees.workload.updated)}</div><pre>${esc(employees.workload.content)}</pre>` : `<div class="empty">No workload review yet.</div>`}</article>
+    <article class="card wide"><h2>Employee KPI Map</h2>${employees.kpi_map.exists ? `<div class="muted">${esc(employees.kpi_map.updated)}</div><pre>${esc(employees.kpi_map.content)}</pre>` : `<div class="empty">No KPI map yet.</div>`}</article>
+    <article class="card wide"><h2>Performance Reviews</h2>${employees.performance.exists ? `<div class="muted">${esc(employees.performance.updated)}</div><pre>${esc(employees.performance.content)}</pre>` : `<div class="empty">No performance reviews yet.</div>`}</article>
+    <article class="card wide"><h2>Employee Brief</h2>${employees.brief.exists ? `<div class="muted">${esc(employees.brief.updated)}</div><pre>${esc(employees.brief.content)}</pre>` : `<div class="empty">No employee brief yet.</div>`}</article>
+  `;
+}
+function renderExecution() {
+  const exec = data.controlled_execution;
+  const commands = [
+    data.commands.execution_status,
+    data.commands.execution_policy,
+    data.commands.execution_request,
+    data.commands.execution_dry_run,
+    data.commands.execution_approve,
+    data.commands.execution_run,
+    data.commands.execution_review,
+    data.commands.execution_log,
+    data.commands.execution_safety_report
+  ];
+  return `
+    <article class="card full">
+      <h2>Controlled Execution Framework</h2>
+      <span class="pill">Enabled ${exec.enabled}</span>
+      <span class="pill">Confirmation ${exec.requires_confirmation}</span>
+      <span class="pill">Dashboard ${exec.dashboard_enabled}</span>
+      <span class="pill">Voice ${exec.voice_enabled}</span>
+      <span class="pill">Max level ${exec.max_level}</span>
+      <span class="pill">External ${exec.external_enabled}</span>
+      <span class="pill">Dry run default ${exec.dry_run_default}</span>
+      <div class="mt-3">
+        ${commands.map(cmd => `<button class="copy" onclick="copyCommand('${esc(cmd)}')">${esc(cmd)}</button>`).join("")}
+        <button class="copy" onclick="sendQuickChat('run initiative detection')">chat: run initiative detection</button>
+        <button class="copy" onclick="sendQuickChat('run KPI dashboard refresh')">chat: refresh KPI dashboard</button>
+        <button class="copy" onclick="sendQuickChat('show execution policy')">chat: policy</button>
+        <button class="copy" onclick="sendQuickChat('show execution log')">chat: log</button>
+      </div>
+      <p class="muted mt-3">Operational but not unrestricted. Execution requests require approval and can only run allowlisted internal Raphael functions. External actions remain blocked.</p>
+    </article>
+    <article class="card full">
+      <h2>Execution Requests</h2>
+      ${table(exec.records, [
+        ["ID", "id"],
+        ["Action", "description"],
+        ["Level", "level"],
+        ["Type", "type"],
+        ["System", "system"],
+        ["Risk", "risk", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Status", "status", v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],
+        ["Created", "created"]
+      ])}
+    </article>
+    <article class="card wide"><h2>Execution Policy</h2>${exec.policy.exists ? `<div class="muted">${esc(exec.policy.updated)}</div><pre>${esc(exec.policy.content)}</pre>` : `<div class="empty">No execution policy yet.</div>`}</article>
+    <article class="card wide"><h2>Execution Allowlist</h2>${exec.allowlist.exists ? `<div class="muted">${esc(exec.allowlist.updated)}</div><pre>${esc(exec.allowlist.content)}</pre>` : `<div class="empty">No execution allowlist yet.</div>`}</article>
+    <article class="card wide"><h2>Execution Review</h2>${exec.review.exists ? `<div class="muted">${esc(exec.review.updated)}</div><pre>${esc(exec.review.content)}</pre>` : `<div class="empty">No execution review yet.</div>`}</article>
+    <article class="card full"><h2>Execution Log</h2>${exec.log.exists ? `<div class="muted">${esc(exec.log.updated)}</div><pre>${esc(exec.log.content)}</pre>` : `<div class="empty">No execution log yet.</div>`}</article>
+    <article class="card wide"><h2>Safety Report</h2>${exec.safety.exists ? `<div class="muted">${esc(exec.safety.updated)}</div><pre>${esc(exec.safety.content)}</pre>` : `<div class="empty">No safety report yet.</div>`}</article>
+  `;
+}
+function renderGoals() {
+  return `
+    ${card("Goals", table(data.goals, [["ID","id"],["Title","title"],["Status","status",v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],["Priority","priority"],["Next Milestone","milestone"]]), "card full")}
+    <article class="card full">
+      <h2>Propagate Goal</h2>
+      <p class="muted">Generate an advisory cascade plan. This does not create tasks, KPIs, initiatives, delegations, or execution.</p>
+      <button class="copy" onclick="copyCommand('${esc(data.commands.propagate_goal)}')">${esc(data.commands.propagate_goal)}</button>
+      <button class="copy" onclick="window.active='goalpropagation'; render()">open Goal Propagation</button>
+    </article>`;
+}
+function renderGoalPropagation() {
+  const gp = data.goal_propagation;
+  const cascades = gp.plans.map(plan => `
+    <article class="card full">
+      <h2>${esc(plan.goal_id)} · ${esc(plan.title)}</h2>
+      <div class="muted">${esc(plan.updated)}</div>
+      <div class="mt-3"><span class="pill">${esc(plan.goal_id)}</span><span> → </span>${plan.councils.map(c => `<span class="pill">${esc(c)}</span>`).join("")}</div>
+      <div class="mt-2">${plan.employees.slice(0,12).map(e => `<span class="pill">${esc(e.council)} → ${esc(e.employee)}</span>`).join("") || `<span class="muted">No employee responsibilities parsed.</span>`}</div>
+    </article>`).join("") || `<article class="card full"><div class="empty">No cascade plans generated yet.</div></article>`;
+  const notes = [gp.registry, gp.cascade_index, gp.council_objectives, gp.department_objectives, gp.employee_objectives, gp.kpi_map, gp.initiative_map, gp.review_cycles, gp.review, gp.brief];
+  return `
+    <article class="card full">
+      <h2>Goal Propagation Commands</h2>
+      ${["goal_propagation_status","propagate_goal","goal_cascade","goal_objectives","goal_kpi_map","goal_initiative_map","goal_review_cycle","goal_propagation_review","goal_propagation_brief"].map(key => `<button class="copy" onclick="copyCommand('${esc(data.commands[key])}')">${esc(data.commands[key])}</button>`).join("")}
+      <p class="muted mt-3">Planning and recommendations only. Confirmation remains required for task, KPI, and initiative creation.</p>
+    </article>
+    ${cascades}
+    ${notes.map(note => `<article class="card wide"><h2>${esc(note.label)}</h2>${note.exists ? `<div class="muted">${esc(note.updated)}</div><pre>${esc(note.content)}</pre>` : `<div class="empty">Not generated yet.</div>`}</article>`).join("")}`;
+}
+function renderDeliberations() {
+  const d = data.deliberations;
+  const rows = d.records.map(item => `
+    <article class="card full">
+      <h2>${esc(item.id)} · ${esc(item.question)}</h2>
+      <div><span class="pill">${esc(item.status)}</span><span class="pill">Confidence ${esc(item.confidence)}</span></div>
+      <div class="mt-2">${item.councils.map(council => `<span class="pill">${esc(council)}</span>`).join("")}</div>
+      <h2 class="mt-3">Final Recommendation</h2>
+      <p>${esc(item.recommendation)}</p>
+      <h2 class="mt-3">Aaron Decisions Needed</h2>
+      <pre>${esc(item.decisions)}</pre>
+    </article>`).join("") || `<article class="card full"><div class="empty">No deliberations recorded.</div></article>`;
+  return `
+    <article class="card full">
+      <h2>Deliberation Commands</h2>
+      ${["deliberate","deliberation_status","deliberation_review","deliberation_brief","deliberation_history","deliberation_show"].map(key => `<button class="copy" onclick="copyCommand('${esc(data.commands[key])}')">${esc(data.commands[key])}</button>`).join("")}
+      <p class="muted mt-3">Deliberations recommend only. They do not execute, delegate, message, spend, publish, or bypass approval systems.</p>
+    </article>
+    ${rows}
+    ${[d.overview,d.history,d.review,d.brief].map(note => `<article class="card wide"><h2>${esc(note.label)}</h2>${note.exists ? `<div class="muted">${esc(note.updated)}</div><pre>${esc(note.content)}</pre>` : `<div class="empty">Not generated yet.</div>`}</article>`).join("")}`;
+}
+function renderExecutionPlans() {
+  const p = data.execution_plans;
+  const rows = p.records.map(item => `
+    <article class="card full">
+      <h2>${esc(item.id)} · ${esc(item.topic)}</h2>
+      <div><span class="pill">${esc(item.status)}</span>${item.councils.map(council => `<span class="pill">${esc(council)}</span>`).join("")}</div>
+      <h2 class="mt-3">Objective</h2><p>${esc(item.objective)}</p>
+      <h2 class="mt-3">Recommended Strategy</h2><p>${esc(item.strategy)}</p>
+      <h2 class="mt-3">Source Records</h2><pre>${esc(item.sources)}</pre>
+      <h2 class="mt-3">Aaron Decisions Needed</h2><pre>${esc(item.decisions)}</pre>
+    </article>`).join("") || `<article class="card full"><div class="empty">No execution plans recorded.</div></article>`;
+  return `
+    <article class="card full">
+      <h2>Execution Planning Commands</h2>
+      ${["execution_plan","execution_plan_from_deliberation","execution_plan_review","execution_plan_brief","execution_plan_history","execution_plan_show"].map(key => `<button class="copy" onclick="copyCommand('${esc(data.commands[key])}')">${esc(data.commands[key])}</button>`).join("")}
+      <p class="muted mt-3">Planning only. Task creation, execution, delegation, outreach, publishing, spending, and external actions remain separately confirmation-gated or blocked.</p>
+    </article>
+    ${rows}
+    ${[p.overview,p.history,p.review,p.brief].map(note => `<article class="card wide"><h2>${esc(note.label)}</h2>${note.exists ? `<div class="muted">${esc(note.updated)}</div><pre>${esc(note.content)}</pre>` : `<div class="empty">Not generated yet.</div>`}</article>`).join("")}`;
+}
+function renderTasks() {
+  const rows = taskFocusId ? data.tasks.filter(task => task.id === taskFocusId) : data.tasks;
+  const focus = taskFocusId
+    ? `<div class="mb-3"><span class="pill">Focused task ${esc(taskFocusId)}</span><button class="copy" onclick="taskFocusId=''; render();">Show all tasks</button></div>`
+    : "";
+  return card("Tasks", focus + table(rows, [["ID","id"],["Task","task"],["Agent","agent"],["Status","status",v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],["Priority","priority"],["Project","project"]]), "card full");
+}
+function openRelatedTask(taskId) {
+  taskFocusId = taskId || "";
+  active = "tasks";
+  render();
+}
+function renderAgents() {
+  return card("Agents", table(data.agents, [["Agent","name"],["Open Tasks","open_tasks"],["Total Tasks","total_tasks"],["Brief","has_brief",v=>v?"yes":"no"],["AI Brief","has_ai_brief",v=>v?"yes":"no"]]), "card full");
+}
+function renderCouncils() {
+  const rows = data.councils.map(c => `
+    <article class="card wide">
+      <h2>${esc(c.name)}</h2>
+      <p class="muted">${esc(c.purpose)}</p>
+      <div class="mt-2">${c.members.map(m => `<span class="pill">${esc(m)}</span>`).join("")}</div>
+      <div class="mt-3"><span class="pill">Tasks ${c.tasks.length}</span><span class="pill">Brief ${c.has_brief ? "yes" : "no"}</span><span class="pill">Review ${c.has_review ? "yes" : "no"}</span></div>
+      <div class="mt-3">
+        <button class="copy" onclick="window.RaphaelMatrix.openCouncilChamber('${esc(c.name)}')">open chamber</button>
+        <button class="copy" onclick="copyCommand('python raphael.py council-brief &quot;${esc(c.name)}&quot;')">copy brief command</button>
+        <button class="copy" onclick="copyCommand('python raphael.py council-review &quot;${esc(c.name)}&quot;')">copy review command</button>
+      </div>
+    </article>`).join("");
+  return `
+    <article class="card full">
+      <h2>Council Commands</h2>
+      <button class="copy" onclick="copyCommand('${esc(data.commands.list_councils)}')">${esc(data.commands.list_councils)}</button>
+      <button class="copy" onclick="copyCommand('${esc(data.commands.council_status)}')">${esc(data.commands.council_status)}</button>
+      <button class="copy" onclick="copyCommand('${esc(data.commands.council_debate)}')">${esc(data.commands.council_debate)}</button>
+    </article>
+    ${rows}
+    <article class="card full"><h2>Council Tasks</h2>${table(data.council_tasks, [["ID","id"],["Council","council"],["Task","task"],["Agent","agent"],["Status","status",v=>`<span class="${statusClass(v)}">${esc(v)}</span>`]])}</article>
+    <article class="card full"><h2>Recent Debates</h2>${table(data.council_debates, [["Council","council"],["Debate","name"],["Updated","updated"]])}</article>
+  `;
+}
+function renderWorkflows() {
+  return card("Workflow Requests", table(data.workflows, [["ID","id"],["Workflow","workflow_name"],["Project","project"],["Status","status",v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],["Risk","risk_level"]]), "card full");
+}
+function renderN8nStudio() {
+  const studio = data.n8n_workflow_studio;
+  const commands = ["n8n_status","n8n_workflow_plan","n8n_workflow_generate","n8n_workflow_review","n8n_workflow_brief","n8n_workflow_show","n8n_workflow_export","n8n_workflow_catalog","n8n_workflow_graph","n8n_workflow_import_archive","workflow_archive_show","workflow_archive_search","workflow_archive_summary"];
+  const registry = studio.records.slice(0, 250);
+  const archive = studio.archive_records.slice(0, 250);
+  const archiveDetails = (studio.archive_details || []).slice(0, 25);
+  const categories = Object.entries(studio.categories).sort((a,b)=>b[1]-a[1]);
+  const graph = categories.map(([category,count], index) => `
+    <div class="card">
+      <h2>${esc(category)}</h2>
+      <div class="stat">${esc(count)}</div>
+      <div class="muted">workflow relationships</div>
+    </div>`).join("");
+  return `
+    <article class="card full">
+      <h2>n8n Workflow Studio</h2>
+      <p>Workflow architecture, inactive JSON drafting, archive analysis, sanitized export, and approved localhost execution through Workflow Runner.</p>
+      ${commands.map(key => `<button class="copy" onclick="copyCommand('${esc(data.commands[key])}')">${esc(data.commands[key])}</button>`).join("")}
+      <p class="muted mt-3">Execution is limited to registered, approved, credential-free local workflows. Activation, external calls, and source edits remain blocked.</p>
+    </article>
+    <article class="card full"><h2>Workflow Registry (${studio.records.length})</h2>${table(registry, [["ID","id"],["Name","name"],["Category","category"],["Origin","origin"],["Nodes","nodes"],["Status","status"]])}</article>
+    <article class="card full"><h2>Workflow Templates</h2><pre>${esc(studio.templates.content)}</pre></article>
+    <article class="card full"><h2>Workflow Knowledge</h2><pre>${esc(studio.knowledge.content)}</pre></article>
+    <article class="card full"><h2>Workflow Reviews</h2><pre>${esc(studio.reviews.content)}</pre></article>
+    <article class="card full"><h2>Workflow Graph</h2><div class="grid">${graph}</div></article>
+    <article class="card full"><h2>Workflow Archive Explorer (${studio.archive_records.length})</h2>${table(archive, [["ID","id"],["Workflow","name"],["Category","category"],["Nodes","nodes"],["Source File","source_workflow"],["Services","services",v=>esc((v||[]).join(", "))]])}</article>
+    <article class="card full">
+      <h2>Archive Details</h2>
+      ${archiveDetails.length ? archiveDetails.map(row=>`
+        <section class="maintenance-error">
+          <strong>${esc(row.workflow_id)} · ${esc(row.workflow_name)}</strong>
+          <span class="pill">Category ${esc(row.category)}</span>
+          <span class="pill">Nodes ${esc(row.node_count)}</span>
+          <span class="pill ${statusClass(row.risk_level)}">Risk ${esc(row.risk_level)}</span>
+          <p>${esc(row.description)}</p>
+          <div class="muted">Node Types: ${esc((row.node_types || []).join(", "))}</div>
+          <div class="muted">Triggers: ${esc((row.triggers || []).join(", ") || "None detected")}</div>
+          <div class="muted">External Services: ${esc((row.external_services || []).join(", ") || "None detected")}</div>
+          <div class="muted">Credentials Required: ${esc((row.credentials_required || []).join(", ") || "None declared")}</div>
+          <div class="muted">Reusable Patterns: ${esc((row.reusable_patterns || []).join("; "))}</div>
+          <div class="muted">Potential Raphael Uses: ${esc((row.potential_raphael_uses || []).join("; "))}</div>
+          <button class="copy" onclick="copyCommand('python raphael.py workflow-archive-show &quot;${esc(row.workflow_id)}&quot;')">Copy show command</button>
+          <button class="copy" onclick="copyCommand('python raphael.py workflow-archive-summary &quot;${esc(row.workflow_id)}&quot;')">Copy summary command</button>
+        </section>`).join("") : `<div class="empty">No archive details found. Run n8n-workflow-import-archive first.</div>`}
+    </article>
+    <article class="card wide"><h2>Workflow Brief</h2><pre>${esc(studio.brief.content)}</pre></article>
+    <article class="card wide"><h2>Export History</h2><pre>${esc(studio.history.content)}</pre></article>`;
+}
+async function refreshWorkflowRunner() {
+  const response = await fetch("/api/workflow-runner");
+  if (!response.ok) throw new Error(`Workflow Runner refresh failed (${response.status}).`);
+  data.workflow_runner = await response.json();
+  if (active === "workflowrunner") render();
+}
+async function workflowRunnerPost(endpoint, body) {
+  const response = await fetch(endpoint, {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(body)
+  });
+  let payload = {};
+  try { payload = await response.json(); }
+  catch (_) { payload = {error:`Workflow API returned non-JSON response (${response.status}).`}; }
+  return {response,payload};
+}
+async function workflowRunnerAction(action, identifier, confirmationKey="") {
+  const endpoint = `/api/workflow-runner/${action}`;
+  const key = action === "execute" ? "workflow_id" : "exec_id";
+  workflowActionState = {kind:"working", message:`${action} requested for ${identifier}.`};
+  render();
+  try {
+    let {response,payload} = await workflowRunnerPost(endpoint, {[key]:identifier, confirmation_key:confirmationKey});
+    if (payload.confirmation_required) {
+      workflowActionState = {kind:"pending", message:payload.message, command:payload.command};
+      render();
+      const approved = window.confirm(`${payload.message || "Confirmation required."}\n\n${payload.command || ""}`);
+      if (!approved) {
+        workflowActionState = {kind:"warn", message:"Workflow action cancelled before execution."};
+        render();
+        return;
+      }
+      ({response,payload} = await workflowRunnerPost(endpoint, {[key]:identifier, confirmation_key:payload.confirmation_key}));
+    }
+    if (!response.ok || !payload.ok) throw new Error(payload.error || payload.message || `Workflow action failed (${response.status}).`);
+    if (payload.workflow_runner) data.workflow_runner = payload.workflow_runner;
+    workflowActionState = {kind:"success", message:payload.message || `${action} completed.`};
+    await refreshWorkflowRunner();
+  } catch (error) {
+    workflowActionState = {kind:"error", message:String(error?.message || error)};
+    render();
+  }
+}
+async function workflowRunnerRead(action, execId) {
+  workflowActionState = {kind:"working", message:`Loading ${action} for ${execId}.`};
+  render();
+  try {
+    const {response,payload} = await workflowRunnerPost(`/api/workflow-runner/${action}`, {exec_id:execId});
+    if (!response.ok || !payload.ok) throw new Error(payload.error || `Workflow ${action} failed.`);
+    if (payload.workflow_runner) data.workflow_runner = payload.workflow_runner;
+    workflowActionState = {kind:"success", message:`${action} loaded for ${execId}.`, detail:JSON.stringify(payload.result,null,2)};
+    render();
+  } catch (error) {
+    workflowActionState = {kind:"error", message:String(error?.message || error)};
+    render();
+  }
+}
+function renderWorkflowRunner() {
+  const runner = data.workflow_runner || {};
+  const workflows = runner.workflows || [];
+  const executions = runner.executions || [];
+  const action = workflowActionState ? `<article class="card full ${workflowActionState.kind === "error" ? "error-banner" : ""}">
+    <h2>Workflow Action</h2><p>${esc(workflowActionState.message || "")}</p>
+    ${workflowActionState.command ? `<code>${esc(workflowActionState.command)}</code>` : ""}
+    ${workflowActionState.detail ? `<pre>${esc(workflowActionState.detail)}</pre>` : ""}
+  </article>` : "";
+  const workflowRows = workflows.map(row => ({...row, actions:`<button class="copy" onclick="workflowRunnerAction('execute','${esc(row.workflow_id)}')">Execute</button>`}));
+  const executionRows = executions.map(row => ({...row, actions:
+    `<button class="copy" onclick="workflowRunnerRead('monitor','${esc(row.exec_id)}')">Monitor</button>` +
+    `<button class="copy" onclick="workflowRunnerRead('result','${esc(row.exec_id)}')">Review Result</button>` +
+    (!["completed","failed","cancelled"].includes(row.status) ? `<button class="copy" onclick="workflowRunnerAction('cancel','${esc(row.exec_id)}')">Cancel</button>` : "")
+  }));
+  return `${action}
+    <article class="card full">
+      <h2>Workflow Runner</h2>
+      <span class="pill">Available ${workflows.length}</span>
+      <span class="pill">Active ${(runner.active||[]).length}</span>
+      <span class="pill">Queued ${(runner.queued||[]).length}</span>
+      <span class="pill">Completed ${(runner.completed||[]).length}</span>
+      <span class="pill">Failed ${(runner.failed||[]).length}</span>
+      <span class="pill">n8n ${runner.n8n?.healthy ? "Online" : "Offline"}</span>
+      <p class="muted mt-3">Registered local workflows only. Execution and cancellation use Command Bus confirmation.</p>
+      ${["workflow_runner_status","workflow_list","workflow_failures","workflow_runner_review"].map(key=>`<button class="copy" onclick="copyCommand('${esc(data.commands[key])}')">${esc(data.commands[key])}</button>`).join("")}
+    </article>
+    <article class="card full"><h2>Available Workflows</h2>${table(workflowRows, [["ID","workflow_id"],["Name","name"],["Category","category"],["Mode","execution_mode"],["Risk","risk_level"],["Approval","approval_required"],["Enabled","enabled"],["Actions","actions",v=>v]])}</article>
+    <article class="card full"><h2>Executions</h2>${table(executionRows, [["Execution","exec_id"],["Workflow","workflow_name"],["Status","status",v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],["Approval","approval_status"],["Stage","current_stage"],["Duration","duration_seconds"],["Task","task_id"],["Actions","actions",v=>v]])}</article>
+    <article class="card wide"><h2>Execution Logs</h2>${executions.length ? `<pre>${esc(JSON.stringify(executions.slice(0,5).map(row=>({exec_id:row.exec_id,logs:row.logs?.slice(-8),errors:row.errors})),null,2))}</pre>` : `<div class="empty">No executions yet.</div>`}</article>
+    <article class="card wide"><h2>Failures and Recovery</h2>${runner.failures_note?.exists ? `<pre>${esc(runner.failures_note.content)}</pre>` : `<div class="empty">No failure record.</div>`}</article>`;
+}
+function renderMemory() {
+  return card("Memory Search", `<p class="muted">Read-only dashboard mode. Copy this command and run it in the terminal:</p><button class="copy" onclick="copyCommand('${esc(data.commands.memory_search)}')">${esc(data.commands.memory_search)}</button>`, "card full");
+}
+function renderVoice() {
+  const h = data.health;
+  return [
+    card("Piper", `<div>Engine: <span class="pill">${esc(h.piper.engine)}</span></div><div>Executable: <span class="${statusClass(h.piper.exe_exists)}">${h.piper.exe_exists}</span></div><div>Voice model: <span class="${statusClass(h.piper.model_exists)}">${h.piper.model_exists}</span></div>`),
+    card("Voice Commands", `<button class="copy" onclick="copyCommand('python C:\\\\RaphaelOS\\\\voice_gateway.py assistant-status')">assistant-status</button><button class="copy" onclick="copyCommand('python C:\\\\RaphaelOS\\\\voice_gateway.py wake-chat')">wake-chat</button>`, "card wide")
+  ].join("");
+}
+function renderVision() {
+  return card("Vision Requests", table(data.vision_requests, [["ID","id"],["File","file_name"],["Type","file_type"],["Question","question"],["Status","status",v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],["Created","created"]]), "card full");
+}
+function renderSearch() {
+  const internet = data.internet_access || {};
+  const commands = ["internet_status","searxng_status","searxng_start","internet_headless_search","internet_latest_overview","internet_latest_snippets","internet_raw_json","internet_analyze_results","internet_niche_score","pandas_status","pandas_analyze_csv","internet_review","internet_brief","internet_source_review"];
+  const resultItems = (internet.results || []).flatMap(result => (result.items || []).map(item => ({request_id:result.request_id, ...item})));
+  const overviewRows = (internet.results || []).map(result => {
+    const overview = result.ai_overview || {};
+    return {
+      request_id: result.request_id,
+      question: result.question,
+      answer: overview.answer || result.summary || "",
+      confidence: overview.confidence || "",
+      sources: (overview.sources || []).map(source => source.title || source.url).join("; ")
+    };
+  });
+  return `
+    <article class="card full">
+      <h2>Permissioned Internet Access</h2>
+      <span class="pill">Enabled ${esc(internet.enabled)}</span>
+      <span class="pill">Confirmation ${esc(internet.requires_confirmation)}</span>
+      <span class="pill">Provider ${esc(internet.provider)}</span>
+      <span class="pill ${internet.searxng?.healthy ? "ok" : "bad"}">SearXNG ${internet.searxng?.healthy ? "Online" : "Offline"}</span>
+      <span class="pill">Headless ${esc(internet.headless_enabled)}</span>
+      <span class="pill">AI Overview ${esc(internet.ai_overview_default)}</span>
+      <span class="pill">Pandas ${esc(internet.pandas_enabled)}</span>
+      <div class="mt-3">${commands.map(key=>`<button class="copy" onclick="copyCommand('${esc(data.commands[key])}')">${esc(data.commands[key])}</button>`).join("")}</div>
+      <div class="mt-3">
+        <button class="copy" onclick="sendQuickChat('review internet requests')">Review Requests</button>
+        <button class="copy" onclick="sendQuickChat('search the web for current Etsy trends')">Headless Search</button>
+        <button class="copy" onclick="sendQuickChat('POD niche research for summer shirts')">POD Niche Research</button>
+        <button class="copy" onclick="sendQuickChat('look up current software docs for FastAPI')">Software Docs</button>
+      </div>
+      <p class="muted">Searches require confirmation. No autonomous browsing, login, credentials, spending, posting, uploading, email, messaging, or platform action.</p>
+    </article>
+    ${renderInternetOverviewCard(internet.latest_overview, internet.latest_result)}
+    <article class="card full"><h2>Pending Search Requests</h2>${table(internet.pending || [], [["ID","request_id"],["Question","question"],["Status","status",v=>`<span class="${statusClass(v)}">${esc(v)}</span>`],["Created","created"]])}</article>
+    <article class="card full"><h2>Completed Searches</h2>${table(internet.completed || [], [["ID","request_id"],["Question","question"],["Status","status"],["Completed","completed"]])}</article>
+    <article class="card full"><h2>AI Overview History</h2>${table(overviewRows, [["Request","request_id"],["Question","question"],["Answer","answer"],["Confidence","confidence"],["Sources","sources"]])}</article>
+    <article class="card full"><h2>Headless Search Results</h2>${table(resultItems, [["Request","request_id"],["Rank","rank"],["Title","title"],["URL","url"],["Snippet","snippet"],["Reliability","reliability"],["Timestamp","timestamp"]])}</article>
+    <article class="card full"><h2>Saved Sources</h2>${table(internet.sources || [], [["URL","url",v=>`<span class="muted">${esc(v)}</span>`],["Request","request_id"],["Reliability","reliability"],["Title","title"],["Notes","notes"],["Reviewed","reviewed"]])}</article>
+    <article class="card full"><h2>Niche Scoring</h2>${table(internet.niche_scores || [], [["Request","request_id"],["Demand","demand_signal"],["Competition","competition_signal"],["Evergreen","evergreen_potential"],["Product Fit","product_fit"],["Source Quality","source_quality"],["Confidence","confidence"],["Overall","overall_niche_score"]])}</article>
+    <article class="card wide"><h2>Source Reliability Notes</h2>${internet.source_review?.exists ? `<pre>${esc(internet.source_review.content)}</pre>` : `<div class="empty">No source reviews yet.</div>`}</article>
+    <article class="card wide"><h2>Internet Safety Policy</h2>${internet.safety_policy?.exists ? `<pre>${esc(internet.safety_policy.content)}</pre>` : `<div class="empty">Run internet-status to initialize Internet Access.</div>`}</article>
+    <article class="card wide"><h2>Internet Brief</h2>${internet.brief?.exists ? `<pre>${esc(internet.brief.content)}</pre>` : `<div class="empty">Run internet-brief.</div>`}</article>
+    <article class="card wide"><h2>Legacy Search Requests</h2>${table(data.search_requests, [["ID","id"],["Question","question"],["Status","status"],["Created","created"]])}</article>
+  `;
+}
+function renderHealth() {
+  const h = data.health;
+  return [
+    card("Qdrant", `<div class="${statusClass(h.qdrant.ok)}">${h.qdrant.ok ? "Online" : "Unavailable"}</div><pre>${esc(h.qdrant.detail)}</pre>`),
+    card("Ollama", `<div class="${statusClass(h.ollama.ok)}">${h.ollama.ok ? "Online" : "Unavailable"}</div><div>${h.ollama.models.map(m=>`<span class="pill">${esc(m)}</span>`).join("")}</div>`),
+    card("Vision Model", `<div>${esc(h.vision.model)}</div><div class="${statusClass(h.vision.available)}">Available: ${h.vision.available}</div><div>Enabled: ${h.vision.enabled}</div>`),
+    card("Paths", `<pre>${esc(JSON.stringify(h.paths, null, 2))}</pre>`, "card full")
+  ].join("");
+}
+function renderKnowledge() {
+  const k = data.knowledge;
+  const commands = ["knowledge_status", "knowledge_scan", "knowledge_import", "knowledge_classify", "knowledge_curation_review", "knowledge_rename_suggestion", "knowledge_skills_map", "knowledge_portfolio_candidates", "knowledge_index", "knowledge_search"];
+  return `
+    <article class="card full">
+      <h2>Knowledge Ingestion Engine</h2>
+      <span class="pill">Summaries ${k.summaries.length}</span>
+      <span class="pill">Inventories ${k.inventories.length}</span>
+      <span class="pill">Source ${esc(k.safety.source_access)}</span>
+      <span class="pill">Raw indexing ${esc(k.safety.raw_indexing)}</span>
+      <div class="mt-3">${commands.map(key => `<button class="copy" onclick="copyCommand('${esc(data.commands[key])}')">${esc(data.commands[key])}</button>`).join("")}</div>
+      <div class="mt-3">
+        <button class="copy" onclick="sendQuickChat('scan knowledge folder K:\\\\School')">chat: scan</button>
+        <button class="copy" onclick="sendQuickChat('import knowledge folder K:\\\\School')">chat: import</button>
+        <button class="copy" onclick="sendQuickChat('summarize knowledge')">chat: summarize</button>
+        <button class="copy" onclick="sendQuickChat('index knowledge')">chat: index</button>
+        <button class="copy" onclick="sendQuickChat('search knowledge compiler project')">chat: search</button>
+        <button class="copy" onclick="sendQuickChat('classify knowledge')">chat: classify</button>
+        <button class="copy" onclick="sendQuickChat('show knowledge skills map')">chat: skills map</button>
+        <button class="copy" onclick="sendQuickChat('show portfolio candidates')">chat: portfolio candidates</button>
+      </div>
+      <p class="muted mt-3">Originals remain on the source drive. Raphael writes Markdown inventories and summaries only, and Qdrant receives generated Markdown rather than raw files.</p>
+    </article>
+    <article class="card full"><h2>Generated Summaries</h2>${table(k.summaries, [["ID","id"],["Curated Name","suggested_title"],["Original Summary","title"],["Type","project_type"],["Course","course"],["Status","status"],["Portfolio","portfolio_score"],["Ignored","ignored",v=>v ? "yes" : "no"]])}</article>
+    <article class="card wide"><h2>Inventories</h2>${table(k.inventories, [["Inventory","name"],["Updated","updated"],["Path","path"]])}</article>
+    <article class="card wide"><h2>Curation Review</h2>${k.curation_review.exists ? `<pre>${esc(k.curation_review.content)}</pre>` : `<div class="empty">Run knowledge-curation-review.</div>`}</article>
+    <article class="card wide"><h2>Rename Suggestions</h2>${k.rename_suggestions.exists ? `<pre>${esc(k.rename_suggestions.content)}</pre>` : `<div class="empty">Run knowledge-rename-suggestion.</div>`}</article>
+    <article class="card wide"><h2>Skills Map</h2>${k.skills_map.exists ? `<pre>${esc(k.skills_map.content)}</pre>` : `<div class="empty">Run knowledge-skills-map.</div>`}</article>
+    <article class="card wide"><h2>Portfolio Candidate Ranking</h2>${k.portfolio_candidates.exists ? `<pre>${esc(k.portfolio_candidates.content)}</pre>` : `<div class="empty">Run knowledge-portfolio-candidates.</div>`}</article>
+    <article class="card wide"><h2>Ignored Items</h2>${k.ignored_items.exists ? `<pre>${esc(k.ignored_items.content)}</pre>` : `<div class="empty">No ignored items.</div>`}</article>
+  `;
+}
+function exploreRelatedKnowledge() {
+  const value = (document.getElementById("relationship-id")?.value || "").trim();
+  if (value) sendQuickChat(`show related projects for ${value}`);
+}
+function exploreKnowledgePath() {
+  const source = (document.getElementById("relationship-source")?.value || "").trim();
+  const target = (document.getElementById("relationship-target")?.value || "").trim();
+  if (source && target) {
+    const input = document.getElementById("chat-input");
+    active = "chat";
+    render();
+    if (input) input.value = `knowledge path ${source} ${target}`;
+    sendQuickChat(`knowledge path ${source} ${target}`);
+  }
+}
+function renderKnowledgeRelationships() {
+  const r = data.knowledge_relationships;
+  const commands = ["knowledge_relationships","knowledge_graph","knowledge_clusters","knowledge_career_map","knowledge_business_map","knowledge_portfolio_map","knowledge_tech_map","knowledge_skill_map"];
+  return `
+    <article class="card full">
+      <h2>Knowledge Relationships</h2>
+      <span class="pill">Items ${r.items}</span>
+      <span class="pill">Nodes ${r.nodes}</span>
+      <span class="pill">Relationships ${r.relationships}</span>
+      <div class="mt-3">${commands.map(key => `<button class="copy" onclick="copyCommand('${esc(data.commands[key])}')">${esc(data.commands[key])}</button>`).join("")}</div>
+      <div class="mt-3">
+        <button class="copy" onclick="sendQuickChat('show knowledge graph')">chat: graph</button>
+        <button class="copy" onclick="sendQuickChat('show career map')">chat: career</button>
+        <button class="copy" onclick="sendQuickChat('show portfolio map')">chat: portfolio</button>
+        <button class="copy" onclick="sendQuickChat('show technology map')">chat: technology</button>
+      </div>
+    </article>
+    <article class="card full">
+      <h2>Relationship Explorer</h2>
+      <div class="chat-input-row"><input id="relationship-id" placeholder="KNOW-ID"><button class="primary" onclick="exploreRelatedKnowledge()">Show Related</button></div>
+      <div class="chat-input-row mt-3"><input id="relationship-source" placeholder="KNOW-ID-A"><input id="relationship-target" placeholder="KNOW-ID-B"><button class="primary" onclick="exploreKnowledgePath()">Find Path</button></div>
+    </article>
+    <article class="card wide"><h2>Graph Overview</h2>${r.graph.exists ? `<pre>${esc(r.graph.content)}</pre>` : `<div class="empty">Run knowledge-graph.</div>`}</article>
+    <article class="card wide"><h2>Clusters</h2>${r.clusters.exists ? `<pre>${esc(r.clusters.content)}</pre>` : `<div class="empty">Run knowledge-clusters.</div>`}</article>
+    <article class="card wide"><h2>Career Map</h2>${r.career.exists ? `<pre>${esc(r.career.content)}</pre>` : `<div class="empty">Run knowledge-career-map.</div>`}</article>
+    <article class="card wide"><h2>Business Map</h2>${r.business.exists ? `<pre>${esc(r.business.content)}</pre>` : `<div class="empty">Run knowledge-business-map.</div>`}</article>
+    <article class="card wide"><h2>Portfolio Map</h2>${r.portfolio.exists ? `<pre>${esc(r.portfolio.content)}</pre>` : `<div class="empty">Run knowledge-portfolio-map.</div>`}</article>
+    <article class="card wide"><h2>Technology Map</h2>${r.technology.exists ? `<pre>${esc(r.technology.content)}</pre>` : `<div class="empty">Run knowledge-tech-map.</div>`}</article>
+    <article class="card wide"><h2>Skills Map</h2>${r.skills.exists ? `<pre>${esc(r.skills.content)}</pre>` : `<div class="empty">Run knowledge-skill-map.</div>`}</article>
+    <article class="card wide"><h2>Relationship Review</h2>${r.review.exists ? `<pre>${esc(r.review.content)}</pre>` : `<div class="empty">Run knowledge-relationships.</div>`}</article>
+  `;
+}
+function renderCommunications() {
+  const c = data.communications;
+  const commands = ["communication_status","communication_review","communication_history","communication_request","communication_respond","communication_recommend","communication_escalate","communication_synthesize","communication_network","communication_brief"];
+  return `
+    <article class="card full">
+      <h2>Inter-Council Communications</h2>
+      <span class="pill">Open ${c.open_requests.length}</span>
+      <span class="pill">Responses ${c.responses.length}</span>
+      <span class="pill">Recommendations ${c.recommendations.length}</span>
+      <span class="pill">Syntheses ${c.syntheses.length}</span>
+      <div class="mt-3">${commands.map(key => `<button class="copy" onclick="copyCommand('${esc(data.commands[key])}')">${esc(data.commands[key])}</button>`).join("")}</div>
+      <div class="mt-3">
+        <button class="copy" onclick="sendQuickChat('show council communications')">chat: communications</button>
+        <button class="copy" onclick="sendQuickChat('request financial assessment')">chat: financial assessment</button>
+        <button class="copy" onclick="sendQuickChat('request portfolio assessment')">chat: portfolio assessment</button>
+        <button class="copy" onclick="sendQuickChat('synthesize recommendations')">chat: synthesize</button>
+      </div>
+      <p class="muted mt-3">Internal advisory records only. No execution, approvals, autonomous decisions, or external messages.</p>
+    </article>
+    <article class="card full"><h2>Open Requests</h2>${table(c.open_requests, [["ID","id"],["From","from_council"],["To","to_council"],["Type","request_type"],["Topic","topic"],["Question","question"]])}</article>
+    <article class="card full"><h2>Recent Responses</h2>${table(c.responses.slice().reverse().slice(0,10), [["ID","id"],["Request","request_id"],["Council","from_council"],["Position","response_type"],["Topic","topic"],["Confidence","confidence_score"]])}</article>
+    <article class="card full"><h2>Recommendations</h2>${table(c.recommendations.slice().reverse().slice(0,10), [["ID","id"],["Topic","topic"],["Recommendation","recommendation"],["Confidence","confidence_score"],["Status","status"]])}</article>
+    <article class="card full"><h2>Executive Syntheses</h2>${table(c.syntheses.slice().reverse().slice(0,10), [["ID","id"],["Topic","topic"],["Executive Recommendation","executive_recommendation"],["Confidence","confidence_score"],["Status","status"]])}</article>
+    <article class="card wide"><h2>Communication Graph</h2>${c.network.exists ? `<pre>${esc(c.network.content)}</pre>` : `<div class="empty">Run communication-network.</div>`}</article>
+    <article class="card wide"><h2>Communication Review</h2>${c.review.exists ? `<pre>${esc(c.review.content)}</pre>` : `<div class="empty">Run communication-review.</div>`}</article>
+    <article class="card wide"><h2>Communication Brief</h2>${c.brief.exists ? `<pre>${esc(c.brief.content)}</pre>` : `<div class="empty">Run communication-brief.</div>`}</article>
+    <article class="card wide"><h2>Communication History</h2>${c.history.exists ? `<pre>${esc(c.history.content)}</pre>` : `<div class="empty">No communication history yet.</div>`}</article>
+  `;
+}
+function maintenanceState(value) {
+  return value ? `<span class="maintenance-state ok">Healthy</span>` : `<span class="maintenance-state bad">Needs attention</span>`;
+}
+function serviceEndpoint(action) {
+  const endpoints = {
+    start:"/api/services/start",
+    stop:"/api/services/stop",
+    restart:"/api/services/restart",
+    health:"/api/services/health",
+    start_stack:"/api/services/start-stack",
+    open:"/api/services/open"
+  };
+  return endpoints[action] || "";
+}
+function setServiceActionState(state) {
+  serviceActionState = state;
+  if (active === "maintenance" && data) render();
+}
+function showDockerLogs(serviceId) {
+  const rows = data?.maintenance?.service_manager?.services || [];
+  const row = rows.find(item => item.service_id === serviceId);
+  setServiceActionState({
+    kind: row?.logs ? "success" : "warn",
+    title: `Docker logs: ${serviceId}`,
+    message: row?.logs ? "Showing the latest Raphael-managed container logs." : "No Raphael-managed Docker logs are available.",
+    detail: row?.logs || row?.last_error || "The container may be external, stopped, or not Raphael-managed."
+  });
+}
+async function refreshMaintenanceServices() {
+  const [statusResponse, maintenanceResponse] = await Promise.all([
+    fetch("/api/services/status"),
+    fetch("/api/maintenance")
+  ]);
+  if (!statusResponse.ok || !maintenanceResponse.ok) {
+    throw new Error(`Refresh failed: services ${statusResponse.status}, maintenance ${maintenanceResponse.status}`);
+  }
+  const serviceStatus = await statusResponse.json();
+  const maintenance = await maintenanceResponse.json();
+  maintenance.service_manager = serviceStatus;
+  data.maintenance = maintenance;
+  const groups = maintenance.bootstrap?.groups || {};
+  const pill = document.getElementById("bootstrap-health-pill");
+  if (pill) {
+    pill.textContent = `Core: ${groups.core || "Unknown"} · AI: ${groups.ai || "Unknown"} · Creative: ${groups.creative || "Unknown"} · Voice: ${groups.voice || "Unknown"}`;
+    pill.classList.toggle("bad", [groups.core, groups.ai, groups.creative].includes("Warning"));
+  }
+  if (active === "maintenance") render();
+}
+async function callServiceEndpoint(endpoint, serviceId, confirmationKey="") {
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({service_id: serviceId, confirmation_key: confirmationKey})
+  });
+  let payload = {};
+  try { payload = await response.json(); }
+  catch (_) { payload = {error:`Service API returned non-JSON response (${response.status}).`}; }
+  return {response, payload};
+}
+async function serviceAction(action, serviceId) {
+  const endpoint = serviceEndpoint(action);
+  if (!endpoint) {
+    setServiceActionState({kind:"error", title:"Service action failed", message:`Unknown action: ${action}`});
+    return;
+  }
+  setServiceActionState({kind:"working", title:"Action started", message:`Requesting ${action.replace("_", " ")} for ${serviceId}...`});
+  try {
+    let {response, payload} = await callServiceEndpoint(endpoint, serviceId);
+    if (payload.confirmation_required) {
+      setServiceActionState({
+        kind:"pending",
+        title:"Pending confirmation",
+        message:payload.message || `Confirm ${action.replace("_", " ")} for ${serviceId}.`,
+        command:payload.command || ""
+      });
+      const approved = window.confirm(`${payload.message || "Confirmation required."}\n\n${payload.command || ""}`);
+      if (!approved) {
+        setServiceActionState({kind:"warn", title:"Action cancelled", message:"No service action was executed."});
+        return;
+      }
+      setServiceActionState({kind:"working", title:"Action started", message:`Running confirmed action for ${serviceId}...`});
+      ({response, payload} = await callServiceEndpoint(endpoint, serviceId, payload.confirmation_key));
+    }
+    if (!response.ok || !payload.ok) {
+      throw new Error(payload.error || payload.message || `Service action failed (${response.status}).`);
+    }
+    const service = payload.service || {};
+    const pid = service.pid || payload.result?.results?.find?.(row=>row.pid)?.pid || "";
+    setServiceActionState({
+      kind:"success",
+      title:"Action completed",
+      message:payload.message || `${action} completed for ${serviceId}.`,
+      pid,
+      health:service.health || "",
+      detail:service.detail || ""
+    });
+    await refreshMaintenanceServices();
+  } catch (error) {
+    setServiceActionState({
+      kind:"error",
+      title:"Service action failed",
+      message:String(error?.message || error),
+      detail:"Check the service row logs and last error below."
+    });
+    try { await refreshMaintenanceServices(); } catch (_) {}
+  }
+}
+async function refreshServiceHealth() {
+  setServiceActionState({kind:"working", title:"Health check started", message:"Refreshing service and system health..."});
+  try {
+    await refreshMaintenanceServices();
+    setServiceActionState({kind:"success", title:"Health check completed", message:"Service status and the health pill were refreshed."});
+  } catch (error) {
+    setServiceActionState({kind:"error", title:"Health check failed", message:String(error?.message || error)});
+  }
+}
+async function runDashboardChatSmokeTest() {
+  dashboardChatTestState = {kind:"working", message:"Running isolated Dashboard Chat smoke tests..."};
+  if (active === "maintenance") render();
+  try {
+    const response = await fetch("/api/dashboard-chat-tests/run", {method:"POST"});
+    const payload = await response.json();
+    if (!response.ok || !payload.ok) throw new Error(payload.error || `Smoke test failed (${response.status}).`);
+    const tests = payload.tests || {};
+    dashboardChatTestState = {
+      kind: tests.failed ? "error" : "success",
+      message: `Smoke test completed: ${tests.passed || 0} passed, ${tests.failed || 0} failed.`,
+      detail: tests.report || ""
+    };
+    await refreshMaintenanceServices();
+  } catch (error) {
+    dashboardChatTestState = {kind:"error", message:String(error?.message || error)};
+    if (active === "maintenance") render();
+  }
+}
+async function viewDashboardChatTestReport() {
+  try {
+    const response = await fetch("/api/dashboard-chat-tests/report");
+    const payload = await response.json();
+    dashboardChatTestState = {
+      kind: payload.failed ? "error" : "success",
+      message: payload.exists ? `${payload.passed || 0} passed, ${payload.failed || 0} failed.` : "No Dashboard Chat test report exists yet.",
+      detail: payload.content || payload.report || ""
+    };
+  } catch (error) {
+    dashboardChatTestState = {kind:"error", message:String(error?.message || error)};
+  }
+  if (active === "maintenance") render();
+}
+async function refreshSelfHealing() {
+  const response = await fetch("/api/self-healing");
+  const payload = await response.json();
+  if (!response.ok || !payload.ok) throw new Error(payload.error || `Self-Healing API returned ${response.status}.`);
+  data.self_healing = payload.self_healing || payload;
+  if (data.maintenance) data.maintenance.self_healing = data.self_healing;
+  if (active === "selfhealing" || active === "maintenance") render();
+  return data.self_healing;
+}
+async function selfHealingAction(action, options={}) {
+  selfHealingActionState = {kind:"working", message:`Running self-healing action: ${action}...`};
+  if (active === "selfhealing" || active === "maintenance") render();
+  try {
+    let response = await fetch(`/api/self-healing/${action}`, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(options)
+    });
+    let payload = await response.json();
+    if (payload.confirmation_required) {
+      const approved = window.confirm(`${payload.message || "Confirmation required."}\n\n${payload.command || ""}`);
+      if (!approved) {
+        selfHealingActionState = {kind:"warn", message:"Self-healing action cancelled. No repair was run."};
+        render();
+        return;
+      }
+      response = await fetch(`/api/self-healing/${action}`, {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({...options, confirmation_key:payload.confirmation_key})
+      });
+      payload = await response.json();
+    }
+    if (!response.ok || !payload.ok) throw new Error(payload.error || payload.message || `Self-healing action failed (${response.status}).`);
+    data.self_healing = payload.self_healing || payload.result?.self_healing || data.self_healing;
+    if (data.maintenance) data.maintenance.self_healing = data.self_healing;
+    selfHealingActionState = {kind:"success", message:payload.message || `${action} completed.`, detail:JSON.stringify(payload.result || payload, null, 2)};
+    await refreshSelfHealing();
+  } catch (error) {
+    selfHealingActionState = {kind:"error", message:String(error?.message || error)};
+    if (active === "selfhealing" || active === "maintenance") render();
+  }
+}
+function selfHealingPlan(issueId) {
+  selfHealingAction("plan", {issue_id:issueId});
+}
+function selfHealingApprove(repairId) {
+  selfHealingAction("approve", {repair_id:repairId});
+}
+function selfHealingRun(repairId) {
+  selfHealingAction("run", {repair_id:repairId});
+}
+function renderSelfHealing() {
+  const sh = data.self_healing || data.maintenance?.self_healing || {};
+  const issues = sh.active_issues || [];
+  const history = sh.repair_history?.history || [];
+  const notes = sh.notes || {};
+  return `
+    <article class="card full ${issues.some(row=>row.severity === "critical") ? "error-banner" : ""}">
+      <h2>Self-Healing & Observability</h2>
+      <span class="pill ${Number(sh.health_score || 0) >= 80 ? "ok" : Number(sh.health_score || 0) >= 50 ? "warn" : "bad"}">Health score ${esc(sh.health_score ?? "Unknown")}</span>
+      <span class="pill">Active issues ${esc(issues.length)}</span>
+      <span class="pill">Auto observe ${esc(sh.auto_observe)}</span>
+      <span class="pill">Auto repair ${esc(sh.auto_repair)}</span>
+      <span class="pill">Approval required ${esc(sh.requires_confirmation)}</span>
+      <div class="mt-3">
+        <button class="copy" onclick="selfHealingAction('observe')">Observe system</button>
+        <button class="copy" onclick="selfHealingAction('detect')">Detect issues</button>
+        <button class="copy" onclick="selfHealingAction('brief')">Reliability brief</button>
+        <button class="copy" onclick="refreshSelfHealing()">Refresh</button>
+      </div>
+      ${selfHealingActionState ? `<p class="${selfHealingActionState.kind === "error" ? "bad" : selfHealingActionState.kind === "success" ? "ok" : "muted"}">${esc(selfHealingActionState.message || "")}</p>${selfHealingActionState.detail ? `<pre>${esc(selfHealingActionState.detail)}</pre>` : ""}` : ""}
+      <p class="muted">Runtime: ${esc(sh.runtime || "")}</p>
+    </article>
+    <article class="card full">
+      <h2>Active Issues</h2>
+      ${table(issues, [
+        ["Issue","issue_id"],
+        ["Severity","severity",value=>`<span class="${statusClass(value)}">${esc(value)}</span>`],
+        ["System","affected_system"],
+        ["Symptoms","symptoms",value=>esc((value || []).join("; "))],
+        ["Recommended Repair","recommended_fix"],
+        ["Repairability","repairability"],
+        ["Actions","issue_id",(value,row)=>`
+          <button class="copy" onclick="selfHealingPlan('${esc(value)}')">Create repair plan</button>
+          <button class="copy" onclick="copyCommand('python raphael.py diagnose-issue ${esc(value)}')">Copy diagnose</button>
+          <details><summary class="muted">Evidence</summary><pre>${esc((row.evidence || []).join("\\n"))}</pre></details>`]
+      ])}
+    </article>
+    <article class="card full">
+      <h2>Repair History</h2>
+      ${history.length ? table(history.slice(-20).reverse(), [
+        ["Time","timestamp"],
+        ["Repair","repair_id"],
+        ["Issue","issue_id"],
+        ["Action","action",value=>esc(JSON.stringify(value || {}))]
+      ]) : `<div class="empty">No repairs have run yet.</div>`}
+    </article>
+    ${Object.values(notes).map(note=>card(note.label || "Self-Healing Note", note.exists ? `<div class="muted">${esc(note.updated)}</div><pre>${esc(note.content)}</pre>` : `<div class="empty">Missing note.</div>`, "card wide")).join("")}
+  `;
+}
+function renderMaintenance() {
+  const m = data.maintenance;
+  if (!m) return `<article class="card full"><h2>Maintenance</h2><div class="empty">Maintenance data is unavailable. Run <code>python raphael.py system-check</code>.</div></article>`;
+  const h = m.system_health || {};
+  const b = m.bootstrap || {};
+  const bg = b.groups || {};
+  const sm = m.service_manager || {};
+  const docker = sm.docker || {};
+  const serviceRows = sm.services || [];
+  const chatTests = m.dashboard_chat_tests || {};
+  const selfHealing = m.self_healing || {};
+  return `
+    <article class="card full maintenance-hero ${m.overall === "healthy" ? "healthy" : "attention"}">
+      <div>
+        <h2>System Maintenance</h2>
+        <p class="muted">Diagnostics and recovery helpers only. No project/source edits or external actions.</p>
+      </div>
+      <div class="stat">${esc(m.overall === "healthy" ? "Healthy" : "Needs Attention")}</div>
+    </article>
+    ${m.config_health.errors.length ? `<article class="card full error-banner"><strong>Configuration errors</strong>${m.config_health.errors.map(item=>`<span>${esc(item)}</span>`).join("")}</article>` : ""}
+    ${serviceActionState ? `<article class="card full ${serviceActionState.kind === "error" ? "error-banner" : ""}">
+      <h2>${esc(serviceActionState.title)}</h2>
+      <p class="${serviceActionState.kind === "success" ? "ok" : serviceActionState.kind === "error" ? "bad" : "muted"}">${esc(serviceActionState.message || "")}</p>
+      ${serviceActionState.command ? `<pre>${esc(serviceActionState.command)}</pre>` : ""}
+      ${serviceActionState.pid ? `<span class="pill">PID ${esc(serviceActionState.pid)}</span>` : ""}
+      ${serviceActionState.health ? `<span class="pill">Health ${esc(serviceActionState.health)}</span>` : ""}
+      ${serviceActionState.detail ? `<pre>${esc(serviceActionState.detail)}</pre>` : ""}
+    </article>` : ""}
+    <article class="card full ${chatTests.failed ? "error-banner" : ""}">
+      <h2>Dashboard Chat Tests</h2>
+      <span class="pill ${chatTests.failed ? "bad" : "ok"}">Failed tests ${esc(chatTests.failed || 0)}</span>
+      <span class="pill">Passed ${esc(chatTests.passed || 0)}</span>
+      ${chatTests.updated ? `<span class="pill">Updated ${esc(chatTests.updated)}</span>` : ""}
+      <div class="mt-3">
+        <button class="copy" onclick="runDashboardChatSmokeTest()">Run smoke test</button>
+        <button class="copy" onclick="viewDashboardChatTestReport()">View latest report</button>
+      </div>
+      <div class="muted mt-3">${esc(chatTests.report || "No report generated yet.")}</div>
+      ${dashboardChatTestState ? `<p class="${dashboardChatTestState.kind === "error" ? "bad" : dashboardChatTestState.kind === "success" ? "ok" : "muted"}">${esc(dashboardChatTestState.message || "")}</p>${dashboardChatTestState.detail ? `<pre>${esc(dashboardChatTestState.detail)}</pre>` : ""}` : ""}
+    </article>
+    <article class="card full ${Number(selfHealing.health_score || 100) < 80 ? "error-banner" : ""}">
+      <h2>Self-Healing Summary</h2>
+      <span class="pill ${Number(selfHealing.health_score || 0) >= 80 ? "ok" : "bad"}">Health score ${esc(selfHealing.health_score ?? "Unknown")}</span>
+      <span class="pill">Active issues ${esc((selfHealing.active_issues || []).length)}</span>
+      <span class="pill">Repair history ${esc(selfHealing.repair_history_count || 0)}</span>
+      <div class="mt-3">
+        <button class="copy" onclick="active='selfhealing'; render();">Open Self-Healing</button>
+        <button class="copy" onclick="selfHealingAction('observe')">Observe system</button>
+        <button class="copy" onclick="selfHealingAction('detect')">Detect issues</button>
+        <button class="copy" onclick="selfHealingAction('brief')">Reliability brief</button>
+      </div>
+      <p class="muted">Repairs remain approval-gated and allowlisted. No arbitrary shell, deletion, upload, spending, or unmanaged process killing.</p>
+    </article>
+    <article class="card full">
+      <h2>Docker Services</h2>
+      <span class="pill ${docker.healthy ? "ok" : "bad"}">Docker ${docker.available ? "Online" : "Unavailable"}</span>
+      ${docker.version ? `<span class="pill">Version ${esc(docker.version)}</span>` : ""}
+      ${docker.platform ? `<span class="pill">${esc(docker.platform)}</span>` : ""}
+      <div class="mt-3">
+        <button class="copy" onclick="serviceAction('start','qdrant')">Start Qdrant</button>
+        <button class="copy" onclick="serviceAction('restart','qdrant')">Restart Qdrant</button>
+        <button class="copy" onclick="serviceAction('open','qdrant')">Open Qdrant URL</button>
+        <button class="copy" onclick="serviceAction('health','qdrant')">Docker Health</button>
+        <button class="copy" onclick="showDockerLogs('qdrant')">Show Docker Logs</button>
+      </div>
+      <p class="${docker.error ? "bad" : "muted"}">${esc(docker.error || "Only allowlisted, localhost-bound, Raphael-labeled containers can be changed.")}</p>
+      <div class="muted">Docker registry: ${esc(sm.docker_registry_path || "")}</div>
+    </article>
+    <article class="card full">
+      <h2>Service Manager</h2>
+      <div>
+        <button class="copy" onclick="serviceAction('start_stack','required')">Start All Required</button>
+        <button class="copy" onclick="serviceAction('start_stack','creative')">Start Creative Stack</button>
+        <button class="copy" onclick="serviceAction('start_stack','voice')">Start Voice Stack</button>
+        <button class="copy" onclick="serviceAction('start_stack','research')">Start Research Stack</button>
+        <button class="copy" onclick="sendQuickChat('restart failed services')">Restart Failed Services</button>
+        <button class="copy" onclick="refreshServiceHealth()">Run Health Check</button>
+        <button class="copy" onclick="serviceAction('open','dashboard')">Open Dashboard</button>
+        <button class="copy" onclick="serviceAction('open','comfyui')">Open ComfyUI</button>
+      </div>
+      ${sm.error ? `<div class="maintenance-error"><strong>Service Manager unavailable</strong><span>${esc(sm.error)}</span></div>` : ""}
+      ${table(serviceRows, [
+        ["Service","display_name"],
+        ["Status","status",value=>`<span class="${statusClass(value)}">${esc(value)}</span>`],
+        ["Health","health",value=>`<span class="${statusClass(value)}">${esc(value)}</span>`],
+        ["PID","pid"],
+        ["Category","category"],
+        ["Actions","service_id",(value,row)=>`
+          <button class="copy" onclick="serviceAction('start','${esc(value)}')">Start</button>
+          <button class="copy" onclick="serviceAction('stop','${esc(value)}')">Stop</button>
+          <button class="copy" onclick="serviceAction('restart','${esc(value)}')">Restart</button>
+          <button class="copy" onclick="serviceAction('health','${esc(value)}')">Health</button>
+          ${row.health_check_type === "url" ? `<button class="copy" onclick="serviceAction('open','${esc(value)}')">Open</button>` : ""}
+          <details><summary class="muted">Logs / last error</summary>
+            <div class="${row.last_error ? "bad" : "muted"}">${esc(row.last_error || "No error")}</div>
+            <pre>${esc(row.logs || "No managed logs.")}</pre>
+          </details>`]
+      ])}
+      <div class="muted mt-3">Registry: ${esc(sm.registry_path || "")}</div>
+      <p class="muted">Only registry allowlisted commands run. Stop affects Raphael-managed PIDs only.</p>
+    </article>
+    <article class="card full">
+      <h2>Bootstrap / Launcher</h2>
+      <span class="pill">Core ${esc(bg.core || "Unknown")}</span>
+      <span class="pill">AI ${esc(bg.ai || "Unknown")}</span>
+      <span class="pill">Creative ${esc(bg.creative || "Unknown")}</span>
+      <span class="pill">Voice ${esc(bg.voice || "Unknown")}</span>
+      <div class="mt-3">
+        <button class="copy" onclick="sendQuickChat('start Raphael services')">Start Raphael</button>
+        <button class="copy" onclick="sendQuickChat('stop Raphael services')">Stop Raphael</button>
+        <button class="copy" onclick="sendQuickChat('restart Raphael services')">Restart Raphael</button>
+        <button class="copy" onclick="sendQuickChat('open dashboard')">Open Dashboard</button>
+        <button class="copy" onclick="sendQuickChat('run bootstrap health')">Run Health Check</button>
+        <button class="copy" onclick="sendQuickChat('install Raphael startup')">Install Startup</button>
+        <button class="copy" onclick="sendQuickChat('remove Raphael startup')">Remove Startup</button>
+      </div>
+      <p class="muted mt-3">Dashboard ${esc(b.dashboard_url || "")} · ComfyUI ${esc(b.comfyui_url || "")}</p>
+      <p class="muted">Stop, restart, install, and remove remain confirmation-gated through Command Bus.</p>
+    </article>
+    <article class="card full">
+      <h2>Managed Service PIDs</h2>
+      ${table(b.managed_pids || [], [["Service","service"],["PID","pid"],["Started","started"],["Command","command"],["Log","log"]])}
+      <div class="muted mt-3">Registry: ${esc(b.pid_registry || "")}</div>
+    </article>
+    <article class="card wide">
+      <h2>Bootstrap Services</h2>
+      ${table(Object.entries(b.services || {}).map(([service,row])=>({service,ok:row.ok,detail:row.detail || ""})), [["Service","service"],["Status","ok",v=>maintenanceState(!!v)],["Detail","detail"]])}
+    </article>
+    <article class="card wide">
+      <h2>POD / Voice Tools</h2>
+      ${table(Object.entries(b.tools || {}).map(([tool,row])=>({tool,exists:row.exists,path:row.path})), [["Tool","tool"],["Status","exists",v=>v ? maintenanceState(true) : `<span class="maintenance-state warn">Missing / optional</span>`],["Path","path"]])}
+    </article>
+    <article class="card wide"><h2>Last Startup</h2>${b.startup?.exists ? `<pre>${esc(b.startup.content)}</pre>` : `<div class="empty">No startup log.</div>`}</article>
+    <article class="card wide"><h2>Last Recovery</h2>${b.recovery?.exists ? `<pre>${esc(b.recovery.content)}</pre>` : `<div class="empty">No recovery log.</div>`}</article>
+    <article class="card wide"><h2>Bootstrap Health</h2>${b.health?.exists ? `<pre>${esc(b.health.content)}</pre>` : `<div class="empty">Run bootstrap-health.</div>`}</article>
+    <article class="card wide"><h2>Bootstrap Review</h2>${b.review?.exists ? `<pre>${esc(b.review.content)}</pre>` : `<div class="empty">Run bootstrap-review.</div>`}</article>
+    <article class="card">
+      <h2>System Health</h2>
+      ${maintenanceState(m.overall === "healthy")}
+      <p class="muted">Generated ${esc(m.generated)}</p>
+    </article>
+    <article class="card">
+      <h2>Config Health</h2>
+      ${maintenanceState(m.config_health.ok)}
+      <div>${m.config_health.warnings.map(item=>`<p class="muted">${esc(item)}</p>`).join("") || `<p class="muted">No config warnings.</p>`}</div>
+    </article>
+    <article class="card">
+      <h2>API Health</h2>
+      ${maintenanceState(m.api_health.ok)}
+      <p class="muted">${m.api_health.routes.length} routes · ${m.api_health.missing.length} missing</p>
+    </article>
+    <article class="card">
+      <h2>Ollama</h2>
+      ${maintenanceState(m.ollama_status.ok)}
+      <div>${(m.ollama_status.models || []).map(model=>`<span class="pill">${esc(model)}</span>`).join("") || `<div class="empty">No Ollama models detected.</div>`}</div>
+    </article>
+    <article class="card">
+      <h2>Qdrant</h2>
+      ${maintenanceState(m.qdrant_status.ok)}
+      <p class="muted">${esc(m.qdrant_status.detail)}</p>
+    </article>
+    <article class="card">
+      <h2>Voice</h2>
+      ${maintenanceState(!!m.voice_status.model_exists)}
+      <p class="muted">Engine ${esc(m.voice_status.engine)} · control ${esc(m.voice_status.control_enabled)}</p>
+    </article>
+    <article class="card full">
+      <h2>Dependencies</h2>
+      ${table(m.dependencies.records, [
+        ["Dependency","name"],
+        ["Required","required", value=>value ? "yes" : "optional"],
+        ["Status","available", (value,row)=>value ? maintenanceState(true) : row.required ? maintenanceState(false) : `<span class="maintenance-state warn">Optional missing</span>`]
+      ])}
+    </article>
+    <article class="card full">
+      <h2>Dashboard Routes</h2>
+      ${m.api_health.routes.length ? table(m.api_health.routes, [["Route","path"],["Methods","methods"]]) : `<div class="empty">No dashboard routes detected.</div>`}
+    </article>
+    <article class="card wide">
+      <h2>Recent Errors</h2>
+      ${m.recent_errors.length ? m.recent_errors.map(row=>`<div class="maintenance-error"><strong>${esc(row.source)}</strong><span>${esc(row.message)}</span></div>`).join("") : `<div class="empty">No recent errors found.</div>`}
+    </article>
+    <article class="card wide">
+      <h2>Recovery Commands</h2>
+      ${m.commands.map(command=>`<button class="copy" onclick="copyCommand('${esc(command)}')">${esc(command)}</button>`).join("")}
+      <h2 class="mt-3">Helper Scripts</h2>
+      ${m.helpers.map(path=>`<button class="copy" onclick="copyCommand('${esc(path.replace(/\\/g, "\\\\"))}')">${esc(path)}</button>`).join("")}
+    </article>
+    <article class="card full">
+      <h2>Safety Boundary</h2>
+      <span class="pill">${esc(m.safety.backup_scope)}</span>
+      <span class="pill">${esc(m.safety.repair_scope)}</span>
+      <span class="pill">${esc(m.safety.cleanup_scope)}</span>
+      <span class="pill">Project/source edits ${esc(m.safety.project_source_edits)}</span>
+      <span class="pill">External actions ${esc(m.safety.external_actions)}</span>
+    </article>
+  `;
+}
+function render() {
+  document.querySelectorAll("nav button").forEach(btn => btn.classList.toggle("active", btn.dataset.page === active));
+  document.getElementById("title").textContent = pages.find(p => p[0] === active)?.[1] || "Dashboard";
+  if (!data) {
+    document.getElementById("content").innerHTML = `<article class="card full"><h2>Loading</h2><div class="empty">Loading Raphael dashboard data...</div></article>`;
+    return;
+  }
+  const map = {home:renderHome, chat:renderChat, daily:renderDailyOperatingLoop, knowledge:renderKnowledge, relationships:renderKnowledgeRelationships, n8nstudio:renderN8nStudio, workflowrunner:renderWorkflowRunner, communications:renderCommunications, commandbus:renderCommandBus, notifications:renderNotifications, activity:renderActivityStream, briefs:renderExecutiveBriefs, identity:renderIdentity, world:renderWorldModel, simulations:renderSimulations, opportunities:renderOpportunities, allocation:renderAllocation, blueprints:renderBlueprints, commerce:renderCommerce, podstudio:renderPODStudio, assetlibrary:renderAssetLibrary, agency:renderAgency, creator:renderCreator, kpis:renderKPIs, finance:renderFinance, portfolio:renderPortfolio, initiatives:renderInitiatives, employees:renderEmployees, executionplans:renderExecutionPlans, execution:renderExecution, builder:renderBuilder, projects:renderProjects, goals:renderGoals, goalpropagation:renderGoalPropagation, deliberations:renderDeliberations, tasks:renderTasks, agents:renderAgents, councils:renderCouncils, workflows:renderWorkflows, memory:renderMemory, voice:renderVoice, vision:renderVision, search:renderSearch, health:renderHealth, selfhealing:renderSelfHealing, maintenance:renderMaintenance};
+  window.__classicRenderMap = map;
+  if (document.body.classList.contains("matrix-view") && active === "home" && window.RaphaelMatrix) {
+    window.RaphaelMatrix.renderMatrixHome();
+    return;
+  }
+  document.getElementById("content").innerHTML = map[active]();
+  if (active === "chat") {
+    initRaphaelOrb();
+    initDashboardVoiceBridge();
+    setDashboardVoiceState(dashboardVoiceState, dashboardVoiceMessage);
+    const input = document.getElementById("chat-input");
+    if (input) input.addEventListener("keydown", event => {
+      if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) sendChat();
+    });
+  }
+}
+function initNav() {
+  document.getElementById("nav").innerHTML = pages.map(([id,label]) => `<button data-page="${id}">${label}</button>`).join("");
+  document.querySelectorAll("nav button").forEach(btn => btn.onclick = () => { active = btn.dataset.page; render(); });
+}
+async function load() {
+  initNav();
+  const res = await fetch("/api/overview");
+  if (!res.ok) throw new Error(`Overview API returned ${res.status}`);
+  data = await res.json();
+  window.data = data;
+  document.getElementById("generated").textContent = `Generated ${data.generated}`;
+  const bell = document.getElementById("notification-bell");
+  if (bell) {
+    const count = data.counts.notifications_critical_high || 0;
+    bell.textContent = `Notifications ${count}`;
+    bell.classList.toggle("bad", count > 0);
+  }
+  const activityCounter = document.getElementById("activity-counter");
+  if (activityCounter) {
+    activityCounter.textContent = `Activity ${data.counts.activity_today || 0}`;
+  }
+  const bootstrapPill = document.getElementById("bootstrap-health-pill");
+  if (bootstrapPill) {
+    const groups = data.maintenance?.bootstrap?.groups || {};
+    bootstrapPill.textContent = `Core: ${groups.core || "Unknown"} · AI: ${groups.ai || "Unknown"} · Creative: ${groups.creative || "Unknown"} · Voice: ${groups.voice || "Unknown"}`;
+    bootstrapPill.classList.toggle("bad", [groups.core, groups.ai, groups.creative].includes("Warning"));
+  }
+  if (window.RaphaelMatrix) window.RaphaelMatrix.afterDataLoad();
+  render();
+}
+load().catch(err => {
+  document.body.classList.remove("matrix-view");
+  document.body.classList.add("classic-view");
+  document.getElementById("content").innerHTML = `<article class="card full error-banner"><h2>Dashboard Error</h2><p>Raphael could not load dashboard data. The CLI remains available.</p><pre>${esc(err)}</pre><button class="copy" onclick="location.reload()">Retry</button><button class="copy" onclick="copyCommand('python raphael.py system-check')">Copy system check</button></article>`;
+});
+
+// --- Phase 3: WebSocket Live Events ---
+let wsConnection = null;
+function initWebSocket() {
+  if (wsConnection) return;
+  const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  const wsUrl = `${wsProtocol}//${window.location.host}/ws/events`;
+  
+  wsConnection = new WebSocket(wsUrl);
+  
+  wsConnection.onopen = () => {
+    console.log("[RRK WebSocket] Connected to EventBus");
+    const wsStatusPill = document.createElement("span");
+    wsStatusPill.id = "ws-status-pill";
+    wsStatusPill.className = "pill";
+    wsStatusPill.textContent = "Live Events: Connected";
+    wsStatusPill.style.color = "var(--cyan)";
+    document.querySelector("header div:last-child")?.appendChild(wsStatusPill);
+  };
+  
+  wsConnection.onmessage = (event) => {
+    console.log("[RRK WebSocket] Event received:", event.data);
+    try {
+      const payload = JSON.parse(event.data);
+      const data = payload.payload || {};
+      const type = payload.type;
+      
+      const banner = document.getElementById("connection-status-banner");
+      if (type === "BRIDGE_DISCONNECTED") {
+         if (banner) {
+             banner.textContent = "Offline - Reconnecting...";
+             banner.style.display = "block";
+         }
+      } else if (type === "BRIDGE_RECONNECTED") {
+         if (banner) {
+             banner.style.display = "none";
+         }
+      }
+      
+      if (type === "job_started" || type === "job_progress" || type === "asset_generated") {
+         const panel = document.getElementById("active-jobs-panel");
+         if (panel) {
+             const jobId = data.job_id || "unknown";
+             let card = panel.querySelector(`[data-job-id="${jobId}"]`);
+             if (!card) {
+                 card = document.createElement("div");
+                 card.className = "job-card";
+                 card.dataset.jobId = jobId;
+                 card.innerHTML = `
+                     <div class="spinner"></div>
+                     <div class="job-info" style="flex:1">
+                         <div class="job-title" style="font-weight:600">Generation Job</div>
+                         <div class="job-status muted" style="font-size:12px">Started...</div>
+                     </div>
+                     <img class="job-thumb" style="display:none;" />
+                 `;
+                 panel.prepend(card);
+             }
+             
+             const statusDiv = card.querySelector(".job-status");
+             const spinner = card.querySelector(".spinner");
+             const thumb = card.querySelector(".job-thumb");
+             
+             if (type === "job_started") {
+                 card.dataset.status = "started";
+                 statusDiv.textContent = "Initializing...";
+             } else if (type === "job_progress") {
+                 const st = data.status || "running";
+                 card.dataset.status = st;
+                 if (st === "failed") {
+                     statusDiv.textContent = `Failed: ${data.error || "Unknown"}`;
+                     spinner.style.display = "none";
+                 } else if (st === "retrying") {
+                     statusDiv.textContent = `Retrying (${data.retry_count || 1})...`;
+                     spinner.style.display = "block";
+                 } else {
+                     statusDiv.textContent = "Running...";
+                     spinner.style.display = "block";
+                 }
+             } else if (type === "asset_generated") {
+                 card.dataset.status = "completed";
+                 statusDiv.textContent = "Completed";
+                 spinner.style.display = "none";
+                 thumb.style.display = "block";
+                 if (data.asset_id) {
+                     thumb.src = "/api/asset/" + encodeURIComponent(data.asset_id);
+                 }
+             }
+         }
+      }
+
+      if (type === "ACTIVITY_UPDATE" && document.getElementById("activity-counter")) {
+         document.getElementById("activity-counter").textContent = `Activity ${data.count || payload.count}`;
+         document.getElementById("activity-counter").classList.add("flash");
+         setTimeout(() => document.getElementById("activity-counter").classList.remove("flash"), 500);
+      }
+    } catch (e) {
+      console.warn("Failed to parse WS event:", e);
+    }
+  };
+  
+  wsConnection.onclose = () => {
+    console.log("[RRK WebSocket] Disconnected");
+    const pill = document.getElementById("ws-status-pill");
+    if (pill) {
+      pill.textContent = "Live Events: Disconnected";
+      pill.style.color = "var(--pink)";
+    }
+    wsConnection = null;
+    setTimeout(initWebSocket, 5000); // Reconnect loop
+  };
+}
+// Start WebSocket connection
+initWebSocket();
+
+</script>
+</body>
+</html>

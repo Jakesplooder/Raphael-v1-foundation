@@ -18,7 +18,7 @@ class TasksManager(ServiceModule):
         
         # Load vault path from settings
         import json
-        settings_path = Path(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS")) / "config" / "settings.json"
+        settings_path = Path(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS")) / "config" / "settings.json"
         if not settings_path.exists():
             # Fallback to local config for testing
             settings_path = Path(__file__).parent.parent / "config" / "settings.json"
@@ -26,9 +26,9 @@ class TasksManager(ServiceModule):
         try:
             with open(settings_path, "r", encoding="utf-8") as f:
                 settings = json.load(f)
-                self.vault_path = Path(settings.get("vault_path", r"C:\Users\cyber\Downloads\RalphaelOS\Ralphael"))
+                self.vault_path = Path(settings.get("vault_path", r"R:\RalphaelOS_Repo\Ralphael"))
         except Exception:
-            self.vault_path = Path(r"C:\Users\cyber\Downloads\RalphaelOS\Ralphael")
+            self.vault_path = Path(r"R:\RalphaelOS_Repo\Ralphael")
         
         # In a real DI system, this would be injected.
         self.repository = MarkdownTaskRepository(self.vault_path)

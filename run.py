@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, r'C:\Users\cyber\Downloads\RalphaelOS')
+sys.path.insert(0, r'R:\RalphaelOS_Repo')
 import tests.test_initiative as t
 import tests.test_optimization as topt
 import tests.test_portfolio as tport

@@ -5,7 +5,7 @@ from datetime import datetime
 
 class PortfolioReport:
     def __init__(self):
-        self.report_dir = Path(r"C:\RaphaelOS\Portfolio")
+        self.report_dir = Path(r"R:\RaphaelOS\Portfolio")
         self.report_dir.mkdir(parents=True, exist_ok=True)
         
     def generate_report(self, allocations: Dict[str, Dict[str, Any]], businesses: List[Dict[str, Any]]) -> str:

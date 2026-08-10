@@ -94,7 +94,7 @@ class VentureCouncil:
         recommendation = "INCUBATE" if score > 0.60 else "REJECT"
         
         # Generate Investment Memo artifact
-        memo_dir = Path(r"C:\RaphaelOS\Ventures") / proposal.name.replace(" ", "")
+        memo_dir = Path(r"R:\RaphaelOS\Ventures") / proposal.name.replace(" ", "")
         memo_dir.mkdir(parents=True, exist_ok=True)
         
         # Market Agent assessment

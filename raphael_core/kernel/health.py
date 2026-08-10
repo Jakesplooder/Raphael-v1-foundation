@@ -1,6 +1,5 @@
 import asyncio
 from typing import Dict, Any, List
-import inspect
 
 from .interfaces import ServiceModule, ModuleHealth
 from .observability import ObservabilityLayer
@@ -80,8 +79,6 @@ class HealthMonitor(ServiceModule):
                     try:
                         is_alive = await asyncio.wait_for(svc.heartbeat(), timeout=2.0)
                         svc_health = svc.health()
-                        if inspect.isawaitable(svc_health):
-                            svc_health = await svc_health
                         
                         if is_alive and svc_health == ModuleHealth.OK:
                             healthy_count += 1

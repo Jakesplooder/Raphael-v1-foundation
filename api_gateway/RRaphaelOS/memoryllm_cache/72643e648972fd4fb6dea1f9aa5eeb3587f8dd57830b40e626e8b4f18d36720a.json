@@ -1,0 +1,25 @@
+{
+  "hash": "72643e648972fd4fb6dea1f9aa5eeb3587f8dd57830b40e626e8b4f18d36720a",
+  "timestamp": 1785570954.8928845,
+  "provider_name": "ollama",
+  "model_name": "llama3.1",
+  "response": "{\"intent\": \"conversation\", \"confidence\": 0.98}",
+  "latency_sec": 0.3687624931335449,
+  "token_count": 15,
+  "raw_output": {
+    "model": "llama3.1",
+    "created_at": "2026-08-01T07:55:54.8918053Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"intent\": \"conversation\", \"confidence\": 0.98}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 365315100,
+    "load_duration": 147092600,
+    "prompt_eval_count": 82,
+    "prompt_eval_duration": 13684000,
+    "eval_count": 15,
+    "eval_duration": 202811000
+  }
+}

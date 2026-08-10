@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_core.kernel.services.notification_gateway.notification_service import notification_service
 

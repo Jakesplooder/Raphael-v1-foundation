@@ -136,11 +136,8 @@ class WorldManager(ServiceModule):
     async def heartbeat(self) -> bool | Dict[str, Any]:
         return True
 
-    async def health(self) -> ModuleHealth:
-        return ModuleHealth(status="OK", details={
-            "nodes": len(self.repository.get_nodes()),
-            "relationships": len(self.repository.get_relationships())
-        })
+    def health(self) -> ModuleHealth:
+        return ModuleHealth.OK
 
     async def metrics(self) -> dict:
         return {}

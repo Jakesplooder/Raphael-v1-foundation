@@ -3,7 +3,7 @@ import os
 from typing import Dict, Any
 from .capability_profiles import PROFILES, CapabilityProfile
 
-CALIBRATION_FILE = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\provider_calibration.json")
+CALIBRATION_FILE = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\provider_calibration.json")
 
 def get_calibrated_profiles() -> Dict[str, CapabilityProfile]:
     """

@@ -45,6 +45,8 @@ class WorkflowStep(BaseModel):
     step_id: str
     name: str
     description: str = ""
+    action: str = ""
+    parameters: Dict[str, Any] = Field(default_factory=dict)
     required_capabilities: List[str] = Field(default_factory=list)
     dependencies: List[str] = Field(default_factory=list)
     status: StepStatus = StepStatus.PENDING

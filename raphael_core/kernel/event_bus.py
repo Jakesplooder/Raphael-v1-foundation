@@ -2,7 +2,6 @@ import asyncio
 import sqlite3
 import json
 import os
-import datetime
 from typing import Callable, Coroutine, Dict, List, Any
 from collections import defaultdict
 
@@ -26,11 +25,6 @@ class EventBus(ServiceModule):
         self._worker_task = None
         self._db_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", "."), "kernel_events.db")
         self._conn = None
-        self._recent_events = []
-        self._max_recent = 200
-        
-    def get_recent_events(self) -> List[Dict[str, Any]]:
-        return self._recent_events
         
     @property
     def name(self) -> str:
@@ -42,6 +36,8 @@ class EventBus(ServiceModule):
 
     async def initialize(self) -> None:
         """One-time setup for the durable SQLite store."""
+        import asyncio
+        self._loop = asyncio.get_running_loop()
         ObservabilityLayer.info(self.name, f"Initializing EventBus DB at {self._db_path}")
         self._conn = sqlite3.connect(self._db_path, check_same_thread=False)
         self._conn.execute('''
@@ -120,18 +116,22 @@ class EventBus(ServiceModule):
 
     async def publish(self, event: Event) -> None:
         """Publish an event to the bus."""
+        import logging
+        logger = logging.getLogger("event_bus_publish")
+        logger.debug(f"EventBus publish called for {event.type}. Queue id: {id(self._volatile_queue)}")
         ObservabilityLayer.debug(
             self.name, 
-            f"Publishing event {event.type} from {event.source}", 
+            f"Publishing event {event.type} from {event.source}",
             trace_id=event.trace_id
         )
         
         if event.is_durable:
             self._persist_durable_event(event)
             
-        self._log_event_to_file(event)
-            
-        await self._volatile_queue.put(event)
+        if hasattr(self, '_loop') and self._loop is not None:
+            self._loop.call_soon_threadsafe(self._volatile_queue.put_nowait, event)
+        else:
+            self._volatile_queue.put_nowait(event)
 
     def _persist_durable_event(self, event: Event) -> None:
         if not self._conn:
@@ -146,35 +146,17 @@ class EventBus(ServiceModule):
         except Exception as e:
             ObservabilityLayer.error(self.name, f"Failed to persist durable event: {e}", trace_id=event.trace_id)
 
-    def _log_event_to_file(self, event: Event) -> None:
-        try:
-            today = datetime.datetime.now().strftime("%Y-%m-%d")
-            base_dir = os.environ.get("RAPHAEL_DATA_DIR", "c:\\RaphaelOS")
-            if not os.path.isabs(base_dir) and base_dir == ".":
-                base_dir = "c:\\RaphaelOS"
-            storage_dir = os.path.join(base_dir, "raphael_storage", "events")
-            os.makedirs(storage_dir, exist_ok=True)
-            log_path = os.path.join(storage_dir, f"{today}.log")
-            
-            event_dict = event.model_dump()
-            event_dict["type"] = event.type if isinstance(event.type, str) else event.type.value
-            event_dict["priority"] = event.priority if isinstance(event.priority, int) else event.priority.value
-            
-            with open(log_path, "a", encoding="utf-8") as f:
-                f.write(json.dumps(event_dict) + "\n")
-                
-            self._recent_events.append(event_dict)
-            if len(self._recent_events) > self._max_recent:
-                self._recent_events.pop(0)
-        except Exception as e:
-            ObservabilityLayer.error(self.name, f"Failed to log event to file: {e}", trace_id=event.trace_id)
-
-
     async def _event_loop(self) -> None:
+        """Background task that pulls events from the volatile queue and dispatches them."""
+        import logging
+        logger = logging.getLogger("event_bus_loop")
+        logger.debug(f"EventBus _event_loop started. Queue id: {id(self._volatile_queue)}")
         while self._running:
             try:
                 event = await self._volatile_queue.get()
+                logger.debug(f"EventBus pulled event: {event.type} from queue {id(self._volatile_queue)}")
                 handlers = self._subscribers.get(event.type, [])
+                logger.debug(f"EventBus found handlers for {event.type}: {len(handlers)}")
                 
                 # In a massive system, we'd use asyncio.gather for parallel dispatch,
                 # but we'll do simple iteration for predictability in v1

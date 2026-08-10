@@ -20,7 +20,7 @@ Pipeline:
 
 import sys
 from pathlib import Path
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_core.kernel.services.business_registry.proposals.proposal import BusinessProposal
 from raphael_core.kernel.services.business_registry.proposals.proposal_manager import proposal_manager

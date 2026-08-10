@@ -79,6 +79,7 @@ class EventType(str, Enum):
     KNOWLEDGE_PROMOTED_TO_MEMORY = "knowledge_promoted_to_memory"
     
     # Workflow Execution Lifecycle
+    WORKFLOW_PLAN_REQUESTED = "workflow_plan_requested"
     WORKFLOW_CREATED = "workflow_created"
     WORKFLOW_QUEUED = "workflow_queued"
     WORKFLOW_STARTED = "workflow_started"
@@ -87,13 +88,6 @@ class EventType(str, Enum):
     WORKFLOW_RETRYING = "workflow_retrying"
     WORKFLOW_FAILED = "workflow_failed"
     WORKFLOW_CANCELLED = "workflow_cancelled"
-    
-    # Workflow Nodes & Artifacts (Phase 9.5)
-    NODE_STARTED = "node_started"
-    NODE_COMPLETED = "node_completed"
-    ARTIFACT_CREATED = "artifact_created"
-    ARTIFACT_UPDATED = "artifact_updated"
-    ARTIFACT_READY = "artifact_ready"
     
     # Agent Lifecycle
     AGENT_CREATED = "agent_created"
@@ -147,6 +141,9 @@ class EventType(str, Enum):
     COMMERCE_LISTING_CREATED = "commerce_listing_created"
     COMMERCE_PRODUCT_PUBLISHED = "commerce_product_published"
     COMMERCE_SALES_SYNCED = "commerce_sales_synced"
+    JOB_STARTED = "job_started"
+    JOB_PROGRESS = "job_progress"
+    ASSET_GENERATED = "asset_generated"
     
     # Career Domain Events
     CAREER_SKILL_VERIFIED = "career_skill_verified"
@@ -164,10 +161,6 @@ class Event(BaseModel):
     payload: Dict[str, Any] = Field(default_factory=dict)
     
     # OS Mission Correlation Fields
-    version: int = 1
-    correlation_id: Optional[str] = None
-    execution_id: Optional[str] = None
-    node_id: Optional[str] = None
     mission_id: Optional[str] = None
     workflow_id: Optional[str] = None
     council: Optional[str] = None
@@ -186,7 +179,10 @@ class Event(BaseModel):
             EventType.JOB_STATE_CHANGED,
             EventType.AGENT_STATE_TRANSITION,
             EventType.CAREER_SKILL_VERIFIED,
-            EventType.MARKET_SIGNAL_ACQUIRED
+            EventType.MARKET_SIGNAL_ACQUIRED,
+            EventType.JOB_STARTED,
+            EventType.JOB_PROGRESS,
+            EventType.ASSET_GENERATED
         }
         return self.type in durable_types
 

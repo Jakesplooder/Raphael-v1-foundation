@@ -3,8 +3,8 @@ import os
 from datetime import datetime
 from typing import Dict, Any
 
-PREDICTIONS_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\predictions")
-EVALUATIONS_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\evaluations")
+PREDICTIONS_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\predictions")
+EVALUATIONS_DIR = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\evaluations")
 os.makedirs(EVALUATIONS_DIR, exist_ok=True)
 TRACKING_FILE = os.path.join(PREDICTIONS_DIR, "prediction_accuracy.json")
 

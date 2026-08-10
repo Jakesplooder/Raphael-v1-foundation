@@ -5,7 +5,7 @@ import time
 from pathlib import Path
 import random
 
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_core.kernel.repositories.idempotency_store import IdempotencyStore
 from raphael_domains.creator.video_engine import VideoPipelineFSM, BrandContext
@@ -87,7 +87,7 @@ def run_experiment_loop():
         time.sleep(0.1)
         
     # 3. Simulate Reviews and Process
-    ready_dir = Path(r"C:\RaphaelOS\Missions\Review\Ready")
+    ready_dir = Path(r"R:\RaphaelOS\Missions\Review\Ready")
     batch2_folders = list(ready_dir.glob("*_FocusMarketing_Batch2_*"))
     
     for folder in batch2_folders:

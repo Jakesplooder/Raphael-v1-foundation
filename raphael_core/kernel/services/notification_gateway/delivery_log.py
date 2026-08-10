@@ -4,7 +4,7 @@ import time
 from pathlib import Path
 
 class DeliveryLedger:
-    def __init__(self, log_dir=r"C:\RaphaelOS\Notifications"):
+    def __init__(self, log_dir=r"R:\RaphaelOS\Notifications"):
         self.log_dir = Path(log_dir)
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.ledger_file = self.log_dir / "delivery_ledger.jsonl"

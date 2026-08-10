@@ -310,7 +310,7 @@ Example format:
         
         seed = int(hashlib.sha256(request_id.encode()).hexdigest(), 16) % (2**53 - 1)
         
-        with open(r"C:\Users\cyber\Downloads\RalphaelOS\flux_schnell_api.json", "r", encoding="utf-8") as f:
+        with open(r"R:\RalphaelOS_Repo\flux_schnell_api.json", "r", encoding="utf-8") as f:
             flux_workflow = json.load(f)
             
         flux_workflow["31"]["inputs"]["seed"] = seed

@@ -1,7 +1,7 @@
 {
-    "goals": "legacy",
-    "tasks": "legacy",
-    "projects": "legacy",
+    "goals": "rrk",
+    "tasks": "rrk",
+    "projects": "rrk",
     "workforceresource": "rrk",
     "commerce": "rrk",
     "builder": "rrk",

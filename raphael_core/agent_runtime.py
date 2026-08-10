@@ -15,7 +15,7 @@ class WorkforceManager(ServiceModule):
     Syncs authoritative state from World Model down to agent_runtime.json cache.
     """
     
-    def __init__(self, filepath: str = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"workforce\agent_runtime.json")):
+    def __init__(self, filepath: str = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"workforce\agent_runtime.json")):
         self.filepath = filepath
         self._cache: Dict[str, Any] = {}
         self._running = False

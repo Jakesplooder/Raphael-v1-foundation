@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Optional, Any
 from .providers.base_provider import ReasoningResult
 
-CACHE_DIR = Path(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\memory\llm_cache"))
+CACHE_DIR = Path(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\memory\llm_cache"))
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
 class CacheManager:

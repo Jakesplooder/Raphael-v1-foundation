@@ -2,18 +2,18 @@ import sys
 import os
 from pathlib import Path
 
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_core.world_model import WorldModelBuilder
 from raphael_core.legacy import load_config
 from raphael_core.kernel.services.brand_resolution_service import BrandResolutionService
 
 def setup_test_graph():
-    config = load_config(Path(r"C:\Users\cyber\Downloads\RalphaelOS\config.json"))
+    config = load_config(Path(r"R:\RalphaelOS_Repo\config.json"))
     
     # We want a fresh world model for this test to avoid noise.
     # To be safe, we'll override the world model directory
-    config.os_root = Path(r"C:\Users\cyber\Downloads\RalphaelOS\sandbox_www\test_wm")
+    config.os_root = Path(r"R:\RalphaelOS_Repo\sandbox_www\test_wm")
     config.vault = config.os_root / "vault"
     config.approved_write_folders.append(config.os_root)
     

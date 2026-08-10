@@ -5,7 +5,7 @@ import time
 import random
 from pathlib import Path
 
-sys.path.insert(0, r"C:\Users\cyber\Downloads\RalphaelOS")
+sys.path.insert(0, r"R:\RalphaelOS_Repo")
 
 from raphael_domains.creator.business_twin.twin import BusinessTwin
 from raphael_domains.creator.business_twin.projection_engine import CreatorProjectionEngine
@@ -103,7 +103,7 @@ def run_7_day_trial():
     
     setup_event_routing(projection)
     
-    missions_base = Path(r"C:\RaphaelOS\Missions\Trial")
+    missions_base = Path(r"R:\RaphaelOS\Missions\Trial")
     
     total_missions_run = 0
     successful_missions = 0

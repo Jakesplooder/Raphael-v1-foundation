@@ -1,0 +1,11 @@
+from enum import Enum
+
+class DesktopState(str, Enum):
+    IDLE = "IDLE"
+    OBSERVING = "OBSERVING"
+    PLANNING = "PLANNING"
+    AUTHORITY_CHECK = "AUTHORITY_CHECK"
+    EXECUTING = "EXECUTING"
+    VERIFYING = "VERIFYING"
+    LEARNING = "LEARNING"
+    BLOCKED = "BLOCKED"

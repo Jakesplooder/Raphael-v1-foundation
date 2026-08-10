@@ -1,0 +1,60 @@
+﻿Total: 25200
+AllThree: 2
+R_and_D_only: 13560
+R_and_C_only: 0
+D_and_C_only: 1
+OnlyR: 43
+OnlyD: 3591
+OnlyC: 8003
+
+AllThree sample:
+kernel_events.db
+runtime_manifest.json
+
+D and C only sample:
+config/system_manifest.json
+
+R and D only sample:
+.dockerignore
+.env.txt
+.gitignore
+add_test_person.py
+ag_phase95.json
+ai_test.json
+apple_decoy_7fe9bf43_master_audio.wav
+apple_decoy_b5ca6db2_master_audio.wav
+apple_decoy_f3115c5f_master_audio.wav
+apply_fix.py
+as_phase94.json
+as_phase95.json
+audit_log.txt
+batch1_idempotency.db
+batch2_idempotency.db
+CHANGELOG.md
+comfyui_args.conf
+config.json
+CONTRIBUTING.md
+docker-compose.yml
+
+Only C sample:
+command_bus.py
+inspector.json
+n8n-archive-smoke.zip
+stage1_idempotency.db
+voice_gateway.py
+workforceagent_runtime.json
+backups/RaphaelOS-Backup-20260617-210427.zip
+backups/log-archives/Raphael-Logs-20260617-210445.zip
+BrandLibrary/brands/BRAND-7C9EC181C5.json
+BrandLibrary/exports/ASSET-EF7C9DF339/Asset Metadata.md
+BrandLibrary/exports/ASSET-EF7C9DF339/PODCON-FB04B5A340 - Design Prompts.md
+BrandLibrary/exports/ASSET-EF7C9DF339/README.md
+BrandLibrary/prompts/prompt-index.json
+BrandLibrary/templates/template-index.json
+BrandLibrary/working/ASSET-7CCCE47633-preview.png
+builder/Builder Governance Review.md
+builder/classifications/BCLASS-20260618-496534C3.md
+builder/classifications/BCLASS-20260618-66FE71F6.md
+builder/classifications/BCLASS-20260618-ABC854CD.md
+builder/classifications/BCLASS-20260618-D6F631D7.md
+

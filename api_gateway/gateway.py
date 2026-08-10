@@ -1,8 +1,8 @@
 import os
 import asyncio
 import httpx
-from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
-from fastapi.responses import JSONResponse, StreamingResponse, HTMLResponse
+from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect, HTTPException
+from fastapi.responses import JSONResponse, StreamingResponse, HTMLResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
@@ -18,36 +18,66 @@ RRK_URL = os.getenv("RRK_URL", "http://localhost:8788")
 # We use httpx.AsyncClient for reverse proxying with a 5-minute timeout for builder/comfy workloads
 client = httpx.AsyncClient(base_url=RRK_URL, timeout=300.0)
 
+# Global list of active websocket connections
+active_connections = set()
+
+async def broadcast_event(event_type: str, payload: dict = None):
+    if not active_connections:
+        return
+    msg = json.dumps({"type": event_type, "payload": payload or {}})
+    # Copy set to avoid mutation during iteration
+    clients = list(active_connections)
+    results = await asyncio.gather(*(client.send_text(msg) for client in clients), return_exceptions=True)
+    # Remove disconnected clients
+    for client, res in zip(clients, results):
+        if isinstance(res, Exception):
+            if client in active_connections:
+                active_connections.remove(client)
+
+async def sse_consumer():
+    url = f"{RRK_URL}/api/events/stream"
+    backoff = 1.0
+    max_backoff = 30.0
+    
+    while True:
+        try:
+            async with client.stream("GET", url, timeout=None) as response:
+                response.raise_for_status()
+                logger.info("Connected to RRK SSE stream")
+                await broadcast_event("BRIDGE_RECONNECTED")
+                backoff = 1.0 # Reset backoff on success
+                
+                async for line in response.aiter_lines():
+                    if line.startswith("data: "):
+                        data_str = line[len("data: "):].strip()
+                        if data_str:
+                            try:
+                                # We broadcast the exact payload parsed from RRK
+                                parsed = json.loads(data_str)
+                                # The RRK SSE streams {"type": ..., "payload": ...} etc.
+                                # Send exactly what came in, avoiding re-wrapping if not needed, 
+                                # but gateway broadcast sends {"type": event_type, "payload": payload}.
+                                # So let's just forward the raw text!
+                                clients = list(active_connections)
+                                if clients:
+                                    res_list = await asyncio.gather(*(c.send_text(data_str) for c in clients), return_exceptions=True)
+                                    for c, r in zip(clients, res_list):
+                                        if isinstance(r, Exception):
+                                            if c in active_connections:
+                                                active_connections.remove(c)
+                            except json.JSONDecodeError:
+                                pass
+        except Exception as e:
+            logger.error(f"SSE connection dropped: {e}. Reconnecting in {backoff}s...")
+            await broadcast_event("BRIDGE_DISCONNECTED", {"error": str(e)})
+            await asyncio.sleep(backoff)
+            backoff = min(backoff * 2, max_backoff)
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # D13-C: Register producers and start the Executive Control Loop
-    try:
-        from raphael_core.operator.executive_state import executive_state
-        from raphael_core.operator.state_producers.system_health_producer import SystemHealthProducer
-        from raphael_core.operator.state_producers.workflow_producer import WorkflowProducer
-        from raphael_core.operator.state_producers.task_producer import TaskProducer
-        from raphael_core.operator.state_producers.event_producer import EventProducer
-        from raphael_core.kernel.executive_scheduler import executive_scheduler
-        
-        executive_state.register(SystemHealthProducer())
-        executive_state.register(WorkflowProducer())
-        executive_state.register(TaskProducer())
-        executive_state.register(EventProducer())
-        
-        executive_scheduler.start()
-    except Exception as e:
-        logger.error(f"Failed to start Executive Scheduler: {e}")
-
-    task = asyncio.create_task(bridge_rrk_events())
+    task = asyncio.create_task(sse_consumer())
     yield
     task.cancel()
-    
-    try:
-        from raphael_core.kernel.executive_scheduler import executive_scheduler
-        executive_scheduler.stop()
-    except Exception:
-        pass
-        
     await client.aclose()
 
 app = FastAPI(title="Raphael API Gateway", lifespan=lifespan)
@@ -69,6 +99,24 @@ async def serve_dashboard():
     try:
         with open("index_html.txt", "r", encoding="utf-8") as f:
             html = f.read()
+        
+        json_data = await get_overview()
+        
+        import httpx
+        inspector_data = {}
+        try:
+            async with httpx.AsyncClient() as client:
+                resp = await client.get(f"{RRK_URL}/api/inspector", timeout=5.0)
+                if resp.status_code == 200:
+                    inspector_data = resp.json()
+        except:
+            pass
+            
+        json_data["inspector"] = inspector_data
+        
+        import json
+        html = html.replace("var data = null;", f"var data = {json.dumps(json_data)};")
+        
         return HTMLResponse(content=html)
     except Exception as e:
         return HTMLResponse(content=f"<h1>Error loading dashboard</h1><p>{e}</p>", status_code=500)
@@ -76,36 +124,6 @@ async def serve_dashboard():
 import legacy_adapter
 
 @app.get("/api/health")
-async def get_health():
-    """Simple API liveness check"""
-    return {"status": "ok", "timestamp": time.time()}
-
-@app.get("/api/executive_dashboard")
-async def get_executive_dashboard():
-    """
-    D13-C: Returns the new DashboardViewModel generated by the Executive Control Loop.
-    This provides the presentation-ready layer without leaking raw producer logic.
-    """
-    try:
-        from raphael_core.operator.executive_state import executive_state
-        from raphael_core.operator.executive_analysis import executive_analyzer
-        from raphael_core.operator.presentation_adapters.dashboard_adapter import dashboard_adapter
-        
-        # 1. Snapshot Reality
-        snapshot = executive_state.snapshot()
-        
-        # 2. Analyze Reality
-        analysis = executive_analyzer.analyze(snapshot)
-        
-        # 3. Adapt for Presentation
-        view_model = dashboard_adapter.adapt(analysis)
-        
-        return view_model.model_dump()
-    except Exception as e:
-        logger.error(f"Executive Dashboard generation failed: {e}")
-        return {"error": str(e), "status": "degraded"}
-
-@app.get("/api/system_health")
 async def health_check():
     # Merge RRK health with Legacy Health for Classic View parity
     health_data = legacy_adapter.system_health()
@@ -131,55 +149,51 @@ async def get_overview():
         logger.error(f"Failed to load feature registry: {e}")
         registry = {}
 
-    # 2. Get baseline from legacy
+    t0 = time.time()
     legacy_data = legacy_adapter.overview()
+    logger.info(f"FeatureResolver: legacy_adapter.overview took {(time.time() - t0)*1000:.2f}ms")
     final_data = dict(legacy_data) # Start with legacy as the base map
     
     # 3. Route specific features based on registry
     # This is a translation mapping table (RRK endpoints -> Legacy Keys)
     # The Legacy UI expects very specific keys in the overview payload (e.g., 'tasks', 'goals_active')
     
-    # Example Translator for Goals (RRK -> Classic JSON)
+    # 3. Route specific features in parallel with asyncio.gather and strict 1.5s timeout
+    rrk_tasks_to_run = []
     if registry.get("goals") == "rrk":
-        try:
-            r_start = time.time()
-            resp = await client.get(f"{RRK_URL}/api/goals", timeout=2.0)
-            if resp.status_code == 200:
-                rrk_goals = resp.json()
-                # Translation Adapter
-                final_data["goals"] = rrk_goals.get("items", [])
-                # Update counts which the legacy UI expects
-                final_data["counts"]["goals_active"] = sum(1 for g in final_data["goals"] if g.get("status") == "Active")
-                logger.info(f"FeatureResolver: goals -> RRK (Latency: {(time.time() - r_start)*1000:.2f}ms)")
-            else:
-                logger.error(f"FeatureResolver: goals -> RRK failed ({resp.status_code})")
-        except Exception as e:
-            logger.error(f"FeatureResolver: goals -> RRK exception: {e}")
-            
-    # Example Translator for Tasks (RRK -> Classic JSON)
+        rrk_tasks_to_run.append(("goals", f"{RRK_URL}/api/goals"))
     if registry.get("tasks") == "rrk":
-        try:
-            r_start = time.time()
-            resp = await client.get(f"{RRK_URL}/api/tasks", timeout=2.0)
-            if resp.status_code == 200:
-                rrk_tasks = resp.json()
-                # Translation Adapter
-                final_data["tasks"] = rrk_tasks.get("items", [])
-                final_data["counts"]["tasks_open"] = sum(1 for t in final_data["tasks"] if t.get("status") not in {"Done", "Archived"})
-                final_data["counts"]["tasks_blocked"] = sum(1 for t in final_data["tasks"] if t.get("status") == "Blocked")
-                
-                # Fetch council tasks
-                resp_ct = await client.get(f"{RRK_URL}/api/council_tasks", timeout=2.0)
-                if resp_ct.status_code == 200:
-                    final_data["council_tasks"] = resp_ct.json().get("items", [])
-                else:
-                    logger.error(f"FeatureResolver: council_tasks -> RRK failed ({resp_ct.status_code})")
-                    
-                logger.info(f"FeatureResolver: tasks -> RRK (Latency: {(time.time() - r_start)*1000:.2f}ms)")
-            else:
-                logger.error(f"FeatureResolver: tasks -> RRK failed ({resp.status_code})")
-        except Exception as e:
-            logger.error(f"FeatureResolver: tasks -> RRK exception: {e}")
+        rrk_tasks_to_run.append(("tasks", f"{RRK_URL}/api/tasks"))
+        rrk_tasks_to_run.append(("council_tasks", f"{RRK_URL}/api/council_tasks"))
+
+    if rrk_tasks_to_run:
+        fast_timeout = httpx.Timeout(1.5, connect=1.0)
+        async def fetch_rrk(name, url):
+            try:
+                r_start = time.time()
+                resp = await client.get(url, timeout=fast_timeout)
+                if resp.status_code == 200:
+                    logger.info(f"FeatureResolver: {name} -> RRK (Latency: {(time.time() - r_start)*1000:.2f}ms)")
+                    return name, resp.json()
+                logger.error(f"FeatureResolver: {name} -> RRK failed ({resp.status_code})")
+            except Exception as e:
+                logger.error(f"FeatureResolver: {name} -> RRK exception: {e}")
+            return name, None
+
+        results = await asyncio.gather(*(fetch_rrk(name, url) for name, url in rrk_tasks_to_run))
+        res_map = dict(results)
+
+        if "goals" in res_map and res_map["goals"]:
+            final_data["goals"] = res_map["goals"].get("items", [])
+            final_data["counts"]["goals_active"] = sum(1 for g in final_data["goals"] if g.get("status") == "Active")
+
+        if "tasks" in res_map and res_map["tasks"]:
+            final_data["tasks"] = res_map["tasks"].get("items", [])
+            final_data["counts"]["tasks_open"] = sum(1 for t in final_data["tasks"] if t.get("status") not in {"Done", "Archived"})
+            final_data["counts"]["tasks_blocked"] = sum(1 for t in final_data["tasks"] if t.get("status") == "Blocked")
+
+        if "council_tasks" in res_map and res_map["council_tasks"]:
+            final_data["council_tasks"] = res_map["council_tasks"].get("items", [])
 
     # For everything else, log that it routed to legacy
     # We don't need to actually 'route' it since we copied legacy_data into final_data
@@ -310,21 +324,6 @@ async def post_presence_action(payload: dict = {}):
 async def get_matrix_departments():
     return legacy_adapter.matrix_department_data()
 
-@app.get("/api/ceo/brief")
-async def get_ceo_brief():
-    from business_layer import business_registry
-    return business_registry.get_ceo_brief()
-
-@app.get("/api/ceo/inbox")
-async def get_ceo_inbox():
-    from business_layer import business_registry
-    return business_registry.get_inbox()
-
-@app.get("/api/ceo/inbox/action")
-async def ceo_inbox_action(payload: dict = {}):
-    # Route approval actions to chat controller
-    return {"status": "routed to chat controller"}
-
 @app.api_route("/{path:path}", methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"])
 async def proxy_to_rrk(request: Request, path: str):
     """
@@ -353,36 +352,13 @@ async def proxy_to_rrk(request: Request, path: str):
     except httpx.RequestError as exc:
         return JSONResponse({"error": f"Failed to route request to RRK: {exc}"}, status_code=502)
 
-# Global list of active websocket connections
-active_connections = []
-
-async def bridge_rrk_events():
-    while True:
-        try:
-            async with httpx.AsyncClient() as sse_client:
-                async with sse_client.stream("GET", f"{RRK_URL}/api/events/stream", timeout=None) as response:
-                    async for line in response.aiter_lines():
-                        if line.startswith("data: "):
-                            data_str = line[6:]
-                            dead_conns = []
-                            for ws in active_connections:
-                                try:
-                                    await ws.send_text(data_str)
-                                except Exception:
-                                    dead_conns.append(ws)
-                            for ws in dead_conns:
-                                if ws in active_connections:
-                                    active_connections.remove(ws)
-        except Exception as e:
-            logger.error(f"Event bridge error: {e}")
-            await asyncio.sleep(5)
-
 @app.websocket("/ws/events")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-    active_connections.append(websocket)
+    active_connections.add(websocket)
     try:
         while True:
+            # We just keep the connection alive
             data = await websocket.receive_text()
     except WebSocketDisconnect:
         if websocket in active_connections:

@@ -8,7 +8,7 @@ logger = logging.getLogger("kernel.services.brand_resolution")
 
 class BrandResolutionService:
     def __init__(self, config=None):
-        self.config = config or load_config(Path(r"C:\Users\cyber\Downloads\RalphaelOS\config.json"))
+        self.config = config or load_config(Path(r"R:\RalphaelOS_Repo\config.json"))
         self.model = load_model(self.config)
 
     def _log_resolution(self, input_type: str, input_val: str, traversal: List[str], excluded: List[str], result_count: int, reason: str = "No COVERS relationship"):

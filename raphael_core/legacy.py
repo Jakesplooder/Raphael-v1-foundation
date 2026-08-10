@@ -59,7 +59,7 @@ from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DEFAULT_SETTINGS_PATH = BASE_DIR / "config" / "settings.json"
+DEFAULT_SETTINGS_PATH = Path(os.environ.get("RAPHAEL_CONFIG_PATH", str(BASE_DIR / "config" / "settings.json")))
 
 DEFAULT_SETTINGS = {
     "vault_path": str(BASE_DIR / "Ralphael"),
@@ -26380,7 +26380,6 @@ def build_parser() -> argparse.ArgumentParser:
     pod_export_parser = sub.add_parser("pod-export-package", help="Create a confirmed local POD export package")
     pod_export_parser.add_argument("concept_ref")
     sub.add_parser("pod-pipeline", help="Generate the POD product pipeline")
-    sub.add_parser("storyboard-run", help="Run the storyboard factory")
     sub.add_parser("pod-review", help="Generate the POD Studio review")
     sub.add_parser("pod-brief", help="Generate the POD Studio brief")
     pod_typography_create_parser = sub.add_parser("pod-typography-create", help="Create editable SVG POD typography")
@@ -27433,14 +27432,8 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Generated POD listing draft: {pod_listing_draft(config, args.concept_ref)}")
         elif args.command == "pod-export-package":
             print(f"Created local POD export package: {pod_export_package(config, args.concept_ref)}")
-        elif args.command == "storyboard-run":
-            from raphael_core.kernel.services.capability_service import CapabilityService
-            result = CapabilityService.execute("storyboard_factory", {"audio_duration": 15})
-            print(f"Storyboard complete: {result}")
         elif args.command == "pod-pipeline":
-            from raphael_core.kernel.services.capability_service import CapabilityService
-            result = CapabilityService.execute("pod_studio")
-            print(f"Generated POD product pipeline: {result}")
+            print(f"Generated POD product pipeline: {pod_pipeline(config)}")
         elif args.command == "pod-review":
             print(f"Generated POD Studio review: {pod_review(config)}")
         elif args.command == "pod-brief":
@@ -27659,9 +27652,8 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"Workspace: {section_value(text, 'Generated Workspace') or section_value(text, 'Builder Workspace')}")
                 print(f"Task Status: {section_value(text, 'Task Status') or 'Unknown'}")
         elif args.command == "build-council-plan":
-            from raphael_core.kernel.services.capability_service import CapabilityService
-            output = CapabilityService.execute("builder", {"build_id": args.build_id})
-            text = read_text_if_exists(output.get("build", ""), config)
+            output = build_council_plan(config, args.build_id)
+            text = read_text_if_exists(output, config)
             print(f"Created council-aware build plan: {output}")
             print(f"Build ID: {section_value(text, 'Build Request ID')}")
             print(f"Councils Consulted: {section_value(text, 'Required Councils') or 'None'}")
@@ -27745,10 +27737,10 @@ def main(argv: list[str] | None = None) -> int:
             import os
             
             # Paths to real/mock data sources
-            wm_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\world_model.json")
-            init_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\initiative_queue.json")
-            ledger_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\llm_ledger.json")
-            learn_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\learning_metrics.json")
+            wm_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\world_model.json")
+            init_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\initiative_queue.json")
+            ledger_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\llm_ledger.json")
+            learn_path = os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\learning_metrics.json")
             
             data = aggregate_dashboard_data(wm_path, init_path, ledger_path, learn_path)
             render_dashboard(data)

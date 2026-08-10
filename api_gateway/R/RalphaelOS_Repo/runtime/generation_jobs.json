@@ -1,0 +1,27 @@
+[
+  {
+    "job_id": "failed-1786171368",
+    "request": {
+      "request_id": "f8bb3fd2-1252-43df-888e-583e64308936-step_exec",
+      "business_id": "chat-adhoc",
+      "mission_id": "chat-main_dashboard-1786171366",
+      "asset_type": "image",
+      "prompt": "generate an image of a cyberpunk city",
+      "style": null,
+      "dimensions": null,
+      "metadata": {},
+      "parent_asset_id": null
+    },
+    "status": "cancelled",
+    "progress": 0.0,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": "Server unreachable (Connection Refused). Health check required.",
+    "started_at": null,
+    "completed_at": 1786171376.5650487,
+    "asset_id": null,
+    "telemetry": {
+      "renderer": "comfyui"
+    }
+  }
+]

@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Dict, Any
 import time
 
-LOG_FILE = Path(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"C:\RaphaelOS"), r"\world_model\near_misses.json"))
+LOG_FILE = Path(os.path.join(os.environ.get("RAPHAEL_DATA_DIR", r"R:\RaphaelOS"), r"\world_model\near_misses.json"))
 
 def log_near_miss(agent_id: str, incident_type: str, details: Dict[str, Any]):
     """

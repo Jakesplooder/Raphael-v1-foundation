@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y \
     docker.io \
     && rm -rf /var/lib/apt/lists/*
 
+# Update npm to latest
+# RUN npm install -g npm@latest
+
 # Set up application directory
 WORKDIR /app
 

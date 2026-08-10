@@ -70,8 +70,8 @@ class WorkflowManager(ServiceModule):
     async def stop(self) -> None:
         pass
 
-    async def health(self) -> ModuleHealth:
-        return ModuleHealth(status="OK", details={"workflows_tracked": len(self.repository.workflows)})
+    def health(self) -> ModuleHealth:
+        return ModuleHealth.OK
 
     async def metrics(self) -> dict:
         return {}

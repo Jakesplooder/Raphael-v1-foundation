@@ -1,0 +1,8 @@
+TotalPaths	0
+OnlyR	0
+OnlyD	0
+OnlyC	0
+R_and_D_only	0
+R_and_C_only	0
+D_and_C_only	0
+AllThree	0
