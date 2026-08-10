@@ -2,6 +2,8 @@ from typing import List, Dict, Any
 import asyncio
 import logging
 from .execution_queue import ExecutionQueue
+from ..event_bus import EventBus
+from ..interfaces import Event, EventType
 from ..models.workflow_plan import WorkflowPlan, WorkflowStep, StepStatus, WorkflowStatus
 from ..providers.workflow_providers import CapabilityRegistry
 from ..providers.workflow.automation_provider import AutomationProvider
@@ -9,9 +11,10 @@ from ..providers.workflow.automation_provider import AutomationProvider
 logger = logging.getLogger("rrk.services.workflow_scheduler")
 
 class WorkflowScheduler:
-    def __init__(self, queue: ExecutionQueue, registry: CapabilityRegistry, max_concurrent_jobs: int = 1):
+    def __init__(self, queue: ExecutionQueue, registry: CapabilityRegistry, event_bus: EventBus = None, max_concurrent_jobs: int = 1):
         self.queue = queue
         self.registry = registry
+        self.event_bus = event_bus
         self.max_concurrent_jobs = max_concurrent_jobs
         self._active_tasks: Dict[str, asyncio.Task] = {}
         
@@ -105,6 +108,13 @@ class WorkflowScheduler:
         """Background task to execute a step."""
         try:
             logger.info(f"Executing step {step.step_id} with action '{step.action}'")
+            if self.event_bus:
+                await self.event_bus.publish(Event(
+                    type=EventType.JOB_STARTED,
+                    source="WorkflowScheduler",
+                    payload={"job_id": step.step_id, "status": "started", "action": step.action, "parameters": resolved_params}
+                ))
+
             result = await provider.execute_step(
                 action=step.action,
                 parameters=resolved_params,
@@ -120,16 +130,22 @@ class WorkflowScheduler:
                         step.result = {"error": "Asset failed verification guard."}
                         self.queue.mark_failed(step.step_id)
                         self._handle_plan_failure(plan)
+                        if self.event_bus:
+                            await self.event_bus.publish(Event(type=EventType.JOB_PROGRESS, source="WorkflowScheduler", payload={"job_id": step.step_id, "status": "failed", "result": step.result}))
                         return
                 
                 step.status = StepStatus.COMPLETED
                 step.result = result
                 self.queue.mark_completed(step.step_id)
+                if self.event_bus:
+                    await self.event_bus.publish(Event(type=EventType.JOB_PROGRESS, source="WorkflowScheduler", payload={"job_id": step.step_id, "status": "completed", "result": result}))
             else:
                 step.status = StepStatus.FAILED
                 step.result = result
                 self.queue.mark_failed(step.step_id)
                 self._handle_plan_failure(plan)
+                if self.event_bus:
+                    await self.event_bus.publish(Event(type=EventType.JOB_PROGRESS, source="WorkflowScheduler", payload={"job_id": step.step_id, "status": "failed", "result": result}))
                 
         except Exception as e:
             logger.exception(f"Exception during step {step.step_id} execution: {e}")
@@ -137,6 +153,8 @@ class WorkflowScheduler:
             step.result = {"error": str(e)}
             self.queue.mark_failed(step.step_id)
             self._handle_plan_failure(plan)
+            if self.event_bus:
+                await self.event_bus.publish(Event(type=EventType.JOB_PROGRESS, source="WorkflowScheduler", payload={"job_id": step.step_id, "status": "failed", "result": step.result}))
 
     def _handle_plan_failure(self, plan: WorkflowPlan):
         """Halt the plan and cancel running steps."""

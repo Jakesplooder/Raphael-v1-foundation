@@ -27,7 +27,7 @@ class WorkflowPlanManager(ServiceModule):
         self.registry = CapabilityRegistry()
         self.service = WorkflowPlanService(self.repository, self.registry)
         self.queue = ExecutionQueue()
-        self.scheduler = WorkflowScheduler(self.queue, self.registry)
+        self.scheduler = WorkflowScheduler(self.queue, self.registry, self.event_bus)
         
 
         self.active_plans = {}
