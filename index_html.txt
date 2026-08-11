@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Raphael OS Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/static/css/matrix.css?v=57-presence" />
+  <link rel="stylesheet" href="/static/css/matrix.css?v=58-business-space" />
   <link rel="stylesheet" href="/static/css/employee_network.css?v=56-employee-network-fix1" />
   <style>
     :root {
@@ -192,7 +192,7 @@
 <script src="/static/js/transitions.js?v=56-employee-network"></script>
 <script src="/static/js/hud.js?v=56-employee-network"></script>
 <script src="/static/js/raphael_orb.js?v=57-presence-2"></script>
-<script src="/static/js/galaxy_map.js?v=57-presence"></script>
+<script src="/static/js/galaxy_map.js?v=58-business-space"></script>
 <script src="/static/js/employee_network.js?v=56-employee-network"></script>
 <script src="/static/js/event_store.js"></script>
 <script src="/static/js/matrix.js?v=59-communications"></script>
