@@ -136,9 +136,9 @@ class ComfyUIAdapter(Renderer):
                 images = []
                 import os
                 base_dirs = {
-                    "temp": "C:/ComfyUI/temp",
-                    "output": "C:/ComfyUI/output",
-                    "input": "C:/ComfyUI/input"
+                    "temp": "R:/ComfyUI/temp",
+                    "output": "R:/ComfyUI/output",
+                    "input": "R:/ComfyUI/input"
                 }
                 for node_id, node_output in outputs.items():
                     if "images" in node_output:

@@ -68,7 +68,7 @@ services:
         target: /app/c/AI_Tools
         read_only: true
       - type: bind
-        source: C:/ComfyUI
+        source: R:/ComfyUI
         target: /app/c/ComfyUI
         read_only: true
     extra_hosts:
@@ -116,9 +116,9 @@ services:
       - "8188:18188"
     volumes:
       - ./comfyui_args.conf:/etc/comfyui_args.conf:ro
-      - C:/ComfyUI/models:/opt/ComfyUI/models
-      - C:/ComfyUI/output:/opt/ComfyUI/output
-      - C:/ComfyUI/input:/opt/ComfyUI/input
+      - R:/ComfyUI/models:/opt/ComfyUI/models
+      - R:/ComfyUI/output:/opt/ComfyUI/output
+      - R:/ComfyUI/input:/opt/ComfyUI/input
     deploy:
       resources:
         reservations:
