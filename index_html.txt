@@ -242,7 +242,8 @@ function renderActiveJobs() {
   connectJobsWs();
   if (!jobsFetched) {
     jobsFetched = true;
-    fetch("/api/workflowplans/list").then(r => r.json()).then(plans => {
+    fetch("/api/workflowplans/list").then(r => r.json()).then(result => {
+      const plans = result.plans || [];
       const currentActive = [];
       for (const p of Object.values(plans)) {
         if (p.phases) {
