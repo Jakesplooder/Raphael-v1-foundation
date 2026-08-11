@@ -117,7 +117,11 @@ async def serve_dashboard():
         import json
         html = html.replace("var data = null;", f"var data = {json.dumps(json_data)};")
         
-        return HTMLResponse(content=html)
+        response = HTMLResponse(content=html)
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+        return response
     except Exception as e:
         return HTMLResponse(content=f"<h1>Error loading dashboard</h1><p>{e}</p>", status_code=500)
 

@@ -196,6 +196,8 @@
 <script src="/static/js/employee_network.js?v=56-employee-network"></script>
 <script src="/static/js/event_store.js"></script>
 <script src="/static/js/matrix.js?v=59-communications"></script>
+<script src="/static/js/business_dashboard.js?v=1"></script>
+<script src="/static/js/missions.js?v=1"></script>
 <script src="/static/js/mission_control.js"></script>
 <script>
 const pages = [
@@ -235,8 +237,37 @@ function connectJobsWs() {
   };
 }
 
+let jobsFetched = false;
 function renderActiveJobs() {
   connectJobsWs();
+  if (!jobsFetched) {
+    jobsFetched = true;
+    fetch("/api/workflowplans/list").then(r => r.json()).then(plans => {
+      const currentActive = [];
+      for (const p of Object.values(plans)) {
+        if (p.phases) {
+          for (const phase of Object.values(p.phases)) {
+            if (phase.steps) {
+              for (const step of Object.values(phase.steps)) {
+                 if (step.status === 'started' || step.status === 'in_progress') {
+                   currentActive.push({
+                     job_id: step.step_id,
+                     action: step.action,
+                     status: step.status,
+                     parameters: step.parameters
+                   });
+                 }
+              }
+            }
+          }
+        }
+      }
+      activeJobs = currentActive.concat(activeJobs).filter((v,i,a)=>a.findIndex(t=>(t.job_id === v.job_id))===i);
+      if (window.active === 'activejobs') window.render();
+    }).catch(e => { console.error(e); });
+    return `<article class="card full"><h2>Active Jobs</h2><div class="empty">Loading active jobs...</div></article>`;
+  }
+
   if (!activeJobs.length) return `<article class="card full"><h2>Active Jobs</h2><div class="empty">No active jobs found.</div></article>`;
   const htmlRows = activeJobs.map(job => `<tr><td>${esc(job.job_id)}</td><td>${esc(job.action || "Unknown")}</td><td><span class="pill ${job.status === 'completed' ? 'ok' : job.status === 'failed' ? 'bad' : 'warn'}">${esc(job.status)}</span></td><td><pre>${esc(job.result ? JSON.stringify(job.result) : (job.parameters ? JSON.stringify(job.parameters) : ""))}</pre></td></tr>`).join("");
   return `<article class="card full"><h2>Active Jobs</h2><table><thead><tr><th>Job ID</th><th>Action</th><th>Status</th><th>Details</th></tr></thead><tbody>${htmlRows}</tbody></table></article>`;
