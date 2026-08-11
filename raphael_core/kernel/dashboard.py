@@ -533,7 +533,7 @@ class KernelDashboard(ServiceModule):
         from .registry import registry
         workflow_mgr = registry.get_service("WorkflowPlans")
         if workflow_mgr:
-            self.app.include_router(workflow_mgr.api_router(), prefix="/api/workflowplans")
+            self.app.include_router(workflow_mgr.api_router())
             
         self._server.run()
 
