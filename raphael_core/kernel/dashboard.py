@@ -527,12 +527,13 @@ class KernelDashboard(ServiceModule):
     def _run_uvicorn(self):
         # We run uvicorn in a separate thread so it doesn't block the RRK event loop
         # Uvicorn uses its own asyncio loop
+        import uvicorn
         config = uvicorn.Config(self.app, host="0.0.0.0", port=8788, log_level="warning")
         self._server = uvicorn.Server(config)
         from .registry import registry
         workflow_mgr = registry.get_service("WorkflowPlans")
         if workflow_mgr:
-            self.app.include_router(workflow_mgr.api_router, prefix="/api/workflowplans")
+            self.app.include_router(workflow_mgr.api_router(), prefix="/api/workflowplans")
             
         self._server.run()
 
