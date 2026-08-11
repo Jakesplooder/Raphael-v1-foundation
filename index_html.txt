@@ -201,7 +201,7 @@
 const pages = [
   ["home", "Home / Command Center"], ["chat", "Dashboard Chat"], ["daily", "Daily Operating Loop"], ["knowledge", "Knowledge Ingestion"], ["relationships", "Knowledge Relationships"], ["n8nstudio", "n8n Workflow Studio"], ["workflowrunner", "Workflow Runner"], ["communications", "Inter-Council Communications"], ["commandbus", "Command Bus"], ["notifications", "Notifications"], ["activity", "Activity Stream"], ["briefs", "Executive Briefs"], ["identity", "Identity"], ["world", "World Model"], ["simulations", "Simulations"], ["opportunities", "Opportunities"], ["allocation", "Resource Allocation"], ["blueprints", "Business Blueprints"], ["commerce", "Commerce"], ["podstudio", "POD Design Studio"], ["assetlibrary", "Asset & Brand Library"], ["agency", "Agency"], ["creator", "Creator"], ["kpis", "KPIs"], ["finance", "Financial Intelligence"], ["portfolio", "Business Portfolio"], ["initiatives", "Executive Initiatives"], ["employees", "Digital Employees"], ["executionplans", "Execution Plans"], ["execution", "Controlled Execution"], ["builder", "Builder"], ["projects", "Projects"], ["goals", "Goals"], ["goalpropagation", "Goal Propagation"], ["deliberations", "Deliberations"], ["tasks", "Tasks"],
   ["agents", "Agents"], ["councils", "Councils"], ["workflows", "Workflows"], ["memory", "Memory Search"], ["voice", "Voice Status"],
-  ["vision", "Vision Requests"], ["search", "Internet Access"], ["health", "System Health"], ["selfhealing", "Self-Healing"], ["maintenance", "Maintenance"]
+  ["vision", "Vision Requests"], ["search", "Internet Access"], ["health", "System Health"], ["selfhealing", "Self-Healing"], ["maintenance", "Maintenance"], ["activejobs", "Active Jobs"]
 ];
 var data = null;
 var active = "home";
@@ -212,6 +212,35 @@ var selfHealingActionState = null;
 let chatMessages = [
   { role: "raphael", text: "Raphael is online. Type a command or ask a question.", meta: "Ready" }
 ];
+
+let activeJobs = [];
+let jobsWs = null;
+function connectJobsWs() {
+  if (jobsWs) return;
+  jobsWs = new WebSocket('ws://' + window.location.host + '/ws/events');
+  jobsWs.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      if (data.type === 'job_started' || data.type === 'job_progress') {
+        const payload = typeof data.payload === 'string' ? JSON.parse(data.payload) : data.payload;
+        const existing = activeJobs.find(j => j.job_id === payload.job_id);
+        if (existing) {
+          Object.assign(existing, payload);
+        } else {
+          activeJobs.unshift(payload);
+        }
+        if (window.active === 'activejobs') window.render();
+      }
+    } catch(e) {}
+  };
+}
+
+function renderActiveJobs() {
+  connectJobsWs();
+  if (!activeJobs.length) return `<article class="card full"><h2>Active Jobs</h2><div class="empty">No active jobs found.</div></article>`;
+  const htmlRows = activeJobs.map(job => `<tr><td>${esc(job.job_id)}</td><td>${esc(job.action || "Unknown")}</td><td><span class="pill ${job.status === 'completed' ? 'ok' : job.status === 'failed' ? 'bad' : 'warn'}">${esc(job.status)}</span></td><td><pre>${esc(job.result ? JSON.stringify(job.result) : (job.parameters ? JSON.stringify(job.parameters) : ""))}</pre></td></tr>`).join("");
+  return `<article class="card full"><h2>Active Jobs</h2><table><thead><tr><th>Job ID</th><th>Action</th><th>Status</th><th>Details</th></tr></thead><tbody>${htmlRows}</tbody></table></article>`;
+}
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -2815,7 +2844,7 @@ function render() {
     document.getElementById("content").innerHTML = `<article class="card full"><h2>Loading</h2><div class="empty">Loading Raphael dashboard data...</div></article>`;
     return;
   }
-  const map = {home:renderHome, chat:renderChat, daily:renderDailyOperatingLoop, knowledge:renderKnowledge, relationships:renderKnowledgeRelationships, n8nstudio:renderN8nStudio, workflowrunner:renderWorkflowRunner, communications:renderCommunications, commandbus:renderCommandBus, notifications:renderNotifications, activity:renderActivityStream, briefs:renderExecutiveBriefs, identity:renderIdentity, world:renderWorldModel, simulations:renderSimulations, opportunities:renderOpportunities, allocation:renderAllocation, blueprints:renderBlueprints, commerce:renderCommerce, podstudio:renderPODStudio, assetlibrary:renderAssetLibrary, agency:renderAgency, creator:renderCreator, kpis:renderKPIs, finance:renderFinance, portfolio:renderPortfolio, initiatives:renderInitiatives, employees:renderEmployees, executionplans:renderExecutionPlans, execution:renderExecution, builder:renderBuilder, projects:renderProjects, goals:renderGoals, goalpropagation:renderGoalPropagation, deliberations:renderDeliberations, tasks:renderTasks, agents:renderAgents, councils:renderCouncils, workflows:renderWorkflows, memory:renderMemory, voice:renderVoice, vision:renderVision, search:renderSearch, health:renderHealth, selfhealing:renderSelfHealing, maintenance:renderMaintenance};
+  const map = {home:renderHome, chat:renderChat, daily:renderDailyOperatingLoop, knowledge:renderKnowledge, relationships:renderKnowledgeRelationships, n8nstudio:renderN8nStudio, workflowrunner:renderWorkflowRunner, communications:renderCommunications, commandbus:renderCommandBus, notifications:renderNotifications, activity:renderActivityStream, briefs:renderExecutiveBriefs, identity:renderIdentity, world:renderWorldModel, simulations:renderSimulations, opportunities:renderOpportunities, allocation:renderAllocation, blueprints:renderBlueprints, commerce:renderCommerce, podstudio:renderPODStudio, assetlibrary:renderAssetLibrary, agency:renderAgency, creator:renderCreator, kpis:renderKPIs, finance:renderFinance, portfolio:renderPortfolio, initiatives:renderInitiatives, employees:renderEmployees, executionplans:renderExecutionPlans, execution:renderExecution, builder:renderBuilder, projects:renderProjects, goals:renderGoals, goalpropagation:renderGoalPropagation, deliberations:renderDeliberations, tasks:renderTasks, agents:renderAgents, councils:renderCouncils, workflows:renderWorkflows, memory:renderMemory, voice:renderVoice, vision:renderVision, search:renderSearch, health:renderHealth, selfhealing:renderSelfHealing, maintenance:renderMaintenance, activejobs:renderActiveJobs};
   window.__classicRenderMap = map;
   if (document.body.classList.contains("matrix-view") && active === "home" && window.RaphaelMatrix) {
     window.RaphaelMatrix.renderMatrixHome();
